@@ -1,73 +1,154 @@
-# AI Platform Architect Portfolio
+# Anudeep Bathina - Portfolio Website
 
-A modern, high-performance portfolio website designed for AI Platform Architects and Senior Engineers. This project features a "Glowing Tech" aesthetic with glassmorphism, dynamic animations, and a responsive layout.
+A modern, responsive portfolio website showcasing 9+ years of experience in Data Science, AI/ML, and mentorship. Built with the Bedimcode template and enhanced with premium visual effects.
 
-## 🚀 Features
+## 🌟 Features
 
-- **Modern Aesthetic:** Deep blue color scheme (`#0f172a`) with vibrant cyan accents (`#0ea5e9`) and glassmorphism effects.
-- **Dynamic Hero Section:** Animated background with moving dot patterns and a "breathing" scroll indicator.
-- **Interactive Elements:**
-  - Scroll-triggered animations (Fade-in, Scale-in).
-  - Tabbed "Technical Expertise" section.
-  - Hover effects with glow and lift animations.
-- **Responsive Design:** Fully optimized for desktops, tablets, and mobile devices.
-- **Performance:** Lightweight, vanilla HTML/CSS/JS with no heavy framework dependencies.
+### Professional Content
+- **Experience Timeline**: Visual timeline of roles at Infosys, Capgemini, Cognizant, and GainInsights Solutions
+- **Mentorship Showcase**: Highlighting 240+ engineers mentored, 18+ guest lectures, and university teaching
+- **Publications & Certifications**: IoT Smart Cities publication and 8 recent AI/ML certifications
+- **Skills Display**: Technical expertise in Python, Azure, TensorFlow, PyTorch, Docker, Kubernetes, and more
+
+### Visual Design
+- **Premium Gradient Theme**: Blue-to-purple gradient color scheme
+- **Glassmorphism Header**: Frosted glass effect with backdrop blur
+- **Smooth Animations**: Floating elements, gradient shifts, and hover effects
+- **Responsive Layout**: Mobile-first design that adapts to all screen sizes
+- **Modern Cards**: Elevated cards with shadows and smooth transitions
+
+### Interactive Elements
+- **Mobile Menu**: Slide-in navigation for mobile devices
+- **Scroll Animations**: ScrollReveal library for smooth element reveals
+- **Active Link Highlighting**: Navigation updates based on scroll position
+- **Hover Effects**: Cards lift and glow on interaction
 
 ## 🛠️ Tech Stack
 
-- **HTML5:** Semantic structure and accessibility.
-- **CSS3:** Custom properties (variables), Flexbox, Grid, and Keyframe animations.
-- **JavaScript:** Vanilla JS for intersection observers (scroll animations) and tab logic.
-- **Fonts:** 'Inter' from Google Fonts.
-- **Icons:** Font Awesome (CDN).
+- **HTML5**: Semantic markup with proper structure
+- **CSS3**: Modern styling with gradients, animations, and flexbox/grid
+- **JavaScript**: Vanilla JS for interactivity
+- **BoxIcons**: Icon library for consistent iconography
+- **ScrollReveal**: Smooth scroll animations
+- **Google Fonts**: Poppins font family
 
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```
-.
-├── index.html          # Main content structure
-├── style.css           # All styles, variables, and animations
-├── script.js           # Logic for scroll animations and tabs
-├── assets/             # Directory for images and resume
-│   └── resume.pdf      # (Place your resume here)
-└── README.md           # Project documentation
+anudeepsrib.github.io/
+├── index.html          # Main HTML file with all sections
+├── style.css           # Complete CSS with 1,200+ lines
+├── script.js           # JavaScript for menu, scroll, animations
+├── assets/             # Images and resume
+│   ├── perfil.png      # Profile photo (add yours)
+│   ├── about.jpg       # About section photo (add yours)
+│   ├── work1-6.jpg     # Portfolio images (add yours)
+│   └── resume.pdf      # Your resume (add yours)
+└── README.md           # This file
 ```
 
-## ⚙️ Customization
+## 🎨 Customization
 
-### 1. Personal Details
-Edit `index.html` to update your name, title, and bio.
-- **Hero Section:** Lines 158-176
-- **About Section:** Lines 191-208
-- **Contact Info:** Lines 676-728
-
-### 2. Profile Image
-Replace the placeholder image in `index.html` (Line 180) with your actual photo:
-```html
-<img src="assets/your-photo.jpg" alt="Your Name">
-```
-
-### 3. Resume
-Place your PDF resume in the `assets` folder and name it `resume.pdf`. The download button in the hero section is already linked to `assets/resume.pdf`.
-
-### 4. Colors & Theme
-Modify the CSS variables in `style.css` (Lines 1-32) to change the color scheme:
+### Colors
+Edit the CSS variables in `style.css`:
 ```css
 :root {
-    --primary-color: #0f172a; /* Main background */
-    --accent-color: #0ea5e9;  /* Primary accent */
-    --secondary-accent: #f97316; /* Secondary accent */
+  --hue-color: 230;  /* Change hue (0-360) */
+  --first-color: hsl(var(--hue-color), 89%, 60%);
+  /* ... */
 }
 ```
 
-## 📦 Deployment
+### Content
+Update sections in `index.html`:
+- **Home**: Name, title, description
+- **About**: Professional summary and stats
+- **Skills**: Technical skills and percentages
+- **Experience**: Job history and achievements
+- **Mentorship**: Teaching and mentoring experience
+- **Publications**: Research and certifications
+- **Contact**: Social links and contact form
 
-### GitHub Pages (Recommended)
-1. Commit and push your changes to your GitHub repository (`username.github.io`).
-2. Go to **Settings > Pages**.
-3. Select the `main` branch as the source.
-4. Your site will be live at `https://username.github.io`.
+### Images
+Replace placeholder images in the `assets/` folder:
+- `perfil.png` - Your profile photo (recommended: 400x400px)
+- `about.jpg` - About section photo
+- `work1.jpg` through `work6.jpg` - Portfolio project screenshots
+- `resume.pdf` - Your resume/CV
+
+## 🚀 Deployment
+
+### GitHub Pages
+1. Push code to GitHub repository
+2. Go to Settings → Pages
+3. Select branch (main) and root folder
+4. Save and wait for deployment
+5. Visit `https://yourusername.github.io`
+
+### Local Development
+Simply open `index.html` in a web browser or use a local server:
+```bash
+# Using Python
+python -m http.server 8000
+
+# Using Node.js
+npx serve
+```
+
+## 📱 Responsive Breakpoints
+
+- **Mobile**: < 576px (bottom navigation)
+- **Tablet**: 576px - 768px
+- **Desktop**: 768px - 992px
+- **Large Desktop**: > 992px
+
+## ✨ Key Sections
+
+### Home
+Animated blob with profile photo, gradient title, and social links
+
+### About
+Professional summary with key statistics (9+ years, 240+ mentored, $2M+ impact, 18+ lectures)
+
+### Skills
+Technical skills with visual progress bars and hover effects
+
+### Experience
+Timeline view of professional roles with gradient markers
+
+### Mentorship
+Grid of mentorship cards showcasing teaching and mentoring work
+
+### Publications
+Publication card and certifications grid with 8 recent certifications
+
+### Contact
+Contact information cards and form
+
+## 🎯 Performance
+
+- **Lightweight**: Minimal dependencies
+- **Fast Loading**: Optimized CSS and JS
+- **GPU Accelerated**: Smooth animations using transform and opacity
+- **SEO Friendly**: Semantic HTML and proper meta tags
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+© 2025 Anudeep Bathina. All rights reserved.
+
+## 🙏 Credits
+
+- **Template**: [Bedimcode Portfolio](https://github.com/bedimcode/portfolio-responsive-complete)
+- **Icons**: [BoxIcons](https://boxicons.com/)
+- **Fonts**: [Google Fonts - Poppins](https://fonts.google.com/specimen/Poppins)
+- **Animations**: [ScrollReveal](https://scrollrevealjs.org/)
+
+## 📞 Contact
+
+- **LinkedIn**: [linkedin.com/in/anudeepsri](https://www.linkedin.com/in/anudeepsri/)
+- **GitHub**: [github.com/anudeepsrib](https://github.com/anudeepsrib)
+- **Kaggle**: [kaggle.com/anudeepsri](https://www.kaggle.com/anudeepsri)
+
+---
+
+**Built with ❤️ using modern web technologies**
