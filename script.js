@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Intersection Observer for fade-in animations (to be implemented as sections are added)
+    // Intersection Observer for fade-in animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
@@ -32,10 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Observe sections
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('fade-in-section');
-        observer.observe(section);
+    // Observe sections and animated elements
+    document.querySelectorAll('section, .fade-in-up, .fade-in-left, .scale-in').forEach(el => {
+        if (el.tagName === 'SECTION') {
+            el.classList.add('fade-in-section');
+        }
+        observer.observe(el);
     });
 
     // Skills Tabs Functionality
@@ -53,7 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Show corresponding tab pane
             const tabId = btn.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
+            const tabPane = document.getElementById(tabId);
+            if (tabPane) {
+                tabPane.classList.add('active');
+            }
         });
     });
 });
