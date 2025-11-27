@@ -1,0 +1,74 @@
+@import "../../_globalColor";
+
+.combined-timeline-section {
+  padding: 60px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.timeline-heading {
+  font-size: 56px;
+  font-weight: 800;
+  color: $titleColor;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, $titleColor 0%, $buttonColor 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  width: 100%;
+}
+
+.timeline-subtitle {
+  font-size: 1.1rem;
+  color: $textColor;
+  margin-top: 15px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.dark-mode .timeline-subtitle {
+  color: $textColorDark;
+}
+
+@media (max-width: 1380px) {
+  .combined-timeline-section {
+    padding: 50px 30px;
+  }
+
+  .timeline-heading {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .combined-timeline-section {
+    padding: 40px 20px;
+  }
+
+  .timeline-heading {
+    font-size: 32px;
+  }
+
+  .timeline-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .combined-timeline-section {
+    padding: 30px 15px;
+  }
+
+  .timeline-heading {
+    font-size: 24px;
+  }
+
+  .timeline-subtitle {
+    font-size: 0.95rem;
+  }
+}

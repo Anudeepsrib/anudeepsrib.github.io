@@ -1,0 +1,275 @@
+@import "../../_globalColor";
+
+
+.timeline-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  min-height: 180px; /* reserve space so timeline stays stable */
+}
+
+.timeline-wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.timeline-left {
+  width: 340px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.timeline-left > * {
+  width: 320px;
+  height: 360px; /* explicit height to scale the Lottie */
+  max-height: 420px;
+}
+
+.timeline-right {
+  flex: 1;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 40px;
+  padding: 20px 10px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%; /* centered between the two columns */
+  transform: translateX(-50%);
+  top: 12px;
+  bottom: 12px;
+  width: 4px;
+  background: linear-gradient(180deg, $buttonColor, $buttonHover);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+  animation: itemEnter 420ms ease both;
+  padding: 8px 0;
+}
+
+/* place content to the right of the left axis */
+.timeline-item .timeline-content {
+  transform: translateY(0);
+  text-align: left;
+}
+
+.timeline-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $buttonColor, $buttonHover);
+  border: 3px solid $lightBackground1;
+  box-shadow: 0 0 0 6px rgba(30, 58, 138, 0.06);
+  transition: all 0.25s ease;
+  animation: dotPulse 2s infinite;
+  position: absolute;
+  top: 10px;
+  z-index: 6; /* ensure dots are above the axis */
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 10px rgba(30, 58, 138, 0.12);
+}
+
+.timeline-content {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.03), rgba(22, 163, 74, 0.02));
+  border: 1px solid rgba(30, 58, 138, 0.06);
+  border-radius: 10px;
+  padding: 12px 14px;
+  width: auto;
+  max-width: 760px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-item:hover .timeline-content {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(30, 58, 138, 0.12);
+}
+
+.timeline-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: $buttonColor;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timeline-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: $titleColor;
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, $titleColor, $buttonColor);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.timeline-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: $buttonHover;
+  margin-bottom: 8px;
+}
+
+.timeline-description {
+  font-size: 13px;
+  color: $textColor;
+  line-height: 1.5;
+}
+
+.dark-mode .timeline-dot {
+  border-color: $darkBackground;
+}
+
+.dark-mode .timeline-content {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.08), rgba(22, 163, 74, 0.05));
+  border-color: rgba(30, 58, 138, 0.15);
+}
+
+/* place odd items in left column and even items in right column */
+.timeline-item:nth-child(odd) { grid-column: 1; }
+.timeline-item:nth-child(even) { grid-column: 2; }
+
+/* align dot positions relative to item side so each stint shows a dot on the central axis */
+.timeline-item:nth-child(odd) .timeline-dot { right: -28px; }
+.timeline-item:nth-child(even) .timeline-dot { left: -28px; }
+
+/* align content text */
+.timeline-item:nth-child(odd) .timeline-content { text-align: right; }
+.timeline-item:nth-child(even) .timeline-content { text-align: left; }
+
+/* Animations */
+@keyframes itemEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dotPulse {
+  0% { box-shadow: 0 0 0 0 rgba(30,58,138,0.08); }
+  70% { box-shadow: 0 0 0 10px rgba(30,58,138,0.02); }
+  100% { box-shadow: 0 0 0 0 rgba(30,58,138,0.0); }
+}
+
+
+/* Responsive Design - stack vertically on small screens */
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    display: block;
+  }
+
+  .timeline-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .timeline {
+    display: block;
+    padding-left: 0;
+  }
+
+  .timeline-left > * {
+    width: 260px;
+    height: auto;
+    max-height: 280px;
+  }
+
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    height: 100%;
+    width: 3px;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 30px;
+    animation: itemEnter 500ms ease both;
+  }
+
+  .timeline-item .timeline-content {
+    transform: translateY(0) !important;
+    text-align: left;
+  }
+
+  .timeline-marker {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-right: 8px;
+  }
+
+  .timeline-content {
+    padding: 14px;
+  }
+
+  .timeline-item .timeline-dot {
+    position: relative;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    margin-right: 8px;
+  }
+
+  .timeline-title {
+    font-size: 18px;
+  }
+
+  .timeline-date {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-container {
+    padding: 20px 6px;
+  }
+
+  .timeline-content {
+    padding: 12px;
+  }
+
+  .timeline-title {
+    font-size: 16px;
+  }
+
+  .timeline-description {
+    font-size: 13px;
+  }
+}

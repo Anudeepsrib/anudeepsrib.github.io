@@ -7,25 +7,82 @@
   margin-bottom: 0px;
   margin-top: 0px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
 }
 
 .software-skill-inline {
-  display: inline-block;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+}
+
+.software-skill-inline:hover {
+  background: rgba(30, 58, 138, 0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(30, 58, 138, 0.15);
 }
 
 .software-skill-inline > i {
-  color: $subTitle;
+  color: $buttonColor;
+  transition: all 0.3s ease;
+  font-size: 2.5rem;
 }
 
-.software-skill-inline > i:hover {
-  color: $skillsColor;
+.software-skill-inline:hover > i {
+  color: $buttonColor;
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 0 8px rgba(30, 58, 138, 0.3));
 }
+
 .software-skill-inline > p {
-  color: $subTitle;
-  font-size: 10px;
+  color: $textColor;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
-.software-skill-inline > i:hover ~ p {
-  color: $skillsColor;
+
+.software-skill-inline:hover > p {
+  color: $buttonColor;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .dev-icons {
+    gap: 20px;
+  }
+  .software-skill-inline {
+    padding: 12px;
+  }
+  .software-skill-inline > i {
+    font-size: 2rem;
+  }
+  .software-skill-inline > p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dev-icons {
+    gap: 15px;
+  }
+  .software-skill-inline {
+    padding: 10px;
+  }
+  .software-skill-inline > i {
+    font-size: 1.8rem;
+  }
+  .software-skill-inline > p {
+    font-size: 10px;
+  }
 }

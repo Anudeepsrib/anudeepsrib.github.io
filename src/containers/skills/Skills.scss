@@ -1,31 +1,66 @@
 @import "../../_globalColor";
 
 .skills-main-div {
-  display: flex;
+  display: block;
   width: 100%;
   overflow: hidden;
+  margin: 40px 0;
+  animation: slideInLeft 0.8s ease-in;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .skills-text-div {
-  margin-left: 50px;
+  margin: 0;
+  width: 100%;
 }
 
 .skills-main-div > * {
-  flex: 1;
-  margin-bottom: 30px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.skills-image-div > img {
-  max-width: 100%;
-  height: auto;
-}
+/* removed image/animation column styles - skills now use full width */
 
 .skills-heading {
   font-size: 56px;
-  font-weight: 400;
+  font-weight: 800;
+  color: $titleColor;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, $titleColor 0%, $buttonColor 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  width: 100%;
 }
+
 .subTitle {
   color: $subTitle;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.skills-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: $textColor;
+}
+
+.skills-text-subtitle {
+  font-size: 18px;
+  color: $buttonColor;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 /* Media Query */
@@ -33,7 +68,11 @@
   .skills-heading {
     font-size: 40px;
   }
+  .skills-main-div {
+    gap: 40px;
+  }
 }
+
 @media (max-width: 768px) {
   .skills-heading {
     font-size: 30px;
@@ -45,6 +84,7 @@
   }
   .skills-main-div {
     flex-direction: column;
+    gap: 30px;
   }
   .skills-text-div {
     margin-left: 0px;
@@ -58,7 +98,18 @@
     text-align: center;
   }
   .skills-image-div {
-    /* display: none; */
     order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-main-div {
+    margin: 30px 0;
+  }
+  .skills-heading {
+    font-size: 24px;
+  }
+  .skills-text-div {
+    margin: 15px;
   }
 }

@@ -8,9 +8,9 @@ import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your
 // Splash Screen
 
 const splashScreen = {
-  enabled: true, // set false to disable splash screen
+  enabled: true, // keep enabled for a polished first impression
   animation: splashAnimation,
-  duration: 2000 // Set animation duration as per your animation
+  duration: 1400 // shorter, snappier intro
 };
 
 // Summary And Greeting Section
@@ -21,11 +21,11 @@ const illustration = {
 
 const greeting = {
   username: "Anudeep Bathina",
-  title: "Hi all, I'm Anudeep",
+  title: "Hi I'm Anudeep",
   subTitle: emoji(
-    "Lead Data Scientist & AI Mentor with 9+ years of experience. Mentored 240+ engineers, delivered 18+ guest lectures, and driving $2M+ business impact. Expert in GenAI, NLP, and Computer Vision."
+    "Shipping production data systems and AI products. Building scalable pipelines, GenAI systems, and data-driven platforms that solve complex problems. Mentor, speaker and open-source contributor."
   ),
-  resumeLink: "", // Set to empty to hide the button
+  resumeLink: "https://anudeepsrib.github.io/resume.pdf", // update with your resume URL or leave empty
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
@@ -35,58 +35,13 @@ const socialMediaLinks = {
   github: "https://github.com/anudeepsrib",
   linkedin: "https://www.linkedin.com/in/anudeepsri/",
   kaggle: "https://www.kaggle.com/anudeepsri",
-  gmail: "anudeepsrib@gmail.com",
+  gmail: "anudeepaib@gmail.com",
   // Instagram, Twitter and Kaggle are also supported in the links!
   // To customize icons and social links, tweak src/components/SocialMedia
   display: true // Set true to display this section, defaults to false
 };
 
-// Skills Section
-
-const skillsSection = {
-  title: "What I do",
-  subTitle: "DATA SCIENTIST | AI MENTOR | TECH LEADER",
-  skills: [
-    emoji("⚡ Building GenAI, NLP, and Computer Vision solutions at scale"),
-    emoji("⚡ Mentoring the next generation of AI engineers and Data Scientists"),
-    emoji("⚡ Architecting cloud-native AI applications on Azure and AWS")
-  ],
-
-  /* Make Sure to include correct Font Awesome Classname to view your icon
-https://fontawesome.com/icons?d=gallery */
-
-  softwareSkills: [
-    {
-      skillName: "Python",
-      fontAwesomeClassname: "fab fa-python"
-    },
-    {
-      skillName: "TensorFlow",
-      fontAwesomeClassname: "fas fa-brain"
-    },
-    {
-      skillName: "PyTorch",
-      fontAwesomeClassname: "fas fa-fire"
-    },
-    {
-      skillName: "Azure",
-      fontAwesomeClassname: "fab fa-microsoft"
-    },
-    {
-      skillName: "Docker",
-      fontAwesomeClassname: "fab fa-docker"
-    },
-    {
-      skillName: "Kubernetes",
-      fontAwesomeClassname: "fas fa-dharmachakra"
-    },
-    {
-      skillName: "SQL",
-      fontAwesomeClassname: "fas fa-database"
-    }
-  ],
-  display: true // Set false to hide this section, defaults to true
-};
+// Skills Section (see 'Expertise & Focus' further below)
 
 // Education Section
 
@@ -94,19 +49,19 @@ const educationInfo = {
   display: true, // Set false to hide this section, defaults to true
   schools: [
     {
-      schoolName: "University of Massachusetts Amherst",
-      logo: require("./assets/images/harvardLogo.png"), // Placeholder
-      subHeader: "Master of Science in Computer Science",
-      duration: "2015 - 2017",
-      desc: "Specialized in Machine Learning and Data Science.",
-      descBullets: []
-    },
-    {
       schoolName: "VIT University",
       logo: require("./assets/images/stanfordLogo.png"), // Placeholder
       subHeader: "B.Tech in Electrical and Electronics Engineering",
-      duration: "2009 - 2013",
+      duration: "2011 - 2015",
       desc: "Focus on Engineering fundamentals.",
+      descBullets: []
+    },
+    {
+      schoolName: "University of Massachusetts Amherst",
+      logo: require("./assets/images/harvardLogo.png"), // Placeholder
+      subHeader: "Master of Science in Computer Science",
+      duration: "2021 - 2024",
+      desc: "Specialized in Machine Learning and Data Science.",
       descBullets: []
     }
   ]
@@ -115,22 +70,28 @@ const educationInfo = {
 // Your top 3 proficient stacks/tech experience
 
 const techStack = {
-  viewSkillBars: true, //Set it to true to show Proficiency Section
-  experience: [
-    {
-      Stack: "Data Science & AI", //Insert stack or technology you have experience in
-      progressPercentage: "95%" //Insert relative proficiency in percentage
-    },
-    {
-      Stack: "Cloud Computing",
-      progressPercentage: "85%"
-    },
-    {
-      Stack: "Mentorship",
-      progressPercentage: "90%"
-    }
-  ],
-  displayCodersrank: false // Set true to display codersrank badges section need to changes your username in src/containers/skillProgress/skillProgress.js:17:62, defaults to false
+  viewSkillBars: false, //Set it to false - using competencies section instead
+  experience: [],
+  displayCodersrank: false
+};
+
+// Competencies & Areas of Expertise (displayed as styled chips/tags)
+const competencies = {
+  title: "Core Competencies",
+  subtitle: "Data engineering and AI systems expertise",
+  display: false,
+  competencyList: [
+    "Data Pipeline Architecture (ETL/ELT)",
+    "Big Data Processing (Spark, Kafka, Delta Lake)",
+    "AI Systems & Agentic Workflows",
+    "Generative AI & LLMs",
+    "Machine Learning in Production",
+    "Data Warehousing & Lakehouse Design",
+    "Cloud Infrastructure (AWS, Azure)",
+    "Observability & Data Quality",
+    "Cost Optimization & Governance",
+    "Leadership & Technical Strategy"
+  ]
 };
 
 // Work experience section
@@ -139,39 +100,39 @@ const workExperiences = {
   display: true, //Set it to true to show workExperiences Section
   experience: [
     {
+      role: "Cloud Data Engineer",
+      company: "Cognizant",
+      companylogo: require("./assets/images/quoraLogo.png"), // Placeholder
+      date: "2015 - 2019",
+      desc: "Worked on cloud infrastructure and data processing systems.",
+      descBullets: []
+    },
+    {
+      role: "Bigdata and ML Engineer",
+      company: "Gain Insights Solutions",
+      companylogo: require("./assets/images/googleAssistantLogo.webp"), // Placeholder
+      date: "2019 - 2019",
+      desc: "Developed big data and machine learning solutions.",
+      descBullets: []
+    },
+    {
+      role: "Technical Lead",
+      company: "Capgemini",
+      companylogo: require("./assets/images/facebookLogo.png"), // Placeholder
+      date: "2019 - 2021",
+      desc: "Led technical teams and developed advanced ML models. Received Extra Mile Award.",
+      descBullets: []
+    },
+    {
       role: "Lead Data Scientist",
       company: "Infosys",
       companylogo: require("./assets/images/airbnbLogo.png"), // Placeholder
-      date: "Current",
+      date: "2024 - Present",
       desc: "Leading AI initiatives and driving business impact.",
       descBullets: [
         "Mentored 240+ engineers",
         "Driving $2M+ business impact"
       ]
-    },
-    {
-      role: "Senior Data Scientist",
-      company: "Capgemini",
-      companylogo: require("./assets/images/facebookLogo.png"), // Placeholder
-      date: "Previous",
-      desc: "Developed advanced ML models and received Extra Mile Award.",
-      descBullets: []
-    },
-    {
-      role: "Data Scientist",
-      company: "Cognizant",
-      companylogo: require("./assets/images/quoraLogo.png"), // Placeholder
-      date: "Previous",
-      desc: "Worked on predictive analytics. Recognized in Top 100 Millennial List.",
-      descBullets: []
-    },
-    {
-      role: "Technical Writer & Analyst",
-      company: "GainInsights Solutions",
-      companylogo: require("./assets/images/googleAssistantLogo.webp"), // Placeholder
-      date: "Previous",
-      desc: "Technical documentation and analysis.",
-      descBullets: []
     }
   ]
 };
@@ -181,7 +142,7 @@ To know how to get github key look at readme.md */
 
 const openSource = {
   showGithubProfile: "true", // Set true or false to show Contact profile using Github, defaults to true
-  display: true // Set false to hide this section, defaults to true
+  display: false // Hidden in header per request
 };
 
 // Some big projects you have worked on
@@ -202,7 +163,7 @@ const bigProjects = {
       ]
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: false // Set false to hide this section, defaults to true
 };
 
 // Achievement Section
@@ -238,43 +199,38 @@ const achievementSection = {
       footerLink: []
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: false // Set false to hide this section, defaults to true
 };
 
 // Blogs Section
-
-const blogSection = {
-  title: "Blogs",
-  subtitle:
-    "I love to write about AI and Data Science.",
-  displayMediumBlogs: "false", // Set true to display fetched medium blogs instead of hardcoded ones
-  blogs: [],
-  display: true // Set false to hide this section, defaults to true
-};
-
-// Talks Sections
+// Talks Section (concise grouped summary)
 
 const talkSection = {
   title: "Mentorship & Talks",
+  // Premium narrative for website, LinkedIn or a keynote slide
   subtitle: emoji(
-    "Sharing knowledge with the community 🎤"
+    "I build long-term academic alliances and global industry partnerships that scale AI capability across institutions and enterprises. Trusted by leading universities and international platforms, I design curricula, lead faculty development, and deliver strategic forums that translate research into practice and upskill talent at scale."
   ),
 
+  // Three concise category cards that capture the strategic partnerships
   talks: [
     {
-      title: "Guest Lecture at VIT University",
-      subtitle: "Database Systems, Computer Vision, AI Innovation",
-      slides_url: "",
-      event_url: ""
+      title: "Academic Partnerships",
+      subtitle:
+        "Sustained collaborations with VIT University (Chennai, Vellore, Amaravati), PVP Siddhartha and University of Massachusetts — embedded coursework, faculty development and advanced instruction in databases, ML, computer vision and software systems."
     },
     {
-      title: "Mentor at UT Austin PGP",
-      subtitle: "Guiding learners in AI and Data Science",
-      slides_url: "",
-      event_url: ""
+      title: "Global Industry Platforms",
+      subtitle:
+        "Strategic speaker and curator at DeepLearning.ai (Pie & AI), Berlin School of Business & Innovation and the Cloud Computing Conference (Boussias) — engagements that connect ideas to global adoption."
+    },
+    {
+      title: "Training & Mentorship",
+      subtitle:
+        "Programmatic instructor roles and enterprise trainings with Great Learning, Wiley, Verzeo and Analytics Vidhya, plus active mentorship on Kaggle and university examiner duties — enabling workforce readiness and career acceleration."
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: true // keep visible
 };
 
 // Podcast Section
@@ -285,7 +241,54 @@ const podcastSection = {
 
   // Please Provide with Your Podcast embeded Link
   podcast: [],
-  display: false // Set false to hide this section, defaults to true
+  display: false // Set false to hide this section, defaults to false
+};
+
+// Blogs Section
+// Hidden: commented/disabled per request — kept minimal so exports remain valid
+const blogSection = {
+  title: "Blogs",
+  subtitle: "I love to write about AI and Data Science.",
+  displayMediumBlogs: "false", // Set true to fetch medium blogs
+  blogs: [],
+  display: false // Hidden: do not render the Blogs section
+};
+
+// Skills Section
+
+const skillsSection = {
+  title: "Skills",
+  subTitle: "Expertise in production data platforms, AI systems & infrastructure",
+  skills: [
+    emoji("⚡ Designing scalable data pipelines and ETL systems at enterprise scale"),
+    emoji("⚡ Building production AI systems: LLMs, retrieval, agentic workflows, fine-tuning"),
+    emoji("⚡ Architecture: cloud-native platforms, cost optimization, observability & reliability")
+  ],
+
+  /* Professional technical skills - no captions, data-focused icons */
+  softwareSkills: [
+    // Data & Pipeline
+    { skillName: "AI / LLM & Agentic Systems", fontAwesomeClassname: "fas fa-network-wired" },
+    { skillName: "LLMs & Foundation Models", fontAwesomeClassname: "fas fa-cube" },
+    { skillName: "Safety, Reliability & Governance", fontAwesomeClassname: "fas fa-lock" },
+    { skillName: "Observability & Evaluation", fontAwesomeClassname: "fas fa-chart-line" },
+    { skillName: "Cost Optimization & Efficiency", fontAwesomeClassname: "fas fa-chart-pie" },
+    { skillName: "Production ML at Scale", fontAwesomeClassname: "fas fa-server" },
+
+    // Data Stack
+    { skillName: "Data Processing & Engineering", fontAwesomeClassname: "fas fa-database" },
+    { skillName: "Cloud Infrastructure", fontAwesomeClassname: "fas fa-cloud" },
+
+    // Languages & Tools
+    { skillName: "Languages & SQL", fontAwesomeClassname: "fas fa-code" },
+
+    // DevOps & Software
+    { skillName: "Software Development & DevOps", fontAwesomeClassname: "fas fa-tools" },
+
+    // Leadership
+    { skillName: "Leadership & Methodology", fontAwesomeClassname: "fas fa-users" }
+  ],
+  display: true // Set false to hide this section, defaults to true
 };
 
 // Resume Section
@@ -294,7 +297,7 @@ const resumeSection = {
   subtitle: "Feel free to download my resume",
 
   // Please Provide with Your Podcast embeded Link
-  display: true // Set false to hide this section, defaults to true
+  display: false // Hidden in header per request
 };
 
 const contactInfo = {
@@ -322,6 +325,7 @@ export {
   skillsSection,
   educationInfo,
   techStack,
+  competencies,
   workExperiences,
   openSource,
   bigProjects,
