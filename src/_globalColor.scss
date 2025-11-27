@@ -1,87 +1,90 @@
-/* Professional Data Engineering & AI Palette
-   Deep navy primary, slate accents, analytics green & data orange
-   Enterprise-ready colors reflecting 10 years of data focus */
+/* Modern AI Product Palette
+   Electric Blue & Violet accents, Deep Slate backgrounds
+   Premium, high-contrast, "Stripe-like" aesthetic */
 
-// button colors - data-focused professional palette
-$buttonColor: #1e3a8a; // deep navy (professional primary)
-$buttonHover: #16a34a; // growth/success green
-$topButtonHover: #0f172a; // darker navy
+// Primary Accents - Electric Blue & Violet
+$primaryColor: #6366f1; // Indigo-500
+$secondaryColor: #8b5cf6; // Violet-500
+$accentColor: #06b6d4; // Cyan-500 (for data/tech vibes)
 
-// text colors light theme - high contrast professional
-$titleColor: #0f172a; // very dark navy
-$textColor: #1e293b; // slate-800
-$subTitle: #64748b; // slate-500
-$cardSubtitle: #475569; // slate-600
+// Button Colors
+$buttonColor: $primaryColor;
+$buttonHover: $secondaryColor;
+$topButtonHover: #1e1b4b; // Indigo-950
+
+// Text Colors - Light Theme
+$titleColor: #0f172a; // Slate-900
+$textColor: #334155; // Slate-700
+$subTitle: #64748b; // Slate-500
+$cardSubtitle: #475569; // Slate-600
 $talkCardSubTitle: #64748b;
 $blogCardTitleColor: #0f172a;
 
-// text color dark theme
-$textColorDark: #f1f5f9;
+// Text Colors - Dark Theme
+$textColorDark: #f8fafc; // Slate-50
+$textSecondaryDark: #cbd5e1; // Slate-300
 
-// toggle switch colors
-$toggleCheck: #16a34a; // green for active/ON state
-$toggleSwitchSliderBG: #cbd5e1; // slate-300
+// Backgrounds - Light Theme
+$lightBackground1: #ffffff;
+$lightBackground2: #f8fafc; // Slate-50
+$lightBackground3: #f1f5f9; // Slate-100
+$blogCardContainerColor: #cbd5e1;
 
-// githubRepo specific colors
-$githubRepoCardLanguageColorBG: #1e3a8a;
-$githubRepoCardColor: rgb(51, 65, 85); // slate-700
-$githubRepoCardRepoCardStatsColor: rgb(71, 85, 99); // slate-600
-$githubRepoCardRepoNameColor: rgb(15, 23, 42); // slate-900
-$githubProfileCardLocationTS: #dbeafe; // blue-100
-$githubProfileCardBorder: #1e3a8a;
+// Backgrounds - Dark Theme
+$darkBackground: #0f172a; // Slate-900 (Main BG)
+$darkBackground2: #1e293b; // Slate-800 (Cards)
+$darkBackground3: #020617; // Slate-950 (Deep contrast)
 
-// light background colors - clean whites
-$lightBackground1: #f8fafc;
-$lightBackground2: rgb(248, 250, 252);
-$lightBackground3: #f0f4f8; // slightly blue-tinted
-$blogCardContainerColor: #475569;
+// Shadows & Glassmorphism
+$glassBlur: blur(12px);
+$lightGlassBG: rgba(255, 255, 255, 0.7);
+$darkGlassBG: rgba(15, 23, 42, 0.6);
 
-// dark background colors - deep slate
-$darkBackground: #0f172a;
+$lightBoxShadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$lightBoxShadowHover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-// light theme box shadows - professional subtle
-$lightBoxShadowDark: rgba(15, 23, 42, 0.12);
-$lightBoxShadow: rgba(15, 23, 42, 0.08);
-$lightBoxShadowDarker: rgba(15, 23, 42, 0.15);
+$darkBoxShadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.18);
+$darkBoxShadowHover: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 
-// dark theme box shadows
-$darkBoxShadow: #cbd5e1;
-$darkBoxShadow2: #ffffff;
+// Borders
+$lightBorder: #e2e8f0; // Slate-200
+$darkBorder: #334155; // Slate-700
+$educationCardBorder: $primaryColor;
 
-// linear gradients - data/analytics theme
-$experienceCardBlurredDivLG: linear-gradient(rgba(15, 23, 42, 0.4),
-    rgba(15, 23, 42, 0.2));
-$experienceCardBannerLG: linear-gradient(rgba(15, 23, 42, 0.7),
-    rgba(15, 23, 42, 0.5));
+// Gradients
+$mainGradient: linear-gradient(135deg, $primaryColor 0%, $secondaryColor 100%);
+$darkGradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+$glassGradient: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
 
-// borders
-$progressBarBackground: rgb(230, 235, 241); // slate-200
-$lightBorder1: rgba(148, 163, 184, 0.25); // slate-400 transparent
-$educationCardBorder: #1e3a8a;
-
-// hovers
-$achievementCertificateCardHoverDark: rgba(255, 255, 255, 0.15);
-$blogCardHoverSmallColor: rgba(255, 255, 255, 0.85);
+// Legacy/Misc Mappings (to prevent breakage)
+$toggleCheck: $accentColor;
+$toggleSwitchSliderBG: #cbd5e1;
+$githubRepoCardLanguageColorBG: $primaryColor;
+$githubRepoCardColor: $darkBackground2;
+$githubRepoCardRepoCardStatsColor: $subTitle;
+$githubRepoCardRepoNameColor: $titleColor;
+$githubProfileCardLocationTS: #dbeafe;
+$githubProfileCardBorder: $primaryColor;
+$progressBarBackground: #e2e8f0;
+$lightBorder1: $lightBorder;
+$achievementCertificateCardHoverDark: rgba(255, 255, 255, 0.1);
+$blogCardHoverSmallColor: rgba(255, 255, 255, 0.9);
 $headerHoverBG: #f1f5f9;
-$contactDetailHoverTS: #94a3b8; // slate-400
+$contactDetailHoverTS: #94a3b8;
+$progressBarSpanBG: $accentColor;
+$iconBackground: $darkBackground2;
+$appHeaderBG: $darkBackground;
+$skillsColor: $primaryColor;
+$appLink: $primaryColor;
 
-// misc backgrounds
-$progressBarSpanBG: #16a34a; // green (analytics/growth)
-$iconBackground: #1e293b;
-$appHeaderBG: #0f172a;
-
-// misc colors - professional accents
-$skillsColor: #1e3a8a; // navy primary
-$appLink: #1e3a8a; // navy for links
-
-// social media icons - professional tones
-$faceBook: #1e3a8a;
-$linkedin: #1e3a8a;
-$github: #0f172a;
-$gitlab: #d97706; // amber (analytics accent)
-$google: #dc2626; // red for alerts/important
-$twitter: #1e3a8a;
-$medium: #0f172a;
-$stackoverflow: #dc2626;
-$instagram: #1e3a8a;
-$kaggle: #16a34a; // green
+// Social Media
+$faceBook: #1877f2;
+$linkedin: #0a66c2;
+$github: #181717;
+$gitlab: #e24329;
+$google: #db4437;
+$twitter: #1da1f2;
+$medium: #000000;
+$stackoverflow: #f48024;
+$instagram: #e4405f;
+$kaggle: #20beff;
