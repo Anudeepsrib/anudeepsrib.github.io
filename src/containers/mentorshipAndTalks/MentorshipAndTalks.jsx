@@ -45,58 +45,58 @@ export default function MentorshipAndTalks() {
   ];
 
   function renderLogo(item) {
-    // Placeholder design: uppercase text block. If you later provide assets, you can
-    // replace the text with <img src={...} /> and a `.logo-img` rule in the SCSS.
     return (
-      <div className="logo-item" key={item.name} title={item.name} aria-label={item.name}>
-        <div className="logo-placeholder">{item.name.toUpperCase()}</div>
+      <div className="logo-card" key={item.name} title={item.name} aria-label={item.name}>
+        <div className="logo-content">
+          <span className="logo-text">{item.name}</span>
+        </div>
       </div>
     );
   }
 
   return (
     <section className={isDark ? "mentorship-section dark-mode" : "mentorship-section"}>
-      <div className="mentorship-hero">
-        <h2 className="mentorship-title">Academic Influence & Global AI Leadership</h2>
-        <p className="mentorship-subtitle">
-          Recognized by universities, AI organizations, and global platforms for advancing education,
-          innovation, and workforce intelligence.
-        </p>
-      </div>
-
-      <div className="brand-wall" aria-hidden={false}>
-        <div className="brand-row" aria-label="Universities">
-          {universities.map((u) => renderLogo(u))}
+      <div className="mentorship-bg-grid"></div>
+      <div className="mentorship-content-wrapper">
+        <div className="mentorship-hero">
+          <h2 className="mentorship-title">Academic Influence & Global AI Leadership</h2>
+          <p className="mentorship-subtitle">
+            Recognized by universities, AI organizations, and global platforms for advancing education,
+            innovation, and workforce intelligence.
+          </p>
         </div>
 
-        <div className="brand-row" aria-label="Global platforms">
-          {platforms.map((p) => renderLogo(p))}
+        <div className="brand-wall-container">
+          <div className="brand-section">
+            <h3 className="brand-section-title">Universities</h3>
+            <div className="brand-grid">
+              {universities.map((u) => renderLogo(u))}
+            </div>
+          </div>
+
+          <div className="brand-section">
+            <h3 className="brand-section-title">Global AI Platforms</h3>
+            <div className="brand-grid">
+              {platforms.map((p) => renderLogo(p))}
+            </div>
+          </div>
+
+          <div className="brand-section">
+            <h3 className="brand-section-title">Training Partners</h3>
+            <div className="brand-grid">
+              {training.map((t) => renderLogo(t))}
+            </div>
+          </div>
         </div>
 
-        <div className="brand-row" aria-label="Training and mentorship">
-          {training.map((t) => renderLogo(t))}
-        </div>
-      </div>
-
-      <div className="timeline" role="list" aria-label="Mentorship timeline">
-        <div className="timeline-scroll">
-          {timeline.map((pt) => (
-            <div className="timeline-point" key={pt.year} role="listitem">
-              <div className="timeline-year">{pt.year}</div>
-              <div className="timeline-org">{pt.org}</div>
-              <div className="timeline-topic">{pt.topic}</div>
+        <div className="stats-container">
+          {stats.map((s) => (
+            <div className="stat-card" key={s.label}>
+              <div className="stat-value">{s.value}</div>
+              <div className="stat-label">{s.label}</div>
             </div>
           ))}
         </div>
-      </div>
-
-      <div className="stats-bar" role="region" aria-label="Impact statistics">
-        {stats.map((s) => (
-          <div className="stat-box" key={s.label}>
-            <div className="stat-value">{s.value}</div>
-            <div className="stat-label">{s.label}</div>
-          </div>
-        ))}
       </div>
     </section>
   );
