@@ -48,3 +48,29 @@ Run `npm run build` and deploy the `build` folder.
 ## Legacy Site
 
 The previous HTML/CSS version of this portfolio has been backed up to the `legacy_backup` directory.
+
+
+Deployment Commands
+After you've committed your changes to master:
+
+bash
+# 1. Make sure you're on the master branch
+git checkout master
+# 2. Pull any remote changes (optional but recommended)
+git pull origin master
+# 3. Deploy to gh-pages
+npm run deploy
+That's it! The npm run deploy command will:
+
+Run fetch.js to get any external data
+Build your React app (npm run build)
+Push the build artifacts to the gh-pages branch automatically
+Quick Reference
+Full workflow from start to finish:
+
+bash
+# Make your changes, then:
+git add .
+git commit -m "Your commit message"
+git push origin master
+npm run deploy
