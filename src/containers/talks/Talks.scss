@@ -1,7 +1,7 @@
 @import "../../_globalColor";
 
 .main {
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -31,6 +31,7 @@
   font-weight: 500;
   max-width: 60ch;
 }
+
 .talk-header-grid {
   display: grid;
   grid-template-columns: 1fr 360px;
@@ -57,7 +58,7 @@
   margin-bottom: 1rem;
 }
 
-.talk-header-animation > * {
+.talk-header-animation>* {
   width: 100%;
   max-width: 360px;
   max-height: 420px;
@@ -69,7 +70,7 @@
 
 @media (max-width: 1380px) {
   .main {
-    padding: 2.5rem 1.5rem;
+    padding: 1.5rem 1.5rem;
   }
 
   .talk-header-title {
@@ -111,7 +112,7 @@
 
 @media (max-width: 480px) {
   .main {
-    padding: 1.5rem 0.75rem;
+    padding: 1rem 0.75rem;
   }
 
   .talk-header-title {
