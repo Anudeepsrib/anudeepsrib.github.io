@@ -1,51 +1,14 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./CombinedTimeline.scss";
 import Timeline from "../../components/timeline/Timeline";
-import {educationInfo, workExperiences} from "../../portfolio";
-import {Fade} from "react-reveal";
+import { timelineSection } from "../../portfolio";
+import { Fade } from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 
 export default function CombinedTimeline() {
-  const {isDark} = useContext(StyleContext);
+  const { isDark } = useContext(StyleContext);
 
-  // Combine education and work experience into a single timeline
-  const timelineEvents = [];
-
-  // Add education events
-  if (educationInfo.display && educationInfo.schools) {
-    educationInfo.schools.forEach((school) => {
-      const [startYear] = school.duration.split(" - ");
-      timelineEvents.push({
-        date: school.duration,
-        title: school.schoolName,
-        subtitle: school.subHeader,
-        description: school.desc,
-        type: "education",
-        sortKey: parseInt(startYear)
-      });
-    });
-  }
-
-  // Add work experience events
-  if (workExperiences.display && workExperiences.experience) {
-    workExperiences.experience.forEach((exp) => {
-      const dateStr = exp.date.replace("Present", "2024");
-      const [startYear] = dateStr.split(" - ");
-      timelineEvents.push({
-        date: exp.date,
-        title: exp.role,
-        subtitle: exp.company,
-        description: exp.desc,
-        type: "work",
-        sortKey: parseInt(startYear) || 9999
-      });
-    });
-  }
-
-  // Sort by year
-  timelineEvents.sort((a, b) => a.sortKey - b.sortKey);
-
-  if (timelineEvents.length === 0) {
+  if (!timelineSection.display || !timelineSection.events) {
     return null;
   }
 
@@ -60,7 +23,7 @@ export default function CombinedTimeline() {
                 : "timeline-heading"
             }
           >
-            Education & Experience Timeline
+            {timelineSection.title}
           </h1>
           <p
             className={
@@ -69,10 +32,10 @@ export default function CombinedTimeline() {
                 : "timeline-subtitle"
             }
           >
-            My professional journey from 2009 onwards
+            {timelineSection.subtitle}
           </p>
         </div>
-        <Timeline events={timelineEvents} />
+        <Timeline events={timelineSection.events} />
       </div>
     </Fade>
   );

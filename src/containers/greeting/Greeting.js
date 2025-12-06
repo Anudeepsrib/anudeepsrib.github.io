@@ -7,6 +7,9 @@ import Button from "../../components/button/Button";
 import { greeting } from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 
+import DisplayLottie from "../../components/displayLottie/DisplayLottie";
+import landingPerson from "../../assets/lottie/landingPerson";
+
 export default function Greeting() {
   const { isDark } = useContext(StyleContext);
   if (!greeting.displayGreeting) {
@@ -42,11 +45,7 @@ export default function Greeting() {
             </div>
           </div>
           <div className="greeting-image-div">
-            <div className="abstract-hero-visual">
-              <div className="abstract-shape shape-1"></div>
-              <div className="abstract-shape shape-2"></div>
-              <div className="abstract-shape shape-3"></div>
-            </div>
+            <DisplayLottie animationData={landingPerson} />
           </div>
         </div>
       </div>

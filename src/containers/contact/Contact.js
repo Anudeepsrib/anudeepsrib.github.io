@@ -5,6 +5,9 @@ import { contactInfo } from "../../portfolio";
 import { Fade } from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 
+import DisplayLottie from "../../components/displayLottie/DisplayLottie";
+import email from "../../assets/lottie/email";
+
 export default function Contact() {
   const { isDark } = useContext(StyleContext);
   return (
@@ -51,11 +54,7 @@ export default function Contact() {
             </div>
           </div>
           <div className="contact-image-div">
-            <div className="contact-abstract-visual">
-              <div className="contact-ring ring-1"></div>
-              <div className="contact-ring ring-2"></div>
-              <div className="contact-ring ring-3"></div>
-            </div>
+            <DisplayLottie animationData={email} />
           </div>
         </div>
       </div>

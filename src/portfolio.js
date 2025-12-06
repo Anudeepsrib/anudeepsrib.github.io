@@ -300,6 +300,56 @@ const resumeSection = {
   display: false // Hidden in header per request
 };
 
+const timelineSection = {
+  display: true,
+  title: "Experience & Education",
+  subtitle: "My professional journey",
+  events: [
+    {
+      title: "VIT University",
+      subtitle: "B.Tech in Electrical and Electronics Engineering",
+      date: "2011–2015",
+      description: "Focused on foundational engineering principles.",
+      type: "education"
+    },
+    {
+      title: "Cognizant",
+      subtitle: "Cloud Data Engineer",
+      date: "2015–2019",
+      description: "Built cloud infrastructure and large-scale data processing systems.",
+      type: "work"
+    },
+    {
+      title: "Gain Insights Solutions",
+      subtitle: "Big Data and ML Engineer",
+      date: "2019",
+      description: "Developed machine learning and big data solutions.",
+      type: "work"
+    },
+    {
+      title: "Capgemini",
+      subtitle: "Technical Lead",
+      date: "2019–2021",
+      description: "Led engineering teams and delivered advanced ML solutions. Earned the Extra Mile Award.",
+      type: "work"
+    },
+    {
+      title: "University of Massachusetts Amherst",
+      subtitle: "Master of Science in Computer Science",
+      date: "2021–2024",
+      description: "Specialized in Machine Learning and Data Science.",
+      type: "education"
+    },
+    {
+      title: "Infosys",
+      subtitle: "Lead Data Scientist",
+      date: "2024–Present",
+      description: "Driving AI initiatives and delivering measurable business impact.",
+      type: "work"
+    }
+  ]
+};
+
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle:
@@ -336,5 +386,6 @@ export {
   contactInfo,
   twitterDetails,
   isHireable,
+  timelineSection,
   resumeSection
 };
