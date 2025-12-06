@@ -21,8 +21,10 @@
 }
 
 .skills-text-div {
-  margin: 0;
-  width: 50%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
 }
 
 .skills-image-div {
@@ -42,6 +44,7 @@
   background: linear-gradient(135deg, $titleColor 0%, $buttonColor 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  color: transparent;
   display: inline-block;
   width: 100%;
 }
@@ -57,13 +60,69 @@
   font-size: 16px;
   line-height: 1.8;
   color: $textColor;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .skills-text-subtitle {
   font-size: 18px;
   color: $buttonColor;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.skills-content-wrapper {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.skills-left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.skills-lottie-wrapper {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.skills-description-column {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .dark-mode & {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+.skills-tags-column {
+  flex: 1;
+  min-width: 0;
 }
 
 /* Media Query */
@@ -73,6 +132,10 @@
   }
 
   .skills-main-div {
+    gap: 40px;
+  }
+
+  .skills-content-wrapper {
     gap: 40px;
   }
 }
@@ -111,6 +174,19 @@
   .skills-text-subtitle {
     font-size: 16px;
     text-align: center;
+  }
+
+  .skills-content-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .skills-lottie-wrapper {
+    max-width: 300px;
+  }
+
+  .skills-description-column {
+    padding: 24px;
   }
 
   .skills-image-div {
