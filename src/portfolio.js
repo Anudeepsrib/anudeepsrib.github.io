@@ -206,31 +206,41 @@ const achievementSection = {
 // Talks Section (concise grouped summary)
 
 const talkSection = {
-  title: "Mentorship & Talks",
-  // Premium narrative for website, LinkedIn or a keynote slide
-  subtitle: emoji(
-    "I build long-term academic alliances and global industry partnerships that scale AI capability across institutions and enterprises. Trusted by leading universities and international platforms, I design curricula, lead faculty development, and deliver strategic forums that translate research into practice and upskill talent at scale."
-  ),
+  title: "Academic Influence and Global AI Leadership",
+  subtitle: "Honored by leading universities, global AI institutions, and industry platforms for contributions to education, applied innovation, and the future of intelligent systems.",
 
-  // Three concise category cards that capture the strategic partnerships
-  talks: [
+  categories: [
     {
-      title: "Academic Partnerships",
-      subtitle:
-        "Sustained collaborations with VIT University (Chennai, Vellore, Amaravati), PVP Siddhartha and University of Massachusetts — embedded coursework, faculty development and advanced instruction in databases, ML, computer vision and software systems."
+      name: "UNIVERSITIES",
+      description: "Engaged by prominent academic institutions to deliver lectures, workshops, and thought leadership in machine learning, generative AI, and data-driven innovation.",
+      institutions: [
+        "VIT University",
+        "University of Massachusetts",
+        "PVP Siddhartha",
+        "JECRC University"
+      ]
     },
     {
-      title: "Global Industry Platforms",
-      subtitle:
-        "Strategic speaker and curator at DeepLearning.ai (Pie & AI), Berlin School of Business & Innovation and the Cloud Computing Conference (Boussias) — engagements that connect ideas to global adoption."
+      name: "GLOBAL AI PLATFORMS",
+      description: "Recognized by international AI forums and organizations for advancing applied AI practices and enabling global knowledge exchange.",
+      institutions: [
+        "DeepLearning.AI",
+        "Berlin School of Business & Innovation",
+        "Cloud Computing Conference (Boussias)"
+      ]
     },
     {
-      title: "Training & Mentorship",
-      subtitle:
-        "Programmatic instructor roles and enterprise trainings with Great Learning, Wiley, Verzeo and Analytics Vidhya, plus active mentorship on Kaggle and university examiner duties — enabling workforce readiness and career acceleration."
+      name: "TRAINING PARTNERS",
+      description: "Collaborated with leading learning platforms to empower learners and professionals through practical AI education and hands-on skill development.",
+      institutions: [
+        "Kaggle",
+        "Analytics Vidhya",
+        "Great Learning",
+        "Wiley"
+      ]
     }
   ],
-  display: true // keep visible
+  display: true
 };
 
 // Podcast Section
