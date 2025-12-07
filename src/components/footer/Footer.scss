@@ -1,97 +1,76 @@
 @import "../../_globalColor";
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.footer-div {
+  text-align: center;
+  padding: 40px 0;
 }
 
-.footer-div {
-  margin-top: 3rem;
-  padding: 2rem 1rem 1rem;
-  border-top: 1px solid rgba(30, 58, 138, 0.1);
-  animation: fadeInUp 0.8s ease-out;
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 50px;
+  line-height: normal;
+  color: $textColor;
+}
+
+.subtitle {
+  font-size: 20px;
+  line-height: 30px;
+  color: $textColor;
+  margin-bottom: 30px;
+}
+
+.email-link {
+  font-size: 24px;
+  font-weight: bold;
+  color: $accentColor;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.email-link:hover {
+  color: $buttonHover;
+}
+
+.social-media-div {
+  margin-top: 30px;
+}
+
+.button-greeting-div {
+  margin-top: 30px;
 }
 
 .footer-text {
-  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
   color: $textColor;
-  font-size: 0.95rem;
-  line-height: 1.8;
-  font-weight: 500;
-  margin: 0;
-  transition: all 0.3s ease;
 }
 
 .footer-text a {
-  color: $buttonColor;
+  color: $accentColor;
   text-decoration: none;
-  font-weight: 600;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.footer-text a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(135deg, $buttonColor, $buttonHover);
-  transition: width 0.3s ease;
 }
 
 .footer-text a:hover {
-  color: $buttonHover;
+  text-decoration: underline;
 }
 
-.footer-text a:hover::after {
-  width: 100%;
+.dark-mode-tint {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 40px 0;
 }
 
-.dark-mode {
-  color: $textColorDark !important;
-}
-
-.dark-mode .footer-text {
+.dark-mode-heading {
   color: $textColorDark;
 }
 
-.dark-mode .footer-text a {
-  color: rgba(22, 163, 74, 0.9);
+.dark-mode-subtitle {
+  color: $textSecondaryDark;
 }
 
-.dark-mode .footer-text a:hover {
-  color: $buttonHover;
-}
-
-/* Media Query */
-@media (max-width: 768px) {
-  .footer-div {
-    margin-top: 2rem;
-    padding: 1.5rem 0.75rem 0.75rem;
-  }
-
-  .footer-text {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-div {
-    margin-top: 1.5rem;
-    padding: 1.2rem 0.5rem 0.5rem;
-  }
-
-  .footer-text {
-    font-size: 0.85rem;
-    line-height: 1.5;
-  }
+.dark-mode.footer-text {
+  color: $textSecondaryDark;
 }

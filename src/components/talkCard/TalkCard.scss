@@ -2,7 +2,11 @@
 
 /* Rectangle Card Layout */
 .rectangle {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.03), rgba(22, 163, 74, 0.02));
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.03),
+    rgba(22, 163, 74, 0.02)
+  );
   border: 1px solid rgba(30, 58, 138, 0.08);
   width: 100%;
   min-height: auto;
@@ -18,20 +22,32 @@
 
 .rectangle:hover {
   box-shadow: 0 14px 40px rgba(30, 58, 138, 0.12);
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.06), rgba(22, 163, 74, 0.04));
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.06),
+    rgba(22, 163, 74, 0.04)
+  );
   transform: translateY(-6px);
   border-color: rgba(30, 58, 138, 0.12);
 }
 
 .dark-rectangle {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.08), rgba(22, 163, 74, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.08),
+    rgba(22, 163, 74, 0.05)
+  );
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(30, 58, 138, 0.15);
 }
 
 .dark-rectangle:hover {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.12), rgba(22, 163, 74, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.12),
+    rgba(22, 163, 74, 0.08)
+  );
 }
 
 .diagonal-fill {

@@ -68,17 +68,16 @@
   background-color: $instagram;
 }
 
+.topmate i {
+  background-color: #00bcd4; /* Cyan */
+}
+
+.adplist i {
+  background-color: #ff9800; /* Orange */
+}
+
 /* Hover Transition */
-.twitter i:hover,
-.google i:hover,
-.gitlab i:hover,
-.github i:hover,
-.linkedin i:hover,
-.facebook i:hover,
-.instagram i:hover,
-.stack-overflow i:hover,
-.kaggle i:hover,
-.medium i:hover {
+.icon-button i:hover {
   background-color: $textColor;
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);

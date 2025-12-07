@@ -20,12 +20,14 @@ const illustration = {
 };
 
 const greeting = {
-  username: "Anudeep Bathina",
+  username: "Anudeep Sri Bathina",
   title: "Hi, I’m Anudeep",
   subTitle: emoji(
     "Lead Data Scientist specializing in Large Language Models, retrieval systems, and scalable data platforms. I design and deploy production-grade AI systems that solve real enterprise problems."
   ),
-  subText: emoji("Mentor, speaker, and author helping teams and individuals navigate the world of AI, data, and cloud with clarity."),
+  subText: emoji(
+    "Mentor, speaker, and author helping teams and individuals navigate the world of AI, data, and cloud with clarity."
+  ),
   resumeLink: "https://anudeepsrib.github.io/resume.pdf", // update with your resume URL or leave empty
   displayGreeting: true // Set false to hide this section, defaults to true
 };
@@ -36,7 +38,7 @@ const socialMediaLinks = {
   github: "https://github.com/anudeepsrib",
   linkedin: "https://www.linkedin.com/in/anudeepsri/",
   kaggle: "https://www.kaggle.com/anudeepsri",
-  gmail: "anudeepaib@gmail.com",
+  gmail: "anudeepSrib@gmail.com",
   topmate: "https://topmate.io/anudeep_srib",
   adplist: "https://adplist.org/mentors/anudeep-sri-bathina",
   // Instagram, Twitter and Kaggle are also supported in the links!
@@ -48,11 +50,18 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "Skills",
-  subTitle: "Expertise in production data platforms, AI systems & infrastructure",
+  subTitle:
+    "Expertise in production data platforms, AI systems & infrastructure",
   skills: [
-    emoji("⚡ Designing scalable data pipelines and ETL systems at enterprise scale"),
-    emoji("⚡ Building production AI systems: LLMs, retrieval, agentic workflows, fine-tuning"),
-    emoji("⚡ Architecture: cloud-native platforms, cost optimization, observability & reliability")
+    emoji(
+      "⚡ Designing scalable data pipelines and ETL systems at enterprise scale"
+    ),
+    emoji(
+      "⚡ Building production AI systems: LLMs, retrieval, agentic workflows, fine-tuning"
+    ),
+    emoji(
+      "⚡ Architecture: cloud-native platforms, cost optimization, observability & reliability"
+    )
   ],
 
   /* Categorized professional skills */
@@ -60,67 +69,97 @@ const skillsSection = {
     {
       title: "AI / LLM & Agentic Systems",
       skills: [
-        { skillName: "LLMs, embeddings, retrieval, agentic workflows", fontAwesomeClassname: "fas fa-network-wired" }
+        {
+          skillName: "LLMs, embeddings, retrieval, agentic workflows",
+          fontAwesomeClassname: "fas fa-network-wired"
+        }
       ]
     },
     {
       title: "LLMs & Foundation Models",
       skills: [
-        { skillName: "fine-tuning, evaluation, RAG-based solutions", fontAwesomeClassname: "fas fa-cube" }
+        {
+          skillName: "fine-tuning, evaluation, RAG-based solutions",
+          fontAwesomeClassname: "fas fa-cube"
+        }
       ]
     },
     {
       title: "Safety, Reliability & Governance",
       skills: [
-        { skillName: "guardrails, evaluation, responsible AI", fontAwesomeClassname: "fas fa-lock" }
+        {
+          skillName: "guardrails, evaluation, responsible AI",
+          fontAwesomeClassname: "fas fa-lock"
+        }
       ]
     },
     {
       title: "Observability & Evaluation",
       skills: [
-        { skillName: "monitoring model quality, latency, and drift", fontAwesomeClassname: "fas fa-chart-line" }
+        {
+          skillName: "monitoring model quality, latency, and drift",
+          fontAwesomeClassname: "fas fa-chart-line"
+        }
       ]
     },
     {
       title: "Cost Optimization & Efficiency",
       skills: [
-        { skillName: "optimizing cloud, inference, and pipelines", fontAwesomeClassname: "fas fa-chart-pie" }
+        {
+          skillName: "optimizing cloud, inference, and pipelines",
+          fontAwesomeClassname: "fas fa-chart-pie"
+        }
       ]
     },
     {
       title: "Production ML at Scale",
       skills: [
-        { skillName: "deployment, CI/CD, lifecycle automation", fontAwesomeClassname: "fas fa-server" }
+        {
+          skillName: "deployment, CI/CD, lifecycle automation",
+          fontAwesomeClassname: "fas fa-server"
+        }
       ]
     },
     {
       title: "Data Processing & Engineering",
       skills: [
-        { skillName: "Spark, Databricks, ETL/ELT, Delta Lake", fontAwesomeClassname: "fas fa-database" }
+        {
+          skillName: "Spark, Databricks, ETL/ELT, Delta Lake",
+          fontAwesomeClassname: "fas fa-database"
+        }
       ]
     },
     {
       title: "Cloud Infrastructure",
       skills: [
-        { skillName: "Azure, AWS, GCP", fontAwesomeClassname: "fas fa-cloud" }
+        {skillName: "Azure, AWS, GCP", fontAwesomeClassname: "fas fa-cloud"}
       ]
     },
     {
       title: "Languages & SQL",
       skills: [
-        { skillName: "Python, SQL, PySpark, TypeScript", fontAwesomeClassname: "fas fa-code" }
+        {
+          skillName: "Python, SQL, PySpark, TypeScript",
+          fontAwesomeClassname: "fas fa-code"
+        }
       ]
     },
     {
       title: "Software Development & DevOps",
       skills: [
-        { skillName: "FastAPI, Docker, Kubernetes, testing", fontAwesomeClassname: "fas fa-tools" }
+        {
+          skillName: "FastAPI, Docker, Kubernetes, testing",
+          fontAwesomeClassname: "fas fa-tools"
+        }
       ]
     },
     {
       title: "Leadership & Methodology",
       skills: [
-        { skillName: "mentoring, architecture reviews, delivery leadership", fontAwesomeClassname: "fas fa-users" }
+        {
+          skillName: "mentoring, architecture reviews, delivery leadership",
+          fontAwesomeClassname: "fas fa-users"
+        }
       ]
     }
   ],
@@ -173,7 +212,8 @@ const bigProjects = {
     {
       image: require("./assets/images/saayaHealthLogo.webp"), // Placeholder - keep existing if available or replace
       projectName: "Blueprint of IoT for Smart Cities",
-      projectDesc: "Co-author in 'Handbook of Artificial Intelligence for Smart City Development'. Published by CRC Press, 2024.",
+      projectDesc:
+        "Co-author in 'Handbook of Artificial Intelligence for Smart City Development'. Published by CRC Press, 2024.",
       footerLink: [
         {
           name: "View Publication",
@@ -190,22 +230,19 @@ const bigProjects = {
 
 const achievementSection = {
   title: emoji("Certifications 🏆"),
-  subtitle:
-    "Recent Certifications in AI and Generative AI",
+  subtitle: "Recent Certifications in AI and Generative AI",
 
   achievementsCards: [
     {
       title: "AI Agents in LangGraph",
-      subtitle:
-        "DeepLearning.ai",
+      subtitle: "DeepLearning.ai",
       image: require("./assets/images/codeInLogo.webp"), // Placeholder
       imageAlt: "Certification Logo",
       footerLink: []
     },
     {
       title: "Safe and Reliable AI",
-      subtitle:
-        "DeepLearning.ai",
+      subtitle: "DeepLearning.ai",
       image: require("./assets/images/codeInLogo.webp"),
       imageAlt: "Certification Logo",
       footerLink: []
@@ -225,22 +262,27 @@ const achievementSection = {
 
 const talkSection = {
   title: "Academic Influence & Global AI Leadership",
-  subtitle: "Recognized by universities, AI organizations, and global platforms for advancing practical AI education, applied innovation, and workforce development.",
+  subtitle:
+    "Recognized by universities, AI organizations, and global platforms for advancing practical AI education, applied innovation, and workforce development.",
 
   categories: [
     {
       name: "UNIVERSITIES",
-      description: "Invited to deliver lectures and workshops on AI, machine learning, computer vision, and data-driven innovation.",
+      description:
+        "Invited to deliver lectures and workshops on AI, ML, CV, and data-driven innovation.",
       institutions: [
-        "VIT University",
-        "University of Massachusetts",
+        "VIT Chennai",
+        "VIT Vellore",
+        "VIT Amaravati",
+        "UMass",
         "PVP Siddhartha",
         "JECRC University"
       ]
     },
     {
       name: "GLOBAL AI PLATFORMS",
-      description: "Speaker and contributor at international AI forums and conferences.",
+      description:
+        "Speaker and contributor at international AI forums and conferences.",
       institutions: [
         "DeepLearning.AI (Pie & AI)",
         "Berlin School of Business & Innovation",
@@ -249,7 +291,7 @@ const talkSection = {
     },
     {
       name: "TRAINING PARTNERS",
-      description: "Training learners and professionals through structured AI and ML programs.",
+      description: "Instructor and mentor for structured AI/ML programs.",
       institutions: [
         "Great Learning",
         "Wiley",
@@ -266,18 +308,18 @@ const talkSection = {
 const impactMetrics = {
   display: true,
   stats: [
-    { value: "17+", label: "Talks, lectures & expert sessions" },
-    { value: "10+", label: "Universities, platforms & partners" },
-    { value: "1000+", label: "Learners taught" },
-    { value: "176", label: "Great Learning mentorship engagements" },
-    { value: "115", label: "Great Learning learners (4.76 / 5 rating)" },
-    { value: "173+", label: "Topmate 1:1 mentoring sessions" },
-    { value: "23", label: "ADPList mentoring sessions" },
-    { value: "180+ hours", label: "One-to-one mentoring time" },
-    { value: "7", label: "Countries mentored" },
-    { value: "4", label: "Continents reached" },
-    { value: "9+ years", label: "AI, ML & data experience" },
-    { value: "2", label: "Formal publications (book chapter + thesis)" }
+    {value: "17+", label: "Lectures, workshops & expert sessions"},
+    {value: "10+", label: "Universities, platforms & partners"},
+    {value: "1000+", label: "Learners taught globally"},
+    {value: "176", label: "Great Learning mentorship engagements"},
+    {value: "115", label: "Great Learning learners (4.76/5 rating)"},
+    {value: "173+", label: "Topmate 1:1 mentoring sessions"},
+    {value: "23", label: "ADPList mentoring sessions"},
+    {value: "500+ hours", label: "Teaching & mentoring delivered"},
+    {value: "7", label: "Countries mentored"},
+    {value: "4", label: "Continents reached"},
+    {value: "9+ years", label: "AI, ML & data engineering experience"},
+    {value: "2", label: "Academic publications (CRC Press + thesis)"}
   ]
 };
 
@@ -315,42 +357,48 @@ const timelineSection = {
       title: "Lead Data Scientist",
       company: "Infosys",
       date: "2024 – Present",
-      description: "Leading AI initiatives, architecting GenAI and LLM systems, and building production data platforms that deliver measurable business impact.",
+      description:
+        "Architecting GenAI and LLM systems, deploying retrieval pipelines, and delivering enterprise-scale AI solutions.",
       type: "work"
     },
     {
-      title: "M.S. in Computer Science",
+      title: "M.S. Computer Science",
       company: "University of Massachusetts Amherst",
       date: "2021 – 2024",
-      description: "Graduate research on domain-adapted computer vision using YOLOv8 and ResNet-50; thesis on cross-database fish species recognition.",
+      description:
+        "Research on domain-adapted computer vision using YOLOv8 and ResNet-50.",
       type: "education"
     },
     {
       title: "Technical Lead",
       company: "Capgemini",
       date: "2019 – 2021",
-      description: "Directed ML engineering teams and delivered predictive systems at scale; received the ‘Extra Mile Award’ for high-impact delivery.",
+      description:
+        "Directed ML engineering teams; awarded the ‘Extra Mile Award’ for high-impact delivery.",
       type: "work"
     },
     {
       title: "Big Data & ML Engineer",
-      company: "Gain Insights Solutions",
+      company: "GainInsights Solutions",
       date: "2019",
-      description: "Built scalable PySpark and Docker-based ML workflows, improving pipeline performance by around 30%.",
+      description:
+        "Built scalable PySpark pipelines, achieving ~30% performance improvement.",
       type: "work"
     },
     {
       title: "Cloud Data Engineer",
       company: "Cognizant",
       date: "2015 – 2019",
-      description: "Designed cloud data pipelines, predictive analytics, and high-volume SQL automation for enterprise clients.",
+      description:
+        "Led cloud data pipelines, predictive analytics, and data automation projects.",
       type: "work"
     },
     {
-      title: "B.Tech in Electrical and Electronics Engineering",
+      title: "B.Tech",
       company: "VIT University",
       date: "2011 – 2015",
-      description: "Focused on core engineering fundamentals and hands-on technical projects.",
+      description:
+        "Engineering foundations, robotics projects, academic excellence.",
       type: "education"
     }
   ]
@@ -359,32 +407,41 @@ const timelineSection = {
 const mentorshipSection = {
   display: true,
   title: "Mentoring & Career Impact",
-  subtitle: "I mentor learners and professionals through Great Learning, Topmate, ADPList and community platforms, helping them break into and grow within AI and data science.",
+  subtitle:
+    "I guide learners and professionals through Great Learning, Topmate, ADPList, and global communities—helping them build strong foundations in AI, ML, data science, and cloud technologies.",
+  metrics: [
+    "500+ hours of teaching & mentorship",
+    "196+ total mentoring sessions",
+    "Consistently 5-star learner feedback"
+  ],
   testimonials: [
     {
       name: "Mentee",
       platform: "Topmate",
-      quote: "Anudeep was incredibly helpful in clarifying my doubts about the data science career path. His insights on real-world AI production were eye-opening."
+      quote:
+        "Anudeep was incredibly helpful in clarifying my doubts about the data science career path. His insights on real-world AI production were eye-opening."
     },
     {
       name: "Learner",
       platform: "Great Learning",
-      quote: "The sessions were very interactive and practical. Anudeep makes complex concepts like Transformers and LLMs easy to understand."
+      quote:
+        "The sessions were very interactive and practical. Anudeep makes complex concepts like Transformers and LLMs easy to understand."
     },
     {
       name: "Professional",
       platform: "ADPList",
-      quote: "Great guidance on transitioning from software engineering to ML. The roadmap provided was very clear and actionable."
+      quote:
+        "Great guidance on transitioning from software engineering to ML. The roadmap provided was very clear and actionable."
     }
   ]
 };
 
 const contactInfo = {
-  title: emoji("Contact Me ☎️"),
+  title: "Contact Me",
   subtitle:
-    "If you’re exploring AI strategy, LLM architectures, production ML pipelines, or looking for mentoring and career guidance, I’d be happy to connect.",
+    "If you’re exploring AI strategy, LLM architectures, production ML systems, or need guidance on learning pathways and career growth, I’d be happy to connect.",
   number: "",
-  email_address: "anudeepsrib@gmail.com"
+  email_address: "anudeepSrib@gmail.com"
 };
 
 const twitterDetails = {

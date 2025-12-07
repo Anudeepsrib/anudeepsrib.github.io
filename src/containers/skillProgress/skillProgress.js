@@ -1,7 +1,7 @@
 import React from "react";
 import "./Progress.scss";
-import { techStack } from "../../portfolio";
-import { Fade } from "react-reveal";
+import {techStack} from "../../portfolio";
+import {Fade} from "react-reveal";
 
 export default function StackProgress() {
   if (techStack.viewSkillBars) {
