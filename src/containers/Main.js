@@ -15,7 +15,7 @@ import ImpactMetrics from "./impactMetrics/ImpactMetrics";
 import ScrollToTopButton from "./topbutton/Top";
 
 const Main = () => {
-  const darkPref = window.matchMedia("(prefers-color-scheme: dark)");
+  const darkPref = window.matchMedia("(prefers-color-scheme: dark)") || { matches: false };
   const [isDark, setIsDark] = useLocalStorage("isDark", darkPref.matches);
   const [isShowingSplashAnimation, setIsShowingSplashAnimation] =
     useState(true);
