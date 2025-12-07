@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import "./CombinedTimeline.scss";
 import Timeline from "../../components/timeline/Timeline";
-import { timelineSection } from "../../portfolio";
-import { Fade } from "react-reveal";
+import {timelineSection} from "../../portfolio";
+import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 
 export default function CombinedTimeline() {
-  const { isDark } = useContext(StyleContext);
+  const {isDark} = useContext(StyleContext);
 
   if (!timelineSection.display || !timelineSection.events) {
     return null;
@@ -18,18 +18,14 @@ export default function CombinedTimeline() {
         <div className="timeline-header">
           <h1
             className={
-              isDark
-                ? "dark-mode timeline-heading"
-                : "timeline-heading"
+              isDark ? "dark-mode timeline-heading" : "timeline-heading"
             }
           >
             {timelineSection.title}
           </h1>
           <p
             className={
-              isDark
-                ? "dark-mode timeline-subtitle"
-                : "timeline-subtitle"
+              isDark ? "dark-mode timeline-subtitle" : "timeline-subtitle"
             }
           >
             {timelineSection.subtitle}

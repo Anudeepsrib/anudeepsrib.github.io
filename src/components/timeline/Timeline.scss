@@ -27,7 +27,12 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.6) 50%, rgba(99, 102, 241, 0.2) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(99, 102, 241, 0.2) 0%,
+    rgba(99, 102, 241, 0.6) 50%,
+    rgba(99, 102, 241, 0.2) 100%
+  );
   transform: translateX(-50%);
   border-radius: 2px;
 }
@@ -174,7 +179,12 @@
 /* Dark Mode */
 .dark-mode {
   .timeline::before {
-    background: linear-gradient(180deg, rgba(99, 102, 241, 0.3) 0%, rgba(99, 102, 241, 0.7) 50%, rgba(99, 102, 241, 0.3) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(99, 102, 241, 0.3) 0%,
+      rgba(99, 102, 241, 0.7) 50%,
+      rgba(99, 102, 241, 0.3) 100%
+    );
   }
 
   .timeline-marker {
