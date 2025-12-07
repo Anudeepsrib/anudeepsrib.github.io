@@ -1,0 +1,109 @@
+@import "../../_globalColor";
+
+.mentorship-header {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.heading {
+    font-size: 50px;
+    line-height: normal;
+    color: $textColor;
+}
+
+.subtitle {
+    font-size: 20px;
+    line-height: 30px;
+    color: $textColor;
+    margin-bottom: 5px;
+}
+
+.mentorship-body {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.testimonial-quote {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: $textColor;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.testimonial-footer {
+    font-size: 0.9rem;
+    color: $secondaryColor;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-name {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.testimonial-platform {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+// Dark Mode
+.dark-mode {
+    &.heading {
+        color: $textColorDark;
+    }
+
+    &.subtitle {
+        color: $textSecondaryDark;
+    }
+
+    &.testimonial-card {
+        background-color: #171c28; // fallback dark
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .testimonial-quote {
+            color: $textColorDark;
+        }
+
+        .testimonial-name {
+            color: $buttonColor;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+        line-height: normal;
+    }
+}

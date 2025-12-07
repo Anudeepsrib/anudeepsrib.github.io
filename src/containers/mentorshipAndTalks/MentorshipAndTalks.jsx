@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./MentorshipAndTalks.scss";
 import StyleContext from "../../contexts/StyleContext";
-import { talkSection } from "../../portfolio";
+import { talkSection, impactMetrics } from "../../portfolio";
 
 export default function MentorshipAndTalks() {
   const { isDark } = useContext(StyleContext);
@@ -9,14 +9,6 @@ export default function MentorshipAndTalks() {
   if (!talkSection.display || !talkSection.categories) {
     return null;
   }
-
-  const stats = [
-    { value: "18+", label: "Talks Delivered" },
-    { value: "7+", label: "Universities" },
-    { value: "5+", label: "Global AI Platforms" },
-    { value: "2", label: "Continents" },
-    { value: "1000+", label: "Learners Impacted" }
-  ];
 
   function renderInstitutionCard(institution, index) {
     return (
@@ -53,14 +45,16 @@ export default function MentorshipAndTalks() {
           ))}
         </div>
 
-        <div className="stats-container">
-          {stats.map((s) => (
-            <div className="stat-card" key={s.label}>
-              <div className="stat-value">{s.value}</div>
-              <div className="stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
+        {impactMetrics.display && (
+          <div className="stats-container">
+            {impactMetrics.stats.map((s) => (
+              <div className="stat-card" key={s.label}>
+                <div className="stat-value">{s.value}</div>
+                <div className="stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -21,10 +21,11 @@ const illustration = {
 
 const greeting = {
   username: "Anudeep Bathina",
-  title: "Hi I'm Anudeep",
+  title: "Hi, I’m Anudeep",
   subTitle: emoji(
-    "Shipping production data systems and AI products. Building scalable pipelines, GenAI systems, and data-driven platforms that solve complex problems. Mentor, speaker and open-source contributor."
+    "Lead Data Scientist specializing in Large Language Models, retrieval systems, and scalable data platforms. I design and deploy production-grade AI systems that solve real enterprise problems."
   ),
+  subText: emoji("Mentor, speaker, and author helping teams and individuals navigate the world of AI, data, and cloud with clarity."),
   resumeLink: "https://anudeepsrib.github.io/resume.pdf", // update with your resume URL or leave empty
   displayGreeting: true // Set false to hide this section, defaults to true
 };
@@ -36,39 +37,105 @@ const socialMediaLinks = {
   linkedin: "https://www.linkedin.com/in/anudeepsri/",
   kaggle: "https://www.kaggle.com/anudeepsri",
   gmail: "anudeepaib@gmail.com",
+  topmate: "https://topmate.io/anudeep_srib",
+  adplist: "https://adplist.org/mentors/anudeep-sri-bathina",
   // Instagram, Twitter and Kaggle are also supported in the links!
   // To customize icons and social links, tweak src/components/SocialMedia
   display: true // Set true to display this section, defaults to false
 };
 
-// Skills Section (see 'Expertise & Focus' further below)
+// Skills Section
 
-// Education Section
+const skillsSection = {
+  title: "Skills",
+  subTitle: "Expertise in production data platforms, AI systems & infrastructure",
+  skills: [
+    emoji("⚡ Designing scalable data pipelines and ETL systems at enterprise scale"),
+    emoji("⚡ Building production AI systems: LLMs, retrieval, agentic workflows, fine-tuning"),
+    emoji("⚡ Architecture: cloud-native platforms, cost optimization, observability & reliability")
+  ],
 
-const educationInfo = {
-  display: true, // Set false to hide this section, defaults to true
-  schools: [
+  /* Categorized professional skills */
+  skillsCategories: [
     {
-      schoolName: "VIT University",
-      logo: require("./assets/images/stanfordLogo.png"), // Placeholder
-      subHeader: "B.Tech in Electrical and Electronics Engineering",
-      duration: "2011 - 2015",
-      desc: "Focus on Engineering fundamentals.",
-      descBullets: []
+      title: "AI / LLM & Agentic Systems",
+      skills: [
+        { skillName: "LLMs, embeddings, retrieval, agentic workflows", fontAwesomeClassname: "fas fa-network-wired" }
+      ]
     },
     {
-      schoolName: "University of Massachusetts Amherst",
-      logo: require("./assets/images/harvardLogo.png"), // Placeholder
-      subHeader: "Master of Science in Computer Science",
-      duration: "2021 - 2024",
-      desc: "Specialized in Machine Learning and Data Science.",
-      descBullets: []
+      title: "LLMs & Foundation Models",
+      skills: [
+        { skillName: "fine-tuning, evaluation, RAG-based solutions", fontAwesomeClassname: "fas fa-cube" }
+      ]
+    },
+    {
+      title: "Safety, Reliability & Governance",
+      skills: [
+        { skillName: "guardrails, evaluation, responsible AI", fontAwesomeClassname: "fas fa-lock" }
+      ]
+    },
+    {
+      title: "Observability & Evaluation",
+      skills: [
+        { skillName: "monitoring model quality, latency, and drift", fontAwesomeClassname: "fas fa-chart-line" }
+      ]
+    },
+    {
+      title: "Cost Optimization & Efficiency",
+      skills: [
+        { skillName: "optimizing cloud, inference, and pipelines", fontAwesomeClassname: "fas fa-chart-pie" }
+      ]
+    },
+    {
+      title: "Production ML at Scale",
+      skills: [
+        { skillName: "deployment, CI/CD, lifecycle automation", fontAwesomeClassname: "fas fa-server" }
+      ]
+    },
+    {
+      title: "Data Processing & Engineering",
+      skills: [
+        { skillName: "Spark, Databricks, ETL/ELT, Delta Lake", fontAwesomeClassname: "fas fa-database" }
+      ]
+    },
+    {
+      title: "Cloud Infrastructure",
+      skills: [
+        { skillName: "Azure, AWS, GCP", fontAwesomeClassname: "fas fa-cloud" }
+      ]
+    },
+    {
+      title: "Languages & SQL",
+      skills: [
+        { skillName: "Python, SQL, PySpark, TypeScript", fontAwesomeClassname: "fas fa-code" }
+      ]
+    },
+    {
+      title: "Software Development & DevOps",
+      skills: [
+        { skillName: "FastAPI, Docker, Kubernetes, testing", fontAwesomeClassname: "fas fa-tools" }
+      ]
+    },
+    {
+      title: "Leadership & Methodology",
+      skills: [
+        { skillName: "mentoring, architecture reviews, delivery leadership", fontAwesomeClassname: "fas fa-users" }
+      ]
     }
-  ]
+  ],
+  // Legacy support if needed, but we will use categories
+  softwareSkills: [],
+  display: true // Set false to hide this section, defaults to true
+};
+
+// Education Section (Retained but potentially unused if combined timeline is primary)
+const educationInfo = {
+  display: false, // Using CombinedTimeline
+  schools: []
 };
 
 // Your top 3 proficient stacks/tech experience
-
 const techStack = {
   viewSkillBars: false, //Set it to false - using competencies section instead
   experience: [],
@@ -80,61 +147,13 @@ const competencies = {
   title: "Core Competencies",
   subtitle: "Data engineering and AI systems expertise",
   display: false,
-  competencyList: [
-    "Data Pipeline Architecture (ETL/ELT)",
-    "Big Data Processing (Spark, Kafka, Delta Lake)",
-    "AI Systems & Agentic Workflows",
-    "Generative AI & LLMs",
-    "Machine Learning in Production",
-    "Data Warehousing & Lakehouse Design",
-    "Cloud Infrastructure (AWS, Azure)",
-    "Observability & Data Quality",
-    "Cost Optimization & Governance",
-    "Leadership & Technical Strategy"
-  ]
+  competencyList: []
 };
 
-// Work experience section
-
+// Work experience section (Retained but potentially unused if combined timeline is primary)
 const workExperiences = {
-  display: true, //Set it to true to show workExperiences Section
-  experience: [
-    {
-      role: "Cloud Data Engineer",
-      company: "Cognizant",
-      companylogo: require("./assets/images/quoraLogo.png"), // Placeholder
-      date: "2015 - 2019",
-      desc: "Worked on cloud infrastructure and data processing systems.",
-      descBullets: []
-    },
-    {
-      role: "Bigdata and ML Engineer",
-      company: "Gain Insights Solutions",
-      companylogo: require("./assets/images/googleAssistantLogo.webp"), // Placeholder
-      date: "2019 - 2019",
-      desc: "Developed big data and machine learning solutions.",
-      descBullets: []
-    },
-    {
-      role: "Technical Lead",
-      company: "Capgemini",
-      companylogo: require("./assets/images/facebookLogo.png"), // Placeholder
-      date: "2019 - 2021",
-      desc: "Led technical teams and developed advanced ML models. Received Extra Mile Award.",
-      descBullets: []
-    },
-    {
-      role: "Lead Data Scientist",
-      company: "Infosys",
-      companylogo: require("./assets/images/airbnbLogo.png"), // Placeholder
-      date: "2024 - Present",
-      desc: "Leading AI initiatives and driving business impact.",
-      descBullets: [
-        "Mentored 240+ engineers",
-        "Driving $2M+ business impact"
-      ]
-    }
-  ]
+  display: false, // Using CombinedTimeline
+  experience: []
 };
 
 /* Your Open Source Section to View Your Github Pinned Projects
@@ -152,7 +171,7 @@ const bigProjects = {
   subtitle: "RESEARCH AND BOOKS",
   projects: [
     {
-      image: require("./assets/images/saayaHealthLogo.webp"), // Placeholder
+      image: require("./assets/images/saayaHealthLogo.webp"), // Placeholder - keep existing if available or replace
       projectName: "Blueprint of IoT for Smart Cities",
       projectDesc: "Co-author in 'Handbook of Artificial Intelligence for Smart City Development'. Published by CRC Press, 2024.",
       footerLink: [
@@ -163,7 +182,7 @@ const bigProjects = {
       ]
     }
   ],
-  display: false // Set false to hide this section, defaults to true
+  display: false
 };
 
 // Achievement Section
@@ -199,20 +218,19 @@ const achievementSection = {
       footerLink: []
     }
   ],
-  display: false // Set false to hide this section, defaults to true
+  display: false
 };
 
-// Blogs Section
 // Talks Section (concise grouped summary)
 
 const talkSection = {
-  title: "Academic Influence and Global AI Leadership",
-  subtitle: "Honored by leading universities, global AI institutions, and industry platforms for contributions to education, applied innovation, and the future of intelligent systems.",
+  title: "Academic Influence & Global AI Leadership",
+  subtitle: "Recognized by universities, AI organizations, and global platforms for advancing practical AI education, applied innovation, and workforce development.",
 
   categories: [
     {
       name: "UNIVERSITIES",
-      description: "Engaged by prominent academic institutions to deliver lectures, workshops, and thought leadership in machine learning, generative AI, and data-driven innovation.",
+      description: "Invited to deliver lectures and workshops on AI, machine learning, computer vision, and data-driven innovation.",
       institutions: [
         "VIT University",
         "University of Massachusetts",
@@ -222,25 +240,45 @@ const talkSection = {
     },
     {
       name: "GLOBAL AI PLATFORMS",
-      description: "Recognized by international AI forums and organizations for advancing applied AI practices and enabling global knowledge exchange.",
+      description: "Speaker and contributor at international AI forums and conferences.",
       institutions: [
-        "DeepLearning.AI",
+        "DeepLearning.AI (Pie & AI)",
         "Berlin School of Business & Innovation",
         "Cloud Computing Conference (Boussias)"
       ]
     },
     {
       name: "TRAINING PARTNERS",
-      description: "Collaborated with leading learning platforms to empower learners and professionals through practical AI education and hands-on skill development.",
+      description: "Training learners and professionals through structured AI and ML programs.",
       institutions: [
-        "Kaggle",
-        "Analytics Vidhya",
         "Great Learning",
-        "Wiley"
+        "Wiley",
+        "Verzeo",
+        "Analytics Vidhya",
+        "Kaggle"
       ]
     }
   ],
   display: true
+};
+
+// Impact Metrics
+const impactMetrics = {
+  display: true,
+  stats: [
+    { value: "17+", label: "Talks, lectures & expert sessions" },
+    { value: "10+", label: "Universities, platforms & partners" },
+    { value: "1000+", label: "Learners taught" },
+    { value: "176", label: "Great Learning mentorship engagements" },
+    { value: "115", label: "Great Learning learners (4.76 / 5 rating)" },
+    { value: "173+", label: "Topmate 1:1 mentoring sessions" },
+    { value: "23", label: "ADPList mentoring sessions" },
+    { value: "180+ hours", label: "One-to-one mentoring time" },
+    { value: "7", label: "Countries mentored" },
+    { value: "4", label: "Continents reached" },
+    { value: "9+ years", label: "AI, ML & data experience" },
+    { value: "2", label: "Formal publications (book chapter + thesis)" }
+  ]
 };
 
 // Podcast Section
@@ -248,66 +286,24 @@ const talkSection = {
 const podcastSection = {
   title: emoji("Podcast 🎙️"),
   subtitle: "I LOVE TO TALK ABOUT MYSELF AND TECHNOLOGY",
-
-  // Please Provide with Your Podcast embeded Link
   podcast: [],
-  display: false // Set false to hide this section, defaults to false
+  display: false
 };
 
 // Blogs Section
-// Hidden: commented/disabled per request — kept minimal so exports remain valid
 const blogSection = {
   title: "Blogs",
   subtitle: "I love to write about AI and Data Science.",
-  displayMediumBlogs: "false", // Set true to fetch medium blogs
+  displayMediumBlogs: "false",
   blogs: [],
-  display: false // Hidden: do not render the Blogs section
-};
-
-// Skills Section
-
-const skillsSection = {
-  title: "Skills",
-  subTitle: "Expertise in production data platforms, AI systems & infrastructure",
-  skills: [
-    emoji("⚡ Designing scalable data pipelines and ETL systems at enterprise scale"),
-    emoji("⚡ Building production AI systems: LLMs, retrieval, agentic workflows, fine-tuning"),
-    emoji("⚡ Architecture: cloud-native platforms, cost optimization, observability & reliability")
-  ],
-
-  /* Professional technical skills - no captions, data-focused icons */
-  softwareSkills: [
-    // Data & Pipeline
-    { skillName: "AI / LLM & Agentic Systems", fontAwesomeClassname: "fas fa-network-wired" },
-    { skillName: "LLMs & Foundation Models", fontAwesomeClassname: "fas fa-cube" },
-    { skillName: "Safety, Reliability & Governance", fontAwesomeClassname: "fas fa-lock" },
-    { skillName: "Observability & Evaluation", fontAwesomeClassname: "fas fa-chart-line" },
-    { skillName: "Cost Optimization & Efficiency", fontAwesomeClassname: "fas fa-chart-pie" },
-    { skillName: "Production ML at Scale", fontAwesomeClassname: "fas fa-server" },
-
-    // Data Stack
-    { skillName: "Data Processing & Engineering", fontAwesomeClassname: "fas fa-database" },
-    { skillName: "Cloud Infrastructure", fontAwesomeClassname: "fas fa-cloud" },
-
-    // Languages & Tools
-    { skillName: "Languages & SQL", fontAwesomeClassname: "fas fa-code" },
-
-    // DevOps & Software
-    { skillName: "Software Development & DevOps", fontAwesomeClassname: "fas fa-tools" },
-
-    // Leadership
-    { skillName: "Leadership & Methodology", fontAwesomeClassname: "fas fa-users" }
-  ],
-  display: true // Set false to hide this section, defaults to true
+  display: false
 };
 
 // Resume Section
 const resumeSection = {
   title: "Resume",
   subtitle: "Feel free to download my resume",
-
-  // Please Provide with Your Podcast embeded Link
-  display: false // Hidden in header per request
+  display: false
 };
 
 const timelineSection = {
@@ -316,46 +312,69 @@ const timelineSection = {
   subtitle: "My professional journey",
   events: [
     {
-      title: "VIT University",
-      subtitle: "B.Tech in Electrical and Electronics Engineering",
-      date: "2011–2015",
-      description: "Focused on foundational engineering principles.",
-      type: "education"
-    },
-    {
-      title: "Cognizant",
-      subtitle: "Cloud Data Engineer",
-      date: "2015–2019",
-      description: "Built cloud infrastructure and large-scale data processing systems.",
+      title: "Lead Data Scientist",
+      company: "Infosys",
+      date: "2024 – Present",
+      description: "Leading AI initiatives, architecting GenAI and LLM systems, and building production data platforms that deliver measurable business impact.",
       type: "work"
     },
     {
-      title: "Gain Insights Solutions",
-      subtitle: "Big Data and ML Engineer",
+      title: "M.S. in Computer Science",
+      company: "University of Massachusetts Amherst",
+      date: "2021 – 2024",
+      description: "Graduate research on domain-adapted computer vision using YOLOv8 and ResNet-50; thesis on cross-database fish species recognition.",
+      type: "education"
+    },
+    {
+      title: "Technical Lead",
+      company: "Capgemini",
+      date: "2019 – 2021",
+      description: "Directed ML engineering teams and delivered predictive systems at scale; received the ‘Extra Mile Award’ for high-impact delivery.",
+      type: "work"
+    },
+    {
+      title: "Big Data & ML Engineer",
+      company: "Gain Insights Solutions",
       date: "2019",
-      description: "Developed machine learning and big data solutions.",
+      description: "Built scalable PySpark and Docker-based ML workflows, improving pipeline performance by around 30%.",
       type: "work"
     },
     {
-      title: "Capgemini",
-      subtitle: "Technical Lead",
-      date: "2019–2021",
-      description: "Led engineering teams and delivered advanced ML solutions. Earned the Extra Mile Award.",
+      title: "Cloud Data Engineer",
+      company: "Cognizant",
+      date: "2015 – 2019",
+      description: "Designed cloud data pipelines, predictive analytics, and high-volume SQL automation for enterprise clients.",
       type: "work"
     },
     {
-      title: "University of Massachusetts Amherst",
-      subtitle: "Master of Science in Computer Science",
-      date: "2021–2024",
-      description: "Specialized in Machine Learning and Data Science.",
+      title: "B.Tech in Electrical and Electronics Engineering",
+      company: "VIT University",
+      date: "2011 – 2015",
+      description: "Focused on core engineering fundamentals and hands-on technical projects.",
       type: "education"
+    }
+  ]
+};
+
+const mentorshipSection = {
+  display: true,
+  title: "Mentoring & Career Impact",
+  subtitle: "I mentor learners and professionals through Great Learning, Topmate, ADPList and community platforms, helping them break into and grow within AI and data science.",
+  testimonials: [
+    {
+      name: "Mentee",
+      platform: "Topmate",
+      quote: "Anudeep was incredibly helpful in clarifying my doubts about the data science career path. His insights on real-world AI production were eye-opening."
     },
     {
-      title: "Infosys",
-      subtitle: "Lead Data Scientist",
-      date: "2024–Present",
-      description: "Driving AI initiatives and delivering measurable business impact.",
-      type: "work"
+      name: "Learner",
+      platform: "Great Learning",
+      quote: "The sessions were very interactive and practical. Anudeep makes complex concepts like Transformers and LLMs easy to understand."
+    },
+    {
+      name: "Professional",
+      platform: "ADPList",
+      quote: "Great guidance on transitioning from software engineering to ML. The roadmap provided was very clear and actionable."
     }
   ]
 };
@@ -363,19 +382,17 @@ const timelineSection = {
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle:
-    "Discuss a project or just want to say hi? My Inbox is open for all.",
+    "If you’re exploring AI strategy, LLM architectures, production ML pipelines, or looking for mentoring and career guidance, I’d be happy to connect.",
   number: "",
   email_address: "anudeepsrib@gmail.com"
 };
 
-// Twitter Section
-
 const twitterDetails = {
-  userName: "anudeepsri", //Replace "twitter" with your twitter username without @
-  display: false // Set true to display this section, defaults to false
+  userName: "anudeepsri",
+  display: false
 };
 
-const isHireable = true; // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer
+const isHireable = true;
 
 export {
   illustration,
@@ -392,6 +409,8 @@ export {
   achievementSection,
   blogSection,
   talkSection,
+  impactMetrics,
+  mentorshipSection,
   podcastSection,
   contactInfo,
   twitterDetails,
