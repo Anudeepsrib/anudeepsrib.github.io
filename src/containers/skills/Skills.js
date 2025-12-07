@@ -31,30 +31,17 @@ export default function Skills() {
             >
               {skillsSection.subTitle}
             </p>
-            <div className="skills-content-wrapper">
-              <div className="skills-left-column">
-                <div className="skills-lottie-wrapper">
-                  <DisplayLottie animationData={codingPerson} />
-                </div>
-                <div className="skills-description-column">
-                  {skillsSection.skills.map((skills, i) => {
-                    return (
-                      <p
-                        key={i}
-                        className={
-                          isDark
-                            ? "dark-mode subTitle skills-text"
-                            : "subTitle skills-text"
-                        }
-                      >
-                        {skills}
-                      </p>
-                    );
-                  })}
-                </div>
+            <div className="skills-container">
+              <div className="skills-illustration-container">
+                <DisplayLottie animationData={codingPerson} />
               </div>
-              <div className="skills-tags-column">
-                <SoftwareSkill />
+              <div className="skills-grid">
+                {skillsSection.skillsCategories.map((category, i) => (
+                  <div key={i} className="skills-category-card">
+                    <h3 className="skills-category-title">{category.title}</h3>
+                    <SoftwareSkill skills={category.skills} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>

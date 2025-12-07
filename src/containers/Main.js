@@ -2,23 +2,17 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import Greeting from "./greeting/Greeting";
 import Skills from "./skills/Skills";
-import Competencies from "../components/competencies/Competencies";
 import CombinedTimeline from "./combinedTimeline/CombinedTimeline";
-import Projects from "./projects/Projects";
-import StartupProject from "./StartupProjects/StartupProject";
-import Blogs from "./blogs/Blogs";
 import Footer from "../components/footer/Footer";
 import Talks from "./talks/Talks";
-import Podcast from "./podcast/Podcast";
-import ScrollToTopButton from "./topbutton/Top";
-import Twitter from "./twitter-embed/twitter";
 import Mentorship from "./mentorship/Mentorship";
-import Profile from "./profile/Profile";
 import SplashScreen from "./splashScreen/SplashScreen";
-import { splashScreen, competencies } from "../portfolio";
+import { splashScreen } from "../portfolio";
 import { StyleProvider } from "../contexts/StyleContext";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import "./Main.scss";
+import ImpactMetrics from "./impactMetrics/ImpactMetrics";
+import ScrollToTopButton from "./topbutton/Top";
 
 const Main = () => {
   const darkPref = window.matchMedia("(prefers-color-scheme: dark)");
@@ -52,15 +46,9 @@ const Main = () => {
             <Header />
             <Greeting />
             <Skills />
-            <Competencies competenciesData={competencies} />
             <CombinedTimeline />
-            <Projects />
-            <StartupProject />
-            <Blogs />
             <Talks />
-            <Twitter />
-            <Podcast />
-            <Profile />
+            <ImpactMetrics />
             <Mentorship />
             <Footer />
             <ScrollToTopButton />

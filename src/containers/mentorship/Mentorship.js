@@ -27,6 +27,13 @@ export default function Mentorship() {
                     </p>
                 </div>
                 <div className="mentorship-body">
+                    <div className="mini-metrics-row">
+                        {mentorshipSection.metrics.map((metric, i) => (
+                            <div key={i} className="mini-metric">
+                                {metric}
+                            </div>
+                        ))}
+                    </div>
                     <div className="testimonials-grid">
                         {mentorshipSection.testimonials.map((card, i) => (
                             <div
