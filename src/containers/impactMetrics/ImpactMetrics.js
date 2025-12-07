@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import "./ImpactMetrics.scss";
-import { impactMetrics } from "../../portfolio";
-import { Fade } from "react-reveal";
+import {impactMetrics} from "../../portfolio";
+import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 import CountUp from "react-countup";
 
 export default function ImpactMetrics() {
-  const { isDark } = useContext(StyleContext);
+  const {isDark} = useContext(StyleContext);
   if (!impactMetrics.display) {
     return null;
   }
@@ -16,7 +16,9 @@ export default function ImpactMetrics() {
         <Fade bottom duration={1000}>
           <div className="metrics-text-div">
             <h1
-              className={isDark ? "dark-mode metrics-heading" : "metrics-heading"}
+              className={
+                isDark ? "dark-mode metrics-heading" : "metrics-heading"
+              }
             >
               Impact Metrics
             </h1>

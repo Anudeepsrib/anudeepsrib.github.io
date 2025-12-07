@@ -1,7 +1,7 @@
 import React from "react";
 import "./SoftwareSkill.scss";
 
-export default function SoftwareSkill({ skills }) {
+export default function SoftwareSkill({skills}) {
   return (
     <div>
       <div className="software-skills-main-div">

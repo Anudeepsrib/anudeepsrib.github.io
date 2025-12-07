@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import "./Skills.scss";
 import SoftwareSkill from "../../components/softwareSkills/SoftwareSkill";
-import { skillsSection } from "../../portfolio";
-import { Fade } from "react-reveal";
+import {skillsSection} from "../../portfolio";
+import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import codingPerson from "../../assets/lottie/codingPerson.json";
 
 export default function Skills() {
-  const { isDark } = useContext(StyleContext);
+  const {isDark} = useContext(StyleContext);
   if (!skillsSection.display) {
     return null;
   }

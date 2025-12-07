@@ -10,7 +10,7 @@
   color: $textColorDark;
 }
 
-.contact-div-main>* {
+.contact-div-main > * {
   flex: 1;
 }
 
@@ -114,8 +114,7 @@
 }
 
 /* Media Query */
-@media (max-width: 1380px),
-(max-width: 768px) {
+@media (max-width: 1380px), (max-width: 768px) {
   .contact-div-main {
     flex-direction: column;
   }

@@ -2,7 +2,11 @@
 
 .repo-card-div {
   color: $githubRepoCardColor;
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.02), rgba(22, 163, 74, 0.02));
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.02),
+    rgba(22, 163, 74, 0.02)
+  );
   border: 1px solid rgba(30, 58, 138, 0.1);
   box-shadow: 0 4px 15px rgba(30, 58, 138, 0.08);
   padding: 2rem;
@@ -15,7 +19,11 @@
 
 .repo-card-div:hover {
   box-shadow: 0 12px 30px rgba(30, 58, 138, 0.15);
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.06), rgba(22, 163, 74, 0.04));
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.06),
+    rgba(22, 163, 74, 0.04)
+  );
   transform: translateY(-5px);
   border-color: rgba(30, 58, 138, 0.15);
 }
