@@ -26,7 +26,7 @@
     "start": "react-scripts start",
     "build": "node fetch.js && react-scripts build",
     "deploy": "gh-pages -d build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom --setupFiles=./text-encoder-setup.js",
     "eject": "react-scripts eject",
     "format": "prettier --write \"./**/*.{js,css,json,scss}\"",
     "check-format": "prettier -c \"./**/*.{js,css,json,scss}\""
