@@ -268,18 +268,14 @@ const talkSection = {
 const impactMetrics = {
   display: true,
   stats: [
-    { value: "17+", label: "Lectures, workshops & expert sessions" },
+    { value: "10 years", label: "AI, ML & data engineering experience" },
+    { value: "2", label: "Academic publications (CRC Press + thesis)" },
+    { value: "500+ hours", label: "Teaching & mentoring delivered" },
+    { value: "18+", label: "Guest Lecture Invitations" },
     { value: "10+", label: "Universities, platforms & partners" },
     { value: "1000+", label: "Learners taught globally" },
-    { value: "176", label: "Great Learning mentorship engagements" },
-    { value: "115", label: "Great Learning learners (4.76/5 rating)" },
-    { value: "173+", label: "Topmate 1:1 mentoring sessions" },
-    { value: "23", label: "ADPList mentoring sessions" },
-    { value: "500+ hours", label: "Teaching & mentoring delivered" },
-    { value: "7", label: "Countries mentored" },
-    { value: "4", label: "Continents reached" },
-    { value: "9+ years", label: "AI, ML & data engineering experience" },
-    { value: "2", label: "Academic publications (CRC Press + thesis)" }
+    { value: "200+", label: "1:1 mentoring sessions" },
+    { value: "7", label: "Countries mentored" }
   ]
 };
 
