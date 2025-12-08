@@ -27,21 +27,16 @@
 
 .skills-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-.skills-illustration-container {
-  flex: 1;
-  max-width: 40%;
-}
-
 .skills-grid {
-  flex: 1.5;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  width: 80%;
 }
 
 .skills-category-card {
@@ -75,16 +70,6 @@
 }
 
 @media (max-width: 768px) {
-  .skills-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .skills-illustration-container {
-    max-width: 80%;
-    margin-bottom: 40px;
-  }
-
   .skills-grid {
     grid-template-columns: 1fr;
     width: 100%;

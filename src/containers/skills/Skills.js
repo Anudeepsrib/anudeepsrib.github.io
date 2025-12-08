@@ -4,8 +4,6 @@ import SoftwareSkill from "../../components/softwareSkills/SoftwareSkill";
 import {skillsSection} from "../../portfolio";
 import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
-import codingPerson from "../../assets/lottie/codingPerson.json";
 
 export default function Skills() {
   const {isDark} = useContext(StyleContext);
@@ -32,9 +30,6 @@ export default function Skills() {
               {skillsSection.subTitle}
             </p>
             <div className="skills-container">
-              <div className="skills-illustration-container">
-                <DisplayLottie animationData={codingPerson} />
-              </div>
               <div className="skills-grid">
                 {skillsSection.skillsCategories.map((category, i) => (
                   <div key={i} className="skills-category-card">
