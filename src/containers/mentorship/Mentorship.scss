@@ -23,19 +23,6 @@
   margin-bottom: 50px;
 }
 
-.mini-metrics-row {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
-}
-
-.mini-metric {
-  font-size: 16px;
-  font-weight: 500;
-  color: $accentColor;
-}
-
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -118,10 +105,5 @@
   .subtitle {
     font-size: 16px;
     line-height: normal;
-  }
-
-  .mini-metrics-row {
-    flex-direction: column;
-    gap: 15px;
   }
 }

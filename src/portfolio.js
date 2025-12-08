@@ -409,11 +409,6 @@ const mentorshipSection = {
   title: "Mentoring & Career Impact",
   subtitle:
     "I guide learners and professionals through Great Learning, Topmate, ADPList, and global communities—helping them build strong foundations in AI, ML, data science, and cloud technologies.",
-  metrics: [
-    "500+ hours of teaching & mentorship",
-    "196+ total mentoring sessions",
-    "Consistently 5-star learner feedback"
-  ],
   testimonials: [
     {
       name: "Mentee",
