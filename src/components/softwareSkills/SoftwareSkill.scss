@@ -1,5 +1,92 @@
 @import "../../_globalColor";
 
+// Minimalist skill item for new grid layout
+.skill-item-minimal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 16px;
+  transition: all 0.4s ease;
+  cursor: default;
+  position: relative;
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  backdrop-filter: blur(8px);
+  min-height: 100px;
+  width: 100%;
+}
+
+.skill-item-minimal:hover {
+  background: rgba(241, 245, 249, 0.9);
+  border-color: rgba(147, 197, 253, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(147, 197, 253, 0.12);
+}
+
+.skill-item-minimal > i {
+  color: #6366f1;
+  transition: all 0.4s ease;
+  font-size: 2rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.skill-item-minimal:hover > i {
+  color: #4f46e5;
+  transform: scale(1.1);
+  opacity: 1;
+  filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.2));
+}
+
+.skill-item-minimal > p {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+  transition: all 0.4s ease;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
+}
+
+.skill-item-minimal:hover > p {
+  color: #475569;
+  font-weight: 600;
+}
+
+// Dark mode for minimalist items
+.dark-mode .skill-item-minimal {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(71, 85, 105, 0.3);
+}
+
+.dark-mode .skill-item-minimal:hover {
+  background: rgba(51, 65, 85, 0.8);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+}
+
+.dark-mode .skill-item-minimal > i {
+  color: #818cf8;
+  opacity: 0.9;
+}
+
+.dark-mode .skill-item-minimal:hover > i {
+  color: #a5b4fc;
+}
+
+.dark-mode .skill-item-minimal > p {
+  color: #cbd5e1;
+}
+
+.dark-mode .skill-item-minimal:hover > p {
+  color: #e2e8f0;
+}
+
+// Legacy styles for multiple skills display
 .dev-icons {
   padding-left: 0;
   list-style: none;
@@ -26,9 +113,9 @@
 }
 
 .software-skill-inline:hover {
-  background: rgba(30, 58, 138, 0.08);
+  background: rgba(99, 102, 241, 0.08);
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(30, 58, 138, 0.15);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15);
 }
 
 .software-skill-inline > i {
@@ -40,7 +127,7 @@
 .software-skill-inline:hover > i {
   color: $buttonColor;
   transform: scale(1.2) rotate(10deg);
-  filter: drop-shadow(0 0 8px rgba(30, 58, 138, 0.3));
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.3));
 }
 
 .software-skill-inline > p {
@@ -57,7 +144,37 @@
   font-weight: 700;
 }
 
+// Responsive adjustments for minimalist items
+@media (max-width: 1200px) {
+  .skill-item-minimal {
+    padding: 18px;
+    min-height: 90px;
+  }
+  
+  .skill-item-minimal > i {
+    font-size: 1.8rem;
+  }
+  
+  .skill-item-minimal > p {
+    font-size: 10px;
+  }
+}
+
 @media (max-width: 768px) {
+  .skill-item-minimal {
+    padding: 15px;
+    min-height: 80px;
+    gap: 8px;
+  }
+  
+  .skill-item-minimal > i {
+    font-size: 1.6rem;
+  }
+  
+  .skill-item-minimal > p {
+    font-size: 9px;
+  }
+  
   .dev-icons {
     gap: 20px;
   }
@@ -73,6 +190,20 @@
 }
 
 @media (max-width: 480px) {
+  .skill-item-minimal {
+    padding: 12px;
+    min-height: 70px;
+    gap: 6px;
+  }
+  
+  .skill-item-minimal > i {
+    font-size: 1.4rem;
+  }
+  
+  .skill-item-minimal > p {
+    font-size: 8px;
+  }
+  
   .dev-icons {
     gap: 15px;
   }

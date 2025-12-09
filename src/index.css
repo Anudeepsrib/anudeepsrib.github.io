@@ -63,10 +63,72 @@ code {
   background: rgba(99, 102, 241, 0.6);
 }
 
+/* Lottie Animation Container */
+.lottie-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 /* Media Query */
 @media (max-width: 1380px) {
   html,
   body {
     font-size: 16px;
+  }
+}
+
+/* Global Mobile Optimization */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    font-size: 14px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  img, svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  html, body {
+    font-size: 13px;
+  }
+}
+
+/* Lottie Animation Styles */
+.lottie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.lottie-container svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+@media (max-width: 768px) {
+  .lottie-container svg {
+    max-width: 250px;
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lottie-container svg {
+    max-width: 200px;
+    max-height: 200px;
   }
 }

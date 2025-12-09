@@ -44,17 +44,6 @@ export default function MentorshipAndTalks() {
             </div>
           ))}
         </div>
-
-        {impactMetrics.display && (
-          <div className="stats-container">
-            {impactMetrics.stats.map((s) => (
-              <div className="stat-card" key={s.label}>
-                <div className="stat-value">{s.value}</div>
-                <div className="stat-label">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );

@@ -15,13 +15,15 @@
 }
 
 .contact-title {
-  font-size: 65px;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
-  background: $mainGradient;
+  background: linear-gradient(135deg, $titleColor, $buttonColor);
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: transparent;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-6);
+  text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .contact-detail,
@@ -60,8 +62,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 500px;
   position: relative;
+  opacity: 0.9;
+  max-width: 350px;
+  margin: 0 auto;
+  
+  .lottie-container {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+  
+  @media (max-width: 768px) {
+    height: 250px;
+    margin-top: var(--space-6);
+  }
+  
+  @media (max-width: 480px) {
+    height: 250px;
+    max-width: 220px;
+  }
 }
 
 .contact-abstract-visual {
@@ -157,5 +179,54 @@
   .ring-3 {
     width: 290px;
     height: 290px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-div-main {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .contact-title {
+    font-size: 32px;
+  }
+  
+  .contact-detail,
+  .contact-detail-email {
+    font-size: 18px;
+    margin-top: 15px;
+  }
+  
+  .contact-subtitle {
+    font-size: 14px;
+  }
+  
+  .contact-text-div {
+    margin-top: 1rem;
+  }
+  
+  .contact-image-div {
+    height: 300px;
+  }
+  
+  .lottie-container {
+    max-width: 250px;
+    max-height: 250px;
+  }
+  
+  .ring-1 {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .ring-2 {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .ring-3 {
+    width: 240px;
+    height: 240px;
   }
 }

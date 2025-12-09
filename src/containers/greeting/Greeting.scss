@@ -2,10 +2,22 @@
 
 .main {
   width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
-  margin-top: 2rem;
+  max-width: 1200px;
+  padding: var(--space-6) var(--space-4);
+  margin: 0 auto;
+  margin-top: var(--space-4);
   animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
@@ -70,22 +82,18 @@
   white-space: nowrap;
 }
 
-.download-link-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(22, 163, 74, 0.3);
-  background: linear-gradient(135deg, rgba(22, 163, 74, 0.8), $buttonHover);
-}
 
 .greeting-text {
-  font-size: 70px;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
   color: $titleColor !important;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-5);
   background: linear-gradient(135deg, $titleColor, $buttonColor);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -0.02em;
 }
 
 .greeting-text-p {
@@ -100,9 +108,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 600px;
   position: relative;
-  height: 298px;
-  /* Reduced by 15% from 350px */
+  
+  .lottie-container {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
 }
 
 .abstract-hero-visual {
@@ -225,7 +249,7 @@
   }
 
   .greeting-text {
-    font-size: 36px;
+    font-size: 42px;
     text-align: center;
   }
 
@@ -267,20 +291,37 @@
   }
 
   .greeting-text {
-    font-size: 28px;
+    font-size: 32px;
   }
-
+  
   .greeting-text-p {
-    font-size: 14px;
+    font-size: 15px;
+    margin-bottom: 25px;
   }
-
+  
+  .greeting-main {
+    gap: 20px;
+  }
+  
   .button-greeting-div {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    gap: 15px;
   }
-
+  
   .download-link-button {
+    width: 80%;
     text-align: center;
+    padding: 12px 20px;
+  }
+  
+  .greeting-image-div {
+    height: 300px;
+  }
+  
+  .lottie-container {
+    max-width: 250px;
+    max-height: 250px;
   }
 }
 
