@@ -13,17 +13,69 @@
 }
 
 .metrics-heading {
-  font-size: 56px;
-  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
   font-family: "Google Sans Bold";
-  margin-bottom: 40px;
+  margin-bottom: var(--space-10);
+  text-align: center;
+  background: linear-gradient(135deg, $titleColor, $buttonColor);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metrics-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
 }
 
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  margin-top: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  flex: 1;
+}
+
+.metrics-animation {
+  flex: 0 0 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .metric-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .metric-card {
+    padding: 15px;
+  }
+  
+  .metric-value {
+    font-size: 36px;
+  }
+  
+  .metric-label {
+    font-size: 14px;
+  }
 }
 
 .metric-card {
@@ -59,6 +111,27 @@
 
 .dark-mode .metric-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.metrics-animation-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--space-12);
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.8;
+  
+  @media (max-width: 768px) {
+    max-width: 250px;
+    margin-top: var(--space-8);
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 200px;
+    margin-top: var(--space-6);
+  }
 }
 
 @media (max-width: 1024px) {
