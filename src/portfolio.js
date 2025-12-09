@@ -271,10 +271,9 @@ const talkSection = {
       description:
         "Invited to deliver lectures and workshops on AI, ML, CV, and data-driven innovation.",
       institutions: [
-        "VIT Chennai",
-        "VIT Vellore",
-        "VIT Amaravati",
         "UMass",
+        "Northern Kentucky University",
+        "VIT University",
         "PVP Siddhartha",
         "JECRC University"
       ]
