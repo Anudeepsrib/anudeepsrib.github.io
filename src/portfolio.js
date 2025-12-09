@@ -307,14 +307,14 @@ const talkSection = {
 const impactMetrics = {
   display: true,
   stats: [
-    { value: "10 years", label: "AI, ML & data engineering experience" },
-    { value: "2", label: "Academic publications (CRC Press + thesis)" },
-    { value: "500+ hours", label: "Teaching & mentoring delivered" },
-    { value: "18+", label: "Guest Lecture Invitations" },
-    { value: "10+", label: "Universities, platforms & partners" },
-    { value: "1000+", label: "Learners taught globally" },
-    { value: "200+", label: "1:1 mentoring sessions" },
-    { value: "7", label: "Countries mentored" }
+    { value: "10 years", label: "AI/ML Experience", fontAwesomeClassname: "fas fa-brain" },
+    { value: "2", label: "Publications", fontAwesomeClassname: "fas fa-book" },
+    { value: "500+", label: "Teaching Hours", fontAwesomeClassname: "fas fa-chalkboard-teacher" },
+    { value: "18+", label: "Guest Lectures", fontAwesomeClassname: "fas fa-microphone" },
+    { value: "10+", label: "Partners", fontAwesomeClassname: "fas fa-handshake" },
+    { value: "1000+", label: "Learners", fontAwesomeClassname: "fas fa-graduation-cap" },
+    { value: "200+", label: "Mentoring Sessions", fontAwesomeClassname: "fas fa-user-tie" },
+    { value: "7", label: "Countries", fontAwesomeClassname: "fas fa-globe" }
   ]
 };
 

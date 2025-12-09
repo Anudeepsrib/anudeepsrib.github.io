@@ -5,11 +5,13 @@ import { skillsSection } from "../../portfolio";
 import { Fade } from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 
-// Define the three core skills you want to show
+// Define the core skills you want to show
 const coreSkills = [
   { skillName: "AI / ML", fontAwesomeClassname: "fas fa-brain" },
   { skillName: "Cloud Computation", fontAwesomeClassname: "fas fa-cloud" },
-  { skillName: "Data Engineering", fontAwesomeClassname: "fas fa-database" }
+  { skillName: "Data Engineering", fontAwesomeClassname: "fas fa-database" },
+  { skillName: "Systems Architecture", fontAwesomeClassname: "fas fa-sitemap" },
+  { skillName: "Tech Leadership", fontAwesomeClassname: "fas fa-users-cog" }
 ];
 
 export default function Skills() {

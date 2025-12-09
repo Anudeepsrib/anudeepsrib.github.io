@@ -5,6 +5,7 @@ import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 import CountUp from "react-countup";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
+import SoftwareSkill from "../../components/softwareSkills/SoftwareSkill";
 import codingPerson from "../../assets/lottie/codingPerson";
 
 export default function ImpactMetrics() {
@@ -27,7 +28,7 @@ export default function ImpactMetrics() {
             <div className="metrics-content">
               <div className="metrics-grid">
                 {impactMetrics.stats.map((stat, i) => (
-                  <div key={i} className="metric-card">
+                  <div key={i} className="metric-item">
                     <div className="metric-value">
                       <CountUp
                         start={0}
@@ -37,6 +38,7 @@ export default function ImpactMetrics() {
                         suffix={stat.value.includes("+") ? "+" : ""}
                       />
                     </div>
+                    <SoftwareSkill skills={[stat]} singleSkill={true} />
                     <div className="metric-label">{stat.label}</div>
                   </div>
                 ))}
