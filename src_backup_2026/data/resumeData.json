@@ -1,0 +1,189 @@
+{
+  "personalInfo": {
+    "name": "Anudeep Sri Bathina",
+    "title": "Lead Data Scientist | AI Architect",
+    "email": "anudeepSrib@gmail.com",
+    "location": "Boston, MA",
+    "github": "https://github.com/anudeepsrib",
+    "linkedin": "https://www.linkedin.com/in/anudeepsri/",
+    "website": "https://anudeepsrib.github.io",
+    "summary": "Lead Data Scientist with 9+ years of expertise in architecting scalable AI systems, Large Language Models (LLMs), and retrieval pipelines. I specialize in designing production-grade data platforms and deploying Generative AI solutions that drive enterprise innovation. Recognized as a thought leader, author, and mentor, I actively contribute to the global AI community through publications, talks, and workforce development.",
+    "image": "/assets/profile-pic.jpeg"
+  },
+  "experience": [
+    {
+      "company": "Infosys",
+      "position": "Lead Data Scientist",
+      "startDate": "2024",
+      "endDate": "Present",
+      "description": "Architecting enterprise GenAI solutions and LLM systems. Leading the development of customized data solutions, including Python-based parsers and automated data interpretation models. Overseeing deployment of APIs using FastAPI and optimizing retrieval systems with Azure Vector Search and Cosmos DB.",
+      "companyUrl": "https://www.infosys.com",
+      "location": "USA"
+    },
+    {
+      "company": "Capgemini",
+      "position": "Technical Lead",
+      "startDate": "2019",
+      "endDate": "2021",
+      "description": "Directed ML engineering teams to build robust data pipelines and predictive models. Awarded the ‘Extra Mile Award’ for high-impact delivery and technical leadership in scaling data products.",
+      "companyUrl": "https://www.capgemini.com",
+      "location": "India"
+    },
+    {
+      "company": "GainInsights Solutions",
+      "position": "Big Data & ML Engineer",
+      "startDate": "2019",
+      "endDate": "2019",
+      "description": "Engineered scalable PySpark pipelines resulting in ~30% performance improvement. Developed client-focused interfaces and optimized database queries for complex datasets.",
+      "companyUrl": "https://www.gain-insights.com",
+      "location": "India"
+    },
+    {
+      "company": "Cognizant",
+      "position": "Data Science Engineer",
+      "startDate": "2015",
+      "endDate": "2019",
+      "description": "Led cloud data migration projects and implemented predictive analytics models. specialized in automated data migration and visualization of key business insights.",
+      "companyUrl": "https://www.cognizant.com",
+      "location": "India"
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Massachusetts Amherst",
+      "degree": "M.S. Computer Science",
+      "startDate": "2021",
+      "endDate": "2024",
+      "description": "Specialized research on domain-adapted computer vision using YOLOv8 and ResNet-50. Focus on Advanced Algorithms and AI.",
+      "institutionUrl": "https://www.umass.edu"
+    },
+    {
+      "institution": "VIT University",
+      "degree": "B.Tech",
+      "startDate": "2011",
+      "endDate": "2015",
+      "description": "Foundation in Computer Science and Engineering. Active involvement in robotics projects and technical societies.",
+      "institutionUrl": "https://vit.ac.in"
+    }
+  ],
+  "publications": [
+    {
+      "title": "Blueprint of IoT for Smart Cities: An Emerging Markets Perspective",
+      "publisher": "CRC Press",
+      "year": "2024",
+      "description": "Co-authored chapter in 'Handbook of Artificial Intelligence for Smart City Development'. Discusses management systems and technology challenges in smart city implementations.",
+      "link": "https://doi.org/10.1201/9781003225317"
+    }
+  ],
+  "talks": [
+    {
+      "title": "Generative AI & LLMs",
+      "event": "Analytics Vidhya",
+      "year": "2023",
+      "description": "Led workshops on the practical applications of Generative AI and Large Language Models."
+    },
+    {
+      "title": "Recommendation Systems",
+      "event": "PVP Siddhartha",
+      "year": "2022",
+      "description": "Expert talk on building and scaling recommendation engines."
+    },
+    {
+      "title": "Innovation in AI",
+      "event": "VIT University",
+      "year": "2022",
+      "description": "Guest lecture on emerging trends and innovation in Artificial Intelligence."
+    },
+    {
+      "title": "AI in Business",
+      "event": "Berlin School of Business & Innovation",
+      "year": "2021",
+      "description": "Panel discussion on the strategic implementation of AI in business contexts."
+    },
+    {
+      "title": "AI for Everyone",
+      "event": "DeepLearning.AI (Pie & AI)",
+      "year": "2020",
+      "description": "Speaker at the Lahore chapter event, demystifying AI concepts for a broad audience."
+    }
+  ],
+  "skills": [
+    "Generative AI",
+    "Large Language Models (LLMs)",
+    "RAG Systems",
+    "Vector Databases",
+    "Python",
+    "PySpark",
+    "FastAPI",
+    "Azure Cloud",
+    "AWS",
+    "Google Cloud Platform",
+    "Databricks",
+    "Docker & Kubernetes",
+    "Machine Learning",
+    "Data Engineering",
+    "SQL",
+    "TypeScript",
+    "React",
+    "Next.js"
+  ],
+  "projects": [
+    {
+      "name": "Smart Portfolio with AI Chat",
+      "description": "A Next.js 15 portfolio featuring a RAG-based AI chatbot capable of answering questions about my professional background. Built with LangChain and OpenAI.",
+      "technologies": [
+        "Next.js",
+        "OpenAI",
+        "LangChain",
+        "Vector Search"
+      ],
+      "link": "https://github.com/anudeepsrib"
+    },
+    {
+      "name": "Handbook of AI for Smart Cities",
+      "description": "Research contribution to CRC Press. Explored IoT blueprints and AI integration for urban development in emerging markets.",
+      "technologies": [
+        "Research",
+        "IoT",
+        "Smart Cities",
+        "Publication"
+      ],
+      "link": "https://doi.org/10.1201/9781003225317"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Professional"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AI Agents in LangGraph",
+      "date": "2024",
+      "description": "DeepLearning.ai Certification"
+    },
+    {
+      "name": "Safe and Reliable AI",
+      "date": "2024",
+      "description": "DeepLearning.ai Certification"
+    },
+    {
+      "name": "Generative AI with LLMs",
+      "date": "2024",
+      "description": "DeepLearning.ai Certification"
+    }
+  ],
+  "interests": [
+    "Open Source Contributions",
+    "AI and Machine Learning",
+    "Software Architecture",
+    "Mentoring"
+  ],
+  "softSkills": [
+    "Leadership",
+    "Mentoring",
+    "Problem Solving",
+    "Communication"
+  ]
+}
