@@ -8,10 +8,10 @@ const JourneyHero = () => {
     const reduceMotion = useReducedMotion();
 
     const milestones = [
-        { label: "Years in Tech", value: "5+" },
-        { label: "Organizations", value: "3+" },
+        { label: "Years in Tech", value: "10+" },
+        { label: "Organizations", value: "4+" },
         { label: "Awards", value: "2" },
-        { label: "Innovation Focus", value: "AI/ML" }
+        { label: "Innovation Focus", value: "AI & ML" }
     ];
 
     return (

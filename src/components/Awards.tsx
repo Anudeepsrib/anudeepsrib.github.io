@@ -9,6 +9,17 @@ const Awards = () => {
 
     const awards = [
         {
+            title: "RISE Award",
+            organization: "Infosys Americas",
+            year: "2025",
+            description: "Awarded for significant innovation and impact in AI systems, demonstrating leadership and driving transformational change.",
+            icon: Star,
+            gradient: "from-yellow-400 to-yellow-300",
+            accentColor: "text-yellow-400",
+            bgColor: "bg-yellow-400/10",
+            borderColor: "border-yellow-400/30"
+        },
+                {
             title: "Extra Mile Award",
             organization: "Capgemini",
             year: "2020",
@@ -19,17 +30,6 @@ const Awards = () => {
             bgColor: "bg-yellow-400/10",
             borderColor: "border-yellow-400/30"
         },
-        {
-            title: "RISE Award",
-            organization: "Infosys",
-            year: "2025",
-            description: "Awarded for significant innovation and impact in AI systems, demonstrating leadership and driving transformational change.",
-            icon: Star,
-            gradient: "from-blue-400 to-blue-300",
-            accentColor: "text-blue-400",
-            bgColor: "bg-blue-400/10",
-            borderColor: "border-blue-400/30"
-        }
     ];
 
     return (
