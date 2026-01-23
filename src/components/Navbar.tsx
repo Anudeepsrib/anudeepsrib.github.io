@@ -19,10 +19,10 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Recognitions', href: '/recognitions' },
-        { name: 'Mentorship', href: '/mentorship' },
-        { name: 'Journey', href: '/journey' },
-        { name: 'Blog', href: '/blog' },
+        { name: 'Achievements', href: '/recognitions' },
+        { name: 'Leadership', href: '/mentorship' },
+        { name: 'Experience', href: '/journey' },
+        { name: 'Insights', href: '/blog' },
     ];
 
     return (

@@ -34,21 +34,21 @@ const recognitions: RecognitionGroup[] = [
         accentDark: "border-blue-400/30",
         items: [
             {
-                title: "Guest Speaker — Café Scientifique",
+                title: "Guest Speaker: Café Scientifique",
                 organization: "Berlin School of Business and Innovation (BSBI)",
                 description: "Expert panel discussion on AI and emerging technology trends for a global audience of industry leaders and academics.",
                 link: "https://www.berlinsbi.com/events-and-webinars/cafe-scientifique/5th-cafe-scientifique",
                 linkText: "View Event"
             },
             {
-                title: "Resource Person — STTP on Machine Learning",
+                title: "Resource Person on Machine Learning",
                 organization: "IET On Campus, MBCET",
                 description: "Delivered advanced technical sessions as part of a structured training program for researchers and engineering faculty.",
                 link: "https://www.linkedin.com/posts/iet-mbcet_techinnovation-datascience-futureoftech-activity-7265386187622670336-t-GZ",
                 linkText: "View Program"
             },
             {
-                title: "Guest Lecturer — VIT",
+                title: "Guest Lecturer: VIT",
                 organization: "Vellore Institute of Technology",
                 description: "Delivered invited lectures on 'Recent Trends in Software Tools' and 'Database Management Systems in Industry' bridging academia and enterprise practice.",
                 link: "https://chennai.vit.ac.in/files/guestlecture2017.pdf",
