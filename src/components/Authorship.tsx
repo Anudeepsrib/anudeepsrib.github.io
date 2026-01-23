@@ -14,12 +14,12 @@ const Authorship = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-glow/10 border border-gold-glow/20 mb-6">
-                        <BookOpen className="text-gold-glow" size={18} />
-                        <span className="text-sm font-medium text-gold-glow">Publications</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-6 hover-lift">
+                        <BookOpen className="text-blue-400" size={18} />
+                        <span className="text-sm font-medium text-blue-400">Publications</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-6 text-white">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-glow to-gold-shimmer">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
                             Authorship
                         </span>
                     </h2>
@@ -39,19 +39,19 @@ const Authorship = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="group block p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-glow/30 transition-all hover:-translate-y-1 hover:shadow-xl"
+                            className="group block p-8 rounded-2xl bg-white/5 border border-white/8 hover:border-blue-400/30 transition-all hover:-translate-y-1 hover:shadow-xl hover-lift"
                         >
                             <div className="flex justify-between items-start mb-4">
-                                <div className="p-3 rounded-lg bg-gold-glow/10 text-gold-glow group-hover:bg-gold-glow group-hover:text-black transition-colors">
+                                <div className="p-3 rounded-lg bg-blue-400/10 text-blue-400 group-hover:bg-blue-400 group-hover:text-black transition-colors">
                                     <BookOpen size={24} />
                                 </div>
-                                <ExternalLink className="text-gray-500 group-hover:text-gold-glow transition-colors" size={20} />
+                                <ExternalLink className="text-gray-500 group-hover:text-blue-400 transition-colors" size={20} />
                             </div>
 
-                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-gold-glow transition-colors">
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
                                 {pub.title}
                             </h3>
-                            <div className="flex items-center gap-2 text-sm text-gold-shimmer mb-4">
+                            <div className="flex items-center gap-2 text-sm text-blue-300 mb-4">
                                 <span>{pub.publisher}</span>
                                 <span>•</span>
                                 <span>{pub.year}</span>

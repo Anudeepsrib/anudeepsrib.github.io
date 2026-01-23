@@ -42,38 +42,46 @@
     }
 
     .dark {
-        --background: 220 20% 5%; /* obsidian */
-        --foreground: 35 100% 96%;
+        /* Refined Dark Mode - Professional & Premium */
+        --background: 0 0% 6%; /* #0E0E11 - deep charcoal */
+        --foreground: 0 0% 93%; /* #EDEDED - soft white */
 
         --card: 220 12% 8%; /* deep card */
-        --card-foreground: 35 100% 96%;
+        --card-foreground: 0 0% 93%;
 
         --popover: 220 12% 8%;
-        --popover-foreground: 35 100% 96%;
+        --popover-foreground: 0 0% 93%;
 
-        /* Gold primary (for accents in dark) */
-        --primary: 47 95% 52%;
-        --primary-foreground: 220 14% 6%;
+        /* Electric Blue accent - primary accent color for links, buttons, highlights */
+        --primary: 217 100% 59%; /* #4F8BFF - Electric Blue */
+        --primary-foreground: 0 0% 6%;
 
         --secondary: 215 50% 16%; /* deep navy */
-        --secondary-foreground: 35 100% 96%;
+        --secondary-foreground: 0 0% 93%;
 
-        --muted: 215 10% 20%;
+        /* Secondary text color */
+        --muted: 0 0% 63%; /* #A1A1AA - secondary gray */
         --muted-foreground: 215 10% 60%;
 
-        --accent: 47 85% 86%;
-        --accent-foreground: 220 14% 6%;
+        --accent: 217 100% 59%; /* Electric Blue for accents */
+        --accent-foreground: 0 0% 6%;
 
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 210 40% 98%;
 
-        --border: 215 10% 14%;
+        /* Subtle borders */
+        --border: 0 0% 100%; /* rgba(255,255,255,0.08) equivalent */
         --input: 215 10% 14%;
-        --ring: 47 95% 52%;
+        --ring: 217 100% 59%; /* Electric Blue */
 
+        /* Premium accent colors */
         --gold-glow: #FFD24D;
         --gold-dim: #B8860B;
         --gold-shimmer: #FBF5D4;
+
+        /* Typography improvements */
+        --font-body-size: 16px;
+        --font-line-height: 1.6;
     }
 }
 
@@ -85,6 +93,24 @@
     body {
         @apply bg-background text-foreground;
         font-feature-settings: "rlig" 1, "calt" 1;
+        font-size: var(--font-body-size, 16px);
+        line-height: var(--font-line-height, 1.6);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-outfit);
+        @apply font-bold;
+    }
+
+    p {
+        @apply leading-relaxed;
+    }
+
+    /* Refined borders - subtle white with low opacity */
+    .border {
+        border-color: rgba(255, 255, 255, 0.08);
     }
 }
 
@@ -106,10 +132,23 @@
     background: hsl(var(--primary));
 }
 
+/* Links - Electric Blue accent */
+a {
+    @apply text-blue-400 hover:text-blue-300 transition-colors;
+}
+
 /* Glassmorphism Utilities */
 .glass-panel {
-    /* warm-tinted glass */
-    @apply bg-black/30 backdrop-blur-xl border border-[rgba(255,210,77,0.08)] shadow-xl;
+    /* refined glass with Electric Blue border accent */
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1.5rem);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+    border-color: rgba(79, 139, 255, 0.3);
 }
 
 .text-gradient {
@@ -154,6 +193,69 @@
 
 .parallax-float { animation: parallax 12s ease-in-out infinite; }
 
+/* Premium entrance animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger animation for children */
+.animate-stagger > * {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.animate-stagger > *:nth-child(2) { animation-delay: 80ms; }
+.animate-stagger > *:nth-child(3) { animation-delay: 160ms; }
+.animate-stagger > *:nth-child(4) { animation-delay: 240ms; }
+.animate-stagger > *:nth-child(5) { animation-delay: 320ms; }
+.animate-stagger > *:nth-child(n+6) { animation-delay: 400ms; }
+
+/* Hover lift effect */
+.hover-lift {
+    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .animate-glow, .animate-gradient, .parallax-float { animation: none !important; }
+    .animate-glow, .animate-gradient, .parallax-float, .animate-fade-in-up, .animate-fade-in-down, .animate-scale-in, .animate-stagger > *, .hover-lift { animation: none !important; transform: none !important; }
 } 
