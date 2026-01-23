@@ -60,17 +60,21 @@ const config: Config = {
           700: "#1e1e1e",
         },
         violet: {
-          glow: "#D4AF37", // Replaced with Gold (Metallic Gold)
-          dim: "#B8860B",  // Dark Goldenrod
+          glow: "#D4AF37",
+          dim: "#8B5E3C",
         },
         cyan: {
-          glow: "#FFE5B4", // Replaced with Peach/Champagne Gold for secondary
-          dim: "#C5A059",
+          glow: "#C5F0E8",
+          dim: "#7DD3FC",
         },
         gold: {
-          glow: "#FFD700",
+          glow: "#FFD24D",
           dim: "#B8860B",
           shimmer: "#FBF5D4", // Light champagne
+        },
+        neon: {
+          blue: "#3b82f6",
+          cyan: "#06b6d4",
         },
         royal: {
           900: "#0b1120", // Deepest blue
@@ -88,7 +92,7 @@ const config: Config = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #D4AF3733 0deg, #FFE5B433 180deg, #D4AF3733 360deg)', // Gold conic
+        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #FFD24D33 0deg, #FBF5D433 180deg, #FFD24D33 360deg)', // Gold conic
       },
       keyframes: {
         "fade-up": {

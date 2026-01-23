@@ -32,11 +32,11 @@ const Research = () => {
                 >
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-purple/10 border border-neon-purple/20 mb-6">
-                                <span className="text-sm font-medium text-neon-purple">Master&apos;s Thesis</span>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-glow/10 border border-gold-glow/20 mb-6">
+                                <span className="text-sm font-medium text-gold-dim">Master&apos;s Thesis</span>
                             </div>
 
-                            <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-neon-cyan transition-colors">
+                            <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-gold-shimmer transition-colors">
                                 Groundfish Recognition using Yolov8
                             </h3>
 
@@ -62,7 +62,7 @@ const Research = () => {
                         </div>
 
                         {/* Neural Network Visualization Placeholder */}
-                        <div className="relative aspect-video rounded-xl overflow-hidden bg-obsidian-950 border border-white/10 flex items-center justify-center group-hover:shadow-[0_0_30px_rgba(0,243,255,0.1)] transition-all">
+                            <div className="relative aspect-video rounded-xl overflow-hidden bg-obsidian-950 border border-white/10 flex items-center justify-center group-hover:shadow-[0_0_30px_rgba(0,243,255,0.1)] transition-all">
                             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,243,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,243,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_100%)]" />
 
                             <div className="relative z-10 text-center">
@@ -72,7 +72,7 @@ const Research = () => {
                             </div>
 
                             {/* Animated nodes effect */}
-                            <div className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-neon-purple animate-ping" />
+                                <div className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-gold-glow animate-ping" />
                             <div className="absolute top-3/4 right-1/4 w-2 h-2 rounded-full bg-neon-cyan animate-ping delay-700" />
                         </div>
                     </div>

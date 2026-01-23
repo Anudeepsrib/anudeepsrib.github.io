@@ -4,70 +4,76 @@
 
 @layer base {
     :root {
-        /* Premium Light Theme - Porcelain & Slate */
-        --background: 0 0% 98%;
-        /* #fafafa */
-        --foreground: 222.2 84% 4.9%;
+        /* Premium Light Theme - Warm Porcelain & Gold */
+        --background: 40 20% 98%; /* warm porcelain */
+        --foreground: 220 10% 8%; /* dark text */
 
         --card: 0 0% 100%;
-        --card-foreground: 222.2 84% 4.9%;
+        --card-foreground: 220 10% 8%;
 
         --popover: 0 0% 100%;
-        --popover-foreground: 222.2 84% 4.9%;
+        --popover-foreground: 220 10% 8%;
 
-        --primary: 262.1 83.3% 57.8%;
-        --primary-foreground: 210 40% 98%;
+        /* Gold primary */
+        --primary: 47 95% 52%; /* gold */
+        --primary-foreground: 220 14% 6%;
 
-        --secondary: 210 40% 96.1%;
-        --secondary-foreground: 222.2 47.4% 11.2%;
+        /* Royal navy secondary */
+        --secondary: 220 60% 28%;
+        --secondary-foreground: 210 40% 98%;
 
-        --muted: 210 40% 96.1%;
-        --muted-foreground: 215.4 16.3% 46.9%;
+        --muted: 40 12% 82%;
+        --muted-foreground: 210 12% 44%;
 
-        --accent: 210 40% 96.1%;
-        --accent-foreground: 222.2 47.4% 11.2%;
+        --accent: 47 85% 86%; /* champagne shimmer */
+        --accent-foreground: 220 14% 6%;
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 210 40% 98%;
 
-        --border: 220 13% 91%;
-        --input: 220 13% 91%;
-        --ring: 262.1 83.3% 57.8%;
+        --border: 30 10% 92%;
+        --input: 30 10% 92%;
+        --ring: 47 95% 52%;
 
         --radius: 0.75rem;
+        --gold-glow: #FFD24D;
+        --gold-dim: #B8860B;
+        --gold-shimmer: #FBF5D4;
     }
 
     .dark {
-        --background: 0 0% 4%;
-        /* #0a0a0a */
-        --foreground: 210 40% 98%;
+        --background: 220 20% 5%; /* obsidian */
+        --foreground: 35 100% 96%;
 
-        --card: 0 0% 7%;
-        /* #121212 */
-        --card-foreground: 210 40% 98%;
+        --card: 220 12% 8%; /* deep card */
+        --card-foreground: 35 100% 96%;
 
-        --popover: 222.2 84% 4.9%;
-        --popover-foreground: 210 40% 98%;
+        --popover: 220 12% 8%;
+        --popover-foreground: 35 100% 96%;
 
-        /* Violet Primary */
-        --primary: 263.4 70% 50.4%;
-        --primary-foreground: 210 40% 98%;
+        /* Gold primary (for accents in dark) */
+        --primary: 47 95% 52%;
+        --primary-foreground: 220 14% 6%;
 
-        --secondary: 217.2 32.6% 17.5%;
-        --secondary-foreground: 210 40% 98%;
+        --secondary: 215 50% 16%; /* deep navy */
+        --secondary-foreground: 35 100% 96%;
 
-        --muted: 217.2 32.6% 17.5%;
-        --muted-foreground: 215 20.2% 65.1%;
+        --muted: 215 10% 20%;
+        --muted-foreground: 215 10% 60%;
 
-        --accent: 217.2 32.6% 17.5%;
-        --accent-foreground: 210 40% 98%;
+        --accent: 47 85% 86%;
+        --accent-foreground: 220 14% 6%;
 
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 210 40% 98%;
 
-        --border: 217.2 32.6% 17.5%;
-        --input: 217.2 32.6% 17.5%;
-        --ring: 263.4 70% 50.4%;
+        --border: 215 10% 14%;
+        --input: 215 10% 14%;
+        --ring: 47 95% 52%;
+
+        --gold-glow: #FFD24D;
+        --gold-dim: #B8860B;
+        --gold-shimmer: #FBF5D4;
     }
 }
 
@@ -102,11 +108,12 @@
 
 /* Glassmorphism Utilities */
 .glass-panel {
-    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-xl;
+    /* warm-tinted glass */
+    @apply bg-black/30 backdrop-blur-xl border border-[rgba(255,210,77,0.08)] shadow-xl;
 }
 
 .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--gold-glow)] via-[var(--gold-shimmer)] to-[var(--gold-dim)];
 }
 
 .text-gradient-subtle {
@@ -119,10 +126,10 @@
 
 @keyframes glow {
     from {
-        box-shadow: 0 0 10px -10px theme('colors.violet.glow');
+        box-shadow: 0 0 10px -10px var(--gold-glow);
     }
 
     to {
-        box-shadow: 0 0 20px 5px theme('colors.violet.glow');
+        box-shadow: 0 0 20px 5px var(--gold-glow);
     }
 }

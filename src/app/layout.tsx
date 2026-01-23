@@ -46,7 +46,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${outfit.variable} ${inter.variable} dark`} suppressHydrationWarning>
             <body
-                className="font-inter bg-background text-foreground antialiased selection:bg-violet-500/30 selection:text-violet-200"
+                className="font-inter bg-background text-foreground antialiased selection:bg-gold-glow/30 selection:text-gold-dim"
                 suppressHydrationWarning
             >
                 <div className="relative min-h-screen flex flex-col">
