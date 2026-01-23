@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink } from 'lucide-react';
+import { BookOpen, ExternalLink, Instagram, Youtube } from 'lucide-react';
+import { fadeUp, stagger } from '@/lib/animation';
 
 const Blog = () => {
     const blogLinks = [
@@ -9,38 +10,66 @@ const Blog = () => {
             title: "Substack",
             description: "Deep dives into AI architecture, system design, and industry trends.",
             url: "https://anudeepsri.substack.com/",
-            publisher: "Substack"
+            publisher: "Substack",
+            icon: BookOpen
         },
         {
             title: "Medium",
             description: "Technical articles, tutorials, and thought leadership on Generative AI.",
             url: "https://medium.com/@anudeepsri",
-            publisher: "Medium"
+            publisher: "Medium",
+            icon: BookOpen
+        }
+    ];
+
+    const socialLinks = [
+        {
+            title: "Instagram",
+            description: "AI insights, tech updates, and behind-the-scenes content.",
+            url: "https://www.instagram.com/anudeep.ai/",
+            icon: Instagram,
+            color: "text-pink-400",
+            bgColor: "bg-pink-400/10",
+            borderColor: "border-pink-400/30"
+        },
+        {
+            title: "YouTube",
+            description: "Video tutorials, talks, and deep-dive sessions on AI systems.",
+            url: "https://www.youtube.com/@AnudeepsriBathina",
+            icon: Youtube,
+            color: "text-red-400",
+            bgColor: "bg-red-400/10",
+            borderColor: "border-red-400/30"
         }
     ];
 
     return (
         <section id="blog" className="py-24 relative bg-black/20">
             <div className="max-w-7xl mx-auto px-6">
+                {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    variants={stagger}
+                    initial="hidden"
+                    whileInView="show"
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="mb-20 text-center"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-glow/10 border border-gold-glow/20 mb-6">
-                        <BookOpen className="text-gold-glow" size={18} />
-                        <span className="text-sm font-medium text-gold-glow">Writing</span>
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-6 text-white">
-                        Blog & Insights
-                    </h2>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                        Sharing knowledge on building production-grade AI systems.
-                    </p>
+                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-6">
+                        <BookOpen className="text-blue-400" size={18} />
+                        <span className="text-sm font-medium text-blue-300">Writing & Content</span>
+                    </motion.div>
+                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-bold font-outfit mb-6 text-white">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
+                            Blog & Insights
+                        </span>
+                    </motion.h2>
+                    <motion.p variants={fadeUp} className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                        Sharing knowledge on building production-grade AI systems, architecture decisions, and industry insights.
+                    </motion.p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8 justify-center max-w-4xl mx-auto">
+                {/* Blog Links */}
+                <div className="grid md:grid-cols-2 gap-8 justify-center max-w-4xl mx-auto mb-20">
                     {blogLinks.map((blog, index) => (
                         <motion.a
                             key={index}
@@ -51,23 +80,61 @@ const Blog = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="group block p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-glow/30 transition-all hover:-translate-y-1 hover:shadow-xl"
+                            className="group block p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-400/30 transition-all hover:-translate-y-1 hover-lift"
                         >
                             <div className="flex justify-between items-start mb-4">
-                                <div className="p-3 rounded-lg bg-gold-glow/10 text-gold-glow group-hover:bg-gold-glow group-hover:text-black transition-colors">
-                                    <BookOpen size={24} />
+                                <div className="p-3 rounded-lg bg-blue-400/10 text-blue-400 group-hover:bg-blue-400 group-hover:text-black transition-colors">
+                                    <blog.icon size={24} />
                                 </div>
-                                <ExternalLink className="text-gray-500 group-hover:text-gold-glow transition-colors" size={20} />
+                                <ExternalLink className="text-gray-500 group-hover:text-blue-400 transition-colors" size={20} />
                             </div>
 
-                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-gold-glow transition-colors">
+                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
                                 {blog.title}
                             </h3>
-                            <div className="flex items-center gap-2 text-sm text-gold-shimmer mb-4">
+                            <div className="flex items-center gap-2 text-sm text-blue-300 mb-4">
                                 <span>{blog.publisher}</span>
                             </div>
                             <p className="text-gray-400 leading-relaxed">
                                 {blog.description}
+                            </p>
+                        </motion.a>
+                    ))}
+                </div>
+
+                {/* Social Media Divider */}
+                <div className="flex items-center gap-4 mb-20 max-w-4xl mx-auto justify-center">
+                    <div className="h-px flex-grow bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    <span className="text-sm font-medium text-gray-400 uppercase tracking-widest">Also Follow</span>
+                    <div className="h-px flex-grow bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                </div>
+
+                {/* Social Media Links */}
+                <div className="grid md:grid-cols-2 gap-8 justify-center max-w-4xl mx-auto">
+                    {socialLinks.map((social, index) => (
+                        <motion.a
+                            key={index}
+                            href={social.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="group block p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all hover:-translate-y-1 hover-lift"
+                        >
+                            <div className="flex justify-between items-start mb-4">
+                                <div className={`p-3 rounded-lg ${social.bgColor} ${social.color} group-hover:opacity-80 transition-opacity`}>
+                                    <social.icon size={24} />
+                                </div>
+                                <ExternalLink className={`text-gray-500 group-hover:${social.color} transition-colors`} size={20} />
+                            </div>
+
+                            <h3 className={`text-2xl font-bold text-white mb-2 group-hover:${social.color} transition-colors`}>
+                                {social.title}
+                            </h3>
+                            <p className="text-gray-400 leading-relaxed">
+                                {social.description}
                             </p>
                         </motion.a>
                     ))}

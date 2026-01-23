@@ -37,12 +37,12 @@ const Skills = () => {
                     viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-glow/10 border border-gold-glow/20 mb-6">
-                        <Code2 className="text-gold-glow" size={18} />
-                        <span className="text-sm font-medium text-gold-glow">Expertise</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-6 hover-lift">
+                        <Code2 className="text-blue-400" size={18} />
+                        <span className="text-sm font-medium text-blue-400">Expertise</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-6">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-glow to-gold-shimmer">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
                             Technical Arsenal
                         </span>
                     </h2>
@@ -61,11 +61,11 @@ const Skills = () => {
                             <motion.div
                                 key={category.name}
                                 variants={fadeUp}
-                                className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-glow/30 transition-all"
+                                className="p-6 rounded-2xl bg-white/5 border border-white/8 hover:border-blue-400/30 transition-all hover-lift"
                             >
                                 <div className="flex items-center gap-3 mb-4">
-                                    <div className="p-2 rounded-lg bg-gold-glow/10">
-                                        <CategoryIcon className="text-gold-glow" size={24} />
+                                    <div className="p-2 rounded-lg bg-blue-400/10">
+                                        <CategoryIcon className="text-blue-400" size={24} />
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-white">{category.name}</h3>
@@ -81,7 +81,7 @@ const Skills = () => {
                                                 key={skill.name}
                                                 variants={fadeUp}
                                                 whileHover={{ scale: 1.05 }}
-                                                className="group relative p-4 bg-white/5 border border-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center gap-2 cursor-default"
+                                                className="group relative p-4 bg-white/5 border border-white/8 rounded-xl hover:bg-white/10 hover:border-blue-400/30 transition-all duration-300 flex flex-col items-center justify-center gap-2 cursor-default hover-lift"
                                             >
                                                 <div
                                                     className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"

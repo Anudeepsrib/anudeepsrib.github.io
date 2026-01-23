@@ -49,7 +49,7 @@ const Impact = () => {
     return (
         <section id="impact" className="py-24 relative overflow-hidden">
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-gold-glow/5 to-background pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-blue-400/5 to-background pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Section Header */}
@@ -59,12 +59,12 @@ const Impact = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-glow/10 border border-gold-glow/20 mb-6">
-                        <Award className="text-gold-glow" size={18} />
-                        <span className="text-sm font-medium text-gold-glow">Global Recognition</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-6 hover-lift">
+                        <Award className="text-blue-400" size={18} />
+                        <span className="text-sm font-medium text-blue-400">Global Recognition</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-glow to-gold-shimmer">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
                             Teaching & Global Impact
                         </span>
                     </h1>
@@ -81,11 +81,11 @@ const Impact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0 }}
-                        className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-glow/30 transition-colors"
+                        className="p-6 rounded-2xl bg-white/5 border border-white/8 hover:border-blue-400/30 transition-all hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-gold-glow/10">
-                                <GraduationCap className="text-gold-glow" size={24} />
+                            <div className="p-2 rounded-lg bg-blue-400/10">
+                                <GraduationCap className="text-blue-400" size={24} />
                             </div>
                             <h3 className="text-xl font-bold text-white">Universities</h3>
                         </div>
@@ -94,7 +94,7 @@ const Impact = () => {
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {universities.map((uni) => (
-                                <span key={uni} className="px-3 py-1.5 text-xs font-medium rounded-full bg-gold-glow/10 text-gold-shimmer border border-gold-glow/20">
+                                <span key={uni} className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-400/10 text-blue-300 border border-blue-400/20">
                                     {uni}
                                 </span>
                             ))}
@@ -107,11 +107,11 @@ const Impact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-shimmer/30 transition-colors"
+                        className="p-6 rounded-2xl bg-white/5 border border-white/8 hover:border-blue-300/30 transition-all hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-gold-shimmer/10">
-                                <Globe className="text-gold-shimmer" size={24} />
+                            <div className="p-2 rounded-lg bg-blue-300/10">
+                                <Globe className="text-blue-300" size={24} />
                             </div>
                             <h3 className="text-xl font-bold text-white">Global AI Platforms</h3>
                         </div>
@@ -120,7 +120,7 @@ const Impact = () => {
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {globalPlatforms.map((platform) => (
-                                <span key={platform} className="px-3 py-1.5 text-xs font-medium rounded-full bg-gold-shimmer/10 text-gold-shimmer border border-gold-shimmer/20">
+                                <span key={platform} className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-300/10 text-blue-200 border border-blue-300/20">
                                     {platform}
                                 </span>
                             ))}
@@ -133,11 +133,11 @@ const Impact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-glow/30 transition-colors"
+                        className="p-6 rounded-2xl bg-white/5 border border-white/8 hover:border-blue-400/30 transition-all hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-emerald-glow/10">
-                                <Users className="text-emerald-glow" size={24} />
+                            <div className="p-2 rounded-lg bg-blue-400/10">
+                                <Users className="text-blue-400" size={24} />
                             </div>
                             <h3 className="text-xl font-bold text-white">Training Partners</h3>
                         </div>
@@ -146,7 +146,7 @@ const Impact = () => {
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {trainingPartners.map((partner) => (
-                                <span key={partner} className="px-3 py-1.5 text-xs font-medium rounded-full bg-emerald-glow/10 text-emerald-300 border border-emerald-glow/20">
+                                <span key={partner} className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-400/10 text-blue-300 border border-blue-400/20">
                                     {partner}
                                 </span>
                             ))}
@@ -169,9 +169,9 @@ const Impact = () => {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
-                                className="p-5 rounded-xl bg-gradient-to-br from-white/5 to-white/5 border border-white/10 text-center hover:border-gold-glow/30 transition-all group"
+                                className="p-5 rounded-xl bg-gradient-to-br from-white/5 to-white/5 border border-white/8 text-center hover:border-blue-400/30 transition-all group hover-lift"
                             >
-                                <metric.icon className="mx-auto mb-2 text-gold-glow group-hover:scale-110 transition-transform" size={24} />
+                                <metric.icon className="mx-auto mb-2 text-blue-400 group-hover:scale-110 transition-transform" size={24} />
                                 <div className="text-2xl md:text-3xl font-bold text-white mb-1">{metric.value}</div>
                                 <div className="text-xs text-gray-400">{metric.label}</div>
                             </motion.div>
@@ -187,12 +187,12 @@ const Impact = () => {
                     className="mb-12"
                 >
                     <div className="text-center mb-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-glow/10 border border-gold-glow/20 mb-6">
-                            <Users className="text-gold-glow" size={18} />
-                            <span className="text-sm font-medium text-gold-glow">Mentorship</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-6 hover-lift">
+                            <Users className="text-blue-400" size={18} />
+                            <span className="text-sm font-medium text-blue-400">Mentorship</span>
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-6">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-glow to-gold-shimmer">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
                                 Mentoring & Career Impact
                             </span>
                         </h2>
@@ -211,14 +211,14 @@ const Impact = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:shadow-lg hover:shadow-gold-glow/5 transition-all"
+                            className="relative p-6 rounded-2xl bg-white/5 border border-white/8 hover:shadow-lg hover:shadow-blue-400/5 transition-all hover-lift"
                         >
-                            <Award className="absolute top-4 right-4 text-gold-glow/20" size={32} />
+                            <Award className="absolute top-4 right-4 text-blue-400/20" size={32} />
                             <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
                                 &quot;{testimonial.quote}&quot;
                             </p>
                             <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-glow to-gold-shimmer flex items-center justify-center text-white text-xs font-bold">
+                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-300 flex items-center justify-center text-white text-xs font-bold">
                                     {testimonial.author[0]}
                                 </div>
                                 <div>

@@ -20,7 +20,11 @@ export const metadata: Metadata = {
     description: "Lead Data Scientist and AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems. Expert in building production-grade AI solutions associated with high-impact business outcomes.",
     keywords: ["Lead Data Scientist", "AI Architect", "Generative AI", "LLM", "Machine Learning", "Dallas", "USA", "RAG", "Vector Search", "Python", "Data Engineering"],
     icons: {
-        icon: '/favicon.ico',
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/favicon.svg', type: 'image/svg+xml' },
+        ],
+        apple: '/apple-touch-icon.png',
     },
     openGraph: {
         title: `${resumeData.personalInfo.name} | ${resumeData.personalInfo.title}`,

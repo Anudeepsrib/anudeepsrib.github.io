@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import resumeData from '@/data/resumeData.json';
 
@@ -31,15 +32,28 @@ const Navbar = () => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'h-16 bg-background/80 backdrop-blur-md border-b border-foreground/5'
+                    ? 'h-16 bg-background/80 backdrop-blur-md border-b border-white/8'
                     : 'h-20 bg-transparent'
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-                    <Link href="/" className="text-xl font-bold font-outfit text-foreground">
-                        <span className="text-gold-glow">{'<'}</span>
-                        Anudeep
-                        <span className="text-gold-shimmer">{' />'}</span>
+                    <Link href="/" className="flex items-center gap-3 group">
+                        {/* Logo */}
+                        <div className="relative w-8 h-8 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <Image
+                                src="/assets/logo.png"
+                                alt="Anudeep Logo"
+                                width={32}
+                                height={32}
+                                className="w-full h-full object-contain"
+                            />
+                        </div>
+                        {/* Name Text */}
+                        <span className="text-xl font-bold font-outfit text-foreground hidden sm:inline">
+                            <span className="text-blue-400">{'<'}</span>
+                            Anudeep
+                            <span className="text-blue-400">{' />'}</span>
+                        </span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -51,17 +65,28 @@ const Navbar = () => {
                                 className="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-gold-glow to-gold-shimmer group-hover:w-full transition-all duration-300" />
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-500 group-hover:w-full transition-all duration-300" />
                             </Link>
                         ))}
 
-                        <div className="h-6 w-px bg-foreground/10" />
+                        <div className="h-6 w-px bg-white/8" />
+
+                        {/* Subscribe Button */}
+                        <a
+                            href="https://substack.com/@anudeepai?utm_campaign=profile&utm_medium=profile-page"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 rounded-lg bg-blue-400/10 hover:bg-blue-400/20 text-blue-400 hover:text-blue-300 border border-blue-400/30 hover:border-blue-400/60 transition-all duration-300 font-medium text-sm flex items-center gap-2 group hover-lift"
+                        >
+                            <span>Subscribe</span>
+                            <span className="text-xs opacity-60 group-hover:opacity-100 transition-opacity">→</span>
+                        </a>
 
                         <div className="flex gap-4">
-                            <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                            <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
                                 <Github size={20} />
                             </a>
-                            <a href={resumeData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                            <a href={resumeData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
                                 <Linkedin size={20} />
                             </a>
                         </div>
@@ -97,11 +122,24 @@ const Navbar = () => {
                                     {link.name}
                                 </Link>
                             ))}
+                            
+                            {/* Mobile Subscribe Button */}
+                            <a
+                                href="https://substack.com/@anudeepai?utm_campaign=profile&utm_medium=profile-page"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="px-4 py-3 rounded-lg bg-blue-400/10 hover:bg-blue-400/20 text-blue-400 hover:text-blue-300 border border-blue-400/30 hover:border-blue-400/60 transition-all duration-300 font-medium text-base flex items-center justify-center gap-2 hover-lift"
+                            >
+                                <span>Subscribe to Newsletter</span>
+                                <span className="text-xs opacity-60">→</span>
+                            </a>
+
                             <div className="flex gap-6 mt-8">
-                                <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white">
+                                <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-blue-400 transition-colors">
                                     <Github size={24} />
                                 </a>
-                                <a href={resumeData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white">
+                                <a href={resumeData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-blue-400 transition-colors">
                                     <Linkedin size={24} />
                                 </a>
                             </div>

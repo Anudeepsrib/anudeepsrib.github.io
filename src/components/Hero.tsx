@@ -14,12 +14,12 @@ const Hero = () => {
             
             {/* Subtle floating glow blobs */}
             <motion.div
-                className="absolute top-1/3 left-1/4 w-96 h-96 bg-gold-glow/10 rounded-full blur-[128px] pointer-events-none"
+                className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-[128px] pointer-events-none"
                 animate={reduceMotion ? undefined : { y: [0, -15, 0] }}
                 transition={reduceMotion ? undefined : { duration: 12, repeat: Infinity, ease: 'easeInOut' }}
             />
             <motion.div
-                className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-royal-glow/10 rounded-full blur-[128px] pointer-events-none"
+                className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-blue-300/10 rounded-full blur-[128px] pointer-events-none"
                 animate={reduceMotion ? undefined : { y: [0, 15, 0] }}
                 transition={reduceMotion ? undefined : { duration: 14, repeat: Infinity, ease: 'easeInOut' }}
             />
@@ -33,13 +33,13 @@ const Hero = () => {
                     animate="show"
                 >
                     {/* Badge */}
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm hover:border-gold-glow/50 transition-colors">
-                        <span className="text-sm font-medium text-gray-300">AI Architect · Researcher · Industry Mentor</span>
+                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/30 mb-6 backdrop-blur-sm hover:border-blue-400/60 transition-colors hover-lift">
+                        <span className="text-sm font-medium text-blue-300">AI Architect · Researcher · Industry Mentor</span>
                     </motion.div>
 
                     {/* Name */}
                     <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit tracking-tight mb-6">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-glow via-white to-gold-shimmer animate-gradient">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
                             Anudeep Sri Bathina
                         </span>
                     </motion.h1>
@@ -79,8 +79,8 @@ const Hero = () => {
                 transition={reduceMotion ? undefined : { delay: 2, duration: 2, repeat: Infinity }}
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center"
             >
-                <span className="block text-xs uppercase tracking-widest text-gold-glow mb-2 font-mono">Scroll Down</span>
-                <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-gold-glow to-transparent mx-auto" />
+                <span className="block text-xs uppercase tracking-widest text-blue-400 mb-2 font-mono">Scroll Down</span>
+                <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-blue-400 to-transparent mx-auto" />
             </motion.div>
         </section>
     );
