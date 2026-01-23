@@ -1,8 +1,8 @@
 import { GraduationCap, Globe, Users, Award, BookOpen, Mic, Handshake, UserCheck, MapPin, Quote } from 'lucide-react';
 
 export const metadata = {
-  title: 'Impact | AI Architect Portfolio',
-  description: 'Teaching, mentoring, publications, and ecosystem impact in AI and data science.',
+    title: 'Impact | AI Architect Portfolio',
+    description: 'Teaching, mentoring, publications, and ecosystem impact in AI and data science.',
 };
 
 const universities = [
@@ -167,7 +167,7 @@ export default function ImpactPage() {
                         >
                             <Quote className="absolute top-4 right-4 text-violet-glow/20" size={32} />
                             <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
-                                "{testimonial.quote}"
+                                &quot;{testimonial.quote}&quot;
                             </p>
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-glow to-cyan-glow flex items-center justify-center text-white text-xs font-bold">

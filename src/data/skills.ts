@@ -40,7 +40,6 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Azure', icon: 'SiMicrosoftazure', color: '#0078D4' },
       { name: 'AWS', icon: 'SiAmazonaws', color: '#FF9900' },
       { name: 'GCP', icon: 'SiGooglecloud', color: '#4285F4' },
-      { name: 'Databricks', icon: 'SiDatabricks', color: '#FF3621' },
     ]
   },
   {

@@ -215,7 +215,7 @@ const Impact = () => {
                         >
                             <Award className="absolute top-4 right-4 text-gold-glow/20" size={32} />
                             <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
-                                "{testimonial.quote}"
+                                &quot;{testimonial.quote}&quot;
                             </p>
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-glow to-gold-shimmer flex items-center justify-center text-white text-xs font-bold">

@@ -71,6 +71,11 @@ const config: Config = {
           glow: "#FFD700",
           dim: "#B8860B",
           shimmer: "#FBF5D4", // Light champagne
+        },
+        royal: {
+          900: "#0b1120", // Deepest blue
+          800: "#1e3a8a", // Dark blue accent
+          glow: "#3b82f6", // Blue glow
         }
       },
       borderRadius: {

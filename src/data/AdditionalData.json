@@ -1,0 +1,226 @@
+{
+    "personalInfo": {
+        "name": "Anudeep Sri Bathina",
+        "title": "Lead Data Scientist | AI Architect",
+        "email": "anudeepSrib@gmail.com",
+        "location": "Plano, TX, United States",
+        "github": "https://github.com/anudeepsrib",
+        "linkedin": "https://www.linkedin.com/in/anudeepsri/",
+        "website": "https://anudeepsrib.github.io",
+        "summary": "Lead Data Scientist with 9+ years of experience building scalable AI systems, LLM/RAG solutions, and production-grade data platforms. Invited speaker at Berlin School of Business and Innovation (BSBI) Café Scientifique (AI in Business, Jun 4, 2021) and guest speaker for academic/industry programs including an STTP on Machine Learning Fundamentals (Dec 3, 2024). Author/contributor to CRC Press / Taylor & Francis publications and active mentor via ADPList and Topmate.",
+        "image": "/assets/profile-pic.jpeg"
+    },
+    "experience": [
+        {
+            "company": "Infosys",
+            "position": "Lead Data Scientist",
+            "startDate": "2024",
+            "endDate": "Present",
+            "description": "Architecting enterprise GenAI solutions and LLM systems. Leading development of Python-based parsers and automated interpretation models. Overseeing API deployments using FastAPI and optimizing retrieval systems with Azure Vector Search and Cosmos DB.",
+            "companyUrl": "https://www.infosys.com",
+            "location": "United States"
+        },
+        {
+            "company": "Capgemini",
+            "position": "Technical Lead",
+            "startDate": "2019",
+            "endDate": "2021",
+            "description": "Directed ML engineering teams to build data pipelines and predictive models. Recognized for high-impact delivery and technical leadership in scaling data products.",
+            "companyUrl": "https://www.capgemini.com",
+            "location": "India"
+        },
+        {
+            "company": "GainInsights Solutions",
+            "position": "Big Data & ML Engineer",
+            "startDate": "2019",
+            "endDate": "2019",
+            "description": "Engineered scalable PySpark pipelines resulting in ~30% performance improvement. Developed client-focused interfaces and optimized database queries for complex datasets.",
+            "companyUrl": "https://www.gain-insights.com",
+            "location": "India"
+        },
+        {
+            "company": "Cognizant",
+            "position": "Data Science Engineer",
+            "startDate": "2015",
+            "endDate": "2019",
+            "description": "Led cloud data migration projects and implemented predictive analytics models; specialized in automated data migration and visualization of key business insights.",
+            "companyUrl": "https://www.cognizant.com",
+            "location": "India"
+        }
+    ],
+    "education": [
+        {
+            "institution": "University of Massachusetts Dartmouth",
+            "degree": "M.S. (Computer Science / Computer & Information Systems)",
+            "startDate": "2021",
+            "endDate": "2024",
+            "description": "Graduate research in computer vision (YOLOv8 and ResNet-50). Focus on advanced algorithms and applied AI.",
+            "institutionUrl": "https://www.umassd.edu"
+        },
+        {
+            "institution": "VIT University",
+            "degree": "B.Tech",
+            "startDate": "2011",
+            "endDate": "2015",
+            "description": "Foundation in Computer Science and Engineering; involvement in robotics projects and technical societies.",
+            "institutionUrl": "https://vit.ac.in"
+        }
+    ],
+    "publications": [
+        {
+            "title": "Blueprint of IoT for Smart Cities: An Emerging Markets Perspective",
+            "publisher": "CRC Press (Taylor & Francis)",
+            "year": "2024",
+            "description": "Co-authored a handbook chapter on IoT blueprinting and management/system challenges for smart city development in emerging markets.",
+            "link": "https://www.taylorfrancis.com/books/9781003649892/chapters/10.1201/9781003649892-5",
+            "doi": "10.1201/9781003649892-5",
+            "supportingLinks": [
+                "https://www.routledge.com/Handbook-of-Artificial-Intelligence-for-Smart-City-Development-Management-Systems-and-Technology-Challenges/Makkar-Ravindran-Chakrabortty-Pal/p/book/9781041094012",
+                "https://api.pageplace.de/preview/DT0400.9781000929119_A46597372/preview-9781000929119_A46597372.pdf"
+            ]
+        }
+    ],
+    "talks": [
+        {
+            "title": "AI in Business (Café Scientifique 5.0)",
+            "event": "Berlin School of Business and Innovation (BSBI)",
+            "year": "2021",
+            "description": "Invited speaker/panellist for BSBI’s Café Scientifique session focused on AI in business.",
+            "links": [
+                "https://www.berlinsbi.com/events-and-webinars/cafe-scientifique/5th-cafe-scientifique",
+                "https://www.berlinsbi.com/newsroom/news/bsbi-hosted-fifth-cafe-scientifique-event"
+            ]
+        },
+        {
+            "title": "Classification Models in Machine Learning (Supervised Learning)",
+            "event": "STTP on Machine Learning Fundamentals — IET On Campus (MBCET)",
+            "year": "2024",
+            "description": "Hands-on session as part of an STTP program; session promoted by IET On Campus-MBCET and MBCET channels.",
+            "links": [
+                "https://www.linkedin.com/posts/iet-mbcet_techinnovation-datascience-futureoftech-activity-7265386187622670336-t-GZ",
+                "https://www.instagram.com/p/DCbEYYEyEri/?hl=en",
+                "https://www.linkedin.com/posts/officialmbcet_unlock-the-world-of-machine-learning-and-activity-7266433585992089601-U9Uw"
+            ]
+        },
+        {
+            "title": "E-Commerce and Revenue Generation using Recommendation Systems",
+            "event": "PVP Siddhartha Institute of Technology (PVPSIT) — Industry Institute Interaction Webinar",
+            "year": "2022",
+            "description": "Invited webinar session listed in PVPSIT institutional documentation.",
+            "links": [
+                "https://www.pvpsiddhartha.ac.in/dep_cse/docs/wo_21-22.pdf",
+                "https://www.pvpsiddhartha.ac.in/naac_2023/5.1.3.List%20of%20programs%28WW%29.pdf"
+            ]
+        },
+        {
+            "title": "Hack-The-Idea (Mentor)",
+            "event": "JECRC University (AQAR / Criteria 5 documentation)",
+            "year": "2021",
+            "description": "Mentor mention in JECRC University AQAR documentation for Hack-The-Idea (Euphoria 2021).",
+            "links": [
+                "https://jecrcuniversity.edu.in/aqar202021/Criteria%205/5.3.3.pdf"
+            ]
+        }
+    ],
+    "skills": [
+        "Generative AI",
+        "Large Language Models (LLMs)",
+        "RAG Systems",
+        "Vector Databases",
+        "Python",
+        "PySpark",
+        "FastAPI",
+        "Azure Cloud",
+        "AWS",
+        "Google Cloud Platform",
+        "Databricks",
+        "Docker & Kubernetes",
+        "Machine Learning",
+        "Data Engineering",
+        "SQL",
+        "TypeScript",
+        "React",
+        "Next.js"
+    ],
+    "projects": [
+        {
+            "name": "Smart Portfolio with AI Chat",
+            "description": "A Next.js portfolio featuring a RAG-based AI chatbot capable of answering questions about my professional background.",
+            "technologies": [
+                "Next.js",
+                "LLMs",
+                "RAG",
+                "Vector Search"
+            ],
+            "link": "https://github.com/anudeepsrib"
+        },
+        {
+            "name": "Handbook Chapter: IoT Blueprinting for Smart Cities",
+            "description": "CRC Press / Taylor & Francis publication contribution focused on IoT blueprinting and smart city development challenges.",
+            "technologies": [
+                "Research",
+                "IoT",
+                "Smart Cities",
+                "Publication"
+            ],
+            "link": "https://www.taylorfrancis.com/books/9781003649892/chapters/10.1201/9781003649892-5"
+        }
+    ],
+    "languages": [
+        {
+            "language": "English",
+            "proficiency": "Professional"
+        }
+    ],
+    "certifications": [
+        {
+            "name": "AI Agents in LangGraph",
+            "date": "2024",
+            "description": "DeepLearning.ai Certification"
+        },
+        {
+            "name": "Safe and Reliable AI",
+            "date": "2024",
+            "description": "DeepLearning.ai Certification"
+        },
+        {
+            "name": "Generative AI with LLMs",
+            "date": "2024",
+            "description": "DeepLearning.ai Certification"
+        }
+    ],
+    "interests": [
+        "Open Source Contributions",
+        "AI and Machine Learning",
+        "Software Architecture",
+        "Mentoring"
+    ],
+    "softSkills": [
+        "Leadership",
+        "Mentoring",
+        "Problem Solving",
+        "Communication"
+    ],
+    "evidence": {
+        "institutionalMentions": [
+            {
+                "source": "MBCET UGC Report (July 2024 – June 2025)",
+                "description": "Lists Anudeep Sri Bathina in the institutional report for the academic year (resource person / invited expert context).",
+                "link": "https://mbcet.ac.in/wp-content/uploads/2025/11/UGC-Report_July-2024-June-2025.pdf"
+            },
+            {
+                "source": "PVPSIT CSE Documentation",
+                "description": "Institutional documentation listing invited sessions including recommendation systems / big data webinars.",
+                "link": "https://www.pvpsiddhartha.ac.in/dep_cse/docs/wo_21-22.pdf"
+            }
+        ],
+        "mentorshipProfiles": [
+            {
+                "platform": "Topmate",
+                "description": "Mentor profile including guest speaker offering.",
+                "link": "https://topmate.io/anudeepsri"
+            }
+        ],
+        "nameDisambiguation": "Also referenced as Anudeep Sri Bathina / Anudeep-Sri Bathina / Anudeep Bathina in institutional and publisher records."
+    }
+}

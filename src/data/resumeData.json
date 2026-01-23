@@ -3,11 +3,11 @@
     "name": "Anudeep Sri Bathina",
     "title": "Lead Data Scientist | AI Architect",
     "email": "anudeepSrib@gmail.com",
-    "location": "Boston, MA",
+    "location": "Plano, TX, United States",
     "github": "https://github.com/anudeepsrib",
     "linkedin": "https://www.linkedin.com/in/anudeepsri/",
     "website": "https://anudeepsrib.github.io",
-    "summary": "Lead Data Scientist with 9+ years of expertise in architecting scalable AI systems, Large Language Models (LLMs), and retrieval pipelines. I specialize in designing production-grade data platforms and deploying Generative AI solutions that drive enterprise innovation. Recognized as a thought leader, author, and mentor, I actively contribute to the global AI community through publications, talks, and workforce development.",
+    "summary": "Lead Data Scientist with 9+ years of experience building scalable AI systems, LLM/RAG solutions, and production-grade data platforms. Invited speaker at Berlin School of Business and Innovation (BSBI) Café Scientifique (AI in Business, Jun 4, 2021) and guest speaker for academic/industry programs including an STTP on Machine Learning Fundamentals (Dec 3, 2024). Author/contributor to CRC Press / Taylor & Francis publications and active mentor via ADPList and Topmate.",
     "image": "/assets/profile-pic.jpeg"
   },
   "experience": [
@@ -16,16 +16,16 @@
       "position": "Lead Data Scientist",
       "startDate": "2024",
       "endDate": "Present",
-      "description": "Architecting enterprise GenAI solutions and LLM systems. Leading the development of customized data solutions, including Python-based parsers and automated data interpretation models. Overseeing deployment of APIs using FastAPI and optimizing retrieval systems with Azure Vector Search and Cosmos DB.",
+      "description": "Architecting enterprise GenAI solutions and LLM systems. Leading development of Python-based parsers and automated interpretation models. Overseeing API deployments using FastAPI and optimizing retrieval systems with Azure Vector Search and Cosmos DB.",
       "companyUrl": "https://www.infosys.com",
-      "location": "USA"
+      "location": "United States"
     },
     {
       "company": "Capgemini",
       "position": "Technical Lead",
       "startDate": "2019",
       "endDate": "2021",
-      "description": "Directed ML engineering teams to build robust data pipelines and predictive models. Awarded the ‘Extra Mile Award’ for high-impact delivery and technical leadership in scaling data products.",
+      "description": "Directed ML engineering teams to build data pipelines and predictive models. Recognized for high-impact delivery and technical leadership in scaling data products.",
       "companyUrl": "https://www.capgemini.com",
       "location": "India"
     },
@@ -43,68 +43,65 @@
       "position": "Data Science Engineer",
       "startDate": "2015",
       "endDate": "2019",
-      "description": "Led cloud data migration projects and implemented predictive analytics models. specialized in automated data migration and visualization of key business insights.",
+      "description": "Led cloud data migration projects and implemented predictive analytics models; specialized in automated data migration and visualization of key business insights.",
       "companyUrl": "https://www.cognizant.com",
       "location": "India"
     }
   ],
   "education": [
     {
-      "institution": "University of Massachusetts Amherst",
-      "degree": "M.S. Computer Science",
+      "institution": "University of Massachusetts Dartmouth",
+      "degree": "M.S. (Computer Science / CIS)",
       "startDate": "2021",
       "endDate": "2024",
-      "description": "Specialized research on domain-adapted computer vision using YOLOv8 and ResNet-50. Focus on Advanced Algorithms and AI.",
-      "institutionUrl": "https://www.umass.edu"
+      "description": "Graduate research in computer vision (YOLOv8 and ResNet-50). Focus on advanced algorithms and applied AI.",
+      "institutionUrl": "https://www.umassd.edu"
     },
     {
       "institution": "VIT University",
       "degree": "B.Tech",
       "startDate": "2011",
       "endDate": "2015",
-      "description": "Foundation in Computer Science and Engineering. Active involvement in robotics projects and technical societies.",
+      "description": "Foundation in Computer Science and Engineering; active involvement in robotics projects and technical societies.",
       "institutionUrl": "https://vit.ac.in"
     }
   ],
   "publications": [
     {
-      "title": "Blueprint of IoT for Smart Cities: An Emerging Markets Perspective",
-      "publisher": "CRC Press",
+      "title": "Blueprint of IoT for Smart Cities",
+      "publisher": "CRC Press (Taylor & Francis)",
       "year": "2024",
-      "description": "Co-authored chapter in 'Handbook of Artificial Intelligence for Smart City Development'. Discusses management systems and technology challenges in smart city implementations.",
+      "description": "Co-authored a handbook chapter on IoT blueprinting and management/system challenges for smart city development in emerging markets.",
       "link": "https://doi.org/10.1201/9781003225317"
     }
   ],
   "talks": [
     {
-      "title": "Generative AI & LLMs",
-      "event": "Analytics Vidhya",
-      "year": "2023",
-      "description": "Led workshops on the practical applications of Generative AI and Large Language Models."
-    },
-    {
-      "title": "Recommendation Systems",
-      "event": "PVP Siddhartha",
-      "year": "2022",
-      "description": "Expert talk on building and scaling recommendation engines."
-    },
-    {
-      "title": "Innovation in AI",
-      "event": "VIT University",
-      "year": "2022",
-      "description": "Guest lecture on emerging trends and innovation in Artificial Intelligence."
-    },
-    {
-      "title": "AI in Business",
-      "event": "Berlin School of Business & Innovation",
+      "title": "AI in Business (Café Scientifique 5.0)",
+      "event": "Berlin School of Business and Innovation (BSBI)",
       "year": "2021",
-      "description": "Panel discussion on the strategic implementation of AI in business contexts."
+      "description": "Invited speaker/panellist for BSBI’s Café Scientifique session.",
+      "links": [
+        "https://www.berlinsbi.com/events-and-webinars/cafe-scientifique/5th-cafe-scientifique"
+      ]
     },
     {
-      "title": "AI for Everyone",
-      "event": "DeepLearning.AI (Pie & AI)",
-      "year": "2020",
-      "description": "Speaker at the Lahore chapter event, demystifying AI concepts for a broad audience."
+      "title": "Classification Models in ML",
+      "event": "STTP - IET On Campus (MBCET)",
+      "year": "2024",
+      "description": "Hands-on session as part of an STTP program on Machine Learning Fundamentals.",
+      "links": [
+        "https://www.linkedin.com/posts/iet-mbcet_techinnovation-datascience-futureoftech-activity-7265386187622670336-t-GZ"
+      ]
+    },
+    {
+      "title": "Rec Systems for E-Commerce",
+      "event": "PVP Siddhartha Institute (PVPSIT)",
+      "year": "2022",
+      "description": "Invited webinar session listed in PVPSIT institutional documentation.",
+      "links": [
+        "https://www.pvpsiddhartha.ac.in/dep_cse/docs/wo_21-22.pdf"
+      ]
     }
   ],
   "skills": [
@@ -130,23 +127,22 @@
   "projects": [
     {
       "name": "Smart Portfolio with AI Chat",
-      "description": "A Next.js 15 portfolio featuring a RAG-based AI chatbot capable of answering questions about my professional background. Built with LangChain and OpenAI.",
+      "description": "Next.js portfolio with RAG-based AI chatbot.",
       "technologies": [
         "Next.js",
-        "OpenAI",
-        "LangChain",
+        "LLMs",
+        "RAG",
         "Vector Search"
       ],
       "link": "https://github.com/anudeepsrib"
     },
     {
-      "name": "Handbook of AI for Smart Cities",
-      "description": "Research contribution to CRC Press. Explored IoT blueprints and AI integration for urban development in emerging markets.",
+      "name": "Handbook Chapter: IoT Blueprinting",
+      "description": "CRC Press / Taylor & Francis research contribution.",
       "technologies": [
         "Research",
         "IoT",
-        "Smart Cities",
-        "Publication"
+        "Smart Cities"
       ],
       "link": "https://doi.org/10.1201/9781003225317"
     }

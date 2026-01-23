@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import resumeData from '@/data/resumeData.json';
 
@@ -17,6 +18,8 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
+        { name: 'Recognitions', href: '/recognitions' },
+        { name: 'Mentorship', href: '/mentorship' },
         { name: 'Journey', href: '/journey' },
         { name: 'Blog', href: '/blog' },
     ];
@@ -33,23 +36,23 @@ const Navbar = () => {
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-                    <a href="#" className="text-xl font-bold font-outfit text-foreground">
+                    <Link href="/" className="text-xl font-bold font-outfit text-foreground">
                         <span className="text-gold-glow">{'<'}</span>
                         Anudeep
                         <span className="text-gold-shimmer">{' />'}</span>
-                    </a>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
-                            <a
+                            <Link
                                 key={link.name}
                                 href={link.href}
                                 className="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group"
                             >
                                 {link.name}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-gold-glow to-gold-shimmer group-hover:w-full transition-all duration-300" />
-                            </a>
+                            </Link>
                         ))}
 
                         <div className="h-6 w-px bg-foreground/10" />
@@ -85,14 +88,14 @@ const Navbar = () => {
                     >
                         <div className="flex flex-col gap-6">
                             {navLinks.map((link) => (
-                                <a
+                                <Link
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="text-2xl font-bold text-foreground/80 hover:text-foreground"
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
                             ))}
                             <div className="flex gap-6 mt-8">
                                 <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white">

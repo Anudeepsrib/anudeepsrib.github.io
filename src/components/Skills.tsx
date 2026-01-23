@@ -19,7 +19,7 @@ const Skills = () => {
     };
 
     return (
-        <section id="skills" className="py-24 relative">
+        <section id="skills" className="py-16 relative">
             <div className="absolute inset-0 bg-obsidian-900" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
