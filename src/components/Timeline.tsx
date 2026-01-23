@@ -1,16 +1,20 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import resumeData from '@/data/resumeData.json';
 import { Briefcase } from 'lucide-react';
+import { fadeUp, stagger } from '@/lib/animation';
 
 const Timeline = () => {
+    const reduceMotion = useReducedMotion();
+
     return (
         <section id="experience" className="py-24 relative bg-obsidian-800/50">
             <div className="max-w-7xl mx-auto px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    variants={stagger}
+                    initial={reduceMotion ? 'show' : 'hidden'}
+                    whileInView="show"
                     viewport={{ once: true }}
                     className="mb-16"
                 >
@@ -30,8 +34,7 @@ const Timeline = () => {
                         {resumeData.experience.map((job, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                variants={fadeUp}
                                 viewport={{ once: true, margin: "-100px" }}
                                 className={`flex flex-col md:flex-row gap-8 relative ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
                                     }`}

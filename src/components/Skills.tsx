@@ -1,7 +1,9 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import * as Si from 'react-icons/si';
+import * as Tb from 'react-icons/tb';
+import { fadeUp, stagger } from '@/lib/animation';
 import { skillCategories } from '@/data/skills';
 import { Code2, Layout, Cloud, Container } from 'lucide-react';
 
@@ -13,9 +15,14 @@ const categoryIcons: Record<string, React.ElementType> = {
 };
 
 const Skills = () => {
+    const reduceMotion = useReducedMotion();
     const getIconComponent = (iconName: string) => {
-        const Icon = (Si as any)[iconName];
-        return Icon ? Icon : null;
+        // Check the main Si pack first, then Tb (some brand icons live in other packs)
+        const IconSi = (Si as any)[iconName];
+        if (IconSi) return IconSi;
+        const IconTb = (Tb as any)[iconName];
+        if (IconTb) return IconTb;
+        return null;
     };
 
     return (
@@ -24,8 +31,9 @@ const Skills = () => {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    variants={stagger}
+                    initial={reduceMotion ? 'show' : 'hidden'}
+                    whileInView="show"
                     viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
@@ -39,7 +47,10 @@ const Skills = () => {
                         </span>
                     </h2>
                     <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                        A curated stack of technologies I use to build scalable AI systems and data platforms.
+                        I focus on building reliable, secure, and observable AI systems that scale beyond prototypes.
+                    </p>
+                    <p className="text-sm text-gray-400 max-w-2xl mx-auto mt-3">
+                        RAG & Retrieval Systems · Agent Tool-Calling · AI Evaluation & Guardrails · Cloud-Native Deployment · Observability & Cost Control
                     </p>
                 </motion.div>
 
@@ -49,10 +60,7 @@ const Skills = () => {
                         return (
                             <motion.div
                                 key={category.name}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: catIndex * 0.1 }}
+                                variants={fadeUp}
                                 className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-glow/30 transition-all"
                             >
                                 <div className="flex items-center gap-3 mb-4">
@@ -71,10 +79,7 @@ const Skills = () => {
                                         return (
                                             <motion.div
                                                 key={skill.name}
-                                                initial={{ opacity: 0, scale: 0.9 }}
-                                                whileInView={{ opacity: 1, scale: 1 }}
-                                                viewport={{ once: true }}
-                                                transition={{ delay: index * 0.05 }}
+                                                variants={fadeUp}
                                                 whileHover={{ scale: 1.05 }}
                                                 className="group relative p-4 bg-white/5 border border-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center gap-2 cursor-default"
                                             >

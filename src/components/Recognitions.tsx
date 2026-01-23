@@ -24,6 +24,15 @@ const recognitions = [
                 description: "Delivered advanced technical sessions as part of a structured training program for researchers.",
                 link: "https://www.linkedin.com/posts/iet-mbcet_techinnovation-datascience-futureoftech-activity-7265386187622670336-t-GZ",
                 linkText: "View Program Post"
+            },
+            {
+                title: "Guest Lecturer — Vellore Institute of Technology (VIT)",
+                organization: "Vellore Institute of Technology (VIT)",
+                description: "Delivered invited lectures on software engineering topics including “Recent Trends in Software Tools and Standards” and “Database Management Systems in Industry” for undergraduate and postgraduate students, showcasing industry best practices bridging academia and enterprise practice.",
+                link: "https://chennai.vit.ac.in/files/guestlecture2017.pdf",
+                linkText: "Guest Lecture Announcement (PDF)",
+                link2: "https://chennai.vit.ac.in/files/VITCC-SCSE-Volume-7-Issue-4-October-2017.pdf",
+                linkText2: "VIT SCSE Publication (PDF)"
             }
         ]
     },
@@ -135,15 +144,31 @@ const Recognitions = () => {
                                             <p className="text-gray-400 text-sm leading-relaxed mb-6">
                                                 {item.description}
                                             </p>
-                                            <a
-                                                href={item.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 py-2 px-4 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white hover:bg-white/10 hover:border-white/30 transition-all"
-                                            >
-                                                {item.linkText}
-                                                <ExternalLink size={14} className="opacity-50" />
-                                            </a>
+                                            <div className="flex flex-wrap gap-3">
+                                                {item.link && (
+                                                    <a
+                                                        href={item.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center gap-2 py-2 px-4 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white hover:bg-white/10 hover:border-white/30 transition-all"
+                                                    >
+                                                        {item.linkText}
+                                                        <ExternalLink size={14} className="opacity-50" />
+                                                    </a>
+                                                )}
+
+                                                {item.link2 && (
+                                                    <a
+                                                        href={item.link2}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center gap-2 py-2 px-4 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white hover:bg-white/10 hover:border-white/30 transition-all"
+                                                    >
+                                                        {item.linkText2}
+                                                        <ExternalLink size={14} className="opacity-50" />
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
 
                                         {/* Hover Glow Effect */}
