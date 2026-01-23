@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Users, GraduationCap, Briefcase, ExternalLink, Award, Mic, MessageSquare, Video } from 'lucide-react';
+import { fadeUp, stagger } from '@/lib/animation';
 
 interface MentorshipItem {
     title: string;
@@ -106,6 +107,8 @@ const mentorshipGroups: MentorshipGroup[] = [
 ];
 
 const Mentorship = () => {
+    const reduceMotion = useReducedMotion();
+
     return (
         <section id="mentorship" className="py-24 relative overflow-hidden bg-obsidian-900">
             {/* Background Glows */}
@@ -114,8 +117,9 @@ const Mentorship = () => {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    variants={stagger}
+                    initial={reduceMotion ? 'show' : 'hidden'}
+                    whileInView="show"
                     viewport={{ once: true }}
                     className="mb-20 text-center md:text-left"
                 >
@@ -130,7 +134,7 @@ const Mentorship = () => {
                         </span>
                     </h2>
                     <p className="text-xl text-gray-400 max-w-2xl">
-                        Empowering the next generation of AI professionals through structured fellowship programs, 1-on-1 coaching, and academic instruction.
+                        Invited speaker and industry mentor across universities, global education platforms, and enterprise programs, with work referenced in institutional reports and publications.
                     </p>
                 </motion.div>
 
@@ -149,10 +153,8 @@ const Mentorship = () => {
                                 {group.items.map((item, itemIdx) => (
                                     <motion.div
                                         key={itemIdx}
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        variants={fadeUp}
                                         viewport={{ once: true }}
-                                        transition={{ delay: itemIdx * 0.1 }}
                                         className={`group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-white/20 transition-all duration-300 ${group.glow}`}
                                     >
                                         <div className="relative z-10">

@@ -133,3 +133,27 @@
         box-shadow: 0 0 20px 5px var(--gold-glow);
     }
 }
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 8s linear infinite;
+    background-repeat: no-repeat;
+}
+
+@keyframes parallax {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-12px) translateX(8px); }
+    100% { transform: translateY(0) translateX(0); }
+}
+
+.parallax-float { animation: parallax 12s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-glow, .animate-gradient, .parallax-float { animation: none !important; }
+} 

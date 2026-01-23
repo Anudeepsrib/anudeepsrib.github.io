@@ -37,8 +37,8 @@ export const skillCategories: SkillCategory[] = [
     name: 'Cloud Platforms',
     description: 'Enterprise cloud infrastructure',
     skills: [
-      { name: 'Azure', icon: 'SiMicrosoftazure', color: '#0078D4' },
-      { name: 'AWS', icon: 'SiAmazonaws', color: '#FF9900' },
+      { name: 'Azure', icon: 'TbBrandAzure', color: '#0078D4' },
+      { name: 'AWS', icon: 'SiAmazonwebservices', color: '#FF9900' },
       { name: 'GCP', icon: 'SiGooglecloud', color: '#4285F4' },
     ]
   },
