@@ -17,7 +17,7 @@ export default function JourneyPage() {
             <Navbar />
             <Suspense fallback={
                 <div className="flex justify-center items-center h-64">
-                    <Loader className="animate-spin text-violet-glow" size={48} />
+                    <Loader className="animate-spin text-gold-glow" size={48} />
                 </div>
             }>
                 <Timeline />
