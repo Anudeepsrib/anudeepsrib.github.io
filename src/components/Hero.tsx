@@ -1,13 +1,10 @@
 'use client';
-import React, { Suspense, useState } from 'react';
+import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { heroContainer, fadeUp } from '@/lib/animation';
-import HeroLottie from './HeroLottie';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const Hero = () => {
     const reduceMotion = useReducedMotion();
-    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -29,9 +26,8 @@ const Hero = () => {
             {/* Gradient Overlay for Text Readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-obsidian-900/60 via-transparent to-transparent pointer-events-none z-[5]" />
 
-            {/* Content Grid */}
-            <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Left: Text Content */}
+            {/* Content */}
+            <div className="max-w-4xl mx-auto px-6 relative z-10 w-full text-center">
                 <motion.div
                     variants={heroContainer}
                     initial={reduceMotion ? 'show' : 'hidden'}
@@ -63,34 +59,8 @@ const Hero = () => {
                         Trusted by 1,000+ learners and global institutions
                     </motion.p>
 
-                    {/* Collapsible Detailed Paragraph */}
-                    <motion.div variants={fadeUp} className="mb-6">
-                        {!isExpanded ? (
-                            <button
-                                onClick={() => setIsExpanded(true)}
-                                className="text-sm text-blue-400 hover:text-blue-300 flex items-center gap-1 transition-colors"
-                            >
-                                Learn more
-                                <ChevronDown size={16} />
-                            </button>
-                        ) : (
-                            <div className="space-y-2">
-                                <p className="text-base md:text-lg text-gray-400 leading-relaxed">
-                                    I design and deliver production-grade AI systems, including RAG, multi-agent orchestration, evaluation, security, and deployment. These systems are used by real teams in real environments.
-                                </p>
-                                <button
-                                    onClick={() => setIsExpanded(false)}
-                                    className="text-sm text-blue-400 hover:text-blue-300 flex items-center gap-1 transition-colors"
-                                >
-                                    Show less
-                                    <ChevronUp size={16} />
-                                </button>
-                            </div>
-                        )}
-                    </motion.div>
-
                     {/* Clickable Social Proof Badges */}
-                    <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-8">
+                    <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 mb-8">
                         <a
                             href="#experience"
                             className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 hover:border-blue-400/50 hover:text-white transition-all cursor-pointer"
@@ -117,7 +87,7 @@ const Hero = () => {
                     {/* CTA Hierarchy */}
                     <motion.div variants={fadeUp} className="space-y-4 mb-6">
                         {/* Primary CTA */}
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
                                 href="https://adplist.org/mentors/anudeep-sri-bathina"
                                 target="_blank"
@@ -160,34 +130,7 @@ const Hero = () => {
                         </div>
                     </motion.div>
                 </motion.div>
-
-                {/* Right: Lottie Animation - Reduced Contrast */}
-                <motion.div
-                    initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                    className="hidden lg:flex items-center justify-center relative"
-                >
-                    {/* Overlay to reduce illustration brightness */}
-                    <div className="absolute inset-0 bg-obsidian-900/20 rounded-2xl pointer-events-none z-10" />
-                    <div className="relative opacity-80">
-                        <Suspense fallback={<div className="w-80 h-80 bg-white/5 rounded-2xl animate-pulse" />}>
-                            <HeroLottie />
-                        </Suspense>
-                    </div>
-                </motion.div>
             </div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: [0, 10, 0] }}
-                transition={reduceMotion ? undefined : { delay: 2, duration: 2, repeat: Infinity }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center"
-            >
-                <span className="block text-xs uppercase tracking-widest text-blue-400 mb-2 font-mono">Scroll Down</span>
-                <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-blue-400 to-transparent mx-auto" />
-            </motion.div>
         </section>
     );
 };
