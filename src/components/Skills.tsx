@@ -47,10 +47,7 @@ const Skills = () => {
                         </span>
                     </h2>
                     <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                        I focus on building reliable, secure, and observable AI systems that scale beyond prototypes.
-                    </p>
-                    <p className="text-sm text-gray-400 max-w-2xl mx-auto mt-3">
-                        RAG & Retrieval Systems · Agent Tool-Calling · AI Evaluation & Guardrails · Cloud-Native Deployment · Observability & Cost Control
+                        I focus on building reliable, secure, and observable AI systems that can scale beyond prototypes. RAG & Retrieval Systems, Agent Tool-Calling, AI Evaluation & Guardrails, Cloud-Native Deployment, Observability & Cost Control
                     </p>
                 </motion.div>
 

@@ -138,13 +138,33 @@ export default function ImpactPage() {
                         {impactMetrics.map((metric, index) => (
                             <div
                                 key={metric.label}
-                                className="p-5 rounded-xl bg-gradient-to-br from-white/5 to-white/5 border border-white/10 text-center hover:border-gold-glow/30 transition-all group"
+                                className="p-5 rounded-xl bg-gradient-to-br from-white/5 to-white/5 border border-white/10 text-center hover:border-violet-glow/30 transition-all group"
                             >
-                                <metric.icon className="mx-auto mb-2 text-gold-glow group-hover:scale-110 transition-transform" size={24} />
+                                <metric.icon className="mx-auto mb-2 text-violet-glow group-hover:scale-110 transition-transform" size={24} />
                                 <div className="text-2xl md:text-3xl font-bold text-white mb-1">{metric.value}</div>
                                 <div className="text-xs text-gray-400">{metric.label}</div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Credibility-to-Conversion CTAs */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                        <a
+                            href="mailto:anudeepsrib@gmail.com?subject=Speaking%20Inquiry"
+                            className="px-6 py-3 bg-violet-glow/10 border border-violet-glow/20 text-violet-glow rounded-lg hover:bg-violet-glow/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                        >
+                            Invite Me to Speak / Teach
+                            <span className="text-xs">→</span>
+                        </a>
+                        <a
+                            href="/assets/speaker-kit.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                        >
+                            Download Speaker Kit / One-Pager
+                            <span className="text-xs">→</span>
+                        </a>
                     </div>
                 </div>
 
@@ -156,6 +176,28 @@ export default function ImpactPage() {
                             I guide learners and professionals through Great Learning, Topmate, ADPList, and global communities—helping them build strong foundations in AI, ML, data science, and cloud technologies.
                         </p>
                     </div>
+
+                    {/* Mentorship CTAs - Above Testimonials */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                        <a
+                            href="https://adplist.org/mentors/anudeep-sri-bathina"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 bg-gold-glow/10 border border-gold-glow/20 text-gold-glow rounded-lg hover:bg-gold-glow/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                        >
+                            See Mentoring Options
+                            <span className="text-xs">→</span>
+                        </a>
+                        <a
+                            href="https://adplist.org/mentors/anudeep-sri-bathina"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                        >
+                            Book a Session
+                            <span className="text-xs">→</span>
+                        </a>
+                    </div>
                 </div>
 
                 {/* Testimonials */}
@@ -163,9 +205,9 @@ export default function ImpactPage() {
                     {testimonials.map((testimonial, index) => (
                         <div
                             key={index}
-                                className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:shadow-lg hover:shadow-gold-glow/5 transition-all"
+                            className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:shadow-lg hover:shadow-gold-glow/5 transition-all"
                         >
-                                <Quote className="absolute top-4 right-4 text-gold-glow/20" size={32} />
+                            <Quote className="absolute top-4 right-4 text-gold-glow/20" size={32} />
                             <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
                                 &quot;{testimonial.quote}&quot;
                             </p>
@@ -180,6 +222,28 @@ export default function ImpactPage() {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                {/* Mentorship CTAs - Below Testimonials */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    <a
+                        href="https://adplist.org/mentors/anudeep-sri-bathina"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 bg-gold-glow/10 border border-gold-glow/20 text-gold-glow rounded-lg hover:bg-gold-glow/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                    >
+                        See Mentoring Options
+                        <span className="text-xs">→</span>
+                    </a>
+                    <a
+                        href="https://adplist.org/mentors/anudeep-sri-bathina"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                    >
+                        Book a Session
+                        <span className="text-xs">→</span>
+                    </a>
                 </div>
             </div>
         </section>
