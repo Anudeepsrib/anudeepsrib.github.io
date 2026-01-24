@@ -57,6 +57,33 @@ const Hero = () => {
                     <motion.p variants={fadeUp} className="text-base md:text-lg text-gray-400 mb-10 leading-relaxed">
                         I design and deliver production-grade AI systems, including RAG, multi-agent orchestration, evaluation, security, and deployment. These systems are used by real teams in real environments.
                     </motion.p>
+
+                    {/* Primary CTA Row */}
+                    <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a
+                            href="https://topmate.io/anudeepsri"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 bg-blue-400 text-black font-bold rounded-lg hover:bg-blue-300 transition-all duration-300 flex items-center justify-center gap-2 hover-lift"
+                        >
+                            Book Mentoring
+                            <span className="text-xs">→</span>
+                        </a>
+                        <a
+                            href="#experience"
+                            className="px-6 py-3 bg-white/10 border border-white/20 text-white font-medium rounded-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 hover-lift"
+                        >
+                            View Projects / Case Studies
+                            <span className="text-xs">→</span>
+                        </a>
+                        <a
+                            href="mailto:anudeepsrib@gmail.com"
+                            className="px-6 py-3 bg-transparent border border-blue-400/30 text-blue-400 font-medium rounded-lg hover:bg-blue-400/10 transition-all duration-300 flex items-center justify-center gap-2 hover-lift"
+                        >
+                            Contact
+                            <span className="text-xs">→</span>
+                        </a>
+                    </motion.div>
                 </motion.div>
 
                 {/* Right: Lottie Animation */}

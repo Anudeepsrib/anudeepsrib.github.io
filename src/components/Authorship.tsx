@@ -56,9 +56,31 @@ const Authorship = () => {
                                 <span>•</span>
                                 <span>{pub.year}</span>
                             </div>
-                            <p className="text-gray-400 leading-relaxed text-sm">
+                            <p className="text-gray-400 leading-relaxed text-sm mb-4">
                                 {pub.description}
                             </p>
+                            
+                            {/* Authorship CTAs */}
+                            <div className="flex flex-col gap-2 mt-4">
+                                <a
+                                    href="#publications"
+                                    className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        // Scroll to publications list or expand view
+                                    }}
+                                >
+                                    View Publications
+                                    <span className="text-xs">→</span>
+                                </a>
+                                <a
+                                    href="mailto:anudeepsrib@gmail.com?subject=Publication%20Inquiry"
+                                    className="text-white hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
+                                >
+                                    Request a Copy / Discuss Collaboration
+                                    <span className="text-xs">→</span>
+                                </a>
+                            </div>
                         </motion.a>
                     ))}
                 </div>

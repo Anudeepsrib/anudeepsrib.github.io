@@ -82,6 +82,17 @@ const Navbar = () => {
                             <span className="text-xs opacity-60 group-hover:opacity-100 transition-opacity">→</span>
                         </a>
 
+                        {/* Book Mentoring Button */}
+                        <a
+                            href="https://topmate.io/anudeepsrib"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 rounded-lg bg-gold-glow/10 hover:bg-gold-glow/20 text-gold-glow hover:text-gold-shimmer border border-gold-glow/30 hover:border-gold-glow/60 transition-all duration-300 font-medium text-sm flex items-center gap-2 group hover-lift"
+                        >
+                            <span>Book Mentoring</span>
+                            <span className="text-xs opacity-60 group-hover:opacity-100 transition-opacity">→</span>
+                        </a>
+
                         <div className="flex gap-4">
                             <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
                                 <Github size={20} />
@@ -132,6 +143,18 @@ const Navbar = () => {
                                 className="px-4 py-3 rounded-lg bg-blue-400/10 hover:bg-blue-400/20 text-blue-400 hover:text-blue-300 border border-blue-400/30 hover:border-blue-400/60 transition-all duration-300 font-medium text-base flex items-center justify-center gap-2 hover-lift"
                             >
                                 <span>Subscribe to Newsletter</span>
+                                <span className="text-xs opacity-60">→</span>
+                            </a>
+
+                            {/* Mobile Book Mentoring Button */}
+                            <a
+                                href="https://topmate.io/anudeepsrib"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="px-4 py-3 rounded-lg bg-gold-glow/10 hover:bg-gold-glow/20 text-gold-glow hover:text-gold-shimmer border border-gold-glow/30 hover:border-gold-glow/60 transition-all duration-300 font-medium text-base flex items-center justify-center gap-2 hover-lift"
+                            >
+                                <span>Book Mentoring</span>
                                 <span className="text-xs opacity-60">→</span>
                             </a>
 
