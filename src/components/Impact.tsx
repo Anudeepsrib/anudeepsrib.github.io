@@ -154,31 +154,6 @@ const Impact = () => {
                     </motion.div>
                 </div>
 
-                {/* Impact Metrics */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {impactMetrics.map((metric, index) => (
-                            <motion.div
-                                key={metric.label}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.05 }}
-                                className="p-5 rounded-xl bg-gradient-to-br from-white/5 to-white/5 border border-white/8 text-center hover:border-blue-400/30 transition-all group hover-lift"
-                            >
-                                <metric.icon className="mx-auto mb-2 text-blue-400 group-hover:scale-110 transition-transform" size={24} />
-                                <div className="text-2xl md:text-3xl font-bold text-white mb-1">{metric.value}</div>
-                                <div className="text-xs text-gray-400">{metric.label}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
                 {/* Mentoring Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -203,32 +178,72 @@ const Impact = () => {
                 </motion.div>
 
                 {/* Testimonials */}
-                <div className="grid md:grid-cols-3 gap-6">
-                    {testimonials.map((testimonial, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="relative p-6 rounded-2xl bg-white/5 border border-white/8 hover:shadow-lg hover:shadow-blue-400/5 transition-all hover-lift"
-                        >
-                            <Award className="absolute top-4 right-4 text-blue-400/20" size={32} />
-                            <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
-                                &quot;{testimonial.quote}&quot;
-                            </p>
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-300 flex items-center justify-center text-white text-xs font-bold">
-                                    {testimonial.author[0]}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
+                >
+                    <div className="text-center mb-8">
+                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">What Learners & Mentees Say</h3>
+                        <p className="text-gray-400 max-w-2xl mx-auto">
+                            Real feedback from professionals I've mentored and learners I've taught.
+                        </p>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {testimonials.map((testimonial, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="relative p-6 rounded-2xl bg-white/5 border border-white/8 hover:shadow-lg hover:shadow-blue-400/5 transition-all hover-lift"
+                            >
+                                <Award className="absolute top-4 right-4 text-blue-400/20" size={32} />
+                                <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
+                                    &quot;{testimonial.quote}&quot;
+                                </p>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-300 flex items-center justify-center text-white text-xs font-bold">
+                                        {testimonial.author[0]}
+                                    </div>
+                                    <div>
+                                        <div className="text-sm font-medium text-white">{testimonial.author}</div>
+                                        <div className="text-xs text-gray-400">{testimonial.source}</div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <div className="text-sm font-medium text-white">{testimonial.author}</div>
-                                    <div className="text-xs text-gray-400">{testimonial.source}</div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* Mentorship CTAs */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col sm:flex-row gap-4 justify-center"
+                >
+                    <a
+                        href="https://adplist.org/mentors/anudeep-sri-bathina"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 bg-blue-400/10 border border-blue-400/20 text-blue-400 rounded-lg hover:bg-blue-400/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                    >
+                        See Mentoring Options
+                        <span className="text-xs">→</span>
+                    </a>
+                    <a
+                        href="https://adplist.org/mentors/anudeep-sri-bathina"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                    >
+                        Book a Session
+                        <span className="text-xs">→</span>
+                    </a>
+                </motion.div>
             </div>
         </section>
     );

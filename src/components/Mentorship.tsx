@@ -66,7 +66,7 @@ const mentorshipGroups: MentorshipGroup[] = [
                 role: "Senior Tech Mentor",
                 description: "Mock interviews, resume reviews, and personalized career guidance for tech professionals across 5+ countries.",
                 metrics: "500+ Minutes",
-                link: "https://topmate.io/anudeepsri",
+                link: "https://adplist.org/mentors/anudeep-sri-bathina",
                 linkText: "Book a Session",
                 highlights: ["Mock Interviews", "Resume Reviews", "Career Strategy"]
             },

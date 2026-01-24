@@ -84,7 +84,7 @@ const Navbar = () => {
 
                         {/* Book Mentoring Button */}
                         <a
-                            href="https://topmate.io/anudeepsrib"
+                            href="https://adplist.org/mentors/anudeep-sri-bathina"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-4 py-2 rounded-lg bg-gold-glow/10 hover:bg-gold-glow/20 text-gold-glow hover:text-gold-shimmer border border-gold-glow/30 hover:border-gold-glow/60 transition-all duration-300 font-medium text-sm flex items-center gap-2 group hover-lift"
@@ -148,7 +148,7 @@ const Navbar = () => {
 
                             {/* Mobile Book Mentoring Button */}
                             <a
-                                href="https://topmate.io/anudeepsrib"
+                                href="https://adplist.org/mentors/anudeep-sri-bathina"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => setIsMobileMenuOpen(false)}

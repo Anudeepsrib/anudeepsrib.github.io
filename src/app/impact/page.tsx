@@ -180,7 +180,7 @@ export default function ImpactPage() {
                     {/* Mentorship CTAs - Above Testimonials */}
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                         <a
-                            href="https://topmate.io/anudeepsrib"
+                            href="https://adplist.org/mentors/anudeep-sri-bathina"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-6 py-3 bg-gold-glow/10 border border-gold-glow/20 text-gold-glow rounded-lg hover:bg-gold-glow/20 transition-all flex items-center justify-center gap-2 hover-lift"
@@ -189,7 +189,7 @@ export default function ImpactPage() {
                             <span className="text-xs">→</span>
                         </a>
                         <a
-                            href="https://topmate.io/anudeepsrib"
+                            href="https://adplist.org/mentors/anudeep-sri-bathina"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
@@ -227,7 +227,7 @@ export default function ImpactPage() {
                 {/* Mentorship CTAs - Below Testimonials */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                     <a
-                        href="https://topmate.io/anudeepsrib"
+                        href="https://adplist.org/mentors/anudeep-sri-bathina"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 bg-gold-glow/10 border border-gold-glow/20 text-gold-glow rounded-lg hover:bg-gold-glow/20 transition-all flex items-center justify-center gap-2 hover-lift"
@@ -236,7 +236,7 @@ export default function ImpactPage() {
                         <span className="text-xs">→</span>
                     </a>
                     <a
-                        href="https://topmate.io/anudeepsrib"
+                        href="https://adplist.org/mentors/anudeep-sri-bathina"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"

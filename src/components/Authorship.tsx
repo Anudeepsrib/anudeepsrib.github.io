@@ -23,8 +23,11 @@ const Authorship = () => {
                             Authorship
                         </span>
                     </h2>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                        Contributing to the global body of knowledge in AI and technology.
+                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-4">
+                        Contributing to the global body of knowledge in AI and technology through peer-reviewed publications and research.
+                    </p>
+                    <p className="text-sm text-gray-500 max-w-2xl mx-auto">
+                        Published by CRC Press / Taylor & Francis, one of the world's leading academic publishers.
                     </p>
                 </motion.div>
 
@@ -61,17 +64,15 @@ const Authorship = () => {
                             </p>
                             
                             {/* Authorship CTAs */}
-                            <div className="flex flex-col gap-2 mt-4">
+                            <div className="flex flex-col gap-2 mt-6 pt-4 border-t border-white/5">
                                 <a
-                                    href="#publications"
+                                    href={pub.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        // Scroll to publications list or expand view
-                                    }}
                                 >
-                                    View Publications
-                                    <span className="text-xs">→</span>
+                                    Read Publication
+                                    <ExternalLink className="text-xs" size={14} />
                                 </a>
                                 <a
                                     href="mailto:anudeepsrib@gmail.com?subject=Publication%20Inquiry"
