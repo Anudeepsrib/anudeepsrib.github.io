@@ -1,17 +1,19 @@
 import type { Metadata } from 'next';
-import { Outfit, Inter } from 'next/font/google';
+import { Syne, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
+import BackgroundGraph from '@/components/BackgroundGraph';
 import resumeData from '@/data/resumeData.json';
 
-const outfit = Outfit({
+const syne = Syne({
     subsets: ['latin'],
-    variable: '--font-outfit',
+    variable: '--font-syne',
     display: 'swap',
 });
 
-const inter = Inter({
+const ibmPlexMono = IBM_Plex_Mono({
+    weight: ['400', '500', '600'],
     subsets: ['latin'],
-    variable: '--font-inter',
+    variable: '--font-mono',
     display: 'swap',
 });
 
@@ -48,15 +50,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${outfit.variable} ${inter.variable} dark`} suppressHydrationWarning>
+        <html lang="en" className={`${syne.variable} ${ibmPlexMono.variable} dark`} suppressHydrationWarning>
             <body
                 className="font-inter bg-background text-foreground antialiased selection:bg-gold-glow/30 selection:text-gold-dim"
                 suppressHydrationWarning
             >
                 <div className="relative min-h-screen flex flex-col">
-                    {/* Background Grid Pattern */}
-                    <div className="fixed inset-0 z-[-1] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-                    <div className="fixed inset-0 z-[-1] bg-[radial-gradient(circle_800px_at_50%_-20%,#7c3aed1a,transparent)]"></div>
+                    <BackgroundGraph />
 
                     {children}
                 </div>

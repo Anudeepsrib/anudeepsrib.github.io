@@ -28,17 +28,17 @@ const JourneyHero = () => {
                     animate="show"
                     className="mb-12"
                 >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-4">
-                        <Compass className="text-blue-400" size={18} />
-                        <span className="text-sm font-medium text-blue-300">My Professional Journey</span>
+                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-4">
+                        <Compass className="text-cyan-400" size={18} />
+                        <span className="text-sm font-mono text-cyan-300">System Career Path</span>
                     </motion.div>
-                    <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit text-white mb-4 tracking-tight">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
+                    <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold font-syne text-white mb-4 tracking-tight">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
                             Path to Impact
                         </span>
                     </motion.h1>
                     <motion.p variants={fadeUp} className="text-lg md:text-xl text-gray-400 max-w-4xl leading-relaxed font-light">
-                        From building foundational data systems to architecting production-grade AI solutions, my journey spans innovation, leadership, and transformational impact across leading organizations.
+                        Architecting production-grade AI solutions across innovation, leadership, and transformational impact.
                     </motion.p>
                 </motion.div>
 
@@ -53,12 +53,13 @@ const JourneyHero = () => {
                         <motion.div
                             key={index}
                             variants={fadeUp}
-                            className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-400/30 hover-lift transition-all"
+                            className="group p-6 rounded-none bg-charcoal-800/50 border border-white/10 hover:border-cyan-400/50 hover-lift transition-all relative overflow-hidden"
                         >
-                            <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300 mb-2">
+                            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyan-500/30" />
+                            <div className="text-3xl md:text-4xl font-bold font-syne text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200 mb-2">
                                 {milestone.value}
                             </div>
-                            <p className="text-gray-400 text-sm md:text-base">{milestone.label}</p>
+                            <p className="text-gray-400 text-sm md:text-base font-mono uppercase tracking-wide">{milestone.label}</p>
                         </motion.div>
                     ))}
                 </motion.div>
@@ -70,12 +71,12 @@ const JourneyHero = () => {
                     animate="show"
                     className="mt-20 pt-16 border-t border-white/10"
                 >
-                    <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8">
+                    <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 font-light">
                         <span className="flex items-center gap-2 mb-4">
-                            <Zap className="text-blue-400" size={20} />
-                            <span className="font-semibold">Key Phases</span>
+                            <Zap className="text-cyan-400" size={20} />
+                            <span className="font-bold text-white font-syne">Key Phases</span>
                         </span>
-                        Below you'll find my professional timeline, recognized awards, and academic foundation that shaped my expertise in AI and data systems.
+                        Below is the professional timeline, recognized awards, and academic foundation shaping my expertise in AI.
                     </motion.p>
                 </motion.div>
             </div>

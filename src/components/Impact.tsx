@@ -59,17 +59,17 @@ const Impact = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-6 hover-lift">
-                        <Award className="text-blue-400" size={18} />
-                        <span className="text-sm font-medium text-blue-400">Global Recognition</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-6 hover-lift">
+                        <Award className="text-cyan-400" size={18} />
+                        <span className="text-sm font-mono text-cyan-400">Global Recognition</span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
+                    <h1 className="text-4xl md:text-5xl font-bold font-syne mb-4">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
                             Teaching & Global Impact
                         </span>
                     </h1>
-                    <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-                        Recognized by universities, AI organizations, and global platforms for advancing practical AI education, applied innovation, and workforce development.
+                    <p className="text-lg text-gray-400 max-w-3xl mx-auto font-light">
+                        Advancing practical AI education and applied innovation across global platforms.
                     </p>
                 </motion.div>
 
@@ -81,20 +81,20 @@ const Impact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0 }}
-                        className="p-6 rounded-2xl bg-white/5 border border-white/8 hover:border-blue-400/30 transition-all hover-lift"
+                        className="p-6 rounded-none bg-charcoal-800/50 border border-white/10 hover:border-cyan-400/50 transition-all hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-blue-400/10">
-                                <GraduationCap className="text-blue-400" size={24} />
+                            <div className="p-2 rounded-none bg-cyan-400/10 border border-cyan-400/20">
+                                <GraduationCap className="text-cyan-400" size={24} />
                             </div>
-                            <h3 className="text-xl font-bold text-white">Universities</h3>
+                            <h3 className="text-xl font-bold font-syne text-white">Universities</h3>
                         </div>
-                        <p className="text-sm text-gray-400 mb-4">
+                        <p className="text-sm text-gray-400 mb-4 font-light">
                             Invited to deliver lectures and workshops on AI, ML, CV, and data-driven innovation.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {universities.map((uni) => (
-                                <span key={uni} className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-400/10 text-blue-300 border border-blue-400/20">
+                                <span key={uni} className="px-3 py-1.5 text-xs font-mono font-medium rounded-none bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">
                                     {uni}
                                 </span>
                             ))}
@@ -107,20 +107,20 @@ const Impact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="p-6 rounded-2xl bg-white/5 border border-white/8 hover:border-blue-300/30 transition-all hover-lift"
+                        className="p-6 rounded-none bg-charcoal-800/50 border border-white/10 hover:border-cyan-300/50 transition-all hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-blue-300/10">
-                                <Globe className="text-blue-300" size={24} />
+                            <div className="p-2 rounded-none bg-cyan-300/10 border border-cyan-300/20">
+                                <Globe className="text-cyan-300" size={24} />
                             </div>
-                            <h3 className="text-xl font-bold text-white">Global AI Platforms</h3>
+                            <h3 className="text-xl font-bold font-syne text-white">Global AI Platforms</h3>
                         </div>
-                        <p className="text-sm text-gray-400 mb-4">
+                        <p className="text-sm text-gray-400 mb-4 font-light">
                             Speaker and contributor at international AI forums and conferences.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {globalPlatforms.map((platform) => (
-                                <span key={platform} className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-300/10 text-blue-200 border border-blue-300/20">
+                                <span key={platform} className="px-3 py-1.5 text-xs font-mono font-medium rounded-none bg-cyan-300/10 text-cyan-200 border border-cyan-300/20">
                                     {platform}
                                 </span>
                             ))}
@@ -133,20 +133,20 @@ const Impact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="p-6 rounded-2xl bg-white/5 border border-white/8 hover:border-blue-400/30 transition-all hover-lift"
+                        className="p-6 rounded-none bg-charcoal-800/50 border border-white/10 hover:border-cyan-400/50 transition-all hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-blue-400/10">
-                                <Users className="text-blue-400" size={24} />
+                            <div className="p-2 rounded-none bg-cyan-400/10 border border-cyan-400/20">
+                                <Users className="text-cyan-400" size={24} />
                             </div>
-                            <h3 className="text-xl font-bold text-white">Training Partners</h3>
+                            <h3 className="text-xl font-bold font-syne text-white">Training Partners</h3>
                         </div>
-                        <p className="text-sm text-gray-400 mb-4">
+                        <p className="text-sm text-gray-400 mb-4 font-light">
                             Instructor and mentor for structured AI/ML programs.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {trainingPartners.map((partner) => (
-                                <span key={partner} className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-400/10 text-blue-300 border border-blue-400/20">
+                                <span key={partner} className="px-3 py-1.5 text-xs font-mono font-medium rounded-none bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">
                                     {partner}
                                 </span>
                             ))}
@@ -154,7 +154,7 @@ const Impact = () => {
                     </motion.div>
                 </div>
 
-                {/* Mentoring Section */}
+                {/* Mentoring Section (Amber) */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -162,22 +162,22 @@ const Impact = () => {
                     className="mb-12"
                 >
                     <div className="text-center mb-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-6 hover-lift">
-                            <Users className="text-blue-400" size={18} />
-                            <span className="text-sm font-medium text-blue-400">Mentorship</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6 hover-lift">
+                            <Users className="text-amber-500" size={18} />
+                            <span className="text-sm font-mono text-amber-500">Mentorship</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-6">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
+                        <h2 className="text-4xl md:text-5xl font-bold font-syne mb-6">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-300">
                                 Mentoring & Career Impact
                             </span>
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                            I guide learners and professionals through Great Learning, Topmate, ADPList, and global communities—helping them build strong foundations in AI, ML, data science, and cloud technologies.
+                        <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
+                            Guiding learners and professionals to build strong foundations in AI and Data Science.
                         </p>
                     </div>
                 </motion.div>
 
-                {/* Testimonials */}
+                {/* Testimonials (Amber) */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -185,10 +185,7 @@ const Impact = () => {
                     className="mb-12"
                 >
                     <div className="text-center mb-8">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">What Learners & Mentees Say</h3>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
-                            Real feedback from professionals I've mentored and learners I've taught.
-                        </p>
+                        <h3 className="text-2xl md:text-3xl font-bold font-syne text-white mb-3">What Learners Say</h3>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
                         {testimonials.map((testimonial, index) => (
@@ -198,19 +195,19 @@ const Impact = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="relative p-6 rounded-2xl bg-white/5 border border-white/8 hover:shadow-lg hover:shadow-blue-400/5 transition-all hover-lift"
+                                className="relative p-6 rounded-none bg-white/5 border border-white/8 hover:border-amber-500/50 transition-all hover-lift"
                             >
-                                <Award className="absolute top-4 right-4 text-blue-400/20" size={32} />
-                                <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
+                                <Award className="absolute top-4 right-4 text-amber-500/20" size={32} />
+                                <p className="text-sm text-gray-400 mb-4 leading-relaxed italic font-light">
                                     &quot;{testimonial.quote}&quot;
                                 </p>
                                 <div className="flex items-center gap-2">
-                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-300 flex items-center justify-center text-white text-xs font-bold">
+                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-amber-300 flex items-center justify-center text-charcoal-900 text-xs font-bold font-mono">
                                         {testimonial.author[0]}
                                     </div>
                                     <div>
-                                        <div className="text-sm font-medium text-white">{testimonial.author}</div>
-                                        <div className="text-xs text-gray-400">{testimonial.source}</div>
+                                        <div className="text-sm font-medium text-white font-syne">{testimonial.author}</div>
+                                        <div className="text-xs text-gray-400 font-mono">{testimonial.source}</div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -229,7 +226,7 @@ const Impact = () => {
                         href="https://adplist.org/mentors/anudeep-sri-bathina"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 bg-blue-400/10 border border-blue-400/20 text-blue-400 rounded-lg hover:bg-blue-400/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                        className="px-6 py-3 bg-amber-500/10 border border-amber-500/20 text-amber-500 rounded-none hover:bg-amber-500/20 transition-all flex items-center justify-center gap-2 hover-lift font-mono uppercase tracking-wide"
                     >
                         See Mentoring Options
                         <span className="text-xs">→</span>
@@ -238,7 +235,7 @@ const Impact = () => {
                         href="https://adplist.org/mentors/anudeep-sri-bathina"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                        className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-none hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift font-mono uppercase tracking-wide"
                     >
                         Book a Session
                         <span className="text-xs">→</span>

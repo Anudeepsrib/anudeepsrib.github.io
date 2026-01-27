@@ -7,129 +7,108 @@ const Hero = () => {
     const reduceMotion = useReducedMotion();
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            {/* Simple Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-obsidian-900 via-obsidian-900 to-obsidian-800 pointer-events-none" />
-            
-            {/* Subtle floating glow blobs */}
-            <motion.div
-                className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-[128px] pointer-events-none"
-                animate={reduceMotion ? undefined : { y: [0, -15, 0] }}
-                transition={reduceMotion ? undefined : { duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <motion.div
-                className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-blue-300/10 rounded-full blur-[128px] pointer-events-none"
-                animate={reduceMotion ? undefined : { y: [0, 15, 0] }}
-                transition={reduceMotion ? undefined : { duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-            />
-
-            {/* Gradient Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-obsidian-900/60 via-transparent to-transparent pointer-events-none z-[5]" />
-
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
             {/* Content */}
-            <div className="max-w-4xl mx-auto px-6 relative z-10 w-full text-center">
-                <motion.div
-                    variants={heroContainer}
-                    initial={reduceMotion ? 'show' : 'hidden'}
-                    animate="show"
-                    className="relative z-10"
-                >
-                    {/* Badge */}
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/30 mb-6 backdrop-blur-sm hover:border-blue-400/60 transition-colors hover-lift">
-                        <span className="text-sm font-medium text-blue-300">AI Architect · Researcher · Industry Mentor</span>
-                    </motion.div>
+            <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-                    {/* Name with Descriptor */}
-                    <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold font-outfit tracking-tight mb-3">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
-                            Anudeep Sri Bathina
-                        </span>
-                    </motion.h1>
-                    <motion.p variants={fadeUp} className="text-lg md:text-xl text-gray-400 mb-6 font-light">
-                        AI Architect • Production AI Systems
-                    </motion.p>
-
-                    {/* 1-Line Outcome Statement */}
-                    <motion.p variants={fadeUp} className="text-xl md:text-2xl text-white mb-4 leading-relaxed font-medium">
-                    I help teams design, deploy, and scale production-grade AI systems. I focus on security, reliability, and real enterprise environments..
-                    </motion.p>
-
-                    {/* Credibility Spike */}
-                    <motion.p variants={fadeUp} className="text-sm md:text-base text-gray-400 mb-6 leading-relaxed">
-                        Trusted by 1,000+ learners and global institutions
-                    </motion.p>
-
-                    {/* Clickable Social Proof Badges */}
-                    <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 mb-8">
-                        <a
-                            href="#experience"
-                            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 hover:border-blue-400/50 hover:text-white transition-all cursor-pointer"
+                    {/* Left Column: Text & Tilt */}
+                    <div className="lg:col-span-8 relative">
+                        <motion.div
+                            variants={heroContainer}
+                            initial={reduceMotion ? 'show' : 'hidden'}
+                            animate="show"
+                            className="relative z-10"
                         >
-                            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                            9+ Years Experience
-                        </a>
-                        <a
-                            href="/recognitions"
-                            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 hover:border-blue-400/50 hover:text-white transition-all cursor-pointer"
-                        >
-                            <span className="text-gold-glow">🎤</span>
-                            Invited Speaker
-                        </a>
-                        <a
-                            href="/impact"
-                            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 hover:border-blue-400/50 hover:text-white transition-all cursor-pointer"
-                        >
-                            <span className="text-emerald-400">👥</span>
-                            1,000+ Learners
-                        </a>
-                    </motion.div>
+                            {/* Technical Badge - Mono font */}
+                            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 mb-8">
+                                <span className="h-[1px] w-12 bg-cyan-glow/50"></span>
+                                <span className="text-sm font-mono text-cyan-glow tracking-widest uppercase">
+                                    System Architecture · Research · Strategy
+                                </span>
+                            </motion.div>
 
-                    {/* CTA Hierarchy */}
-                    <motion.div variants={fadeUp} className="space-y-4 mb-6">
-                        {/* Primary CTA */}
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a
-                                href="https://adplist.org/mentors/anudeep-sri-bathina"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-8 py-4 bg-gold-glow text-black font-bold rounded-lg hover:bg-gold-shimmer transition-all duration-300 flex items-center justify-center gap-2 hover-lift shadow-lg shadow-gold-glow/20"
-                            >
-                                Book Mentoring
-                                <span className="text-xs">→</span>
+                            {/* Name with 8deg tilt - Syne Font */}
+                            <div className="relative mb-6 -ml-4 lg:-ml-8">
+                                <motion.h1
+                                    variants={fadeUp}
+                                    className="text-6xl md:text-8xl lg:text-9xl font-bold font-syne tracking-tighter transform -rotate-2 md:-rotate-3 lg:-rotate-6 origin-bottom-left"
+                                >
+                                    <span className="block text-foreground drop-shadow-2xl">
+                                        ANUDEEP
+                                    </span>
+                                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-200 to-white ml-12 md:ml-24">
+                                        SRI BATHINA
+                                    </span>
+                                </motion.h1>
+                            </div>
+
+                            {/* Outcome Statement */}
+                            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light max-w-2xl border-l-2 border-amber-500/50 pl-6 ml-2">
+                                Architecting <span className="text-cyan-400 font-medium">computational intelligence</span> for enterprise scale.
+                                <br className="hidden md:block" />
+                                Bridging theoretical research with production reality.
+                            </motion.p>
+
+                            {/* CTAs - Off-axis layout */}
+                            <motion.div variants={fadeUp} className="flex flex-wrap gap-6 mt-8 ml-4">
+                                <a
+                                    href="#experience"
+                                    className="group relative px-8 py-4 bg-cyan-900/10 border border-cyan-500/30 text-cyan-300 font-mono text-sm tracking-wider uppercase hover:bg-cyan-500/10 transition-all duration-300 overflow-hidden"
+                                >
+                                    <div className="absolute inset-0 bg-cyan-400/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                    <span className="relative flex items-center gap-2">
+                                        Explore System
+                                        <span className="text-xs">↘</span>
+                                    </span>
+                                </a>
+
+                                <a
+                                    href="https://adplist.org/mentors/anudeep-sri-bathina"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group px-8 py-4 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-sm tracking-wider uppercase hover:bg-amber-500/20 transition-all duration-300"
+                                >
+                                    <span className="flex items-center gap-2">
+                                        Initialize Mentorship
+                                        <span className="text-xs">→</span>
+                                    </span>
+                                </a>
+                            </motion.div>
+                        </motion.div>
+                    </div>
+
+                    {/* Right Column: Data Visualization / Stats (Cascading) */}
+                    <div className="lg:col-span-4 relative hidden lg:block">
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className="flex flex-col gap-6 items-end"
+                        >
+                            {/* Stat Card 1 */}
+                            <div className="w-64 p-6 bg-card/30 backdrop-blur-md border border-cyan-500/20 shadow-lg shadow-cyan-900/10 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                                <h3 className="text-4xl font-syne font-bold text-white mb-1">9+</h3>
+                                <p className="text-xs font-mono text-cyan-400 uppercase tracking-wider">Years Experience</p>
+                            </div>
+
+                            {/* Stat Card 2 */}
+                            <div className="w-64 p-6 bg-card/30 backdrop-blur-md border border-amber-500/20 shadow-lg shadow-amber-900/10 transform -rotate-2 hover:rotate-0 transition-transform duration-500 mr-8">
+                                <h3 className="text-4xl font-syne font-bold text-white mb-1">1k+</h3>
+                                <p className="text-xs font-mono text-amber-400 uppercase tracking-wider">Global Learners</p>
+                            </div>
+
+                            {/* Stat Card 3 */}
+                            <a href="/recognitions" className="w-64 p-6 bg-card/30 backdrop-blur-md border border-white/10 hover:border-cyan-400/50 shadow-lg transition-colors cursor-pointer transform rotate-6 hover:rotate-0 duration-500">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                                    <span className="text-xs font-mono text-gray-400 uppercase">Status</span>
+                                </div>
+                                <p className="text-sm text-gray-200 font-medium">Invited Speaker & Industry Mentor</p>
                             </a>
-                            {/* Secondary CTA */}
-                            <a
-                                href="/journey"
-                                className="px-8 py-4 bg-white/10 border border-white/20 text-white font-medium rounded-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 hover-lift"
-                            >
-                                View Experience
-                                <span className="text-xs">→</span>
-                            </a>
-                        </div>
-                        
-                        {/* Intent Segmentation */}
-                        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500 pt-2">
-                            <span>Hiring Manager?</span>
-                            <a href="/journey" className="text-blue-400 hover:text-blue-300 transition-colors">View Experience</a>
-                            <span>•</span>
-                            <span>Learner?</span>
-                            <a href="https://adplist.org/mentors/anudeep-sri-bathina" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Book Mentoring</a>
-                            <span>•</span>
-                            <span>Founder / Team?</span>
-                            <a href="mailto:anudeepsrib@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors">Get in Touch</a>
-                        </div>
-                        
-                        {/* Tertiary CTA - Text Only */}
-                        <div className="text-center pt-2">
-                            <a
-                                href="mailto:anudeepsrib@gmail.com"
-                                className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                            >
-                                Contact
-                            </a>
-                        </div>
-                    </motion.div>
-                </motion.div>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

@@ -4,80 +4,83 @@
 
 @layer base {
     :root {
-        /* Premium Light Theme - Warm Porcelain & Gold */
-        --background: 40 20% 98%; /* warm porcelain */
-        --foreground: 220 10% 8%; /* dark text */
+        /* Computational Elegance - Dark Default (User preference for always dark portfolio often implies this) */
+        /* But mapping Light mode just in case, though design is boldly dark */
+        --background: 0 0% 98%;
+        --foreground: 240 10% 4%;
 
         --card: 0 0% 100%;
-        --card-foreground: 220 10% 8%;
+        --card-foreground: 240 10% 4%;
 
         --popover: 0 0% 100%;
-        --popover-foreground: 220 10% 8%;
+        --popover-foreground: 240 10% 4%;
 
-        /* Gold primary */
-        --primary: 47 95% 52%; /* gold */
-        --primary-foreground: 220 14% 6%;
+        --primary: 180 100% 50%;
+        /* Cyan */
+        --primary-foreground: 240 6% 10%;
 
-        /* Royal navy secondary */
-        --secondary: 220 60% 28%;
-        --secondary-foreground: 210 40% 98%;
+        --secondary: 40 100% 59%;
+        /* Amber */
+        --secondary-foreground: 240 6% 10%;
 
-        --muted: 40 12% 82%;
-        --muted-foreground: 210 12% 44%;
+        --muted: 240 5% 90%;
+        --muted-foreground: 240 4% 46%;
 
-        --accent: 47 85% 86%; /* champagne shimmer */
-        --accent-foreground: 220 14% 6%;
+        --accent: 180 100% 50%;
+        --accent-foreground: 240 6% 10%;
 
         --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 210 40% 98%;
+        --destructive-foreground: 0 0% 98%;
 
-        --border: 30 10% 92%;
-        --input: 30 10% 92%;
-        --ring: 47 95% 52%;
+        --border: 240 6% 90%;
+        --input: 240 6% 90%;
+        --ring: 180 100% 50%;
 
         --radius: 0.75rem;
-        --gold-glow: #FFD24D;
-        --gold-dim: #B8860B;
-        --gold-shimmer: #FBF5D4;
     }
 
     .dark {
-        /* Refined Dark Mode - Professional & Premium */
-        --background: 0 0% 6%; /* #0E0E11 - deep charcoal */
-        --foreground: 0 0% 93%; /* #EDEDED - soft white */
+        /* Computational Elegance - Deep Charcoal & Electric Cyan */
+        --background: 240 6% 6%;
+        /* #0E0E10 Deep Charcoal */
+        --foreground: 0 0% 95%;
+        /* Off-white for readability */
 
-        --card: 220 12% 8%; /* deep card */
-        --card-foreground: 0 0% 93%;
+        --card: 240 6% 10%;
+        /* Slightly lighter charcoal */
+        --card-foreground: 0 0% 95%;
 
-        --popover: 220 12% 8%;
-        --popover-foreground: 0 0% 93%;
+        --popover: 240 6% 10%;
+        --popover-foreground: 0 0% 95%;
 
-        /* Electric Blue accent - primary accent color for links, buttons, highlights */
-        --primary: 217 100% 59%; /* #4F8BFF - Electric Blue */
-        --primary-foreground: 0 0% 6%;
+        /* Electric Cyan Primary */
+        --primary: 180 100% 47%;
+        /* #00F0FF */
+        --primary-foreground: 240 6% 10%;
 
-        --secondary: 215 50% 16%; /* deep navy */
-        --secondary-foreground: 0 0% 93%;
+        /* Warm Amber Secondary */
+        --secondary: 37 100% 59%;
+        /* #FFB02E */
+        --secondary-foreground: 240 6% 10%;
 
-        /* Secondary text color */
-        --muted: 0 0% 63%; /* #A1A1AA - secondary gray */
-        --muted-foreground: 215 10% 60%;
+        --muted: 240 4% 25%;
+        --muted-foreground: 240 5% 65%;
 
-        --accent: 217 100% 59%; /* Electric Blue for accents */
-        --accent-foreground: 0 0% 6%;
+        --accent: 180 100% 47%;
+        --accent-foreground: 240 6% 10%;
 
         --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 210 40% 98%;
+        --destructive-foreground: 0 0% 98%;
 
         /* Subtle borders */
-        --border: 0 0% 100%; /* rgba(255,255,255,0.08) equivalent */
-        --input: 215 10% 14%;
-        --ring: 217 100% 59%; /* Electric Blue */
+        --border: 240 4% 18%;
+        /* Subtle dark border */
+        --input: 240 4% 18%;
+        --ring: 180 100% 47%;
 
-        /* Premium accent colors */
-        --gold-glow: #FFD24D;
-        --gold-dim: #B8860B;
-        --gold-shimmer: #FBF5D4;
+        /* Custom Glows */
+        --cyan-glow: #00F0FF;
+        --amber-glow: #FFB02E;
 
         /* Typography improvements */
         --font-body-size: 16px;
@@ -99,7 +102,12 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-family: var(--font-outfit);
         @apply font-bold;
     }
@@ -152,7 +160,7 @@ a {
 }
 
 .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--gold-glow)] via-[var(--gold-shimmer)] to-[var(--gold-dim)];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-cyan-500 to-amber-400;
 }
 
 .text-gradient-subtle {
@@ -165,18 +173,26 @@ a {
 
 @keyframes glow {
     from {
-        box-shadow: 0 0 10px -10px var(--gold-glow);
+        box-shadow: 0 0 10px -10px var(--cyan-glow);
     }
 
     to {
-        box-shadow: 0 0 20px 5px var(--gold-glow);
+        box-shadow: 0 0 20px 5px var(--cyan-glow);
     }
 }
 
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .animate-gradient {
@@ -186,12 +202,22 @@ a {
 }
 
 @keyframes parallax {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-12px) translateX(8px); }
-    100% { transform: translateY(0) translateX(0); }
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-12px) translateX(8px);
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+    }
 }
 
-.parallax-float { animation: parallax 12s ease-in-out infinite; }
+.parallax-float {
+    animation: parallax 12s ease-in-out infinite;
+}
 
 /* Premium entrance animations */
 @keyframes fadeInUp {
@@ -199,6 +225,7 @@ a {
         opacity: 0;
         transform: translateY(16px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -210,6 +237,7 @@ a {
         opacity: 0;
         transform: translateY(-16px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -221,6 +249,7 @@ a {
         opacity: 0;
         transform: scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -240,16 +269,33 @@ a {
 }
 
 /* Stagger animation for children */
-.animate-stagger > * {
+.animate-stagger>* {
     animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
-.animate-stagger > *:nth-child(2) { animation-delay: 80ms; }
-.animate-stagger > *:nth-child(3) { animation-delay: 160ms; }
-.animate-stagger > *:nth-child(4) { animation-delay: 240ms; }
-.animate-stagger > *:nth-child(5) { animation-delay: 320ms; }
-.animate-stagger > *:nth-child(n+6) { animation-delay: 400ms; }
+.animate-stagger>*:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.animate-stagger>*:nth-child(2) {
+    animation-delay: 80ms;
+}
+
+.animate-stagger>*:nth-child(3) {
+    animation-delay: 160ms;
+}
+
+.animate-stagger>*:nth-child(4) {
+    animation-delay: 240ms;
+}
+
+.animate-stagger>*:nth-child(5) {
+    animation-delay: 320ms;
+}
+
+.animate-stagger>*:nth-child(n+6) {
+    animation-delay: 400ms;
+}
 
 /* Hover lift effect */
 .hover-lift {
@@ -257,5 +303,16 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .animate-glow, .animate-gradient, .parallax-float, .animate-fade-in-up, .animate-fade-in-down, .animate-scale-in, .animate-stagger > *, .hover-lift { animation: none !important; transform: none !important; }
-} 
+
+    .animate-glow,
+    .animate-gradient,
+    .parallax-float,
+    .animate-fade-in-up,
+    .animate-fade-in-down,
+    .animate-scale-in,
+    .animate-stagger>*,
+    .hover-lift {
+        animation: none !important;
+        transform: none !important;
+    }
+}
