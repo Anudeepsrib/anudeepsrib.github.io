@@ -44,7 +44,7 @@ const CTASection = () => {
                             whileTap={{ scale: 0.95 }}
                             className="px-8 py-4 bg-amber-500 text-charcoal-900 font-bold font-mono rounded-none hover:bg-amber-400 transition-all flex items-center justify-center gap-2 hover-lift shadow-lg shadow-amber-500/20 uppercase tracking-wide"
                         >
-                            Book a Mentoring Session
+                            We'll identify your production bottleneck & roadmap to fix it
                             <ArrowRight size={18} />
                         </motion.a>
 

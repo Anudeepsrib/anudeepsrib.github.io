@@ -39,8 +39,17 @@ const Research = () => {
                             </div>
 
                             <h3 className="text-3xl font-bold font-syne text-white mb-4 group-hover:text-cyan-300 transition-colors">
-                                Groundfish Recognition using Yolov8
+                                Transfer learning for cross-database groundfish recognition: a thesis in Computer Science
                             </h3>
+
+                            <div className="text-sm font-mono text-cyan-400 mb-2">
+                                Anudeepsri Bathina
+                            </div>
+
+                            <div className="text-xs text-gray-500 font-light mb-6 space-y-1">
+                                <p>Advisor: Ming Shao (UMass Dartmouth)</p>
+                                <p>Committee: Yi Liu (UNC Wilmington), Yuchou Chang (UMass Dartmouth)</p>
+                            </div>
 
                             <p className="text-gray-400 mb-6 leading-relaxed font-light">
                                 A comprehensive study on generalizing object detection models from controlled conveyor belt environments to complex, unstructured underwater habitats. This research addresses key challenges in marine biology automation and reliable species identification.
@@ -48,17 +57,17 @@ const Research = () => {
 
                             <div className="flex flex-wrap gap-3 mb-8">
                                 <span className="px-3 py-1 rounded-none bg-white/5 text-sm font-mono text-cyan-300 border border-white/10">Computer Vision</span>
-                                <span className="px-3 py-1 rounded-none bg-white/5 text-sm font-mono text-cyan-300 border border-white/10">Deep Learning</span>
+                                <span className="px-3 py-1 rounded-none bg-white/5 text-sm font-mono text-cyan-300 border border-white/10">Transfer Learning</span>
                                 <span className="px-3 py-1 rounded-none bg-white/5 text-sm font-mono text-cyan-300 border border-white/10">Marine AI</span>
                             </div>
 
                             <a
-                                href="https://scholar.d.umn.edu/handle/11299/260027"
+                                href="https://umassd.primo.exlibrisgroup.com/permalink/01MA_DM_INST/kde4of/alma9914424898201301"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 font-mono font-bold rounded-none hover:bg-cyan-400/20 hover:border-cyan-400/60 transition-all uppercase tracking-wide hover-lift"
                             >
-                                Read Publication
+                                Read Thesis
                                 <ExternalLink size={18} />
                             </a>
                         </div>

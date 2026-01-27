@@ -3,6 +3,7 @@ interface Skill {
   name: string;
   icon: string;
   color: string;
+  context: string;
 }
 
 interface SkillCategory {
@@ -13,41 +14,42 @@ interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    name: 'Backend & AI/ML',
-    description: 'Core languages, frameworks, and AI technologies',
+    name: 'Agentic AI Systems',
+    description: 'Autonomous workflows & reasoning engines',
     skills: [
-      { name: 'Python', icon: 'SiPython', color: '#3776AB' },
-      { name: 'PySpark', icon: 'SiApachespark', color: '#E25A1C' },
-      { name: 'FastAPI', icon: 'SiFastapi', color: '#009688' },
-      { name: 'LLMs', icon: 'SiOpenai', color: '#412991' },
-      { name: 'LangChain', icon: 'SiLangchain', color: '#1C3C3C' },
-      { name: 'SQL', icon: 'SiMysql', color: '#4479A1' },
+      { name: 'LangChain', icon: 'SiLangchain', color: '#1C3C3C', context: 'Building multi-step agent workflows that don\'t hallucinate' },
+      { name: 'LLMs', icon: 'SiOpenai', color: '#412991', context: 'Fine-tuning & prompting for domain-specific reasoning' },
+      { name: 'RAG Systems', icon: 'SiNvidia', color: '#76B900', context: 'Retrieving accurate enterprise context for answers' },  // Using NVidia as proxy or generic
+      { name: 'Vector DBs', icon: 'SiPinecone', color: '#000000', context: 'Semantic search infrastructure for massive knowledge bases' },
     ]
   },
   {
-    name: 'Frontend',
-    description: 'Modern UI frameworks and languages',
+    name: 'Production Engineering',
+    description: 'Reliable, observable system architecture',
     skills: [
-      { name: 'React', icon: 'SiReact', color: '#61DAFB' },
-      { name: 'Next.js', icon: 'SiNextdotjs', color: '#FFFFFF' },
-      { name: 'TypeScript', icon: 'SiTypescript', color: '#3178C6' },
+      { name: 'FastAPI', icon: 'SiFastapi', color: '#009688', context: 'High-concurrency model serving endpoints' },
+      { name: 'Docker', icon: 'SiDocker', color: '#2496ED', context: 'Consistent environments from research to prod' },
+      { name: 'Kubernetes', icon: 'SiKubernetes', color: '#326CE5', context: 'Auto-scaling inference workloads' },
+      { name: 'Python', icon: 'SiPython', color: '#3776AB', context: 'Core logic for glue code and model development' },
     ]
   },
   {
-    name: 'Cloud Platforms',
-    description: 'Enterprise cloud infrastructure',
+    name: 'Scalable Data Platforms',
+    description: 'Processing petabytes without bottlenecks',
     skills: [
-      { name: 'Azure', icon: 'TbBrandAzure', color: '#0078D4' },
-      { name: 'AWS', icon: 'SiAmazonwebservices', color: '#FF9900' },
-      { name: 'GCP', icon: 'SiGooglecloud', color: '#4285F4' },
+      { name: 'PySpark', icon: 'SiApachespark', color: '#E25A1C', context: 'Distributed data processing pipelines' },
+      { name: 'Databricks', icon: 'SiDatabricks', color: '#FF3621', context: 'Unifying data engineering and data science' },
+      { name: 'Cloud (Azure/AWS)', icon: 'TbBrandAzure', color: '#0078D4', context: 'Enterprise-grade infrastructure backbone' },
+      { name: 'SQL', icon: 'SiMysql', color: '#4479A1', context: 'Complex querying for business insights' },
     ]
   },
   {
-    name: 'DevOps & Deployment',
-    description: 'Containerization and orchestration',
+    name: 'User Experience',
+    description: 'Interfaces that drive adoption',
     skills: [
-      { name: 'Docker', icon: 'SiDocker', color: '#2496ED' },
-      { name: 'Kubernetes', icon: 'SiKubernetes', color: '#326CE5' },
+      { name: 'Next.js', icon: 'SiNextdotjs', color: '#FFFFFF', context: 'Server-side rendering for performant dashboards' },
+      { name: 'React', icon: 'SiReact', color: '#61DAFB', context: 'Interactive chat & visualization components' },
+      { name: 'TypeScript', icon: 'SiTypescript', color: '#3178C6', context: 'Type-safe frontend codebases' },
     ]
   }
 ];

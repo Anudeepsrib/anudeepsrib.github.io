@@ -20,7 +20,7 @@ const Authorship = () => {
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold font-syne mb-6 text-white">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
-                            Authorship
+                            Research & Writing
                         </span>
                     </h2>
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-4 font-light">

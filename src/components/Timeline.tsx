@@ -53,7 +53,7 @@ const Timeline = () => {
                                     <div className="text-cyan-300 font-mono text-sm mb-2">{job.startDate} - {job.endDate}</div>
                                     <h3 className="text-2xl font-bold font-syne text-white mb-1">{job.position}</h3>
                                     <div className="text-cyan-400 font-medium mb-4">
-                                        <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-300 transition-colors">
+                                        <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 transition-colors font-bold tracking-wide">
                                             {job.company}
                                         </a>
                                         <span className="text-gray-500 mx-2">•</span>

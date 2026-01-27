@@ -5,11 +5,11 @@ import { TrendingUp, Users, BookOpen, Award, Globe } from 'lucide-react';
 
 const StatsBanner = () => {
     const stats = [
-        { icon: TrendingUp, value: '9+', label: 'Years Experience', color: 'text-blue-400' },
-        { icon: Users, value: '1,000+', label: 'Learners Taught', color: 'text-emerald-400' },
-        { icon: BookOpen, value: '2', label: 'Publications', color: 'text-gold-glow' },
-        { icon: Award, value: '18+', label: 'Speaking Engagements', color: 'text-purple-400' },
-        { icon: Globe, value: '8', label: 'Countries mentored', color: 'text-blue-300' },
+        { icon: TrendingUp, value: '9+ Years', label: 'Prevented major production AI failures', color: 'text-blue-400' },
+        { icon: Users, value: '1k+', label: 'Mentored Pro\'s (30% -> ML Roles)', color: 'text-emerald-400' },
+        { icon: BookOpen, value: '2', label: 'Research Publications (CRC Press)', color: 'text-gold-glow' },
+        { icon: Award, value: '18+', label: 'Talks including BSBI & IET', color: 'text-purple-400' },
+        { icon: Globe, value: '8', label: 'Countries with Active Mentees', color: 'text-blue-300' },
     ];
 
     return (

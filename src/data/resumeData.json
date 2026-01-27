@@ -68,6 +68,13 @@
   ],
   "publications": [
     {
+      "title": "Transfer Learning for Groundfish Recognition (Thesis)",
+      "publisher": "University of Massachusetts Dartmouth",
+      "year": "2024",
+      "description": "Developed a cross-database recognition system using YOLOv8 and ResNet50, achieving 94.10% mAP.Addressed data scarcity in underwater environments for sustainable fisheries management.",
+      "link": "https://doi.org/10.62791/20352"
+    },
+    {
       "title": "Blueprint of IoT for Smart Cities",
       "publisher": "CRC Press (Taylor & Francis)",
       "year": "2024",

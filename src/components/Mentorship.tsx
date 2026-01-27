@@ -123,9 +123,9 @@ const Mentorship = () => {
 
     return (
         <section id="mentorship" className="py-24 relative overflow-hidden bg-charcoal-900">
-            {/* Background Glows (Amber for Human-Centric) */}
-            <div className="absolute top-1/2 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-[128px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-300/5 rounded-full blur-[128px] pointer-events-none" />
+            {/* Background Glows (Cyan for Tech-Centric/Unified) */}
+            <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-[128px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-300/5 rounded-full blur-[128px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Header */}
@@ -136,13 +136,13 @@ const Mentorship = () => {
                     viewport={{ once: true }}
                     className="mb-24"
                 >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-8">
-                        <Users size={18} className="text-amber-500" />
-                        <span className="text-sm font-mono text-amber-500">Human Intelligence Network</span>
+                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-8">
+                        <Users size={18} className="text-cyan-400" />
+                        <span className="text-sm font-mono text-cyan-400">Human Intelligence Network</span>
                     </motion.div>
 
                     <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-bold font-syne text-white mb-6 tracking-tight">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-200">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
                             Mentorship & Speaking
                         </span>
                     </motion.h2>
@@ -167,11 +167,11 @@ const Mentorship = () => {
                             <div className="mb-12">
                                 <div className="flex items-start gap-4 mb-4">
                                     <motion.div
-                                        className={`p-3 rounded-none bg-amber-500/10 border border-amber-500/30 flex-shrink-0`}
+                                        className={`p-3 rounded-none bg-cyan-400/10 border border-cyan-400/30 flex-shrink-0`}
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                        <group.icon size={28} className="text-amber-500" />
+                                        <group.icon size={28} className="text-cyan-400" />
                                     </motion.div>
                                     <div className="flex-grow">
                                         <h3 className="text-3xl font-bold text-white font-syne mb-2">
@@ -180,7 +180,7 @@ const Mentorship = () => {
                                         <p className="text-gray-400 text-lg font-light">{group.description}</p>
                                     </div>
                                 </div>
-                                <div className="h-px w-20 bg-gradient-to-r from-amber-500 to-transparent" />
+                                <div className="h-px w-20 bg-gradient-to-r from-cyan-400 to-transparent" />
                             </div>
 
                             {/* Items Grid */}
@@ -189,31 +189,31 @@ const Mentorship = () => {
                                     <motion.div
                                         key={itemIdx}
                                         variants={fadeUp}
-                                        className="group relative overflow-hidden rounded-none bg-black/20 border border-white/5 hover:border-amber-500/50 backdrop-blur-xl transition-all hover-lift"
+                                        className="group relative overflow-hidden rounded-none bg-black/20 border border-white/5 hover:border-cyan-400/50 backdrop-blur-xl transition-all hover-lift"
                                     >
                                         {/* Gradient Background on Hover */}
-                                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
                                         <div className="relative p-8">
                                             {/* Top Row: Organization & Metrics */}
                                             <div className="flex justify-between items-start gap-4 mb-4">
                                                 <div className="flex-grow">
-                                                    <p className="text-xs font-mono text-amber-500/70 uppercase tracking-widest mb-1">
+                                                    <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-1 font-bold">
                                                         {item.organization}
                                                     </p>
-                                                    <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors font-syne">
+                                                    <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors font-syne">
                                                         {item.title}
                                                     </h4>
                                                 </div>
                                                 {item.metrics && (
-                                                    <div className="flex-shrink-0 px-3 py-1 rounded-none bg-amber-500/10 border border-amber-500/20 whitespace-nowrap">
-                                                        <p className="text-xs font-mono font-semibold text-amber-500">{item.metrics}</p>
+                                                    <div className="flex-shrink-0 px-3 py-1 rounded-none bg-amber-400/10 border border-amber-400/20 whitespace-nowrap">
+                                                        <p className="text-xs font-mono font-bold text-amber-400">{item.metrics}</p>
                                                     </div>
                                                 )}
                                             </div>
 
                                             {/* Role */}
-                                            <p className="text-sm font-semibold text-amber-200/80 mb-4 font-mono">{item.role}</p>
+                                            <p className="text-sm font-semibold text-cyan-200/80 mb-4 font-mono">{item.role}</p>
 
                                             {/* Description */}
                                             <p className="text-gray-400 text-sm leading-relaxed mb-6 font-light">
@@ -226,7 +226,7 @@ const Mentorship = () => {
                                                     {item.highlights.map((highlight, idx) => (
                                                         <span
                                                             key={idx}
-                                                            className="px-2.5 py-1 text-xs font-mono font-medium rounded-none bg-amber-500/5 text-amber-300 border border-amber-500/10"
+                                                            className="px-2.5 py-1 text-xs font-mono font-medium rounded-none bg-cyan-400/5 text-cyan-300 border border-cyan-400/10"
                                                         >
                                                             {highlight}
                                                         </span>
@@ -240,7 +240,7 @@ const Mentorship = () => {
                                                     href={item.link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-none bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 hover:border-amber-500/60 text-amber-500 hover:text-amber-200 text-sm font-mono font-medium transition-all uppercase tracking-wide"
+                                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-none bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-400 hover:text-cyan-200 text-sm font-mono font-medium transition-all uppercase tracking-wide"
                                                 >
                                                     {item.linkText}
                                                     <ExternalLink size={16} className="opacity-70" />
@@ -274,9 +274,9 @@ const Mentorship = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="p-6 rounded-none bg-white/5 border border-white/8 text-center hover-lift hover:border-amber-500/30 transition-colors"
+                                className="p-6 rounded-none bg-white/5 border border-white/8 text-center hover-lift hover:border-cyan-400/30 transition-colors"
                             >
-                                <stat.icon className="text-amber-500 mx-auto mb-3" size={32} />
+                                <stat.icon className="text-cyan-400 mx-auto mb-3" size={32} />
                                 <p className="text-3xl font-bold text-white font-syne mb-2">{stat.value}</p>
                                 <p className="text-gray-400 text-sm font-mono">{stat.label}</p>
                             </motion.div>

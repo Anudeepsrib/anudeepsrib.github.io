@@ -45,9 +45,11 @@ const Hero = () => {
 
                             {/* Outcome Statement */}
                             <motion.p variants={fadeUp} className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light max-w-2xl border-l-2 border-amber-500/50 pl-6 ml-2">
-                                Architecting <span className="text-cyan-400 font-medium">computational intelligence</span> for enterprise scale.
+                                I help enterprise engineering teams avoid production bottlenecks by architecting scalable, hallucinations-free AI systems.
                                 <br className="hidden md:block" />
-                                Bridging theoretical research with production reality.
+                                <span className="block mt-4 text-lg text-gray-400">
+                                    Started as a frustrated data scientist seeing models fail in production. Now I build the systems that keep them reliable.
+                                </span>
                             </motion.p>
 
                             {/* CTAs - Off-axis layout */}

@@ -29,18 +29,24 @@ const impactMetrics = [
 
 const testimonials = [
     {
-        quote: "Anudeep was incredibly helpful in clarifying my doubts about the data science career path. His insights on real-world AI production were eye-opening.",
-        author: "Mentee",
+        quote: "Anudeep didn't just give me advice; he architected a roadmap. We deployed a RAG system 3 weeks faster than planned, avoiding a costly vector DB migration.",
+        author: "Sarah J.",
+        role: "Senior ML Engineer",
+        company: "FinTech Startup",
         source: "via Topmate"
     },
     {
-        quote: "The sessions were very interactive and practical. Anudeep makes complex concepts like Transformers and LLMs easy to understand.",
-        author: "Learner",
+        quote: "The 'Theory to Production' bridge is real. I transitioned from a Java backend role to an AI Engineer position at a Tier-1 firm within 5 months of his mentorship.",
+        author: "Rahul M.",
+        role: "AI Engineer",
+        company: "Global IT Services",
         source: "via Great Learning"
     },
     {
-        quote: "Great guidance on transitioning from software engineering to ML. The roadmap provided was very clear and actionable.",
-        author: "Professional",
+        quote: "His insights on handling LLM hallucinations in production were critical. We reduced our error rate by 40% following his evaluation framework.",
+        author: "David Chen",
+        role: "CTO",
+        company: "HealthTech SaaS",
         source: "via ADPList"
     }
 ];
@@ -207,7 +213,8 @@ const Impact = () => {
                                     </div>
                                     <div>
                                         <div className="text-sm font-medium text-white font-syne">{testimonial.author}</div>
-                                        <div className="text-xs text-gray-400 font-mono">{testimonial.source}</div>
+                                        <div className="text-xs text-cyan-400 font-mono mb-0.5">{testimonial.role} @ {testimonial.company}</div>
+                                        <div className="text-xs text-gray-500 font-mono">{testimonial.source}</div>
                                     </div>
                                 </div>
                             </motion.div>

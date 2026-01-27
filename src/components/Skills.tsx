@@ -76,24 +76,29 @@ const Skills = () => {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-3 gap-3 relative z-10">
+                                <div className="grid grid-cols-1 gap-3 relative z-10">
                                     {category.skills.map((skill, index) => {
                                         const Icon = getIconComponent(skill.icon);
                                         return (
                                             <motion.div
                                                 key={skill.name}
                                                 variants={fadeUp}
-                                                whileHover={{ scale: 1.05 }}
-                                                className="group relative p-4 bg-black/20 border border-white/5 hover:bg-cyan-900/10 hover:border-cyan-400/30 transition-all duration-300 flex flex-col items-center justify-center gap-2 cursor-default rounded-none"
+                                                whileHover={{ scale: 1.02 }}
+                                                className="group relative p-4 bg-black/20 border border-white/5 hover:bg-cyan-900/10 hover:border-cyan-400/30 transition-all duration-300 flex items-start gap-4 cursor-default rounded-none"
                                             >
                                                 {Icon && (
-                                                    <div className="text-2xl text-gray-400 group-hover:text-cyan-400 transition-colors">
+                                                    <div className="flex-shrink-0 text-2xl text-gray-400 group-hover:text-cyan-400 transition-colors mt-1">
                                                         <Icon />
                                                     </div>
                                                 )}
-                                                <span className="text-xs font-mono text-gray-500 group-hover:text-cyan-200 transition-colors text-center">
-                                                    {skill.name}
-                                                </span>
+                                                <div>
+                                                    <div className="text-sm font-bold font-syne text-gray-300 group-hover:text-cyan-200 transition-colors">
+                                                        {skill.name}
+                                                    </div>
+                                                    <div className="text-xs font-mono text-gray-500 mt-1 leading-snug">
+                                                        {skill.context}
+                                                    </div>
+                                                </div>
                                             </motion.div>
                                         );
                                     })}

@@ -186,7 +186,7 @@ const Recognitions = () => {
 
                                         <div className="relative p-8">
                                             {/* Organization */}
-                                            <p className="text-xs font-mono text-cyan-300 uppercase tracking-widest mb-3">
+                                            <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-3 font-bold">
                                                 {item.organization}
                                             </p>
 
