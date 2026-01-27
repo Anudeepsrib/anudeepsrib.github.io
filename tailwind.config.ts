@@ -19,6 +19,10 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        syne: ["var(--font-syne)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,34 +57,28 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Premium AI Portfolio Colors
-        obsidian: {
-          900: "#0a0a0a",
-          800: "#121212",
-          700: "#1e1e1e",
+        // Computational Elegance Palette
+        charcoal: {
+          900: "#0E0E10", // Deepest background
+          800: "#1A1A1D", // Card background
+          700: "#2B2B30", // Border/Stroke
         },
-        violet: {
-          glow: "#D4AF37",
-          dim: "#8B5E3C",
+        // Alias for backward compatibility
+        obsidian: {
+          900: "#0E0E10",
+          800: "#1A1A1D",
+          700: "#2B2B30",
         },
         cyan: {
-          glow: "#C5F0E8",
-          dim: "#7DD3FC",
+          DEFAULT: "#00F0FF", // Electric Cyan
+          glow: "#00F0FF",
+          dim: "#008F99",
         },
-        gold: {
-          glow: "#FFD24D",
-          dim: "#B8860B",
-          shimmer: "#FBF5D4", // Light champagne
+        amber: {
+          DEFAULT: "#FFB02E", // Warm Amber
+          glow: "#FFB02E",
+          dim: "#99691C",
         },
-        neon: {
-          blue: "#3b82f6",
-          cyan: "#06b6d4",
-        },
-        royal: {
-          900: "#0b1120", // Deepest blue
-          800: "#1e3a8a", // Dark blue accent
-          glow: "#3b82f6", // Blue glow
-        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -92,7 +90,8 @@ const config: Config = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #FFD24D33 0deg, #FBF5D433 180deg, #FFD24D33 360deg)', // Gold conic
+        'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.15) 0%, transparent 70%)',
+        'amber-glow': 'radial-gradient(circle at 50% 50%, rgba(255, 176, 46, 0.15) 0%, transparent 70%)',
       },
       keyframes: {
         "fade-up": {
@@ -108,9 +107,20 @@ const config: Config = {
             transform: "translateY(0px)",
           },
         },
+        "pulse-glow": {
+          "0%, 100%": {
+            opacity: "1",
+            boxShadow: "0 0 10px #00F0FF",
+          },
+          "50%": {
+            opacity: "0.5",
+            boxShadow: "0 0 20px #00F0FF",
+          },
+        },
       },
       animation: {
-        "fade-up": "fade-up 0.3s ease-out",
+        "fade-up": "fade-up 0.5s ease-out",
+        "pulse-glow": "pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },

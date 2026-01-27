@@ -45,14 +45,14 @@ const Navbar = () => {
                                 alt="Anudeep Logo"
                                 width={32}
                                 height={32}
-                                className="w-full h-full object-contain"
+                                className="w-full h-full object-contain filter hue-rotate-15"
                             />
                         </div>
                         {/* Name Text */}
-                        <span className="text-xl font-bold font-outfit text-foreground hidden sm:inline">
-                            <span className="text-blue-400">{'<'}</span>
+                        <span className="text-xl font-bold font-syne text-foreground hidden sm:inline">
+                            <span className="text-cyan-400">{'<'}</span>
                             Anudeep
-                            <span className="text-blue-400">{' />'}</span>
+                            <span className="text-cyan-400">{' />'}</span>
                         </span>
                     </Link>
 
@@ -62,42 +62,42 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group"
+                                className="text-sm font-mono font-medium text-gray-400 hover:text-white transition-colors relative group uppercase tracking-wide"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-500 group-hover:w-full transition-all duration-300" />
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-cyan-500 group-hover:w-full transition-all duration-300" />
                             </Link>
                         ))}
 
-                        <div className="h-6 w-px bg-white/8" />
+                        <div className="h-6 w-px bg-white/10" />
 
-                        {/* Subscribe Button */}
+                        {/* Subscribe Button (Cyan) */}
                         <a
                             href="https://substack.com/@anudeepai?utm_campaign=profile&utm_medium=profile-page"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 rounded-lg bg-blue-400/10 hover:bg-blue-400/20 text-blue-400 hover:text-blue-300 border border-blue-400/30 hover:border-blue-400/60 transition-all duration-300 font-medium text-sm flex items-center gap-2 group hover-lift"
+                            className="px-4 py-2 rounded-none clip-path-slant bg-cyan-900/20 hover:bg-cyan-900/30 text-cyan-400 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300 font-mono text-sm flex items-center gap-2 group hover-lift"
                         >
-                            <span>Subscribe</span>
+                            <span>SUBSCRIBE</span>
                             <span className="text-xs opacity-60 group-hover:opacity-100 transition-opacity">→</span>
                         </a>
 
-                        {/* Book Mentoring Button */}
+                        {/* Book Mentoring Button (Amber) */}
                         <a
                             href="https://adplist.org/mentors/anudeep-sri-bathina"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 rounded-lg bg-gold-glow/10 hover:bg-gold-glow/20 text-gold-glow hover:text-gold-shimmer border border-gold-glow/30 hover:border-gold-glow/60 transition-all duration-300 font-medium text-sm flex items-center gap-2 group hover-lift"
+                            className="px-4 py-2 rounded-none clip-path-slant bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 hover:text-amber-400 border border-amber-500/30 hover:border-amber-500/60 transition-all duration-300 font-mono text-sm flex items-center gap-2 group hover-lift"
                         >
-                            <span>Book Mentoring</span>
+                            <span>MENTORSHIP</span>
                             <span className="text-xs opacity-60 group-hover:opacity-100 transition-opacity">→</span>
                         </a>
 
                         <div className="flex gap-4">
-                            <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                            <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
                                 <Github size={20} />
                             </a>
-                            <a href={resumeData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                            <a href={resumeData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors">
                                 <Linkedin size={20} />
                             </a>
                         </div>
@@ -105,7 +105,7 @@ const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden text-white"
+                        className="md:hidden text-white hover:text-cyan-400 transition-colors"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? <X /> : <Menu />}
@@ -128,21 +128,21 @@ const Navbar = () => {
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-2xl font-bold text-foreground/80 hover:text-foreground"
+                                    className="text-2xl font-bold font-syne text-foreground/80 hover:text-cyan-400 transition-colors"
                                 >
                                     {link.name}
                                 </Link>
                             ))}
-                            
+
                             {/* Mobile Subscribe Button */}
                             <a
                                 href="https://substack.com/@anudeepai?utm_campaign=profile&utm_medium=profile-page"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="px-4 py-3 rounded-lg bg-blue-400/10 hover:bg-blue-400/20 text-blue-400 hover:text-blue-300 border border-blue-400/30 hover:border-blue-400/60 transition-all duration-300 font-medium text-base flex items-center justify-center gap-2 hover-lift"
+                                className="px-4 py-3 rounded-none bg-cyan-900/20 hover:bg-cyan-900/30 text-cyan-400 border border-cyan-500/30 transition-all duration-300 font-mono text-base flex items-center justify-center gap-2"
                             >
-                                <span>Subscribe to Newsletter</span>
+                                <span>SUBSCRIBE</span>
                                 <span className="text-xs opacity-60">→</span>
                             </a>
 
@@ -152,9 +152,9 @@ const Navbar = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="px-4 py-3 rounded-lg bg-gold-glow/10 hover:bg-gold-glow/20 text-gold-glow hover:text-gold-shimmer border border-gold-glow/30 hover:border-gold-glow/60 transition-all duration-300 font-medium text-base flex items-center justify-center gap-2 hover-lift"
+                                className="px-4 py-3 rounded-none bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 border border-amber-500/30 transition-all duration-300 font-mono text-base flex items-center justify-center gap-2"
                             >
-                                <span>Book Mentoring</span>
+                                <span>MENTORSHIP</span>
                                 <span className="text-xs opacity-60">→</span>
                             </a>
 

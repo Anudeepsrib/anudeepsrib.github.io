@@ -18,17 +18,17 @@ const Education = () => {
                     viewport={{ once: true }}
                     className="mb-12"
                 >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-4">
-                        <GraduationCap className="text-blue-400" size={18} />
-                        <span className="text-sm font-medium text-blue-300">Academic Foundation</span>
+                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-4">
+                        <GraduationCap className="text-cyan-400" size={18} />
+                        <span className="text-sm font-mono text-cyan-300">Academic Foundation</span>
                     </motion.div>
-                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-bold font-outfit text-white mb-4">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
+                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-bold font-syne text-white mb-4">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-300">
                             Education
                         </span>
                     </motion.h2>
-                    <motion.p variants={fadeUp} className="text-xl text-gray-400 max-w-3xl">
-                        Strong foundation in computer science and advanced studies in AI, machine learning, and data systems.
+                    <motion.p variants={fadeUp} className="text-xl text-gray-400 max-w-3xl font-light">
+                        Foundational expertise in computer science, AI, machine learning, and data systems.
                     </motion.p>
                 </motion.div>
 
@@ -41,13 +41,14 @@ const Education = () => {
                             whileInView="show"
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-blue-400/20 hover-lift transition-all flex flex-col md:flex-row md:items-start gap-6"
+                            className="bg-charcoal-800/50 border border-white/10 rounded-none p-8 hover:border-cyan-400/50 hover-lift transition-all flex flex-col md:flex-row md:items-start gap-6 relative overflow-hidden"
                         >
+                            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyan-500/30" />
                             <div className="flex-grow">
-                                <h3 className="text-2xl font-bold text-white mb-2">{edu.institution}</h3>
-                                <div className="text-blue-300 text-lg font-medium mb-1">{edu.degree}</div>
-                                <div className="text-gray-500 mb-4">{edu.startDate} - {edu.endDate}</div>
-                                <p className="text-gray-400 leading-relaxed">{edu.description}</p>
+                                <h3 className="text-2xl font-bold text-white mb-2 font-syne">{edu.institution}</h3>
+                                <div className="text-cyan-300 text-lg font-mono font-medium mb-1">{edu.degree}</div>
+                                <div className="text-gray-500 mb-4 font-mono text-sm">{edu.startDate} - {edu.endDate}</div>
+                                <p className="text-gray-400 leading-relaxed font-light">{edu.description}</p>
                             </div>
 
                             {edu.institutionUrl && (
@@ -56,7 +57,7 @@ const Education = () => {
                                         href={edu.institutionUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 bg-blue-400/10 border border-blue-400/30 text-blue-300 rounded-full hover:bg-blue-400/20 hover:border-blue-400/60 hover:text-blue-200 transition-all text-sm font-medium"
+                                        className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 rounded-none hover:bg-cyan-400/20 hover:border-cyan-400/60 hover:text-cyan-200 transition-all text-sm font-mono font-medium uppercase tracking-wide"
                                     >
                                         Visit Website
                                     </a>

@@ -112,10 +112,10 @@ const Recognitions = () => {
     const reduceMotion = useReducedMotion();
 
     return (
-        <section id="recognitions" className="py-24 relative overflow-hidden bg-obsidian-900">
+        <section id="recognitions" className="py-24 relative overflow-hidden bg-charcoal-900">
             {/* Background Glows */}
-            <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-400/5 rounded-full blur-[128px] pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-300/5 rounded-full blur-[128px] pointer-events-none" />
+            <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-[128px] pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300/5 rounded-full blur-[128px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Header */}
@@ -126,19 +126,19 @@ const Recognitions = () => {
                     viewport={{ once: true }}
                     className="mb-24"
                 >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-400/10 border border-blue-400/20 mb-8">
-                        <Award size={18} className="text-blue-400" />
-                        <span className="text-sm font-medium text-blue-300">Professional Recognition</span>
+                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-8">
+                        <Award size={18} className="text-cyan-400" />
+                        <span className="text-sm font-mono text-cyan-300">Professional Recognition</span>
                     </motion.div>
 
-                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-bold font-outfit text-white mb-6 tracking-tight">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">
+                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-bold font-syne text-white mb-6 tracking-tight">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-300">
                             Recognitions & Impact
                         </span>
                     </motion.h2>
 
-                    <motion.p variants={fadeUp} className="text-xl text-gray-400 max-w-3xl leading-relaxed">
-                        Recognized by leading institutions, universities, and research platforms for contributions to AI education, technical mentorship, and advancing the field of data science and machine learning.
+                    <motion.p variants={fadeUp} className="text-xl text-gray-400 max-w-3xl leading-relaxed font-light">
+                        Recognized by leading institutions for contributions to AI education and technical mentorship.
                     </motion.p>
                 </motion.div>
 
@@ -157,20 +157,20 @@ const Recognitions = () => {
                             <div className="mb-12">
                                 <div className="flex items-start gap-4 mb-4">
                                     <motion.div
-                                        className={`p-3 rounded-2xl ${group.accentLight} ${group.color} flex-shrink-0`}
+                                        className={`p-3 rounded-none bg-cyan-400/10 border border-cyan-400/30 flex-shrink-0`}
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                        <group.icon size={28} />
+                                        <group.icon size={28} className="text-cyan-400" />
                                     </motion.div>
                                     <div className="flex-grow">
-                                        <h3 className="text-3xl font-bold text-white font-outfit mb-2">
+                                        <h3 className="text-3xl font-bold text-white font-syne mb-2">
                                             {group.category}
                                         </h3>
-                                        <p className="text-gray-400 text-lg">{group.description}</p>
+                                        <p className="text-gray-400 text-lg font-light">{group.description}</p>
                                     </div>
                                 </div>
-                                <div className="h-1 w-20 bg-gradient-to-r from-blue-400 to-transparent" />
+                                <div className="h-px w-20 bg-gradient-to-r from-cyan-400 to-transparent" />
                             </div>
 
                             {/* Items Grid */}
@@ -179,23 +179,23 @@ const Recognitions = () => {
                                     <motion.div
                                         key={itemIdx}
                                         variants={fadeUp}
-                                        className="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/8 backdrop-blur-xl transition-all hover-lift"
+                                        className="group relative overflow-hidden rounded-none bg-black/20 border border-white/5 hover:border-cyan-400/50 backdrop-blur-xl transition-all hover-lift"
                                     >
                                         {/* Gradient Background on Hover */}
-                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
                                         <div className="relative p-8">
                                             {/* Organization */}
-                                            <p className="text-xs font-mono text-blue-300 uppercase tracking-widest mb-3">
+                                            <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-3 font-bold">
                                                 {item.organization}
                                             </p>
 
                                             {/* Title */}
-                                            <h4 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
+                                            <h4 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors font-syne">
                                                 {item.title}
                                             </h4>
                                             {/* Description */}
-                                            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                                            <p className="text-gray-400 text-sm leading-relaxed mb-6 font-light">
                                                 {item.description}
                                             </p>
 
@@ -206,7 +206,7 @@ const Recognitions = () => {
                                                         href={item.link}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-400/10 hover:bg-blue-400/20 border border-blue-400/30 hover:border-blue-400/60 text-blue-300 hover:text-blue-200 text-xs font-medium transition-all"
+                                                        className="inline-flex items-center gap-2 px-3 py-2 rounded-none bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-300 hover:text-cyan-200 text-xs font-mono font-medium transition-all uppercase tracking-wide"
                                                     >
                                                         {item.linkText}
                                                         <ExternalLink size={14} className="opacity-70" />
@@ -218,7 +218,7 @@ const Recognitions = () => {
                                                         href={item.link2}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-300/10 hover:bg-blue-300/20 border border-blue-300/30 hover:border-blue-300/60 text-blue-200 hover:text-blue-100 text-xs font-medium transition-all"
+                                                        className="inline-flex items-center gap-2 px-3 py-2 rounded-none bg-cyan-300/10 hover:bg-cyan-300/20 border border-cyan-300/30 hover:border-cyan-300/60 text-cyan-200 hover:text-cyan-100 text-xs font-mono font-medium transition-all uppercase tracking-wide"
                                                     >
                                                         {item.linkText2}
                                                         <ExternalLink size={14} className="opacity-70" />
@@ -238,9 +238,9 @@ const Recognitions = () => {
                     initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-24 pt-16 border-t border-white/8"
+                    className="mt-24 pt-16 border-t border-white/5"
                 >
-                    <h3 className="text-2xl font-bold text-white font-outfit mb-8">Recognition Highlights</h3>
+                    <h3 className="text-2xl font-bold text-white font-syne mb-8">Recognition Highlights</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
                             { icon: Award, label: "Speaking Engagements", value: "15+" },
@@ -253,11 +253,11 @@ const Recognitions = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="p-6 rounded-xl bg-white/5 border border-white/8 text-center hover-lift"
+                                className="p-6 rounded-none bg-white/5 border border-white/8 text-center hover-lift hover:border-cyan-400/30"
                             >
-                                <stat.icon className="text-blue-400 mx-auto mb-3" size={32} />
-                                <p className="text-3xl font-bold text-white font-outfit mb-2">{stat.value}</p>
-                                <p className="text-gray-400 text-sm">{stat.label}</p>
+                                <stat.icon className="text-cyan-400 mx-auto mb-3" size={32} />
+                                <p className="text-3xl font-bold text-white font-syne mb-2">{stat.value}</p>
+                                <p className="text-gray-400 text-sm font-mono">{stat.label}</p>
                             </motion.div>
                         ))}
                     </div>
