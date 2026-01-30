@@ -22,6 +22,8 @@ const config: Config = {
       fontFamily: {
         syne: ["var(--font-syne)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
+        inter: ["var(--font-inter)", "sans-serif"],
+        space: ["var(--font-space)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,25 +59,39 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Computational Elegance Palette
-        charcoal: {
-          900: "#0E0E10", // Deepest background
-          800: "#1A1A1D", // Card background
-          700: "#2B2B30", // Border/Stroke
+        // Design System Palette
+        navy: {
+          950: "#070A12", // Deep navy-black (bg-primary)
+          900: "#0B1020", // Slightly lighter navy (bg-secondary)
         },
-        // Alias for backward compatibility
+        seafoam: {
+          DEFAULT: "#45E7C3", // Seafoam cyan/green (accent)
+        },
+        coolgray: {
+          DEFAULT: "#A7B1C8", // text-secondary
+        },
+        offwhite: {
+          DEFAULT: "#F2F5FA", // text-primary
+        },
+
+        // Keeping legacy palettes for backward compatibility (mapped to new if needed or kept distinct)
+        charcoal: {
+          900: "#070A12",
+          800: "#0B1020",
+          700: "#2B2B30",
+        },
         obsidian: {
           900: "#0E0E10",
           800: "#1A1A1D",
           700: "#2B2B30",
         },
         cyan: {
-          DEFAULT: "#00F0FF", // Electric Cyan
-          glow: "#00F0FF",
+          DEFAULT: "#45E7C3", // Mapped to new accent for consistency
+          glow: "#45E7C3",
           dim: "#008F99",
         },
         amber: {
-          DEFAULT: "#FFB02E", // Warm Amber
+          DEFAULT: "#FFB02E",
           glow: "#FFB02E",
           dim: "#99691C",
         },
@@ -90,7 +106,7 @@ const config: Config = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.15) 0%, transparent 70%)',
+        'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(69, 231, 195, 0.15) 0%, transparent 70%)', // Updated to seafoam
         'amber-glow': 'radial-gradient(circle at 50% 50%, rgba(255, 176, 46, 0.15) 0%, transparent 70%)',
       },
       keyframes: {
@@ -110,11 +126,11 @@ const config: Config = {
         "pulse-glow": {
           "0%, 100%": {
             opacity: "1",
-            boxShadow: "0 0 10px #00F0FF",
+            boxShadow: "0 0 10px #45E7C3",
           },
           "50%": {
             opacity: "0.5",
-            boxShadow: "0 0 20px #00F0FF",
+            boxShadow: "0 0 20px #45E7C3",
           },
         },
       },

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Syne, IBM_Plex_Mono } from 'next/font/google';
+import { Syne, IBM_Plex_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import BackgroundGraph from '@/components/BackgroundGraph';
+import SmoothScroll from '@/components/SmoothScroll';
 import resumeData from '@/data/resumeData.json';
 
 const syne = Syne({
@@ -14,6 +15,12 @@ const ibmPlexMono = IBM_Plex_Mono({
     weight: ['400', '500', '600'],
     subsets: ['latin'],
     variable: '--font-mono',
+    display: 'swap',
+});
+
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter',
     display: 'swap',
 });
 
@@ -50,14 +57,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${syne.variable} ${ibmPlexMono.variable} dark`} suppressHydrationWarning>
+        <html lang="en" className={`${syne.variable} ${ibmPlexMono.variable} ${inter.variable} dark`} suppressHydrationWarning>
             <body
-                className="font-inter bg-background text-foreground antialiased selection:bg-gold-glow/30 selection:text-gold-dim"
+                className="bg-navy-950 text-offwhite antialiased selection:bg-seafoam/30 selection:text-seafoam"
                 suppressHydrationWarning
             >
+                <SmoothScroll />
+                <div className="grain-overlay" />
+                <div className="vignette" />
                 <div className="relative min-h-screen flex flex-col">
                     <BackgroundGraph />
-
                     {children}
                 </div>
             </body>

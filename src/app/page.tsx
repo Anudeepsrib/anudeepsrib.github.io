@@ -3,7 +3,7 @@ import Hero from '@/components/Hero';
 import WhyWorkWithMe from '@/components/WhyWorkWithMe';
 import StatsBanner from '@/components/StatsBanner';
 import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
+
 import Recognitions from '@/components/Recognitions';
 import Impact from '@/components/Impact';
 import Authorship from '@/components/Authorship';
@@ -18,7 +18,7 @@ export default function Home() {
             <WhyWorkWithMe />
             <StatsBanner />
             <Skills />
-            <Projects />
+
             <Impact />
             <Authorship />
             <CTASection />
