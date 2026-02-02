@@ -29,24 +29,45 @@ const impactMetrics = [
 
 const testimonials = [
     {
-        quote: "Anudeep didn't just give me advice; he architected a roadmap. We deployed a RAG system 3 weeks faster than planned.",
-        author: "Sarah J.",
-        role: "Senior ML Engineer",
-        company: "FinTech Startup",
+        quote: "Anudeep is incredibly insightful, listening carefully and offering technical yet straightforward comments that are truly beneficial. His ability to break down complex concepts into understandable terms is admirable.",
+        author: "Michael",
+        role: "Freelance Developer",
+        company: "Self-taught",
+        source: "via ADPList"
+    },
+    {
+        quote: "Extremely insightful and valuable discussion. Anudeep's depth of knowledge in Data and AI is evident, and his willingness to openly share his expertise is commendable.",
+        author: "Shashank H.V.",
+        role: "Student",
+        company: "UMass Dartmouth",
         source: "via Topmate"
     },
     {
-        quote: "The 'Theory to Production' bridge is real. I transitioned from a Java backend role to an AI Engineer position within 5 months.",
-        author: "Rahul M.",
-        role: "AI Engineer",
-        company: "Global IT Services",
-        source: "via Great Learning"
+        quote: "His tailored advice on skills, job applications, and interviews was practical and insightful, leaving me confident and motivated. Highly recommended!",
+        author: "Baran Khazaee",
+        role: "MSc Computer Science",
+        company: "UC Davis",
+        source: "via ADPList"
     },
     {
-        quote: "His insights on handling LLM hallucinations in production were critical. We reduced our error rate by 40%.",
-        author: "David Chen",
-        role: "CTO",
-        company: "HealthTech SaaS",
+        quote: "I was very concerned as a fresher on how to face interviews. Anudeep made me feel comfortable regarding what to expect and how to navigate through different scenarios.",
+        author: "Mahima Tummala",
+        role: "Job Seeker",
+        company: "Interview Prep",
+        source: "via Topmate"
+    },
+    {
+        quote: "The session was incredible. He showed me a path that I might not have considered if I hadn't spoken to him. Highly knowledgeable and supportive.",
+        author: "Vansh Mehta",
+        role: "Career Changer",
+        company: "Data Science",
+        source: "via Topmate"
+    },
+    {
+        quote: "There is no denying that Anudeep was able to guide me to the next steps of my learning journey in data science. He is supportive and able to point learners in the right direction.",
+        author: "Ronald Ngounou",
+        role: "MS Computer Science",
+        company: "University of DC",
         source: "via ADPList"
     }
 ];

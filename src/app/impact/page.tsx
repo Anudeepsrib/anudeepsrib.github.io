@@ -30,18 +30,18 @@ const impactMetrics = [
 
 const testimonials = [
     {
-        quote: "Anudeep was incredibly helpful in clarifying my doubts about the data science career path. His insights on real-world AI production were eye-opening.",
-        author: "Mentee",
+        quote: "Anudeep is incredibly insightful, listening carefully and offering technical yet straightforward comments that are truly beneficial for interview preparation.",
+        author: "Michael",
+        source: "via ADPList"
+    },
+    {
+        quote: "Extremely insightful discussion. Anudeep's depth of knowledge in Data and AI is evident, and his willingness to openly share his expertise is commendable.",
+        author: "Shashank H.V.",
         source: "via Topmate"
     },
     {
-        quote: "The sessions were very interactive and practical. Anudeep makes complex concepts like Transformers and LLMs easy to understand.",
-        author: "Learner",
-        source: "via Great Learning"
-    },
-    {
-        quote: "Great guidance on transitioning from software engineering to ML. The roadmap provided was very clear and actionable.",
-        author: "Professional",
+        quote: "His tailored advice on skills, job applications, and interviews was practical and insightful, leaving me confident and motivated. Highly recommended!",
+        author: "Baran Khazaee",
         source: "via ADPList"
     }
 ];
