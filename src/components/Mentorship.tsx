@@ -1,11 +1,8 @@
 'use client';
-import React, { useRef } from 'react';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Users, GraduationCap, Briefcase, ExternalLink, Globe, Clock } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
+import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Users, GraduationCap, Briefcase, ExternalLink, Globe, Star, Quote, ChevronRight, Award } from 'lucide-react';
+import { fadeUp, stagger } from '@/lib/animation';
 
 interface MentorshipItem {
     title: string;
@@ -18,20 +15,22 @@ interface MentorshipItem {
     highlights?: string[];
 }
 
-interface MentorshipGroup {
+interface MentorshipCategory {
+    id: number;
     category: string;
     description: string;
     icon: any;
-    color: string;
+    gradient: string;
     items: MentorshipItem[];
 }
 
-const mentorshipGroups: MentorshipGroup[] = [
+const mentorshipGroups: MentorshipCategory[] = [
     {
+        id: 1,
         category: "Industry & Fellowship Programs",
         description: "Guiding emerging talent through cutting-edge AI/ML projects at scale",
         icon: Briefcase,
-        color: "text-blue-400",
+        gradient: "from-blue-500 to-cyan-400",
         items: [
             {
                 title: "KaggleX Fellowship Program",
@@ -39,73 +38,75 @@ const mentorshipGroups: MentorshipGroup[] = [
                 role: "Generative AI & ML Mentor",
                 description: "Mentored Cohort 3 (ML) and Cohort 4 (GenAI), guiding fellows through Gemma fine-tuning and advanced model development.",
                 metrics: "Cohorts 3 & 4",
-                highlights: ["Gemma Model Fine-tuning", "GenAI Projects", "Real-world ML Applications"]
+                highlights: ["Gemma Model Fine-tuning", "GenAI Projects", "Real-world ML"]
             },
             {
                 title: "PGP in AI & Data Science",
                 organization: "University of Texas at Austin",
                 role: "Industry Mentor",
                 description: "Mentored 132+ IT professionals through real-world AI case studies and industry best practices.",
-                metrics: "132 Professionals",
-                highlights: ["Case Study Leadership", "Industry Bridge", "4.76/5 Facilitator Rating"]
+                metrics: "132+ Professionals",
+                highlights: ["Case Study Leadership", "Industry Bridge", "4.76/5 Rating"]
             }
         ]
     },
     {
+        id: 2,
         category: "Global 1-on-1 Mentorship",
         description: "Personalized career guidance and technical mentoring across continents",
         icon: Users,
-        color: "text-blue-300",
+        gradient: "from-purple-500 to-pink-400",
         items: [
-            {
-                title: "Topmate.io",
-                organization: "Career & Technical Mentorship",
-                role: "Senior Tech Mentor",
-                description: "Mock interviews, resume reviews, and personalized career guidance for tech professionals across 5+ countries.",
-                metrics: "500+ Minutes",
-                link: "https://adplist.org/mentors/anudeep-sri-bathina",
-                linkText: "Book a Session",
-                highlights: ["Mock Interviews", "Resume Reviews", "Career Strategy"]
-            },
             {
                 title: "ADPList",
                 organization: "Global Mentoring Community",
                 role: "Design & Data Science Mentor",
                 description: "Portfolio reviews and strategic career advice, recognized for 500+ minutes of global mentoring impact.",
                 metrics: "500+ Minutes",
-                link: "https://adplist.org/",
+                link: "https://adplist.org/mentors/anudeep-sri-bathina",
                 linkText: "View Profile",
                 highlights: ["Portfolio Reviews", "Career Advice", "Global Reach"]
+            },
+            {
+                title: "Topmate.io",
+                organization: "Career & Technical Mentorship",
+                role: "Senior Tech Mentor",
+                description: "Mock interviews, resume reviews, and personalized career guidance for tech professionals across 5+ countries.",
+                metrics: "70+ Sessions",
+                link: "https://topmate.io/anudeepsrib",
+                linkText: "Book a Session",
+                highlights: ["Mock Interviews", "Resume Reviews", "Career Strategy"]
             }
         ]
     },
     {
-        category: "Academic & Institutional Programs",
-        description: "Building strong foundations for next-generation technologists and data scientists",
+        id: 3,
+        category: "Academic & Educational",
+        description: "Building strong foundations for next-generation technologists",
         icon: GraduationCap,
-        color: "text-blue-200",
+        gradient: "from-amber-500 to-orange-400",
         items: [
             {
                 title: "Graduate Teaching & Mentorship",
-                organization: "University of Massachusetts Dartmouth",
+                organization: "UMass Dartmouth",
                 role: "Teaching Assistant",
                 description: "Mentored graduate students in Advanced ML, Data Mining, and Java. Contributed to curriculum development.",
                 metrics: "2021–2023",
-                highlights: ["Advanced ML", "Data Mining", "Curriculum Development"]
+                highlights: ["Advanced ML", "Data Mining", "Curriculum Dev"]
             },
             {
-                title: "Ed-Tech Instruction",
+                title: "Data Science Instruction",
                 organization: "Great Learning",
-                role: "Data Science Instructor",
-                description: "Guided cohorts through high-impact Big Data and Machine Learning projects with focus on real-world applications.",
-                metrics: "2019–2021",
-                highlights: ["Big Data Projects", "ML Mentorship", "Hands-on Learning"]
+                role: "Instructor & Mentor",
+                description: "Guided cohorts through Big Data and Machine Learning projects with 4.76/5 rating.",
+                metrics: "316 Hours",
+                highlights: ["Big Data", "ML Projects", "4.76/5 Rating"]
             },
             {
                 title: "Community Educational Content",
                 organization: "YouTube & Social Platforms",
                 role: "Community Mentor",
-                description: "Created resources assisting 350+ international students with US university transition and academic success.",
+                description: "Created resources assisting 350+ international students with US university transition.",
                 metrics: "350+ Students",
                 highlights: ["Transition Support", "US Education", "Student Success"]
             }
@@ -113,160 +114,160 @@ const mentorshipGroups: MentorshipGroup[] = [
     }
 ];
 
+const testimonials = [
+    {
+        quote: "Anudeep is incredibly insightful, listening carefully and offering technical yet straightforward comments that are truly beneficial.",
+        author: "Michael",
+        role: "Freelance Developer",
+        source: "ADPList"
+    },
+    {
+        quote: "Extremely insightful discussion. His depth of knowledge in Data and AI is evident.",
+        author: "Shashank H.V.",
+        role: "UMass Dartmouth",
+        source: "Topmate"
+    },
+    {
+        quote: "His tailored advice on skills and interviews was practical and insightful. Highly recommended!",
+        author: "Baran Khazaee",
+        role: "UC Davis",
+        source: "ADPList"
+    }
+];
+
 const Mentorship = () => {
-    const sectionRef = useRef<HTMLElement>(null);
-    const titleRef = useRef<HTMLDivElement>(null);
-    const underlineRef = useRef<HTMLDivElement>(null);
-    const groupsRef = useRef<HTMLDivElement>(null);
+    const reduceMotion = useReducedMotion();
 
-    useGSAP(() => {
-        // Title Animation: Slides in from left
-        if (titleRef.current) {
-            gsap.fromTo(titleRef.current,
-                { x: '-8vw', opacity: 0 },
-                {
-                    x: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top 75%',
-                    }
-                }
-            );
-        }
-
-        // Accent underline scales from scaleX: 0
-        if (underlineRef.current) {
-            gsap.fromTo(underlineRef.current,
-                { scaleX: 0 },
-                {
-                    scaleX: 1,
-                    duration: 1.2,
-                    ease: 'expo.out',
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top 75%',
-                    }
-                }
-            );
-        }
-
-        // Card Stagger Reveal
-        const cards = gsap.utils.toArray('.mentorship-card');
-
-        cards.forEach((card: any, index) => {
-            gsap.fromTo(card,
-                { y: '10vh', opacity: 0, rotateX: 8 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    rotateX: 0,
-                    duration: 0.8,
-                    delay: index * 0.12,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: 'top 75%',
-                    }
-                }
-            );
-        });
-
-    }, { scope: sectionRef });
+    // Impact stats
+    const stats = [
+        { value: "1000+", label: "Learners Mentored" },
+        { value: "20+", label: "Countries" },
+        { value: "4.76", label: "Avg Rating" },
+        { value: "500+", label: "Mentoring Hours" }
+    ];
 
     return (
-        <section id="mentorship" ref={sectionRef} className="py-24 relative overflow-hidden">
+        <section className="py-24 pt-32 relative overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 bg-[var(--bg-primary)]" />
-            <div className="absolute top-1/2 right-0 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-[128px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-[128px] pointer-events-none" />
+            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[180px] pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[var(--accent-warm)]/5 rounded-full blur-[150px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Header */}
-                <div ref={titleRef} className="mb-24 opacity-0">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-8 hover-lift">
-                        <Users size={18} className="text-accent" />
-                        <span className="text-sm font-mono text-accent">Human Intelligence Network</span>
-                    </div>
+                {/* Hero Header */}
+                <motion.div
+                    variants={stagger}
+                    initial={reduceMotion ? 'show' : 'hidden'}
+                    animate="show"
+                    className="text-center mb-20"
+                >
+                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift">
+                        <Users className="text-accent" size={18} />
+                        <span className="text-sm font-mono text-accent">Global Mentorship</span>
+                    </motion.div>
+                    <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-exo font-bold mb-6 tracking-tight">
+                        <span className="gradient-text">Mentoring Excellence</span>
+                    </motion.h1>
+                    <motion.p variants={fadeUp} className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
+                        Empowering the next generation of AI practitioners through personalized guidance,
+                        industry mentorship, and educational programs worldwide.
+                    </motion.p>
+                </motion.div>
 
-                    <h2 className="text-5xl md:text-6xl font-exo font-bold text-text-primary mb-6 tracking-tight">
-                        <span className="gradient-text">
-                            Mentorship & Speaking
-                        </span>
-                    </h2>
-
-                    <div ref={underlineRef} className="h-1 w-32 bg-accent origin-left" />
-
-                    <p className="text-xl text-text-secondary max-w-3xl leading-relaxed mt-8">
-                        Advancing the next generation of AI engineers through personalized mentoring and institutional partnerships.
-                    </p>
-                </div>
+                {/* Stats Banner */}
+                <motion.div
+                    variants={stagger}
+                    initial={reduceMotion ? 'show' : 'hidden'}
+                    animate="show"
+                    className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
+                >
+                    {stats.map((stat, index) => (
+                        <motion.div
+                            key={index}
+                            variants={fadeUp}
+                            className="glass-card p-6 text-center hover-lift"
+                        >
+                            <div className="text-3xl md:text-4xl font-exo font-bold gradient-text mb-2">
+                                {stat.value}
+                            </div>
+                            <p className="text-text-muted text-sm font-mono uppercase tracking-wide">
+                                {stat.label}
+                            </p>
+                        </motion.div>
+                    ))}
+                </motion.div>
 
                 {/* Mentorship Categories */}
-                <div ref={groupsRef} className="space-y-20">
-                    {mentorshipGroups.map((group, groupIdx) => (
-                        <div key={groupIdx} className="relative">
-                            {/* Category Header */}
-                            <div className="mb-12">
-                                <div className="flex items-start gap-4 mb-4">
-                                    <div className="p-3 rounded-lg bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/30 flex-shrink-0">
-                                        <group.icon size={28} className="text-accent" />
+                <div className="space-y-20">
+                    {mentorshipGroups.map((category) => {
+                        const Icon = category.icon;
+                        return (
+                            <motion.div
+                                key={category.id}
+                                variants={stagger}
+                                initial={reduceMotion ? 'show' : 'hidden'}
+                                whileInView="show"
+                                viewport={{ once: true, margin: "-100px" }}
+                            >
+                                {/* Category Header */}
+                                <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
+                                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${category.gradient} p-[2px]`}>
+                                        <div className="w-full h-full rounded-xl bg-[var(--bg-primary)] flex items-center justify-center">
+                                            <Icon size={28} className="text-text-primary" />
+                                        </div>
                                     </div>
-                                    <div className="flex-grow">
-                                        <h3 className="text-3xl font-exo font-bold text-text-primary mb-2">
-                                            {group.category}
-                                        </h3>
-                                        <p className="text-text-secondary text-lg">{group.description}</p>
+                                    <div>
+                                        <h2 className="text-2xl font-exo font-bold text-text-primary">
+                                            {category.category}
+                                        </h2>
+                                        <p className="text-text-muted text-sm">{category.description}</p>
                                     </div>
-                                </div>
-                                <div className="h-px w-20 bg-gradient-to-r from-accent to-transparent" />
-                            </div>
+                                </motion.div>
 
-                            {/* Items Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {group.items.map((item, itemIdx) => (
-                                    <div
-                                        key={itemIdx}
-                                        className="mentorship-card group glass-card transition-all opacity-0"
-                                        style={{ transformStyle: 'preserve-3d' }}
-                                    >
-                                        {/* Gradient Background on Hover */}
-                                        <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-xl" />
-
-                                        <div className="relative p-8">
-                                            <div className="flex justify-between items-start gap-4 mb-4">
-                                                <div className="flex-grow">
-                                                    <p className="text-xs font-mono text-[var(--accent-warm)] uppercase tracking-widest mb-1 font-bold">
+                                {/* Items */}
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    {category.items.map((item, itemIndex) => (
+                                        <motion.div
+                                            key={itemIndex}
+                                            variants={fadeUp}
+                                            transition={{ delay: itemIndex * 0.1 }}
+                                            className="glass-card p-6 hover-lift group"
+                                        >
+                                            {/* Header Row */}
+                                            <div className="flex items-start justify-between mb-4">
+                                                <div>
+                                                    <h3 className="text-xl font-exo font-bold text-text-primary group-hover:text-accent transition-colors">
+                                                        {item.title}
+                                                    </h3>
+                                                    <p className="text-accent text-sm font-medium">
                                                         {item.organization}
                                                     </p>
-                                                    <h4 className="text-2xl font-exo font-bold text-text-primary mb-2 group-hover:text-accent transition-colors">
-                                                        {item.title}
-                                                    </h4>
                                                 </div>
                                                 {item.metrics && (
-                                                    <div className="flex-shrink-0 px-3 py-1 rounded-lg bg-[var(--accent-warm)]/10 border border-[var(--accent-warm)]/20 whitespace-nowrap">
-                                                        <p className="text-xs font-mono font-bold text-[var(--accent-warm)]">{item.metrics}</p>
-                                                    </div>
+                                                    <span className={`px-3 py-1 rounded-full text-xs font-mono font-bold bg-gradient-to-r ${category.gradient} text-white whitespace-nowrap`}>
+                                                        {item.metrics}
+                                                    </span>
                                                 )}
                                             </div>
 
-                                            {/* Role */}
-                                            <p className="text-sm font-semibold text-accent/80 mb-4 font-mono">{item.role}</p>
+                                            {/* Role Badge */}
+                                            <div className="inline-flex items-center gap-1 px-2 py-1 rounded bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/20 mb-3">
+                                                <Award size={12} className="text-accent" />
+                                                <span className="text-xs font-mono text-accent">{item.role}</span>
+                                            </div>
 
                                             {/* Description */}
-                                            <p className="text-text-secondary text-sm leading-relaxed mb-6">
+                                            <p className="text-text-secondary text-sm leading-relaxed mb-4">
                                                 {item.description}
                                             </p>
 
                                             {/* Highlights */}
                                             {item.highlights && (
-                                                <div className="flex flex-wrap gap-2 mb-6">
-                                                    {item.highlights.map((highlight, idx) => (
+                                                <div className="flex flex-wrap gap-2 mb-4">
+                                                    {item.highlights.map((highlight, i) => (
                                                         <span
-                                                            key={idx}
-                                                            className="px-2.5 py-1 text-xs font-mono font-medium rounded-lg bg-accent/5 text-accent border border-accent/10"
+                                                            key={i}
+                                                            className="px-2 py-1 text-xs font-mono rounded bg-[var(--bg-secondary)] text-text-muted border border-[var(--border-subtle)]"
                                                         >
                                                             {highlight}
                                                         </span>
@@ -274,46 +275,111 @@ const Mentorship = () => {
                                                 </div>
                                             )}
 
-                                            {/* CTA Link */}
+                                            {/* Link */}
                                             {item.link && (
                                                 <a
                                                     href={item.link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="btn-secondary text-sm inline-flex items-center gap-2"
+                                                    className="inline-flex items-center gap-1 text-sm font-mono text-accent hover:gap-2 transition-all"
                                                 >
-                                                    {item.linkText}
-                                                    <ExternalLink size={16} className="opacity-70" />
+                                                    {item.linkText || "View"}
+                                                    <ChevronRight size={14} />
                                                 </a>
                                             )}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
-                {/* Impact Summary */}
-                <div className="mt-24 pt-16 border-t border-[var(--border-subtle)]">
-                    <h3 className="text-2xl font-exo font-bold text-text-primary mb-8">Overall Impact</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {[
-                            { icon: Users, label: "Mentees & Students", value: "1,000+" },
-                            { icon: Globe, label: "Countries Reached", value: "7+" },
-                            { icon: Clock, label: "Total Mentoring Hours", value: "500+" }
-                        ].map((stat, idx) => (
-                            <div
-                                key={idx}
-                                className="mentorship-card glass-card p-6 text-center hover-lift opacity-0"
+                {/* Testimonials Section */}
+                <motion.div
+                    variants={stagger}
+                    initial={reduceMotion ? 'show' : 'hidden'}
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className="mt-24"
+                >
+                    <motion.div variants={fadeUp} className="text-center mb-12">
+                        <h2 className="text-3xl font-exo font-bold text-text-primary mb-2">
+                            What Mentees Say
+                        </h2>
+                        <p className="text-text-muted">Real feedback from mentoring sessions</p>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {testimonials.map((testimonial, index) => (
+                            <motion.div
+                                key={index}
+                                variants={fadeUp}
+                                transition={{ delay: index * 0.1 }}
+                                className="glass-card p-6 hover-lift relative"
                             >
-                                <stat.icon className="text-accent mx-auto mb-3" size={32} />
-                                <p className="text-3xl font-exo font-bold text-accent mb-2">{stat.value}</p>
-                                <p className="text-text-secondary text-sm font-mono">{stat.label}</p>
-                            </div>
+                                <Quote className="absolute top-4 right-4 text-accent/20" size={32} />
+                                <div className="flex items-center gap-1 mb-4">
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star key={i} size={14} className="text-amber-400 fill-amber-400" />
+                                    ))}
+                                </div>
+                                <p className="text-text-secondary text-sm leading-relaxed italic mb-4">
+                                    &quot;{testimonial.quote}&quot;
+                                </p>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-[var(--accent-warm)] flex items-center justify-center text-white font-bold text-sm">
+                                        {testimonial.author.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <p className="text-text-primary font-medium text-sm">{testimonial.author}</p>
+                                        <p className="text-text-muted text-xs">{testimonial.role} • {testimonial.source}</p>
+                                    </div>
+                                </div>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
+
+                {/* CTA Section */}
+                <motion.div
+                    variants={fadeUp}
+                    initial={reduceMotion ? 'show' : 'hidden'}
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className="mt-20"
+                >
+                    <div className="glass-card p-8 text-center max-w-3xl mx-auto">
+                        <Globe className="mx-auto text-accent mb-4" size={40} />
+                        <h3 className="text-2xl font-exo font-bold text-text-primary mb-3">
+                            Ready to Level Up Your Career?
+                        </h3>
+                        <p className="text-text-secondary mb-6 max-w-xl mx-auto">
+                            Book a 1-on-1 session for career guidance, technical mentoring,
+                            resume reviews, or mock interviews.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a
+                                href="https://adplist.org/mentors/anudeep-sri-bathina"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-primary inline-flex items-center justify-center gap-2"
+                            >
+                                Book on ADPList
+                                <ExternalLink size={16} />
+                            </a>
+                            <a
+                                href="https://topmate.io/anudeepsrib"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary inline-flex items-center justify-center gap-2"
+                            >
+                                Book on Topmate
+                                <ExternalLink size={16} />
+                            </a>
+                        </div>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

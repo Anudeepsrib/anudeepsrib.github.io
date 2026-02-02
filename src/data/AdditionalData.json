@@ -12,12 +12,12 @@
     },
     "experience": [
         {
-            "company": "Infosys",
+            "company": "AT&T",
             "position": "Lead Data Scientist",
             "startDate": "2024",
             "endDate": "Present",
             "description": "Architecting enterprise GenAI solutions and LLM systems. Leading development of Python-based parsers and automated interpretation models. Overseeing API deployments using FastAPI and optimizing retrieval systems with Azure Vector Search and Cosmos DB.",
-            "companyUrl": "https://www.infosys.com",
+            "companyUrl": "https://www.att.com",
             "location": "United States"
         },
         {

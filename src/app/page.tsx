@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import StatsBanner from '@/components/StatsBanner';
 import WhyWorkWithMe from '@/components/WhyWorkWithMe';
 import Skills from '@/components/Skills';
 import Impact from '@/components/Impact';
@@ -13,7 +12,6 @@ export default function Home() {
         <main className="min-h-screen">
             <Navbar />
             <Hero />
-            <StatsBanner />
             <WhyWorkWithMe />
             <Skills />
             <Impact />
@@ -23,3 +21,4 @@ export default function Home() {
         </main>
     );
 }
+

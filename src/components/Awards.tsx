@@ -10,7 +10,7 @@ const Awards = () => {
     const awards = [
         {
             title: "RISE Award",
-            organization: "Infosys Americas",
+            organization: "AT&T",
             year: "2025",
             description: "Awarded for significant innovation and impact in AI systems, demonstrating leadership and driving transformational change.",
             icon: Star

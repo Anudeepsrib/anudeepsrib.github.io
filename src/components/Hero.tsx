@@ -128,28 +128,10 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Right Column: Stats */}
+                    {/* Right Column: Professional Context */}
                     <div className="lg:col-span-5 relative hidden lg:block">
                         <div ref={statsRef} className="flex flex-col gap-5">
-                            {/* Stat Card 1 */}
-                            <div className="glass-card p-6 hover-lift opacity-0">
-                                <div className="flex items-baseline gap-2 mb-1">
-                                    <span className="text-5xl font-exo font-bold text-text-primary">9+</span>
-                                    <span className="text-accent text-sm font-mono">years</span>
-                                </div>
-                                <p className="text-text-secondary text-sm">Building AI/ML Systems in Production</p>
-                            </div>
-
-                            {/* Stat Card 2 */}
-                            <div className="glass-card p-6 hover-lift opacity-0">
-                                <div className="flex items-baseline gap-2 mb-1">
-                                    <span className="text-5xl font-exo font-bold text-text-primary">1000+</span>
-                                    <span className="text-accent-warm text-sm font-mono">learners</span>
-                                </div>
-                                <p className="text-text-secondary text-sm">Mentored Globally Across 20+ Countries</p>
-                            </div>
-
-                            {/* Stat Card 3 - Status */}
+                            {/* Status Card */}
                             <a
                                 href="/recognitions"
                                 className="glass-card p-6 hover-lift cursor-pointer group opacity-0"
@@ -162,6 +144,29 @@ const Hero = () => {
                                     Invited Speaker & Industry Mentor
                                 </p>
                             </a>
+
+                            {/* Focus Areas Card */}
+                            <div className="glass-card p-6 hover-lift opacity-0">
+                                <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-3">Focus Areas</p>
+                                <div className="flex flex-wrap gap-2">
+                                    {['GenAI', 'LLMs', 'RAG Systems', 'MLOps', 'Computer Vision'].map((tag) => (
+                                        <span key={tag} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-accent border border-[var(--accent-primary)]/20">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* CTA Card */}
+                            <div className="glass-card p-6 hover-lift opacity-0">
+                                <p className="text-text-secondary text-sm mb-3">Ready to build production AI?</p>
+                                <a
+                                    href="#impact"
+                                    className="text-accent font-mono text-sm hover:underline"
+                                >
+                                    View Impact & Credentials →
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
