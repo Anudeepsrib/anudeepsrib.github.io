@@ -1,115 +1,175 @@
 'use client';
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { heroContainer, fadeUp } from '@/lib/animation';
+import React, { useRef } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowRight, ArrowDownRight, Sparkles } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-    const reduceMotion = useReducedMotion();
+    const containerRef = useRef<HTMLElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const headlineRef = useRef<HTMLHeadingElement>(null);
+    const badgeRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLParagraphElement>(null);
+    const ctaRef = useRef<HTMLDivElement>(null);
+    const statsRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top top',
+                end: '+=100%',
+                pin: true,
+                scrub: 0.5,
+            },
+        });
+
+        // Initial Entrance (Auto-play)
+        const entranceTl = gsap.timeline();
+        entranceTl
+            .fromTo(badgeRef.current, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' })
+            .fromTo(
+                headlineRef.current?.children ? gsap.utils.toArray(headlineRef.current.children) : [],
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out' },
+                '-=0.3'
+            )
+            .fromTo(textRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
+            .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+            .fromTo(statsRef.current?.children ? gsap.utils.toArray(statsRef.current.children) : [],
+                { scale: 0.9, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'back.out(1.4)' }, '-=0.5'
+            );
+
+        // Scroll Exit
+        tl.to(contentRef.current, {
+            y: '-10%',
+            opacity: 0,
+            duration: 1,
+            ease: 'power2.in'
+        });
+
+    }, { scope: containerRef });
 
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+        <section
+            ref={containerRef}
+            className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        >
+            {/* Aurora Background */}
+            <div className="absolute inset-0 aurora-bg" />
+
+            {/* Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--bg-primary)]" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-hero-glow opacity-40" />
+
+            {/* Grid Pattern */}
+            <div
+                className="absolute inset-0 opacity-[0.03]"
+                style={{
+                    backgroundImage: `linear-gradient(var(--text-tertiary) 1px, transparent 1px), linear-gradient(90deg, var(--text-tertiary) 1px, transparent 1px)`,
+                    backgroundSize: '60px 60px'
+                }}
+            />
+
             {/* Content */}
-            <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div ref={contentRef} className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-24">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
-                    {/* Left Column: Text & Tilt */}
-                    <div className="lg:col-span-8 relative">
-                        <motion.div
-                            variants={heroContainer}
-                            initial={reduceMotion ? 'show' : 'hidden'}
-                            animate="show"
-                            className="relative z-10"
-                        >
-                            {/* Technical Badge - Mono font */}
-                            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 mb-8">
-                                <span className="h-[1px] w-12 bg-cyan-glow/50"></span>
-                                <span className="text-sm font-mono text-cyan-glow tracking-widest uppercase">
-                                    System Architecture · Research · Strategy
-                                </span>
-                            </motion.div>
+                    {/* Left Column */}
+                    <div className="lg:col-span-7">
+                        {/* Role Badge */}
+                        <div ref={badgeRef} className="inline-flex items-center gap-3 mb-8 opacity-0">
+                            <span className="flex items-center gap-2 px-4 py-2 glass-card text-sm font-mono text-accent">
+                                <Sparkles className="w-4 h-4" />
+                                Lead Data Scientist · AI Architect
+                            </span>
+                        </div>
 
-                            {/* Name with 8deg tilt - Syne Font */}
-                            <div className="relative mb-6 -ml-4 lg:-ml-8">
-                                <motion.h1
-                                    variants={fadeUp}
-                                    className="text-6xl md:text-8xl lg:text-9xl font-bold font-syne tracking-tighter transform -rotate-2 md:-rotate-3 lg:-rotate-6 origin-bottom-left"
-                                >
-                                    <span className="block text-foreground drop-shadow-2xl">
-                                        ANUDEEP
-                                    </span>
-                                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-200 to-white ml-12 md:ml-24">
-                                        SRI BATHINA
-                                    </span>
-                                </motion.h1>
-                            </div>
+                        {/* Headline */}
+                        <h1 ref={headlineRef} className="mb-8">
+                            <span className="block text-5xl md:text-7xl lg:text-8xl font-exo font-bold text-text-primary tracking-tight opacity-0">
+                                ANUDEEPSRI
+                            </span>
+                            <span className="block text-5xl md:text-7xl lg:text-8xl font-exo font-bold gradient-text tracking-tight mt-2 opacity-0">
+                                BATHINA
+                            </span>
+                        </h1>
 
-                            {/* Outcome Statement */}
-                            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light max-w-2xl border-l-2 border-amber-500/50 pl-6 ml-2">
-                                I help enterprise engineering teams avoid production bottlenecks by architecting scalable, hallucinations-free AI systems.
-                                <br className="hidden md:block" />
-                                <span className="block mt-4 text-lg text-gray-400">
-                                    Started as a frustrated data scientist seeing models fail in production. Now I build the systems that keep them reliable.
-                                </span>
-                            </motion.p>
+                        {/* Value Proposition */}
+                        <p ref={textRef} className="text-lg md:text-xl text-text-secondary mb-10 max-w-xl leading-relaxed opacity-0">
+                            I help enterprise teams build{' '}
+                            <span className="text-accent font-medium">production-ready AI systems</span>{' '}
+                            that scale. From architecture to deployment—no hallucinations, no bottlenecks.
+                        </p>
 
-                            {/* CTAs - Off-axis layout */}
-                            <motion.div variants={fadeUp} className="flex flex-wrap gap-6 mt-8 ml-4">
-                                <a
-                                    href="#experience"
-                                    className="group relative px-8 py-4 bg-cyan-900/10 border border-cyan-500/30 text-cyan-300 font-mono text-sm tracking-wider uppercase hover:bg-cyan-500/10 transition-all duration-300 overflow-hidden"
-                                >
-                                    <div className="absolute inset-0 bg-cyan-400/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                                    <span className="relative flex items-center gap-2">
-                                        Explore System
-                                        <span className="text-xs">↘</span>
-                                    </span>
-                                </a>
+                        {/* CTAs */}
+                        <div ref={ctaRef} className="flex flex-wrap gap-4 opacity-0">
+                            <a
+                                href="#impact"
+                                className="btn-primary flex items-center gap-2"
+                            >
+                                Explore Work
+                                <ArrowDownRight className="w-4 h-4" />
+                            </a>
 
-                                <a
-                                    href="https://adplist.org/mentors/anudeep-sri-bathina"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group px-8 py-4 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-sm tracking-wider uppercase hover:bg-amber-500/20 transition-all duration-300"
-                                >
-                                    <span className="flex items-center gap-2">
-                                        Initialize Mentorship
-                                        <span className="text-xs">→</span>
-                                    </span>
-                                </a>
-                            </motion.div>
-                        </motion.div>
+                            <a
+                                href="https://adplist.org/mentors/anudeep-sri-bathina"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary flex items-center gap-2"
+                            >
+                                Book Mentorship
+                                <ArrowRight className="w-4 h-4" />
+                            </a>
+                        </div>
                     </div>
 
-                    {/* Right Column: Data Visualization / Stats (Cascading) */}
-                    <div className="lg:col-span-4 relative hidden lg:block">
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.5 }}
-                            className="flex flex-col gap-6 items-end"
-                        >
+                    {/* Right Column: Stats */}
+                    <div className="lg:col-span-5 relative hidden lg:block">
+                        <div ref={statsRef} className="flex flex-col gap-5">
                             {/* Stat Card 1 */}
-                            <div className="w-64 p-6 bg-card/30 backdrop-blur-md border border-cyan-500/20 shadow-lg shadow-cyan-900/10 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                                <h3 className="text-4xl font-syne font-bold text-white mb-1">9+</h3>
-                                <p className="text-xs font-mono text-cyan-400 uppercase tracking-wider">Years Experience</p>
+                            <div className="glass-card p-6 hover-lift opacity-0">
+                                <div className="flex items-baseline gap-2 mb-1">
+                                    <span className="text-5xl font-exo font-bold text-text-primary">9+</span>
+                                    <span className="text-accent text-sm font-mono">years</span>
+                                </div>
+                                <p className="text-text-secondary text-sm">Building AI/ML Systems in Production</p>
                             </div>
 
                             {/* Stat Card 2 */}
-                            <div className="w-64 p-6 bg-card/30 backdrop-blur-md border border-amber-500/20 shadow-lg shadow-amber-900/10 transform -rotate-2 hover:rotate-0 transition-transform duration-500 mr-8">
-                                <h3 className="text-4xl font-syne font-bold text-white mb-1">1k+</h3>
-                                <p className="text-xs font-mono text-amber-400 uppercase tracking-wider">Global Learners</p>
+                            <div className="glass-card p-6 hover-lift opacity-0">
+                                <div className="flex items-baseline gap-2 mb-1">
+                                    <span className="text-5xl font-exo font-bold text-text-primary">1000+</span>
+                                    <span className="text-accent-warm text-sm font-mono">learners</span>
+                                </div>
+                                <p className="text-text-secondary text-sm">Mentored Globally Across 20+ Countries</p>
                             </div>
 
-                            {/* Stat Card 3 */}
-                            <a href="/recognitions" className="w-64 p-6 bg-card/30 backdrop-blur-md border border-white/10 hover:border-cyan-400/50 shadow-lg transition-colors cursor-pointer transform rotate-6 hover:rotate-0 duration-500">
+                            {/* Stat Card 3 - Status */}
+                            <a
+                                href="/recognitions"
+                                className="glass-card p-6 hover-lift cursor-pointer group opacity-0"
+                            >
                                 <div className="flex items-center gap-3 mb-2">
-                                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                                    <span className="text-xs font-mono text-gray-400 uppercase">Status</span>
+                                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                    <span className="text-xs font-mono text-text-muted uppercase tracking-wider">Current Status</span>
                                 </div>
-                                <p className="text-sm text-gray-200 font-medium">Invited Speaker & Industry Mentor</p>
+                                <p className="text-text-primary font-medium group-hover:text-accent transition-colors">
+                                    Invited Speaker & Industry Mentor
+                                </p>
                             </a>
-                        </motion.div>
+                        </div>
                     </div>
+                </div>
+
+                {/* Scroll Indicator */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+                    <span className="text-xs font-mono text-text-muted uppercase tracking-wider">Scroll</span>
+                    <div className="w-px h-8 bg-gradient-to-b from-accent to-transparent" />
                 </div>
             </div>
         </section>

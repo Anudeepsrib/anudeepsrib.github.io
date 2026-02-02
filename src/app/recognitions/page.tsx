@@ -6,7 +6,7 @@ import Recognitions from '@/components/Recognitions';
 
 export default function RecognitionsPage() {
     return (
-        <main className="min-h-screen bg-obsidian-900">
+        <main className="min-h-screen bg-[var(--bg-primary)]">
             <Navbar />
             <Recognitions />
             <Footer />

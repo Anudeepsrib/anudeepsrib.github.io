@@ -40,3 +40,6 @@ next-env.d.ts
 
 # env
 /src/env
+
+# AI agent config
+.agent/

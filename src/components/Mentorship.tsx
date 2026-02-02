@@ -1,8 +1,11 @@
 'use client';
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Users, GraduationCap, Briefcase, ExternalLink, Award, TrendingUp, Clock, Globe } from 'lucide-react';
-import { fadeUp, stagger } from '@/lib/animation';
+import React, { useRef } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Users, GraduationCap, Briefcase, ExternalLink, Globe, Clock } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface MentorshipItem {
     title: string;
@@ -20,8 +23,6 @@ interface MentorshipGroup {
     description: string;
     icon: any;
     color: string;
-    accentLight: string;
-    accentDark: string;
     items: MentorshipItem[];
 }
 
@@ -31,8 +32,6 @@ const mentorshipGroups: MentorshipGroup[] = [
         description: "Guiding emerging talent through cutting-edge AI/ML projects at scale",
         icon: Briefcase,
         color: "text-blue-400",
-        accentLight: "bg-blue-400/10",
-        accentDark: "border-blue-400/30",
         items: [
             {
                 title: "KaggleX Fellowship Program",
@@ -57,8 +56,6 @@ const mentorshipGroups: MentorshipGroup[] = [
         description: "Personalized career guidance and technical mentoring across continents",
         icon: Users,
         color: "text-blue-300",
-        accentLight: "bg-blue-300/10",
-        accentDark: "border-blue-300/30",
         items: [
             {
                 title: "Topmate.io",
@@ -87,8 +84,6 @@ const mentorshipGroups: MentorshipGroup[] = [
         description: "Building strong foundations for next-generation technologists and data scientists",
         icon: GraduationCap,
         color: "text-blue-200",
-        accentLight: "bg-blue-200/10",
-        accentDark: "border-blue-200/30",
         items: [
             {
                 title: "Graduate Teaching & Mentorship",
@@ -119,104 +114,149 @@ const mentorshipGroups: MentorshipGroup[] = [
 ];
 
 const Mentorship = () => {
-    const reduceMotion = useReducedMotion();
+    const sectionRef = useRef<HTMLElement>(null);
+    const titleRef = useRef<HTMLDivElement>(null);
+    const underlineRef = useRef<HTMLDivElement>(null);
+    const groupsRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        // Title Animation: Slides in from left
+        if (titleRef.current) {
+            gsap.fromTo(titleRef.current,
+                { x: '-8vw', opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 75%',
+                    }
+                }
+            );
+        }
+
+        // Accent underline scales from scaleX: 0
+        if (underlineRef.current) {
+            gsap.fromTo(underlineRef.current,
+                { scaleX: 0 },
+                {
+                    scaleX: 1,
+                    duration: 1.2,
+                    ease: 'expo.out',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 75%',
+                    }
+                }
+            );
+        }
+
+        // Card Stagger Reveal
+        const cards = gsap.utils.toArray('.mentorship-card');
+
+        cards.forEach((card: any, index) => {
+            gsap.fromTo(card,
+                { y: '10vh', opacity: 0, rotateX: 8 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    rotateX: 0,
+                    duration: 0.8,
+                    delay: index * 0.12,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 75%',
+                    }
+                }
+            );
+        });
+
+    }, { scope: sectionRef });
 
     return (
-        <section id="mentorship" className="py-24 relative overflow-hidden bg-charcoal-900">
-            {/* Background Glows (Cyan for Tech-Centric/Unified) */}
-            <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-[128px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-300/5 rounded-full blur-[128px] pointer-events-none" />
+        <section id="mentorship" ref={sectionRef} className="py-24 relative overflow-hidden">
+            {/* Background */}
+            <div className="absolute inset-0 bg-[var(--bg-primary)]" />
+            <div className="absolute top-1/2 right-0 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-[128px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-[128px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Header */}
-                <motion.div
-                    variants={stagger}
-                    initial={reduceMotion ? 'show' : 'hidden'}
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="mb-24"
-                >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-8">
-                        <Users size={18} className="text-cyan-400" />
-                        <span className="text-sm font-mono text-cyan-400">Human Intelligence Network</span>
-                    </motion.div>
+                <div ref={titleRef} className="mb-24 opacity-0">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-8 hover-lift">
+                        <Users size={18} className="text-accent" />
+                        <span className="text-sm font-mono text-accent">Human Intelligence Network</span>
+                    </div>
 
-                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-bold font-syne text-white mb-6 tracking-tight">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
+                    <h2 className="text-5xl md:text-6xl font-exo font-bold text-text-primary mb-6 tracking-tight">
+                        <span className="gradient-text">
                             Mentorship & Speaking
                         </span>
-                    </motion.h2>
+                    </h2>
 
-                    <motion.p variants={fadeUp} className="text-xl text-gray-400 max-w-3xl leading-relaxed font-light">
+                    <div ref={underlineRef} className="h-1 w-32 bg-accent origin-left" />
+
+                    <p className="text-xl text-text-secondary max-w-3xl leading-relaxed mt-8">
                         Advancing the next generation of AI engineers through personalized mentoring and institutional partnerships.
-                    </motion.p>
-                </motion.div>
+                    </p>
+                </div>
 
                 {/* Mentorship Categories */}
-                <div className="space-y-20">
+                <div ref={groupsRef} className="space-y-20">
                     {mentorshipGroups.map((group, groupIdx) => (
-                        <motion.div
-                            key={groupIdx}
-                            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: groupIdx * 0.1 }}
-                            className="relative"
-                        >
+                        <div key={groupIdx} className="relative">
                             {/* Category Header */}
                             <div className="mb-12">
                                 <div className="flex items-start gap-4 mb-4">
-                                    <motion.div
-                                        className={`p-3 rounded-none bg-cyan-400/10 border border-cyan-400/30 flex-shrink-0`}
-                                        whileHover={{ scale: 1.1 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        <group.icon size={28} className="text-cyan-400" />
-                                    </motion.div>
+                                    <div className="p-3 rounded-lg bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/30 flex-shrink-0">
+                                        <group.icon size={28} className="text-accent" />
+                                    </div>
                                     <div className="flex-grow">
-                                        <h3 className="text-3xl font-bold text-white font-syne mb-2">
+                                        <h3 className="text-3xl font-exo font-bold text-text-primary mb-2">
                                             {group.category}
                                         </h3>
-                                        <p className="text-gray-400 text-lg font-light">{group.description}</p>
+                                        <p className="text-text-secondary text-lg">{group.description}</p>
                                     </div>
                                 </div>
-                                <div className="h-px w-20 bg-gradient-to-r from-cyan-400 to-transparent" />
+                                <div className="h-px w-20 bg-gradient-to-r from-accent to-transparent" />
                             </div>
 
                             {/* Items Grid */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 {group.items.map((item, itemIdx) => (
-                                    <motion.div
+                                    <div
                                         key={itemIdx}
-                                        variants={fadeUp}
-                                        className="group relative overflow-hidden rounded-none bg-black/20 border border-white/5 hover:border-cyan-400/50 backdrop-blur-xl transition-all hover-lift"
+                                        className="mentorship-card group glass-card transition-all opacity-0"
+                                        style={{ transformStyle: 'preserve-3d' }}
                                     >
                                         {/* Gradient Background on Hover */}
-                                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                                        <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-xl" />
 
                                         <div className="relative p-8">
-                                            {/* Top Row: Organization & Metrics */}
                                             <div className="flex justify-between items-start gap-4 mb-4">
                                                 <div className="flex-grow">
-                                                    <p className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-1 font-bold">
+                                                    <p className="text-xs font-mono text-[var(--accent-warm)] uppercase tracking-widest mb-1 font-bold">
                                                         {item.organization}
                                                     </p>
-                                                    <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors font-syne">
+                                                    <h4 className="text-2xl font-exo font-bold text-text-primary mb-2 group-hover:text-accent transition-colors">
                                                         {item.title}
                                                     </h4>
                                                 </div>
                                                 {item.metrics && (
-                                                    <div className="flex-shrink-0 px-3 py-1 rounded-none bg-amber-400/10 border border-amber-400/20 whitespace-nowrap">
-                                                        <p className="text-xs font-mono font-bold text-amber-400">{item.metrics}</p>
+                                                    <div className="flex-shrink-0 px-3 py-1 rounded-lg bg-[var(--accent-warm)]/10 border border-[var(--accent-warm)]/20 whitespace-nowrap">
+                                                        <p className="text-xs font-mono font-bold text-[var(--accent-warm)]">{item.metrics}</p>
                                                     </div>
                                                 )}
                                             </div>
 
                                             {/* Role */}
-                                            <p className="text-sm font-semibold text-cyan-200/80 mb-4 font-mono">{item.role}</p>
+                                            <p className="text-sm font-semibold text-accent/80 mb-4 font-mono">{item.role}</p>
 
                                             {/* Description */}
-                                            <p className="text-gray-400 text-sm leading-relaxed mb-6 font-light">
+                                            <p className="text-text-secondary text-sm leading-relaxed mb-6">
                                                 {item.description}
                                             </p>
 
@@ -226,7 +266,7 @@ const Mentorship = () => {
                                                     {item.highlights.map((highlight, idx) => (
                                                         <span
                                                             key={idx}
-                                                            className="px-2.5 py-1 text-xs font-mono font-medium rounded-none bg-cyan-400/5 text-cyan-300 border border-cyan-400/10"
+                                                            className="px-2.5 py-1 text-xs font-mono font-medium rounded-lg bg-accent/5 text-accent border border-accent/10"
                                                         >
                                                             {highlight}
                                                         </span>
@@ -240,49 +280,40 @@ const Mentorship = () => {
                                                     href={item.link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-none bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/30 hover:border-cyan-400/60 text-cyan-400 hover:text-cyan-200 text-sm font-mono font-medium transition-all uppercase tracking-wide"
+                                                    className="btn-secondary text-sm inline-flex items-center gap-2"
                                                 >
                                                     {item.linkText}
                                                     <ExternalLink size={16} className="opacity-70" />
                                                 </a>
                                             )}
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
 
                 {/* Impact Summary */}
-                <motion.div
-                    initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mt-24 pt-16 border-t border-white/5"
-                >
-                    <h3 className="text-2xl font-bold text-white font-syne mb-8">Overall Impact</h3>
+                <div className="mt-24 pt-16 border-t border-[var(--border-subtle)]">
+                    <h3 className="text-2xl font-exo font-bold text-text-primary mb-8">Overall Impact</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
                             { icon: Users, label: "Mentees & Students", value: "1,000+" },
                             { icon: Globe, label: "Countries Reached", value: "7+" },
                             { icon: Clock, label: "Total Mentoring Hours", value: "500+" }
                         ].map((stat, idx) => (
-                            <motion.div
+                            <div
                                 key={idx}
-                                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="p-6 rounded-none bg-white/5 border border-white/8 text-center hover-lift hover:border-cyan-400/30 transition-colors"
+                                className="mentorship-card glass-card p-6 text-center hover-lift opacity-0"
                             >
-                                <stat.icon className="text-cyan-400 mx-auto mb-3" size={32} />
-                                <p className="text-3xl font-bold text-white font-syne mb-2">{stat.value}</p>
-                                <p className="text-gray-400 text-sm font-mono">{stat.label}</p>
-                            </motion.div>
+                                <stat.icon className="text-accent mx-auto mb-3" size={32} />
+                                <p className="text-3xl font-exo font-bold text-accent mb-2">{stat.value}</p>
+                                <p className="text-text-secondary text-sm font-mono">{stat.label}</p>
+                            </div>
                         ))}
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

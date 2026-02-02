@@ -3,32 +3,25 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, BookOpen, Award, Globe } from 'lucide-react';
 
-const StatsBanner = () => {
-    const stats = [
-        { icon: TrendingUp, value: '9+ Years', label: 'Prevented major production AI failures', color: 'text-blue-400' },
-        { icon: Users, value: '1k+', label: 'Mentored Pro\'s (30% -> ML Roles)', color: 'text-emerald-400' },
-        { icon: BookOpen, value: '2', label: 'Research Publications (CRC Press)', color: 'text-gold-glow' },
-        { icon: Award, value: '18+', label: 'Talks including BSBI & IET', color: 'text-purple-400' },
-        { icon: Globe, value: '8', label: 'Countries with Active Mentees', color: 'text-blue-300' },
-    ];
+const stats = [
+    { icon: TrendingUp, value: '9+', label: 'Years Experience', accent: 'accent' },
+    { icon: Users, value: '1000+', label: 'Mentored Professionals', accent: 'accent-warm' },
+    { icon: BookOpen, value: '2', label: 'Research Publications', accent: 'accent' },
+    { icon: Award, value: '18+', label: 'Speaking Engagements', accent: 'accent-warm' },
+    { icon: Globe, value: '20+', label: 'Countries Reached', accent: 'accent' },
+];
 
+const StatsBanner = () => {
     return (
-        <section className="py-12 bg-charcoal-900 border-y border-white/5">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <section className="py-16 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[var(--bg-secondary)]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--accent-primary)]/5 to-transparent" />
+
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                     {stats.map((stat, index) => {
                         const Icon = stat.icon;
-                        // Dynamically determine color based on content type if not explicit, but simpler to just hardcode consistent theme mapping.
-                        // Map old colors to Theme:
-                        // Experience (Trend) -> Cyan
-                        // Learners (Users) -> Amber
-                        // Publications (Book) -> Cyan
-                        // Speaking (Award) -> Amber
-                        // Countries (Globe) -> Cyan
-                        let themeColor = 'text-cyan-400';
-                        if (stat.label.includes('Learners') || stat.label.includes('Speaking')) {
-                            themeColor = 'text-amber-500';
-                        }
+                        const isWarm = stat.accent === 'accent-warm';
 
                         return (
                             <motion.div
@@ -36,16 +29,22 @@ const StatsBanner = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="text-center group"
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                className="glass-card p-5 text-center hover-lift cursor-pointer"
                             >
-                                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-none bg-white/5 border border-white/10 mb-3 group-hover:border-${themeColor === 'text-cyan-400' ? 'cyan-400' : 'amber-500'}/30 transition-colors`}>
-                                    <Icon size={20} className={themeColor} />
+                                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-lg mb-3 ${isWarm
+                                        ? 'bg-[var(--accent-warm)]/10 text-[var(--accent-warm)]'
+                                        : 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                                    }`}>
+                                    <Icon size={20} />
                                 </div>
-                                <div className={`text-2xl md:text-3xl font-bold font-syne mb-1 ${themeColor}`}>
+
+                                <div className={`text-3xl md:text-4xl font-exo font-bold mb-1 ${isWarm ? 'text-[var(--accent-warm)]' : 'text-[var(--accent-primary)]'
+                                    }`}>
                                     {stat.value}
                                 </div>
-                                <div className="text-xs text-gray-400 font-mono font-medium uppercase tracking-wide">
+
+                                <div className="text-xs text-text-secondary font-mono uppercase tracking-wide">
                                     {stat.label}
                                 </div>
                             </motion.div>

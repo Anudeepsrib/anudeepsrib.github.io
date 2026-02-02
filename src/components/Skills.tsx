@@ -16,8 +16,8 @@ const categoryIcons: Record<string, React.ElementType> = {
 
 const Skills = () => {
     const reduceMotion = useReducedMotion();
+
     const getIconComponent = (iconName: string) => {
-        // Check the main Si pack first, then Tb (some brand icons live in other packs)
         const IconSi = (Si as any)[iconName];
         if (IconSi) return IconSi;
         const IconTb = (Tb as any)[iconName];
@@ -26,10 +26,10 @@ const Skills = () => {
     };
 
     return (
-        <section id="skills" className="py-16 relative bg-charcoal-900">
-            {/* Background Effects */}
-            <div className="absolute inset-0 bg-charcoal-900" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-[128px] pointer-events-none" />
+        <section id="skills" className="py-20 relative">
+            {/* Background */}
+            <div className="absolute inset-0 bg-[var(--bg-secondary)]" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-[128px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <motion.div
@@ -39,63 +39,58 @@ const Skills = () => {
                     viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-none bg-cyan-400/10 border border-cyan-400/20 mb-6 hover-lift">
-                        <Code2 className="text-cyan-400" size={18} />
-                        <span className="text-sm font-mono text-cyan-400">System Capabilities</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift">
+                        <Code2 className="text-accent" size={18} />
+                        <span className="text-sm font-mono text-accent">System Capabilities</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold font-syne mb-6 text-white">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
-                            Technical Arsenal
-                        </span>
+
+                    <h2 className="text-4xl md:text-5xl font-exo font-bold mb-6">
+                        <span className="gradient-text">Technical Arsenal</span>
                     </h2>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+
+                    <p className="text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
                         Building reliable, secure, and observable AI systems.
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6">
                     {skillCategories.map((category, catIndex) => {
                         const CategoryIcon = categoryIcons[category.name] || Code2;
                         return (
                             <motion.div
                                 key={category.name}
                                 variants={fadeUp}
-                                className="p-6 rounded-none bg-charcoal-800/50 border border-white/5 hover:border-cyan-400/50 transition-all hover-lift relative overflow-hidden group/card"
+                                className="glass-card p-6 hover-lift group"
                             >
-                                {/* Corner Decorations */}
-                                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-500/50" />
-                                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-500/50" />
-
-                                <div className="flex items-center gap-3 mb-6 relative z-10">
-                                    <div className="p-2 rounded-none bg-cyan-400/10 border border-cyan-400/20">
-                                        <CategoryIcon className="text-cyan-400" size={24} />
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
+                                        <CategoryIcon className="text-accent" size={24} />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-bold font-syne text-white">{category.name}</h3>
-                                        <p className="text-sm font-mono text-cyan-400/50 uppercase tracking-widest">{category.description}</p>
+                                        <h3 className="text-xl font-exo font-bold text-text-primary">{category.name}</h3>
+                                        <p className="text-xs font-mono text-text-muted uppercase tracking-wider">{category.description}</p>
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 gap-3 relative z-10">
+                                <div className="grid grid-cols-1 gap-2">
                                     {category.skills.map((skill, index) => {
                                         const Icon = getIconComponent(skill.icon);
                                         return (
                                             <motion.div
                                                 key={skill.name}
                                                 variants={fadeUp}
-                                                whileHover={{ scale: 1.02 }}
-                                                className="group relative p-4 bg-black/20 border border-white/5 hover:bg-cyan-900/10 hover:border-cyan-400/30 transition-all duration-300 flex items-start gap-4 cursor-default rounded-none"
+                                                className="group/skill p-3 rounded-lg bg-[var(--bg-primary)]/50 border border-[var(--border-subtle)] hover:border-[var(--border-hover)] transition-all duration-250 flex items-start gap-3"
                                             >
                                                 {Icon && (
-                                                    <div className="flex-shrink-0 text-2xl text-gray-400 group-hover:text-cyan-400 transition-colors mt-1">
+                                                    <div className="flex-shrink-0 text-xl text-text-muted group-hover/skill:text-accent transition-colors mt-0.5">
                                                         <Icon />
                                                     </div>
                                                 )}
                                                 <div>
-                                                    <div className="text-sm font-bold font-syne text-gray-300 group-hover:text-cyan-200 transition-colors">
+                                                    <div className="text-sm font-exo font-medium text-text-primary group-hover/skill:text-accent transition-colors">
                                                         {skill.name}
                                                     </div>
-                                                    <div className="text-xs font-mono text-gray-500 mt-1 leading-snug">
+                                                    <div className="text-xs font-mono text-text-muted mt-0.5 leading-snug">
                                                         {skill.context}
                                                     </div>
                                                 </div>
