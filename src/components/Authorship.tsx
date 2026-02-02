@@ -1,37 +1,42 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink } from 'lucide-react';
+import { BookOpen, ExternalLink, ArrowRight } from 'lucide-react';
 import resumeData from '@/data/resumeData.json';
 
 const Authorship = () => {
     return (
-        <section id="authorship" className="py-24 relative bg-charcoal-900">
-            <div className="max-w-7xl mx-auto px-6">
+        <section id="authorship" className="py-24 relative">
+            {/* Background */}
+            <div className="absolute inset-0 bg-[var(--bg-primary)]" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-[128px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-6 hover-lift">
-                        <BookOpen className="text-cyan-400" size={18} />
-                        <span className="text-sm font-mono text-cyan-400">Publications</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift">
+                        <BookOpen className="text-accent" size={18} />
+                        <span className="text-sm font-mono text-accent">Publications</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold font-syne mb-6 text-white">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
-                            Research & Writing
-                        </span>
+
+                    <h2 className="text-4xl md:text-5xl font-exo font-bold mb-6">
+                        <span className="gradient-text">Research & Writing</span>
                     </h2>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-4 font-light">
-                        Contributing to the global body of knowledge in AI and technology through peer-reviewed publications and research.
+
+                    <p className="text-lg text-text-secondary max-w-3xl mx-auto leading-relaxed mb-4">
+                        Contributing to the global body of knowledge in AI and technology through peer-reviewed publications.
                     </p>
-                    <p className="text-sm text-gray-500 max-w-2xl mx-auto font-mono">
-                        Published by CRC Press / Taylor & Francis.
+
+                    <p className="text-sm text-text-muted font-mono">
+                        Published by CRC Press / Taylor & Francis
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {resumeData.publications.map((pub, index) => (
                         <motion.a
                             key={index}
@@ -42,38 +47,32 @@ const Authorship = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="group block p-8 rounded-none bg-charcoal-800/50 border border-white/10 hover:border-cyan-400/50 transition-all hover:-translate-y-1 hover:shadow-xl hover-lift relative overflow-hidden"
+                            className="group glass-card p-6 hover-lift cursor-pointer"
                         >
-                            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyan-500/30" />
                             <div className="flex justify-between items-start mb-4">
-                                <div className="p-3 rounded-none bg-cyan-400/10 text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-colors">
+                                <div className="p-3 rounded-lg bg-[var(--accent-primary)]/10 text-accent group-hover:bg-accent group-hover:text-[var(--bg-primary)] transition-colors">
                                     <BookOpen size={24} />
                                 </div>
-                                <ExternalLink className="text-gray-500 group-hover:text-cyan-400 transition-colors" size={20} />
+                                <ExternalLink className="text-text-muted group-hover:text-accent transition-colors" size={18} />
                             </div>
 
-                            <h3 className="text-xl font-bold font-syne text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                            <h3 className="text-lg font-exo font-bold text-text-primary mb-2 group-hover:text-accent transition-colors">
                                 {pub.title}
                             </h3>
-                            <div className="flex items-center gap-2 text-sm text-cyan-300 mb-4 font-mono">
+
+                            <div className="flex items-center gap-2 text-sm text-accent mb-4 font-mono">
                                 <span>{pub.publisher}</span>
                                 <span>•</span>
                                 <span>{pub.year}</span>
                             </div>
-                            <p className="text-gray-400 leading-relaxed text-sm mb-4 font-light">
+
+                            <p className="text-text-secondary text-sm leading-relaxed mb-4">
                                 {pub.description}
                             </p>
 
-                            {/* Authorship CTAs */}
-                            <div className="flex flex-col gap-2 mt-6 pt-4 border-t border-white/5">
-                                <div className="text-cyan-400 hover:text-cyan-300 text-sm font-mono font-medium flex items-center gap-1 transition-colors uppercase tracking-wide">
-                                    Read Publication
-                                    <ExternalLink className="text-xs" size={14} />
-                                </div>
-                                <div className="text-gray-400 hover:text-cyan-300 text-sm font-mono font-medium flex items-center gap-1 transition-colors uppercase tracking-wide">
-                                    Request Copy
-                                    <span className="text-xs">→</span>
-                                </div>
+                            <div className="flex items-center gap-2 text-accent text-sm font-mono group-hover:gap-3 transition-all">
+                                <span>Read Publication</span>
+                                <ArrowRight size={14} />
                             </div>
                         </motion.a>
                     ))}

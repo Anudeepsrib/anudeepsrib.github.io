@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { GraduationCap, Globe, Users, Award, BookOpen, Mic, Handshake, UserCheck, MapPin, ArrowRight } from 'lucide-react';
+import { GraduationCap, Globe, Users, Award, BookOpen, Mic, Handshake, UserCheck, MapPin, ArrowRight, Quote } from 'lucide-react';
 
 const universities = [
     'UMass Amherst', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
@@ -17,33 +17,33 @@ const trainingPartners = [
 ];
 
 const impactMetrics = [
-    { value: '10+', label: 'Years AI/ML Experience', icon: GraduationCap },
-    { value: '2', label: 'Publications', icon: BookOpen },
-    { value: '500+', label: 'Teaching Hours', icon: Mic },
-    { value: '18+', label: 'Guest Lectures', icon: GraduationCap },
-    { value: '10+', label: 'Partners', icon: Handshake },
-    { value: '1,000+', label: 'Learners', icon: Users },
-    { value: '200+', label: 'Mentoring Sessions', icon: UserCheck },
-    { value: '7', label: 'Countries', icon: MapPin },
+    { value: '9+', label: 'Years AI/ML Experience', icon: GraduationCap, accent: 'accent' },
+    { value: '2', label: 'Publications', icon: BookOpen, accent: 'accent' },
+    { value: '500+', label: 'Teaching Hours', icon: Mic, accent: 'accent-warm' },
+    { value: '18+', label: 'Guest Lectures', icon: GraduationCap, accent: 'accent-warm' },
+    { value: '10+', label: 'Partners', icon: Handshake, accent: 'accent' },
+    { value: '1000+', label: 'Learners', icon: Users, accent: 'accent-warm' },
+    { value: '200+', label: 'Mentoring Sessions', icon: UserCheck, accent: 'accent' },
+    { value: '20+', label: 'Countries', icon: MapPin, accent: 'accent-warm' },
 ];
 
 const testimonials = [
     {
-        quote: "Anudeep didn't just give me advice; he architected a roadmap. We deployed a RAG system 3 weeks faster than planned, avoiding a costly vector DB migration.",
+        quote: "Anudeep didn't just give me advice; he architected a roadmap. We deployed a RAG system 3 weeks faster than planned.",
         author: "Sarah J.",
         role: "Senior ML Engineer",
         company: "FinTech Startup",
         source: "via Topmate"
     },
     {
-        quote: "The 'Theory to Production' bridge is real. I transitioned from a Java backend role to an AI Engineer position at a Tier-1 firm within 5 months of his mentorship.",
+        quote: "The 'Theory to Production' bridge is real. I transitioned from a Java backend role to an AI Engineer position within 5 months.",
         author: "Rahul M.",
         role: "AI Engineer",
         company: "Global IT Services",
         source: "via Great Learning"
     },
     {
-        quote: "His insights on handling LLM hallucinations in production were critical. We reduced our error rate by 40% following his evaluation framework.",
+        quote: "His insights on handling LLM hallucinations in production were critical. We reduced our error rate by 40%.",
         author: "David Chen",
         role: "CTO",
         company: "HealthTech SaaS",
@@ -54,8 +54,9 @@ const testimonials = [
 const Impact = () => {
     return (
         <section id="impact" className="py-24 relative overflow-hidden">
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-blue-400/5 to-background pointer-events-none" />
+            {/* Background */}
+            <div className="absolute inset-0 bg-[var(--bg-secondary)]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--accent-primary)]/5 to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Section Header */}
@@ -65,16 +66,14 @@ const Impact = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 mb-6 hover-lift">
-                        <Award className="text-cyan-400" size={18} />
-                        <span className="text-sm font-mono text-cyan-400">Global Recognition</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift">
+                        <Award className="text-accent" size={18} />
+                        <span className="text-sm font-mono text-accent">Global Recognition</span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold font-syne mb-4">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
-                            Teaching & Global Impact
-                        </span>
-                    </h1>
-                    <p className="text-lg text-gray-400 max-w-3xl mx-auto font-light">
+                    <h2 className="text-4xl md:text-5xl font-exo font-bold mb-4">
+                        <span className="gradient-text">Teaching & Global Impact</span>
+                    </h2>
+                    <p className="text-lg text-text-secondary max-w-3xl mx-auto">
                         Advancing practical AI education and applied innovation across global platforms.
                     </p>
                 </motion.div>
@@ -86,21 +85,20 @@ const Impact = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0 }}
-                        className="p-6 rounded-none bg-charcoal-800/50 border border-white/10 hover:border-cyan-400/50 transition-all hover-lift"
+                        className="glass-card p-6 hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-none bg-cyan-400/10 border border-cyan-400/20">
-                                <GraduationCap className="text-cyan-400" size={24} />
+                            <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
+                                <GraduationCap className="text-accent" size={24} />
                             </div>
-                            <h3 className="text-xl font-bold font-syne text-white">Universities</h3>
+                            <h3 className="text-lg font-exo font-bold text-text-primary">Universities</h3>
                         </div>
-                        <p className="text-sm text-gray-400 mb-4 font-light">
-                            Invited to deliver lectures and workshops on AI, ML, CV, and data-driven innovation.
+                        <p className="text-sm text-text-secondary mb-4">
+                            Invited to deliver lectures and workshops on AI, ML, and data-driven innovation.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {universities.map((uni) => (
-                                <span key={uni} className="px-3 py-1.5 text-xs font-mono font-medium rounded-none bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">
+                                <span key={uni} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-accent border border-[var(--accent-primary)]/20">
                                     {uni}
                                 </span>
                             ))}
@@ -113,20 +111,20 @@ const Impact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="p-6 rounded-none bg-charcoal-800/50 border border-white/10 hover:border-cyan-300/50 transition-all hover-lift"
+                        className="glass-card p-6 hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-none bg-cyan-300/10 border border-cyan-300/20">
-                                <Globe className="text-cyan-300" size={24} />
+                            <div className="p-2 rounded-lg bg-[var(--accent-warm)]/10">
+                                <Globe className="text-[var(--accent-warm)]" size={24} />
                             </div>
-                            <h3 className="text-xl font-bold font-syne text-white">Global AI Platforms</h3>
+                            <h3 className="text-lg font-exo font-bold text-text-primary">Global Platforms</h3>
                         </div>
-                        <p className="text-sm text-gray-400 mb-4 font-light">
-                            Speaker and contributor at international AI forums and conferences.
+                        <p className="text-sm text-text-secondary mb-4">
+                            Featured speaker at international AI conferences and educational platforms.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {globalPlatforms.map((platform) => (
-                                <span key={platform} className="px-3 py-1.5 text-xs font-mono font-medium rounded-none bg-cyan-300/10 text-cyan-200 border border-cyan-300/20">
+                                <span key={platform} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-warm)]/10 text-[var(--accent-warm)] border border-[var(--accent-warm)]/20">
                                     {platform}
                                 </span>
                             ))}
@@ -139,20 +137,20 @@ const Impact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="p-6 rounded-none bg-charcoal-800/50 border border-white/10 hover:border-cyan-400/50 transition-all hover-lift"
+                        className="glass-card p-6 hover-lift"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-none bg-cyan-400/10 border border-cyan-400/20">
-                                <Users className="text-cyan-400" size={24} />
+                            <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
+                                <Handshake className="text-accent" size={24} />
                             </div>
-                            <h3 className="text-xl font-bold font-syne text-white">Training Partners</h3>
+                            <h3 className="text-lg font-exo font-bold text-text-primary">Training Partners</h3>
                         </div>
-                        <p className="text-sm text-gray-400 mb-4 font-light">
-                            Instructor and mentor for structured AI/ML programs.
+                        <p className="text-sm text-text-secondary mb-4">
+                            Collaborated with leading EdTech platforms to deliver industry-ready AI curriculum.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {trainingPartners.map((partner) => (
-                                <span key={partner} className="px-3 py-1.5 text-xs font-mono font-medium rounded-none bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">
+                                <span key={partner} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-accent border border-[var(--accent-primary)]/20">
                                     {partner}
                                 </span>
                             ))}
@@ -160,39 +158,40 @@ const Impact = () => {
                     </motion.div>
                 </div>
 
-                {/* Mentoring Section (Amber) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-12"
-                >
-                    <div className="text-center mb-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6 hover-lift">
-                            <Users className="text-amber-500" size={18} />
-                            <span className="text-sm font-mono text-amber-500">Mentorship</span>
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-bold font-syne mb-6">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-300">
-                                Mentoring & Career Impact
-                            </span>
-                        </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
-                            Guiding learners and professionals to build strong foundations in AI and Data Science.
-                        </p>
-                    </div>
-                </motion.div>
+                {/* Impact Metrics */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+                    {impactMetrics.map((metric, index) => {
+                        const Icon = metric.icon;
+                        const isWarm = metric.accent === 'accent-warm';
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.05 }}
+                                className="glass-card p-4 text-center hover-lift"
+                            >
+                                <Icon className={isWarm ? 'text-[var(--accent-warm)] mx-auto mb-2' : 'text-accent mx-auto mb-2'} size={20} />
+                                <div className={`text-2xl md:text-3xl font-exo font-bold ${isWarm ? 'text-[var(--accent-warm)]' : 'text-accent'}`}>
+                                    {metric.value}
+                                </div>
+                                <div className="text-xs text-text-muted font-mono mt-1">{metric.label}</div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
 
-                {/* Testimonials (Amber) */}
+                {/* Testimonials */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="mb-12"
                 >
-                    <div className="text-center mb-8">
-                        <h3 className="text-2xl md:text-3xl font-bold font-syne text-white mb-3">What Learners Say</h3>
-                    </div>
+                    <h3 className="text-2xl font-exo font-bold text-center text-text-primary mb-8">
+                        What Mentees Say
+                    </h3>
                     <div className="grid md:grid-cols-3 gap-6">
                         {testimonials.map((testimonial, index) => (
                             <motion.div
@@ -201,53 +200,32 @@ const Impact = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="relative p-6 rounded-none bg-white/5 border border-white/8 hover:border-amber-500/50 transition-all hover-lift"
+                                className="glass-card p-6 relative"
                             >
-                                <Award className="absolute top-4 right-4 text-amber-500/20" size={32} />
-                                <p className="text-sm text-gray-400 mb-4 leading-relaxed italic font-light">
+                                <Quote className="text-accent/20 absolute top-4 right-4" size={32} />
+                                <p className="text-text-secondary text-sm leading-relaxed mb-4 relative z-10">
                                     &quot;{testimonial.quote}&quot;
                                 </p>
-                                <div className="flex items-center gap-2">
-                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-amber-300 flex items-center justify-center text-charcoal-900 text-xs font-bold font-mono">
-                                        {testimonial.author[0]}
-                                    </div>
-                                    <div>
-                                        <div className="text-sm font-medium text-white font-syne">{testimonial.author}</div>
-                                        <div className="text-xs text-cyan-400 font-mono mb-0.5">{testimonial.role} @ {testimonial.company}</div>
-                                        <div className="text-xs text-gray-500 font-mono">{testimonial.source}</div>
-                                    </div>
+                                <div className="border-t border-[var(--border-subtle)] pt-4">
+                                    <div className="font-exo font-medium text-text-primary">{testimonial.author}</div>
+                                    <div className="text-xs text-text-muted font-mono">{testimonial.role}, {testimonial.company}</div>
+                                    <div className="text-xs text-accent font-mono mt-1">{testimonial.source}</div>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 </motion.div>
 
-                {/* Mentorship CTAs */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col sm:flex-row gap-4 justify-center"
-                >
-                    <a
-                        href="https://adplist.org/mentors/anudeep-sri-bathina"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 bg-amber-500/10 border border-amber-500/20 text-amber-500 rounded-none hover:bg-amber-500/20 transition-all flex items-center justify-center gap-2 hover-lift font-mono uppercase tracking-wide"
+                {/* CTA */}
+                <div className="text-center">
+                    <Link
+                        href="/mentorship"
+                        className="btn-primary inline-flex items-center gap-2"
                     >
-                        See Mentoring Options
-                        <span className="text-xs">→</span>
-                    </a>
-                    <a
-                        href="https://adplist.org/mentors/anudeep-sri-bathina"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-none hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift font-mono uppercase tracking-wide"
-                    >
-                        Book a Session
-                        <span className="text-xs">→</span>
-                    </a>
-                </motion.div>
+                        Explore Mentorship Programs
+                        <ArrowRight size={18} />
+                    </Link>
+                </div>
             </div>
         </section>
     );

@@ -6,7 +6,7 @@ import Mentorship from '@/components/Mentorship';
 
 export default function MentorshipPage() {
     return (
-        <main className="min-h-screen bg-obsidian-900">
+        <main className="min-h-screen bg-[var(--bg-primary)]">
             <Navbar />
             <Mentorship />
             <Footer />
