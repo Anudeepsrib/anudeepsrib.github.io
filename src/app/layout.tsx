@@ -25,15 +25,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: `${resumeData.personalInfo.name} | ${resumeData.personalInfo.title}`,
+    title: 'Anudeep | AI Architect',
     description: "Lead Data Scientist and AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems. Expert in building production-grade AI solutions associated with high-impact business outcomes.",
     keywords: ["Lead Data Scientist", "AI Architect", "Generative AI", "LLM", "Machine Learning", "Dallas", "USA", "RAG", "Vector Search", "Python", "Data Engineering"],
     icons: {
         icon: [
-            { url: '/favicon.ico', sizes: 'any' },
-            { url: '/favicon.svg', type: 'image/svg+xml' },
+            { url: '/assets/logo.png', type: 'image/png' },
         ],
-        apple: '/apple-touch-icon.png',
+        apple: '/assets/logo.png',
     },
     openGraph: {
         title: `${resumeData.personalInfo.name} | ${resumeData.personalInfo.title}`,
