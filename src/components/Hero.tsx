@@ -101,30 +101,43 @@ const Hero = () => {
 
                         {/* Value Proposition */}
                         <p ref={textRef} className="text-lg md:text-xl text-text-secondary mb-10 max-w-xl leading-relaxed opacity-0">
-                            I help enterprise teams build{' '}
-                            <span className="text-accent font-medium">production-ready AI systems</span>{' '}
-                            that scale. From architecture to deployment—no hallucinations, no bottlenecks.
+                            I architect{' '}
+                            <span className="text-accent font-medium">AI systems that survive real-world scale</span>.{' '}
+                            9 years turning demos into deployments.
                         </p>
 
                         {/* CTAs */}
-                        <div ref={ctaRef} className="flex flex-wrap gap-4 opacity-0">
+                        <div ref={ctaRef} className="flex flex-col gap-4 opacity-0">
+                            {/* Primary Action */}
                             <a
                                 href="#impact"
-                                className="btn-primary flex items-center gap-2"
+                                className="btn-primary flex items-center justify-center gap-2 w-fit"
                             >
                                 Explore Work
                                 <ArrowDownRight className="w-4 h-4" />
                             </a>
 
-                            <a
-                                href="https://adplist.org/mentors/anudeep-sri-bathina"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-secondary flex items-center gap-2"
-                            >
-                                Book Mentorship
-                                <ArrowRight className="w-4 h-4" />
-                            </a>
+                            {/* Secondary Actions */}
+                            <div className="flex flex-wrap gap-3">
+                                <a
+                                    href="https://adplist.org/mentors/anudeep-sri-bathina"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-4 py-2 text-sm font-mono text-accent border border-accent/30 rounded-lg hover:bg-accent/10 transition-colors flex items-center gap-2"
+                                >
+                                    Mentorship
+                                    <ArrowRight className="w-3 h-3" />
+                                </a>
+                                <a
+                                    href="https://drive.google.com/file/d/1n3jCZKppGHYcyKl-XPA9IYAs8_qxnseb/view?usp=drive_link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-4 py-2 text-sm font-mono text-text-secondary border border-[var(--border-subtle)] rounded-lg hover:border-accent/30 hover:text-accent transition-colors flex items-center gap-2"
+                                >
+                                    Request Resume
+                                    <ArrowRight className="w-3 h-3" />
+                                </a>
+                            </div>
                         </div>
                     </div>
 

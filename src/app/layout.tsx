@@ -55,8 +55,54 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: resumeData.personalInfo.name,
+        jobTitle: resumeData.personalInfo.title,
+        description: resumeData.personalInfo.summary,
+        url: 'https://anudeepsri.com',
+        image: 'https://anudeepsri.com/assets/profile-pic.jpeg',
+        email: resumeData.personalInfo.email,
+        sameAs: [
+            resumeData.personalInfo.github,
+            resumeData.personalInfo.linkedin,
+            'https://adplist.org/mentors/anudeep-sri-bathina',
+            'https://topmate.io/anudeepsri',
+        ],
+        alumniOf: [
+            {
+                '@type': 'EducationalOrganization',
+                name: 'University of Massachusetts Dartmouth',
+            },
+            {
+                '@type': 'EducationalOrganization',
+                name: 'VIT University',
+            },
+        ],
+        worksFor: {
+            '@type': 'Organization',
+            name: 'AT&T',
+        },
+        knowsAbout: [
+            'Generative AI',
+            'Large Language Models',
+            'RAG Systems',
+            'Machine Learning',
+            'Data Engineering',
+            'Python',
+            'FastAPI',
+        ],
+    };
+
     return (
         <html lang="en" className={`${syne.variable} ${ibmPlexMono.variable} ${inter.variable} dark`} suppressHydrationWarning>
+            <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
+            </head>
             <body
                 className="bg-navy-950 text-offwhite antialiased selection:bg-seafoam/30 selection:text-seafoam"
                 suppressHydrationWarning
