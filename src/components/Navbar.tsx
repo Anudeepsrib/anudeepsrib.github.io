@@ -26,14 +26,14 @@ const Navbar = () => {
     ];
 
     return (
-        <>
+        <div className="contents">
             <motion.nav
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 className={`fixed z-50 transition-all duration-300 ${isScrolled
-                        ? 'top-4 left-4 right-4 floating-nav py-3 px-6'
-                        : 'top-0 left-0 right-0 py-5 px-6 bg-transparent'
+                    ? 'top-4 left-4 right-4 floating-nav py-3 px-6'
+                    : 'top-0 left-0 right-0 py-5 px-6 bg-transparent'
                     }`}
             >
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -111,9 +111,11 @@ const Navbar = () => {
                     </div>
 
                     <button
-                        className="md:hidden text-text-primary hover:text-accent transition-colors cursor-pointer"
+                        type="button"
+                        className="md:hidden text-text-primary hover:text-accent transition-colors cursor-pointer relative z-[60]"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-label="Toggle menu"
+                        aria-expanded={isMobileMenuOpen}
                     >
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
@@ -123,10 +125,12 @@ const Navbar = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
+                        key="mobile-menu"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-40 bg-[var(--bg-primary)]/98 backdrop-blur-xl md:hidden"
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-[55] bg-[var(--bg-primary)]/98 backdrop-blur-xl md:hidden"
                     >
                         <div className="flex flex-col h-full pt-24 px-6 pb-8">
                             <div className="flex flex-col gap-4">
@@ -194,8 +198,9 @@ const Navbar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </>
+        </div>
     );
 };
 
 export default Navbar;
+

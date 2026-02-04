@@ -138,10 +138,10 @@ const Hero = () => {
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                    <span className="text-xs font-mono text-text-muted uppercase tracking-wider">Current Status</span>
+                                    <span className="text-xs font-mono text-text-muted uppercase tracking-wider">Available for</span>
                                 </div>
                                 <p className="text-text-primary font-medium group-hover:text-accent transition-colors">
-                                    Invited Speaker & Industry Mentor
+                                    AI Consulting · Speaking · Mentorship
                                 </p>
                             </a>
 
