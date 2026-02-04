@@ -85,7 +85,7 @@ const Hero = () => {
                         <div ref={badgeRef} className="inline-flex items-center gap-3 mb-8 opacity-0">
                             <span className="flex items-center gap-2 px-4 py-2 glass-card text-sm font-mono text-accent">
                                 <Sparkles className="w-4 h-4" />
-                                Lead Data Scientist · AI Architect
+                                Production AI · Enterprise Scale
                             </span>
                         </div>
 
@@ -107,37 +107,29 @@ const Hero = () => {
                         </p>
 
                         {/* CTAs */}
-                        <div ref={ctaRef} className="flex flex-col gap-4 opacity-0">
-                            {/* Primary Action */}
+                        <div ref={ctaRef} className="flex flex-wrap items-center gap-4 opacity-0">
                             <a
                                 href="#impact"
-                                className="btn-primary flex items-center justify-center gap-2 w-fit"
+                                className="btn-primary"
                             >
                                 Explore Work
-                                <ArrowDownRight className="w-4 h-4" />
                             </a>
-
-                            {/* Secondary Actions */}
-                            <div className="flex flex-wrap gap-3">
-                                <a
-                                    href="https://adplist.org/mentors/anudeep-sri-bathina"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-4 py-2 text-sm font-mono text-accent border border-accent/30 rounded-lg hover:bg-accent/10 transition-colors flex items-center gap-2"
-                                >
-                                    Mentorship
-                                    <ArrowRight className="w-3 h-3" />
-                                </a>
-                                <a
-                                    href="https://drive.google.com/file/d/1n3jCZKppGHYcyKl-XPA9IYAs8_qxnseb/view?usp=drive_link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-4 py-2 text-sm font-mono text-text-secondary border border-[var(--border-subtle)] rounded-lg hover:border-accent/30 hover:text-accent transition-colors flex items-center gap-2"
-                                >
-                                    Request Resume
-                                    <ArrowRight className="w-3 h-3" />
-                                </a>
-                            </div>
+                            <a
+                                href="https://adplist.org/mentors/anudeep-sri-bathina"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary"
+                            >
+                                Mentorship
+                            </a>
+                            <a
+                                href="https://drive.google.com/file/d/1n3jCZKppGHYcyKl-XPA9IYAs8_qxnseb/view?usp=drive_link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm font-mono text-text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-text-muted/30 hover:decoration-accent"
+                            >
+                                Resume
+                            </a>
                         </div>
                     </div>
 
@@ -162,7 +154,7 @@ const Hero = () => {
                             <div className="glass-card p-6 hover-lift opacity-0">
                                 <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-3">Focus Areas</p>
                                 <div className="flex flex-wrap gap-2">
-                                    {['GenAI', 'LLMs', 'RAG Systems', 'MLOps', 'Computer Vision'].map((tag) => (
+                                    {['Agentic AI Systems', 'RAG Systems', 'MLOps', 'Computer Vision'].map((tag) => (
                                         <span key={tag} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-accent border border-[var(--accent-primary)]/20">
                                             {tag}
                                         </span>
