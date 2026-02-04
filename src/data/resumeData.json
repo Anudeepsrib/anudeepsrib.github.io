@@ -133,25 +133,37 @@
   ],
   "projects": [
     {
-      "name": "Smart Portfolio with AI Chat",
-      "description": "Next.js portfolio with RAG-based AI chatbot.",
+      "name": "Annapurna-AI",
+      "description": "AI-powered meal planner for South Indian vegetarian cuisine with cultural food constraints and evidence-backed nutrition recommendations.",
       "technologies": [
         "Next.js",
-        "LLMs",
-        "RAG",
-        "Vector Search"
+        "FastAPI",
+        "Gemini",
+        "LLMs"
       ],
-      "link": "https://github.com/anudeepsrib"
+      "link": "https://github.com/Anudeepsrib/Annapurna-AI"
     },
     {
-      "name": "Handbook Chapter: IoT Blueprinting",
-      "description": "CRC Press / Taylor & Francis research contribution.",
+      "name": "ClinIQ",
+      "description": "Enterprise Healthcare RAG with LangGraph agentic workflow, semantic chunking, and strict citation generation for policy documents.",
       "technologies": [
-        "Research",
-        "IoT",
-        "Smart Cities"
+        "LangGraph",
+        "RAG",
+        "FastAPI",
+        "ChromaDB"
       ],
-      "link": "https://doi.org/10.1201/9781003225317"
+      "link": "https://github.com/Anudeepsrib/ClinIQ"
+    },
+    {
+      "name": "Media Organizer",
+      "description": "Cross-platform mobile media organization tool with iOS/Android support, date-based sorting, and real-time web dashboard.",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Web Dashboard",
+        "SSE"
+      ],
+      "link": "https://github.com/Anudeepsrib/Media-Organizer"
     }
   ],
   "languages": [

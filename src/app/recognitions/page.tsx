@@ -1,8 +1,12 @@
-'use client';
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Recognitions from '@/components/Recognitions';
+
+export const metadata = {
+    title: 'Recognitions | Speaking, Publications & Awards',
+    description: 'Invited speaker at BSBI Café Scientifique, CRC Press author, and recognized AI thought leader. View talks, publications, and industry recognition.',
+};
 
 export default function RecognitionsPage() {
     return (
