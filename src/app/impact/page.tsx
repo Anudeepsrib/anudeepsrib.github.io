@@ -50,17 +50,17 @@ export default function ImpactPage() {
     return (
         <section className="py-24 relative overflow-hidden">
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-gold-glow/5 to-background pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-accent-glow/5 to-background pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-glow/10 border border-gold-glow/20 mb-6">
-                        <Award className="text-gold-dim" size={18} />
-                        <span className="text-sm font-medium text-gold-dim">Global Recognition</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+                        <Award className="text-accent" size={18} />
+                        <span className="text-sm font-medium text-accent">Global Recognition</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-glow to-gold-dim">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary">
                             Teaching & Global Impact
                         </span>
                     </h1>
@@ -72,10 +72,10 @@ export default function ImpactPage() {
                 {/* Categories Grid */}
                 <div className="grid md:grid-cols-3 gap-6 mb-16">
                     {/* Universities */}
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-glow/30 transition-colors">
+                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/30 transition-colors">
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-gold-glow/10">
-                                <GraduationCap className="text-gold-glow" size={24} />
+                            <div className="p-2 rounded-lg bg-accent/10">
+                                <GraduationCap className="text-accent" size={24} />
                             </div>
                             <h3 className="text-xl font-bold text-white">Universities</h3>
                         </div>
@@ -84,7 +84,7 @@ export default function ImpactPage() {
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {universities.map((uni) => (
-                                <span key={uni} className="px-3 py-1.5 text-xs font-medium rounded-full bg-gold-glow/10 text-gold-dim border border-gold-glow/20">
+                                <span key={uni} className="px-3 py-1.5 text-xs font-medium rounded-full bg-accent/10 text-accent border border-accent/20">
                                     {uni}
                                 </span>
                             ))}
@@ -92,10 +92,10 @@ export default function ImpactPage() {
                     </div>
 
                     {/* Global Platforms */}
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-glow/30 transition-colors">
+                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/30 transition-colors">
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-gold-shimmer/10">
-                                <Globe className="text-gold-shimmer" size={24} />
+                            <div className="p-2 rounded-lg bg-accent-secondary/10">
+                                <Globe className="text-accent-secondary" size={24} />
                             </div>
                             <h3 className="text-xl font-bold text-white">Global AI Platforms</h3>
                         </div>
@@ -104,7 +104,7 @@ export default function ImpactPage() {
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {globalPlatforms.map((platform) => (
-                                <span key={platform} className="px-3 py-1.5 text-xs font-medium rounded-full bg-gold-shimmer/10 text-gold-dim border border-gold-glow/20">
+                                <span key={platform} className="px-3 py-1.5 text-xs font-medium rounded-full bg-accent-secondary/10 text-accent-secondary border border-accent-secondary/20">
                                     {platform}
                                 </span>
                             ))}
@@ -183,7 +183,7 @@ export default function ImpactPage() {
                             href="https://adplist.org/mentors/anudeep-sri-bathina"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 bg-gold-glow/10 border border-gold-glow/20 text-gold-glow rounded-lg hover:bg-gold-glow/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                            className="px-6 py-3 bg-accent/10 border border-accent/20 text-accent rounded-lg hover:bg-accent/20 transition-all flex items-center justify-center gap-2 hover-lift"
                         >
                             See Mentoring Options
                             <span className="text-xs">→</span>
@@ -205,14 +205,14 @@ export default function ImpactPage() {
                     {testimonials.map((testimonial, index) => (
                         <div
                             key={index}
-                            className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:shadow-lg hover:shadow-gold-glow/5 transition-all"
+                            className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:shadow-lg hover:shadow-accent/5 transition-all"
                         >
-                            <Quote className="absolute top-4 right-4 text-gold-glow/20" size={32} />
+                            <Quote className="absolute top-4 right-4 text-accent/20" size={32} />
                             <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
                                 &quot;{testimonial.quote}&quot;
                             </p>
                             <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-glow to-gold-shimmer flex items-center justify-center text-white text-xs font-bold">
+                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center text-white text-xs font-bold">
                                     {testimonial.author[0]}
                                 </div>
                                 <div>
@@ -230,7 +230,7 @@ export default function ImpactPage() {
                         href="https://adplist.org/mentors/anudeep-sri-bathina"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 bg-gold-glow/10 border border-gold-glow/20 text-gold-glow rounded-lg hover:bg-gold-glow/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                        className="px-6 py-3 bg-accent/10 border border-accent/20 text-accent rounded-lg hover:bg-accent/20 transition-all flex items-center justify-center gap-2 hover-lift"
                     >
                         See Mentoring Options
                         <span className="text-xs">→</span>

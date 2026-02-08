@@ -3,6 +3,7 @@ import { Syne, IBM_Plex_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import BackgroundGraph from '@/components/BackgroundGraph';
 import SmoothScroll from '@/components/SmoothScroll';
+import Preloader from '@/components/Preloader';
 import resumeData from '@/data/resumeData.json';
 
 const syne = Syne({
@@ -108,6 +109,7 @@ export default function RootLayout({
                 suppressHydrationWarning
             >
                 <SmoothScroll />
+                <Preloader />
                 <div className="grain-overlay" />
                 <div className="vignette" />
                 <div className="relative min-h-screen flex flex-col">

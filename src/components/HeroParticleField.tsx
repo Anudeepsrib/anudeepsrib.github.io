@@ -71,7 +71,7 @@ const HeroParticleField: React.FC = () => {
         const colors = new Float32Array(profile.maxParticles * 3);
         const scales = new Float32Array(profile.maxParticles);
 
-        const goldGlow = new THREE.Color(0xffd700);
+        const cyanGlow = new THREE.Color(0x06B6D4);
         const royalGlow = new THREE.Color(0x3b82f6);
 
         for (let i = 0; i < profile.maxParticles; i++) {
@@ -79,7 +79,7 @@ const HeroParticleField: React.FC = () => {
           positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
           positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
 
-          const color = Math.random() > 0.5 ? goldGlow : royalGlow;
+          const color = Math.random() > 0.5 ? cyanGlow : royalGlow;
           colors[i * 3] = color.r;
           colors[i * 3 + 1] = color.g;
           colors[i * 3 + 2] = color.b;
