@@ -51,6 +51,7 @@ const config: Config = {
           primary: "var(--text-primary)",
           secondary: "var(--text-secondary)",
           muted: "var(--text-tertiary)",
+          highlight: "var(--text-highlight)",
         },
 
         // Legacy semantic colors (mapped to new system)
@@ -71,10 +72,10 @@ const config: Config = {
 
         // Action Colors
         cyan: {
-          DEFAULT: "#22D3EE",
-          400: "#22D3EE",
-          500: "#06B6D4",
-          glow: "#22D3EE",
+          DEFAULT: "var(--accent-primary)",
+          400: "var(--accent-warm)",
+          500: "var(--accent-primary)",
+          glow: "var(--accent-primary)",
         },
         amber: {
           DEFAULT: "#F59E0B",
@@ -103,8 +104,8 @@ const config: Config = {
       boxShadow: {
         glow: "var(--shadow-glow)",
         card: "var(--shadow-card)",
-        "glow-lg": "0 0 60px rgba(34, 211, 238, 0.25)",
-        "glow-amber": "0 0 40px rgba(245, 158, 11, 0.2)",
+        "glow-lg": "0 0 60px rgba(6, 182, 212, 0.25)",
+        "glow-accent": "0 0 40px rgba(6, 182, 212, 0.2)",
       },
       backdropBlur: {
         glass: "var(--glass-blur)",
@@ -116,9 +117,10 @@ const config: Config = {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "hero-glow": "radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.15) 0%, transparent 70%)",
-        "amber-glow": "radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.15) 0%, transparent 70%)",
+        "hero-glow": "radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 70%)",
+        "accent-glow": "radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 70%)",
         "gradient-cta": "linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))",
+        "gradient-accent": "linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-warm))",
       },
       keyframes: {
         "fade-up": {
@@ -161,6 +163,11 @@ const config: Config = {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        "text-reveal": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        }
       },
       animation: {
         "fade-up": "fade-up 0.6s ease-out",
@@ -170,6 +177,7 @@ const config: Config = {
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         float: "float 6s ease-in-out infinite",
         shimmer: "shimmer 2s linear infinite",
+        "text-reveal": "text-reveal 4s ease infinite",
       },
     },
   },

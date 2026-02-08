@@ -18,6 +18,7 @@
       "endDate": "Present",
       "description": "Architecting enterprise GenAI solutions and LLM systems. Leading development of Python-based parsers and automated interpretation models. Overseeing API deployments using FastAPI and optimizing retrieval systems with Azure Vector Search and Cosmos DB.",
       "companyUrl": "https://www.att.com",
+      "logo": "/assets/companies/att.png",
       "location": "United States"
     },
     {
@@ -27,6 +28,7 @@
       "endDate": "2021",
       "description": "Directed ML engineering teams to build data pipelines and predictive models. Recognized for high-impact delivery and technical leadership in scaling data products.",
       "companyUrl": "https://www.capgemini.com",
+      "logo": "/assets/companies/capgemini.png",
       "location": "India"
     },
     {
@@ -36,6 +38,7 @@
       "endDate": "2019",
       "description": "Engineered scalable PySpark pipelines resulting in measurable performance improvements. Developed client-focused interfaces and optimized database queries for complex datasets.",
       "companyUrl": "https://www.gain-insights.com",
+      "logo": "/assets/companies/gaininsights.png",
       "location": "India"
     },
     {
@@ -45,6 +48,7 @@
       "endDate": "2019",
       "description": "Led cloud data migration projects and implemented predictive analytics models; specialized in automated data migration and visualization of key business insights.",
       "companyUrl": "https://www.cognizant.com",
+      "logo": "/assets/companies/cognizant.png",
       "location": "India"
     }
   ],

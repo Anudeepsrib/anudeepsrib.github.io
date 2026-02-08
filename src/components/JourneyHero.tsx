@@ -99,8 +99,7 @@ const JourneyHero = () => {
                                     <div className="relative z-10 mb-6 flex justify-center lg:justify-start">
                                         <div className={`w-[120px] h-[120px] rounded-full bg-gradient-to-br ${phase.gradient} p-[3px] group-hover:scale-105 transition-transform duration-300`}>
                                             <div className="w-full h-full rounded-full bg-[var(--bg-primary)] flex flex-col items-center justify-center">
-                                                <Icon size={28} className="text-text-primary mb-1" />
-                                                <span className="text-2xl font-exo font-bold text-text-primary">{String(phase.id).padStart(2, '0')}</span>
+                                                <Icon size={32} className="text-text-primary" />
                                             </div>
                                         </div>
                                     </div>
