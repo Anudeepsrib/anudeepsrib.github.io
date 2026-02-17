@@ -116,56 +116,74 @@
     }
   ],
   "skills": [
-    "Generative AI",
-    "Large Language Models (LLMs)",
-    "RAG Systems",
+    "LangGraph",
+    "LangChain",
+    "OpenAI / GPT-4o",
+    "Google Gemini",
+    "RAG Architectures",
     "Vector Databases",
+    "LangSmith",
+    "AI Guardrails & Grading",
+    "Presidio (PII/PHI)",
+    "Prompt Engineering",
     "Python",
-    "PySpark",
     "FastAPI",
-    "Azure Cloud",
+    "Pydantic",
+    "SQL / Cosmos DB",
+    "Azure AI / Cloud",
     "AWS",
-    "Google Cloud Platform",
-    "Databricks",
+    "PySpark / Databricks",
     "Docker & Kubernetes",
-    "Machine Learning",
-    "Data Engineering",
-    "SQL",
-    "TypeScript",
-    "React",
-    "Next.js"
+    "Next.js 15",
+    "React / TypeScript",
+    "LiteLLM"
   ],
   "projects": [
     {
-      "name": "Annapurna-AI",
-      "description": "AI-powered meal planner for South Indian vegetarian cuisine with cultural food constraints and evidence-backed nutrition recommendations.",
-      "technologies": [
-        "Next.js",
-        "FastAPI",
-        "Gemini",
-        "LLMs"
-      ],
-      "link": "https://github.com/Anudeepsrib/Annapurna-AI"
-    },
-    {
       "name": "ClinIQ",
-      "description": "Enterprise Healthcare RAG with LangGraph agentic workflow, semantic chunking, and strict citation generation for policy documents.",
+      "description": "Enterprise Healthcare RAG with stateful LangGraph pipeline, multimodal ingestion, department-scoped vector stores, and LangSmith observability.",
       "technologies": [
         "LangGraph",
-        "RAG",
+        "LangChain",
         "FastAPI",
-        "ChromaDB"
+        "OpenAI",
+        "ChromaDB",
+        "Presidio"
       ],
       "link": "https://github.com/Anudeepsrib/ClinIQ"
     },
     {
-      "name": "Media Organizer",
-      "description": "Cross-platform mobile media organization tool with iOS/Android support, date-based sorting, and real-time web dashboard.",
+      "name": "Annapurna-AI",
+      "description": "India-first, culture-aware AI meal planner and grocery assistant for South Indian vegetarian cooking with evidence-grounded wellness explanations.",
+      "technologies": [
+        "Next.js",
+        "FastAPI",
+        "Gemini",
+        "LiteLLM",
+        "SQLModel"
+      ],
+      "link": "https://github.com/Anudeepsrib/Annapurna-AI"
+    },
+    {
+      "name": "Code Migration Assistant",
+      "description": "Enterprise-grade, security-first code migration tool with AI-powered risk assessment, visual dependency planning, and compliance scanning.",
       "technologies": [
         "Python",
+        "NetworkX",
+        "AST",
+        "RAG",
+        "OpenAI"
+      ],
+      "link": "https://github.com/Anudeepsrib/code-migration-assistant"
+    },
+    {
+      "name": "Media Organizer",
+      "description": "Python toolkit for organizing mobile media files (iOS & Android) with an enterprise web dashboard and Gemini-powered AI features.",
+      "technologies": [
         "FastAPI",
-        "Web Dashboard",
-        "SSE"
+        "Google Gemini",
+        "ChromaDB",
+        "Pydantic"
       ],
       "link": "https://github.com/Anudeepsrib/Media-Organizer"
     }
