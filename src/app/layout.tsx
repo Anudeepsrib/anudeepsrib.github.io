@@ -4,6 +4,7 @@ import './globals.css';
 import BackgroundGraph from '@/components/BackgroundGraph';
 import SmoothScroll from '@/components/SmoothScroll';
 import Preloader from '@/components/Preloader';
+import WebMCP from '@/components/WebMCP';
 import resumeData from '@/data/resumeData.json';
 
 const syne = Syne({
@@ -110,6 +111,7 @@ export default function RootLayout({
             >
                 <SmoothScroll />
                 <Preloader />
+                <WebMCP />
                 <div className="grain-overlay" />
                 <div className="vignette" />
                 <div className="relative min-h-screen flex flex-col">

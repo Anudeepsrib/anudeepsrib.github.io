@@ -14,44 +14,58 @@ interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    name: 'Agentic AI Systems',
-    description: 'Autonomous workflows & reasoning engines',
+    name: 'Agentic AI & Orchestration',
+    description: 'Multi-agent systems, reasoning engines & tool-use',
     skills: [
-      { name: 'LangChain', icon: 'SiLangchain', color: '#1C3C3C', context: 'Building multi-step agent workflows that don\'t hallucinate' },
-      { name: 'LLMs', icon: 'SiOpenai', color: '#412991', context: 'Fine-tuning & prompting for domain-specific reasoning' },
-      { name: 'RAG Systems', icon: 'SiNvidia', color: '#76B900', context: 'Retrieving accurate enterprise context for answers' },  // Using NVidia as proxy or generic
-      { name: 'Vector DBs', icon: 'SiPinecone', color: '#000000', context: 'Semantic search infrastructure for massive knowledge bases' },
+      { name: 'LangGraph', icon: 'SiLangchain', color: '#1C3C3C', context: 'Stateful multi-agent graphs with conditional routing & human-in-the-loop' },
+      { name: 'CrewAI', icon: 'SiRobotframework', color: '#00B0D8', context: 'Role-based multi-agent collaboration for complex task decomposition' },
+      { name: 'MCP (Model Context Protocol)', icon: 'SiAnthropic', color: '#D97757', context: 'Anthropic\'s open standard for agent ↔ server tool-use and context sharing' },
+      { name: 'OpenAI (GPT-4o / o3)', icon: 'SiOpenai', color: '#412991', context: 'Function calling, structured outputs, and chain-of-thought reasoning' },
+      { name: 'Claude 3.5 (Anthropic)', icon: 'SiAnthropic', color: '#D97757', context: 'Extended thinking, agentic coding, and enterprise-scale analysis' },
+      { name: 'Gemini 2.0 (Google)', icon: 'SiGooglegemini', color: '#8E75B2', context: 'Multimodal reasoning, grounding, and million-token context windows' },
     ]
   },
   {
-    name: 'Production Engineering',
-    description: 'Reliable, observable system architecture',
+    name: 'RAG & Knowledge Architecture',
+    description: 'Enterprise retrieval, grounding & search systems',
     skills: [
-      { name: 'FastAPI', icon: 'SiFastapi', color: '#009688', context: 'High-concurrency model serving endpoints' },
-      { name: 'Docker', icon: 'SiDocker', color: '#2496ED', context: 'Consistent environments from research to prod' },
-      { name: 'Kubernetes', icon: 'SiKubernetes', color: '#326CE5', context: 'Auto-scaling inference workloads' },
-      { name: 'Python', icon: 'SiPython', color: '#3776AB', context: 'Core logic for glue code and model development' },
+      { name: 'Advanced RAG Pipelines', icon: 'SiElasticsearch', color: '#005571', context: 'Semantic chunking, hybrid search, re-ranking, and query transformation' },
+      { name: 'Vector Databases', icon: 'SiPinecone', color: '#000000', context: 'ChromaDB, Pinecone, Azure AI Search — scoped retrieval at enterprise scale' },
+      { name: 'GraphRAG & Knowledge Graphs', icon: 'SiNeo4J', color: '#4581C3', context: 'Structured reasoning over entity relationships and multi-hop retrieval' },
+      { name: 'LangChain / LCEL', icon: 'SiLangchain', color: '#1C3C3C', context: 'Composable retrieval chains with output parsing and tool integration' },
     ]
   },
   {
-    name: 'Scalable Data Platforms',
-    description: 'Processing petabytes without bottlenecks',
+    name: 'AI Safety & Evaluation',
+    description: 'Guardrails, observability & production trust',
     skills: [
-      { name: 'PySpark', icon: 'SiApachespark', color: '#E25A1C', context: 'Distributed data processing pipelines' },
-      { name: 'Databricks', icon: 'SiDatabricks', color: '#FF3621', context: 'Unifying data engineering and data science' },
-      { name: 'Cloud (Azure/AWS)', icon: 'TbBrandAzure', color: '#0078D4', context: 'Enterprise-grade infrastructure backbone' },
-      { name: 'SQL', icon: 'SiMysql', color: '#4479A1', context: 'Complex querying for business insights' },
+      { name: 'LangSmith / Langfuse', icon: 'SiLangchain', color: '#1C3C3C', context: 'Trace-level observability, evaluation datasets, and production monitoring' },
+      { name: 'Guardrails & Grading', icon: 'TbShieldCheck', color: '#22C55E', context: 'Hallucination detection, relevance grading, and citation verification' },
+      { name: 'Presidio (PII/PHI)', icon: 'SiMicrosoft', color: '#5E5E5E', context: 'Healthcare-grade PII and PHI anonymization for regulated industries' },
+      { name: 'Prompt Engineering', icon: 'TbPrompt', color: '#F59E0B', context: 'System prompting, structured outputs, and few-shot optimization' },
     ]
   },
   {
-    name: 'User Experience',
-    description: 'Interfaces that drive adoption',
+    name: 'AI-Native Development',
+    description: 'Bleeding-edge AI-powered engineering workflows',
     skills: [
-      { name: 'Next.js', icon: 'SiNextdotjs', color: '#FFFFFF', context: 'Server-side rendering for performant dashboards' },
-      { name: 'React', icon: 'SiReact', color: '#61DAFB', context: 'Interactive chat & visualization components' },
-      { name: 'TypeScript', icon: 'SiTypescript', color: '#3178C6', context: 'Type-safe frontend codebases' },
+      { name: 'Claude Code', icon: 'SiAnthropic', color: '#D97757', context: 'AI-native terminal agent for architecting and shipping production systems' },
+      { name: 'Cursor IDE', icon: 'SiVisualstudiocode', color: '#007ACC', context: 'AI-first development with deep codebase understanding and multi-file edits' },
+      { name: 'GitHub Copilot', icon: 'SiGithubcopilot', color: '#FFFFFF', context: 'Context-aware code generation, refactoring, and review assistance' },
+      { name: 'WebMCP (W3C)', icon: 'SiGooglechrome', color: '#4285F4', context: 'Exposing structured agent tools via browser — the new web standard' },
     ]
-  }
+  },
+  {
+    name: 'Cloud & Production Systems',
+    description: 'Enterprise infrastructure built for AI workloads',
+    skills: [
+      { name: 'Python & FastAPI', icon: 'SiPython', color: '#3776AB', context: 'Async APIs with Pydantic validation, RBAC middleware, and model serving' },
+      { name: 'Azure AI Platform', icon: 'TbBrandAzure', color: '#0078D4', context: 'Azure OpenAI, AI Search, Cosmos DB, AKS, and Functions' },
+      { name: 'AWS ML Stack', icon: 'SiAmazonwebservices', color: '#FF9900', context: 'SageMaker, Bedrock, Lambda — multi-cloud AI deployments' },
+      { name: 'PySpark / Databricks', icon: 'SiApachespark', color: '#E25A1C', context: 'Distributed ETL pipelines and unified analytics at petabyte scale' },
+      { name: 'Docker & Kubernetes', icon: 'SiDocker', color: '#2496ED', context: 'Containerized inference services with auto-scaling orchestration' },
+    ]
+  },
 ];
 
 // Keep legacy export for backwards compatibility

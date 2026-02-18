@@ -5,13 +5,14 @@ import * as Si from 'react-icons/si';
 import * as Tb from 'react-icons/tb';
 import { fadeUp, stagger } from '@/lib/animation';
 import { skillCategories } from '@/data/skills';
-import { Code2, Layout, Cloud, Container } from 'lucide-react';
+import { Code2, Cloud, ShieldCheck, Braces, Bot, Database } from 'lucide-react';
 
 const categoryIcons: Record<string, React.ElementType> = {
-    'Backend & AI/ML': Code2,
-    'Frontend': Layout,
-    'Cloud Platforms': Cloud,
-    'DevOps & Deployment': Container,
+    'Agentic AI & Orchestration': Code2,
+    'RAG & Knowledge Architecture': Database,
+    'AI Safety & Evaluation': ShieldCheck,
+    'AI-Native Development': Bot,
+    'Cloud & Production Systems': Cloud,
 };
 
 const Skills = () => {
