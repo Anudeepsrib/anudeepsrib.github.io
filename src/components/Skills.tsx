@@ -27,7 +27,7 @@ const Skills = () => {
     };
 
     return (
-        <section id="skills" className="py-20 relative">
+        <section id="skills" className="py-24 md:py-32 relative">
             {/* Background */}
             <div className="absolute inset-0 bg-[var(--bg-secondary)]" />
             <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-[128px] pointer-events-none" />
@@ -38,18 +38,16 @@ const Skills = () => {
                     initial={reduceMotion ? 'show' : 'hidden'}
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="mb-16 text-center"
+                    className="mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift">
-                        <Code2 className="text-accent" size={18} />
-                        <span className="text-sm font-mono text-accent">System Capabilities</span>
-                    </div>
+                    {/* Section Number */}
+                    <div className="section-number">03</div>
 
-                    <h2 className="text-4xl md:text-5xl font-exo font-bold mb-6">
-                        <span className="gradient-text">Technical Arsenal</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal mb-6">
+                        <span className="text-[var(--text-primary)]">Technical Arsenal</span>
                     </h2>
 
-                    <p className="text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
                         Building reliable, secure, and observable AI systems.
                     </p>
                 </motion.div>
@@ -65,11 +63,11 @@ const Skills = () => {
                             >
                                 <div className="flex items-center gap-3 mb-6">
                                     <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
-                                        <CategoryIcon className="text-accent" size={24} />
+                                        <CategoryIcon className="text-[var(--accent-primary)]" size={24} />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-exo font-bold text-text-primary">{category.name}</h3>
-                                        <p className="text-xs font-mono text-text-muted uppercase tracking-wider">{category.description}</p>
+                                        <h3 className="text-xl font-serif font-medium text-[var(--text-primary)]">{category.name}</h3>
+                                        <p className="text-xs font-mono text-[var(--text-tertiary)] uppercase tracking-wider">{category.description}</p>
                                     </div>
                                 </div>
 
@@ -80,18 +78,18 @@ const Skills = () => {
                                             <motion.div
                                                 key={skill.name}
                                                 variants={fadeUp}
-                                                className="group/skill p-3 rounded-lg bg-[var(--bg-primary)]/50 border border-[var(--border-subtle)] hover:border-[var(--border-hover)] transition-all duration-250 flex items-start gap-3"
+                                                className="group/skill p-3 rounded-lg bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)] hover:border-[var(--border-hover)] transition-all duration-250 flex items-start gap-3"
                                             >
                                                 {Icon && (
-                                                    <div className="flex-shrink-0 text-xl text-text-muted group-hover/skill:text-accent transition-colors mt-0.5">
+                                                    <div className="flex-shrink-0 text-xl text-[var(--text-tertiary)] group-hover/skill:text-[var(--accent-primary)] transition-colors mt-0.5">
                                                         <Icon />
                                                     </div>
                                                 )}
                                                 <div>
-                                                    <div className="text-sm font-exo font-medium text-text-primary group-hover/skill:text-accent transition-colors">
+                                                    <div className="text-sm font-medium text-[var(--text-primary)] group-hover/skill:text-[var(--accent-primary)] transition-colors">
                                                         {skill.name}
                                                     </div>
-                                                    <div className="text-xs font-mono text-text-muted mt-0.5 leading-snug">
+                                                    <div className="text-xs font-mono text-[var(--text-tertiary)] mt-0.5 leading-snug">
                                                         {skill.context}
                                                     </div>
                                                 </div>

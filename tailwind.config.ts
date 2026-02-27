@@ -20,33 +20,35 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        // 2025 Pro-Max Typography
-        exo: ["'Exo'", "var(--font-inter)", "sans-serif"],
-        mono: ["'Roboto Mono'", "var(--font-mono)", "monospace"],
-        // Legacy fallbacks
-        syne: ["var(--font-syne)", "'Exo'", "sans-serif"],
-        inter: ["var(--font-inter)", "sans-serif"],
-        space: ["var(--font-space)", "sans-serif"],
+        // Perplexity-Inspired Typography
+        serif: ["'Playfair Display'", "Georgia", "serif"],
+        sans: ["'DM Sans'", "var(--font-sans)", "sans-serif"],
+        mono: ["'JetBrains Mono'", "var(--font-mono)", "monospace"],
+        // Legacy mappings
+        exo: ["'DM Sans'", "var(--font-sans)", "sans-serif"],
+        syne: ["'Playfair Display'", "Georgia", "serif"],
+        inter: ["'DM Sans'", "var(--font-sans)", "sans-serif"],
+        space: ["'DM Sans'", "var(--font-sans)", "sans-serif"],
       },
       colors: {
-        // Core Design System Colors
+        // Core Design System Colors — Warm
         background: "var(--bg-primary)",
         foreground: "var(--text-primary)",
 
-        // Accent Colors
+        // Accent Colors — Warm Copper
         accent: {
           DEFAULT: "var(--accent-primary)",
           secondary: "var(--accent-secondary)",
           warm: "var(--accent-warm)",
         },
 
-        // Surface Colors
+        // Surface Colors — Warm
         surface: {
           DEFAULT: "var(--bg-secondary)",
           elevated: "var(--bg-elevated)",
         },
 
-        // Text Colors
+        // Text Colors — Warm Charcoal
         text: {
           primary: "var(--text-primary)",
           secondary: "var(--text-secondary)",
@@ -54,7 +56,7 @@ const config: Config = {
           highlight: "var(--text-highlight)",
         },
 
-        // Legacy semantic colors (mapped to new system)
+        // Legacy semantic colors (mapped to warm system)
         navy: {
           950: "var(--bg-primary)",
           900: "var(--bg-secondary)",
@@ -70,7 +72,7 @@ const config: Config = {
           DEFAULT: "var(--text-primary)",
         },
 
-        // Action Colors
+        // Action Colors — Warm
         cyan: {
           DEFAULT: "var(--accent-primary)",
           400: "var(--accent-warm)",
@@ -78,13 +80,13 @@ const config: Config = {
           glow: "var(--accent-primary)",
         },
         amber: {
-          DEFAULT: "#F59E0B",
-          400: "#FBBF24",
-          500: "#F59E0B",
-          glow: "#F59E0B",
+          DEFAULT: "#C8956C",
+          400: "#E8B990",
+          500: "#C8956C",
+          glow: "#C8956C",
         },
         blue: {
-          600: "#2563EB",
+          600: "#A87B4F",
         },
 
         // Borders
@@ -104,8 +106,8 @@ const config: Config = {
       boxShadow: {
         glow: "var(--shadow-glow)",
         card: "var(--shadow-card)",
-        "glow-lg": "0 0 60px rgba(6, 182, 212, 0.25)",
-        "glow-accent": "0 0 40px rgba(6, 182, 212, 0.2)",
+        "glow-lg": "0 0 60px rgba(200, 149, 108, 0.15)",
+        "glow-accent": "0 0 40px rgba(200, 149, 108, 0.12)",
       },
       backdropBlur: {
         glass: "var(--glass-blur)",
@@ -117,8 +119,8 @@ const config: Config = {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "hero-glow": "radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 70%)",
-        "accent-glow": "radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 70%)",
+        "hero-glow": "radial-gradient(circle at 50% 50%, rgba(200, 149, 108, 0.1) 0%, transparent 70%)",
+        "accent-glow": "radial-gradient(circle at 50% 50%, rgba(200, 149, 108, 0.1) 0%, transparent 70%)",
         "gradient-cta": "linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))",
         "gradient-accent": "linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-warm))",
       },

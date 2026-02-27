@@ -21,11 +21,11 @@ const ExperiencePreview = () => {
                         {/* Header */}
                         <div className="flex items-center gap-3">
                             <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
-                                <Briefcase className="text-accent" size={24} />
+                                <Briefcase className="text-[var(--accent-primary)]" size={24} />
                             </div>
                             <div>
-                                <h3 className="text-xl font-exo font-bold text-text-primary">9+ Years in AI/ML</h3>
-                                <p className="text-sm text-text-muted font-mono">Production Systems at Scale</p>
+                                <h3 className="text-xl font-serif font-medium text-[var(--text-primary)]">11 Years. Zero Demo-Only Models.</h3>
+                                <p className="text-sm text-[var(--text-tertiary)] font-mono">Everything ships to production</p>
                             </div>
                         </div>
 
@@ -40,8 +40,8 @@ const ExperiencePreview = () => {
                                     key={index}
                                     className="px-4 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] transition-colors"
                                 >
-                                    <div className="text-sm font-exo font-medium text-text-primary">{exp.company}</div>
-                                    <div className="text-xs text-text-muted font-mono">{exp.role}</div>
+                                    <div className="text-sm font-medium text-[var(--text-primary)]">{exp.company}</div>
+                                    <div className="text-xs text-[var(--text-tertiary)] font-mono">{exp.role}</div>
                                 </div>
                             ))}
                         </div>
@@ -49,7 +49,7 @@ const ExperiencePreview = () => {
                         {/* CTA */}
                         <Link
                             href="/journey"
-                            className="inline-flex items-center gap-2 text-accent font-mono text-sm hover:gap-3 transition-all group"
+                            className="inline-flex items-center gap-2 text-[var(--accent-primary)] font-mono text-sm hover:gap-3 transition-all group"
                         >
                             <span>Full Journey</span>
                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
