@@ -32,13 +32,13 @@ const Navbar = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'py-3 bg-black/80 backdrop-blur-xl border-b border-white/5 shadow-2xl'
+                    ? 'py-3 bg-[var(--bg-primary)]/85 backdrop-blur-xl border-b border-[var(--text-primary)]/5 shadow-sm'
                     : 'py-6 bg-transparent'
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-3 group relative z-50">
-                        <div className="relative w-10 h-10 overflow-hidden rounded-xl border border-white/10 group-hover:border-[var(--accent-primary)] transition-colors duration-300">
+                        <div className="relative w-10 h-10 overflow-hidden rounded-xl border border-[var(--text-primary)]/10 group-hover:border-[var(--accent-primary)] transition-colors duration-300">
                             <Image
                                 src="/assets/logo.png"
                                 alt="Anudeep Logo"
@@ -48,10 +48,10 @@ const Navbar = () => {
                             />
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-lg font-bold tracking-tight text-white leading-none group-hover:text-[var(--accent-primary)] transition-colors">
+                            <span className="text-lg font-serif font-medium tracking-tight text-[var(--text-primary)] leading-none group-hover:text-[var(--accent-primary)] transition-colors">
                                 Anudeep
                             </span>
-                            <span className="text-[10px] text-white/50 uppercase tracking-widest group-hover:text-white/80 transition-colors">
+                            <span className="text-[10px] text-[var(--text-tertiary)] uppercase tracking-widest group-hover:text-[var(--text-secondary)] transition-colors font-mono">
                                 Portfolio
                             </span>
                         </div>
@@ -59,20 +59,20 @@ const Navbar = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-8">
-                        <div className="flex items-center gap-1 bg-white/5 rounded-full px-2 py-1 border border-white/5 backdrop-blur-sm">
+                        <div className="flex items-center gap-1 bg-[var(--text-primary)]/5 rounded-full px-2 py-1 border border-[var(--text-primary)]/5 backdrop-blur-sm">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="px-4 py-2 text-sm text-white/70 hover:text-white relative group transition-colors"
+                                    className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] relative group transition-colors"
                                 >
                                     {link.name}
-                                    <span className="absolute inset-0 bg-white/5 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
+                                    <span className="absolute inset-0 bg-[var(--text-primary)]/5 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
                                 </Link>
                             ))}
                         </div>
 
-                        <div className="h-6 w-px bg-white/10" />
+                        <div className="h-6 w-px bg-[var(--text-primary)]/10" />
 
                         <div className="flex items-center gap-3">
                             <a
@@ -88,7 +88,7 @@ const Navbar = () => {
                                 href="https://adplist.org/mentors/anudeep-sri-bathina"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-4 py-2 text-sm bg-[var(--accent-primary)] text-black font-semibold rounded-lg hover:bg-[var(--accent-secondary)] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300 flex items-center gap-2"
+                                className="px-4 py-2 text-sm bg-[var(--text-primary)] text-[var(--bg-primary)] font-medium rounded-lg hover:bg-[var(--accent-secondary)] hover:shadow-[0_0_20px_rgba(200,149,108,0.2)] transition-all duration-300 flex items-center gap-2"
                             >
                                 Mentorship
                                 <ArrowRight className="w-3 h-3" />
@@ -98,7 +98,7 @@ const Navbar = () => {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden relative z-50 p-2 text-white hover:text-[var(--accent-primary)] transition-colors"
+                        className="md:hidden relative z-50 p-2 text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -115,7 +115,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl md:hidden pt-24 px-6"
+                        className="fixed inset-0 z-40 bg-[var(--bg-primary)]/95 backdrop-blur-2xl md:hidden pt-24 px-6"
                     >
                         <div className="flex flex-col gap-6">
                             {navLinks.map((link, i) => (
@@ -128,7 +128,7 @@ const Navbar = () => {
                                     <Link
                                         href={link.href}
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="text-3xl font-bold text-white/50 hover:text-white hover:translate-x-4 transition-all duration-300 block"
+                                        className="text-3xl font-serif text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:translate-x-4 transition-all duration-300 block"
                                     >
                                         <span className="text-sm text-[var(--accent-primary)] block mb-1 font-mono">0{i + 1}</span>
                                         {link.name}
@@ -136,7 +136,7 @@ const Navbar = () => {
                                 </motion.div>
                             ))}
 
-                            <div className="h-px bg-white/10 my-4" />
+                            <div className="h-px bg-[var(--text-primary)]/10 my-4" />
 
                             <div className="flex flex-col gap-3">
                                 <a
@@ -149,10 +149,10 @@ const Navbar = () => {
                                     <ArrowRight className="w-4 h-4" />
                                 </a>
                                 <div className="flex justify-center gap-6 mt-6">
-                                    <a href={resumeData.personalInfo.github} target="_blank" className="text-white/50 hover:text-white transition-colors">
+                                    <a href={resumeData.personalInfo.github} target="_blank" className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">
                                         <Github size={24} />
                                     </a>
-                                    <a href={resumeData.personalInfo.linkedin} target="_blank" className="text-white/50 hover:text-white transition-colors">
+                                    <a href={resumeData.personalInfo.linkedin} target="_blank" className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">
                                         <Linkedin size={24} />
                                     </a>
                                 </div>

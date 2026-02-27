@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Syne, IBM_Plex_Mono, Inter } from 'next/font/google';
+import { Playfair_Display, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import BackgroundGraph from '@/components/BackgroundGraph';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -7,29 +7,29 @@ import Preloader from '@/components/Preloader';
 import WebMCP from '@/components/WebMCP';
 import resumeData from '@/data/resumeData.json';
 
-const syne = Syne({
+const playfair = Playfair_Display({
     subsets: ['latin'],
-    variable: '--font-syne',
+    variable: '--font-serif',
     display: 'swap',
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+const dmSans = DM_Sans({
+    subsets: ['latin'],
+    variable: '--font-sans',
+    display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
     weight: ['400', '500', '600'],
     subsets: ['latin'],
     variable: '--font-mono',
     display: 'swap',
 });
 
-const inter = Inter({
-    subsets: ['latin'],
-    variable: '--font-inter',
-    display: 'swap',
-});
-
 export const metadata: Metadata = {
     title: 'Anudeep | AI Architect',
-    description: "Lead Data Scientist and AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems. Expert in building production-grade AI solutions associated with high-impact business outcomes.",
-    keywords: ["Lead Data Scientist", "AI Architect", "Generative AI", "LLM", "Machine Learning", "Dallas", "USA", "RAG", "Vector Search", "Python", "Data Engineering"],
+    description: "AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems. Expert in building production-grade AI solutions associated with high-impact business outcomes.",
+    keywords: ["AI Architect", "Generative AI", "LLM", "Machine Learning", "Dallas", "USA", "RAG", "Vector Search", "Python", "Data Engineering"],
     icons: {
         icon: [
             { url: '/assets/logo.png', type: 'image/png' },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: `${resumeData.personalInfo.name} | ${resumeData.personalInfo.title}`,
-        description: "Lead Data Scientist and AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems.",
+        description: "AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems.",
         url: resumeData.personalInfo.website,
         siteName: `${resumeData.personalInfo.name} Portfolio`,
         images: [
@@ -98,7 +98,7 @@ export default function RootLayout({
     };
 
     return (
-        <html lang="en" className={`${syne.variable} ${ibmPlexMono.variable} ${inter.variable} dark`} suppressHydrationWarning>
+        <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
             <head>
                 <script
                     type="application/ld+json"
@@ -106,7 +106,7 @@ export default function RootLayout({
                 />
             </head>
             <body
-                className="bg-navy-950 text-offwhite antialiased selection:bg-seafoam/30 selection:text-seafoam"
+                className="bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--accent-primary)]/30 selection:text-[var(--text-primary)]"
                 suppressHydrationWarning
             >
                 <SmoothScroll />

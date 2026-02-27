@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { GraduationCap, Globe, Users, Award, BookOpen, Mic, Handshake, UserCheck, MapPin, ArrowRight, Quote } from 'lucide-react';
 
 const universities = [
-    'UMass Amherst', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
+    'UMass Dartmouth', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
 ];
 
 const globalPlatforms = [
@@ -17,7 +17,7 @@ const trainingPartners = [
 ];
 
 const impactMetrics = [
-    { value: '9+', label: 'Years AI/ML Experience', icon: GraduationCap, accent: 'accent' },
+    { value: '11+', label: 'Years AI/ML Experience', icon: GraduationCap, accent: 'accent' },
     { value: '2', label: 'Publications', icon: BookOpen, accent: 'accent' },
     { value: '500+', label: 'Teaching Hours', icon: Mic, accent: 'accent-warm' },
     { value: '18+', label: 'Guest Lectures', icon: GraduationCap, accent: 'accent-warm' },
@@ -50,34 +50,34 @@ const testimonials = [
         source: "via ADPList"
     },
     {
-        quote: "I was very concerned as a fresher on how to face interviews. Anudeep made me feel comfortable regarding what to expect and how to navigate through different scenarios.",
-        author: "Mahima Tummala",
-        role: "Job Seeker",
-        company: "Interview Prep",
-        source: "via Topmate"
+        quote: "His strategic guidance and ability to simplify complex AI and career paths into clear, actionable steps were incredibly helpful. I left with much more clarity, confidence, and direction.",
+        author: "Nelisa Sebastian",
+        role: "Data Analyst",
+        company: "Northeastern University",
+        source: "via ADPList"
     },
     {
-        quote: "The session was incredible. He showed me a path that I might not have considered if I hadn't spoken to him. Highly knowledgeable and supportive.",
-        author: "Vansh Mehta",
-        role: "Career Changer",
-        company: "Data Science",
-        source: "via Topmate"
+        quote: "An exceptional session, making complex Agentic AI concepts easy to understand. His motivating approach inspired me to take bold steps in my learning journey.",
+        author: "Mide Sowunmi",
+        role: "UX/UI Designer",
+        company: "Comcast",
+        source: "via ADPList"
     },
     {
-        quote: "There is no denying that Anudeep was able to guide me to the next steps of my learning journey in data science. He is supportive and able to point learners in the right direction.",
-        author: "Ronald Ngounou",
-        role: "MS Computer Science",
-        company: "University of DC",
+        quote: "Direct and strategic feedback on turning my project into a portfolio asset and pursuing AI roles through freelance work. Honest advice that helped clarify my long-term direction.",
+        author: "Natalia Kent",
+        role: "AI Enthusiast",
+        company: "Freelance",
         source: "via ADPList"
     }
 ];
 
 const Impact = () => {
     return (
-        <section id="impact" className="py-24 relative overflow-hidden">
+        <section id="impact" className="py-24 md:py-32 relative overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 bg-[var(--bg-secondary)]" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--accent-primary)]/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--accent-primary)]/3 to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Section Header */}
@@ -85,16 +85,15 @@ const Impact = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift">
-                        <Award className="text-accent" size={18} />
-                        <span className="text-sm font-mono text-accent">Global Recognition</span>
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-exo font-bold mb-4">
-                        <span className="gradient-text">Teaching & Global Impact</span>
+                    {/* Section Number */}
+                    <div className="section-number">05</div>
+
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal mb-4">
+                        <span className="text-[var(--text-primary)]">Teaching & Global Impact</span>
                     </h2>
-                    <p className="text-lg text-text-secondary max-w-3xl mx-auto">
+                    <p className="text-lg text-[var(--text-secondary)] max-w-3xl">
                         Advancing practical AI education and applied innovation across global platforms.
                     </p>
                 </motion.div>
@@ -110,16 +109,16 @@ const Impact = () => {
                     >
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
-                                <GraduationCap className="text-accent" size={24} />
+                                <GraduationCap className="text-[var(--accent-primary)]" size={24} />
                             </div>
-                            <h3 className="text-lg font-exo font-bold text-text-primary">Universities</h3>
+                            <h3 className="text-lg font-serif font-medium text-[var(--text-primary)]">Universities</h3>
                         </div>
-                        <p className="text-sm text-text-secondary mb-4">
+                        <p className="text-sm text-[var(--text-secondary)] mb-4">
                             Invited to deliver lectures and workshops on AI, ML, and data-driven innovation.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {universities.map((uni) => (
-                                <span key={uni} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-accent border border-[var(--accent-primary)]/20">
+                                <span key={uni} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-secondary)] border border-[var(--accent-primary)]/15">
                                     {uni}
                                 </span>
                             ))}
@@ -138,14 +137,14 @@ const Impact = () => {
                             <div className="p-2 rounded-lg bg-[var(--accent-warm)]/10">
                                 <Globe className="text-[var(--accent-warm)]" size={24} />
                             </div>
-                            <h3 className="text-lg font-exo font-bold text-text-primary">Global Platforms</h3>
+                            <h3 className="text-lg font-serif font-medium text-[var(--text-primary)]">Global Platforms</h3>
                         </div>
-                        <p className="text-sm text-text-secondary mb-4">
+                        <p className="text-sm text-[var(--text-secondary)] mb-4">
                             Featured speaker at international AI conferences and educational platforms.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {globalPlatforms.map((platform) => (
-                                <span key={platform} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-warm)]/10 text-[var(--accent-warm)] border border-[var(--accent-warm)]/20">
+                                <span key={platform} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-warm)]/10 text-[var(--accent-secondary)] border border-[var(--accent-warm)]/15">
                                     {platform}
                                 </span>
                             ))}
@@ -162,16 +161,16 @@ const Impact = () => {
                     >
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
-                                <Handshake className="text-accent" size={24} />
+                                <Handshake className="text-[var(--accent-primary)]" size={24} />
                             </div>
-                            <h3 className="text-lg font-exo font-bold text-text-primary">Training Partners</h3>
+                            <h3 className="text-lg font-serif font-medium text-[var(--text-primary)]">Training Partners</h3>
                         </div>
-                        <p className="text-sm text-text-secondary mb-4">
+                        <p className="text-sm text-[var(--text-secondary)] mb-4">
                             Collaborated with leading EdTech platforms to deliver industry-ready AI curriculum.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {trainingPartners.map((partner) => (
-                                <span key={partner} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-accent border border-[var(--accent-primary)]/20">
+                                <span key={partner} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-secondary)] border border-[var(--accent-primary)]/15">
                                     {partner}
                                 </span>
                             ))}
@@ -193,11 +192,11 @@ const Impact = () => {
                                 transition={{ delay: index * 0.05 }}
                                 className="glass-card p-4 text-center hover-lift"
                             >
-                                <Icon className={isWarm ? 'text-[var(--accent-warm)] mx-auto mb-2' : 'text-accent mx-auto mb-2'} size={20} />
-                                <div className={`text-2xl md:text-3xl font-exo font-bold ${isWarm ? 'text-[var(--accent-warm)]' : 'text-accent'}`}>
+                                <Icon className={isWarm ? 'text-[var(--accent-warm)] mx-auto mb-2' : 'text-[var(--accent-primary)] mx-auto mb-2'} size={20} />
+                                <div className={`text-2xl md:text-3xl font-serif font-medium ${isWarm ? 'text-[var(--accent-warm)]' : 'text-[var(--accent-primary)]'}`}>
                                     {metric.value}
                                 </div>
-                                <div className="text-xs text-text-muted font-mono mt-1">{metric.label}</div>
+                                <div className="text-xs text-[var(--text-tertiary)] font-mono mt-1">{metric.label}</div>
                             </motion.div>
                         );
                     })}
@@ -210,7 +209,7 @@ const Impact = () => {
                     viewport={{ once: true }}
                     className="mb-12"
                 >
-                    <h3 className="text-2xl font-exo font-bold text-center text-text-primary mb-8">
+                    <h3 className="text-2xl font-serif font-medium text-center text-[var(--text-primary)] mb-8">
                         What Mentees Say
                     </h3>
                     <div className="grid md:grid-cols-3 gap-6">
@@ -223,14 +222,14 @@ const Impact = () => {
                                 transition={{ delay: index * 0.1 }}
                                 className="glass-card p-6 relative"
                             >
-                                <Quote className="text-accent/20 absolute top-4 right-4" size={32} />
-                                <p className="text-text-secondary text-sm leading-relaxed mb-4 relative z-10">
+                                <Quote className="text-[var(--accent-primary)]/20 absolute top-4 right-4" size={32} />
+                                <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-4 relative z-10 italic">
                                     &quot;{testimonial.quote}&quot;
                                 </p>
                                 <div className="border-t border-[var(--border-subtle)] pt-4">
-                                    <div className="font-exo font-medium text-text-primary">{testimonial.author}</div>
-                                    <div className="text-xs text-text-muted font-mono">{testimonial.role}, {testimonial.company}</div>
-                                    <div className="text-xs text-accent font-mono mt-1">{testimonial.source}</div>
+                                    <div className="font-medium text-[var(--text-primary)]">{testimonial.author}</div>
+                                    <div className="text-xs text-[var(--text-tertiary)] font-mono">{testimonial.role}, {testimonial.company}</div>
+                                    <div className="text-xs text-[var(--accent-primary)] font-mono mt-1">{testimonial.source}</div>
                                 </div>
                             </motion.div>
                         ))}

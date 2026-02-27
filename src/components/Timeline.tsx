@@ -117,7 +117,7 @@ const Timeline = () => {
                                             {/* Duration */}
                                             <div className={`mt-4 px-3 py-1.5 inline-flex items-center gap-2 rounded-lg border ${isCurrentRole ? 'bg-accent/10 border-accent/30' : 'bg-white/5 border-white/10'}`}>
                                                 <span className={`font-mono text-sm font-medium ${isCurrentRole ? 'text-accent' : 'text-text-secondary'}`}>
-                                                    {job.startDate} — {job.endDate}
+                                                    {job.startDate} | {job.endDate}
                                                 </span>
                                             </div>
                                         </div>

@@ -1,19 +1,19 @@
 {
     "personalInfo": {
         "name": "Anudeep Sri Bathina",
-        "title": "Lead Data Scientist | AI Architect",
+        "title": "AI Architect",
         "email": "anudeepSri108@gmail.com",
         "location": "Plano, TX, United States",
         "github": "https://github.com/anudeepsrib",
         "linkedin": "https://www.linkedin.com/in/anudeepsri/",
         "website": "https://anudeepsrib.github.io",
-        "summary": "Lead Data Scientist with 9+ years of experience building scalable AI systems, LLM/RAG solutions, and production-grade data platforms. Invited speaker at Berlin School of Business and Innovation (BSBI) Café Scientifique (AI in Business, Jun 4, 2021) and guest speaker for academic/industry programs including an STTP on Machine Learning Fundamentals (Dec 3, 2024). Author/contributor to CRC Press / Taylor & Francis publications and active mentor via ADPList and Topmate.",
+        "summary": "AI Architect with 11 years of experience building scalable AI systems, LLM/RAG solutions, and production-grade data platforms. Invited speaker at Berlin School of Business and Innovation (BSBI) Café Scientifique (AI in Business, Jun 4, 2021) and guest speaker for academic/industry programs including an STTP on Machine Learning Fundamentals (Dec 3, 2024). Author/contributor to CRC Press / Taylor & Francis publications and active mentor via ADPList and Topmate.",
         "image": "/assets/profile-pic.jpeg"
     },
     "experience": [
         {
             "company": "AT&T",
-            "position": "Lead Data Scientist",
+            "position": "AI Architect",
             "startDate": "2024",
             "endDate": "Present",
             "description": "Architecting enterprise GenAI solutions and LLM systems. Leading development of Python-based parsers and automated interpretation models. Overseeing API deployments using FastAPI and optimizing retrieval systems with Azure Vector Search and Cosmos DB.",
@@ -104,7 +104,7 @@
         },
         {
             "title": "Classification Models in Machine Learning (Supervised Learning)",
-            "event": "STTP on Machine Learning Fundamentals — IET On Campus (MBCET)",
+            "event": "STTP on Machine Learning Fundamentals, IET On Campus (MBCET)",
             "year": "2024",
             "description": "Hands-on session as part of an STTP program; session promoted by IET On Campus-MBCET and MBCET channels.",
             "links": [
@@ -115,7 +115,7 @@
         },
         {
             "title": "E-Commerce and Revenue Generation using Recommendation Systems",
-            "event": "PVP Siddhartha Institute of Technology (PVPSIT) — Industry Institute Interaction Webinar",
+            "event": "PVP Siddhartha Institute of Technology (PVPSIT), Industry Institute Interaction Webinar",
             "year": "2022",
             "description": "Invited webinar session listed in PVPSIT institutional documentation.",
             "links": [

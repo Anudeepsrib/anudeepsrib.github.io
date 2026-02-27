@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { TrendingUp, Users, BookOpen, Award, Globe } from 'lucide-react';
 
 const stats = [
-    { icon: TrendingUp, value: '9+', label: 'Years Experience', accent: 'accent' },
+    { icon: TrendingUp, value: '11+', label: 'Years Experience', accent: 'accent' },
     { icon: Users, value: '1000+', label: 'Mentored Professionals', accent: 'accent-warm' },
     { icon: BookOpen, value: '2', label: 'Research Publications', accent: 'accent' },
     { icon: Award, value: '18+', label: 'Speaking Engagements', accent: 'accent-warm' },
@@ -33,8 +33,8 @@ const StatsBanner = () => {
                                 className="glass-card p-5 text-center hover-lift cursor-pointer"
                             >
                                 <div className={`inline-flex items-center justify-center w-10 h-10 rounded-lg mb-3 ${isWarm
-                                        ? 'bg-[var(--accent-warm)]/10 text-[var(--accent-warm)]'
-                                        : 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                                    ? 'bg-[var(--accent-warm)]/10 text-[var(--accent-warm)]'
+                                    : 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
                                     }`}>
                                     <Icon size={20} />
                                 </div>
