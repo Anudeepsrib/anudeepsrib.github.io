@@ -33,7 +33,7 @@ const Footer = () => {
                             </p>
                         </Link>
                         <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-8">
-                            Lead Data Scientist & AI Architect building production-grade AI systems.
+                            AI Architect building production-grade AI systems.
                             Speaker, author, and mentor helping professionals excel in AI/ML.
                         </p>
                         <div className="flex items-center gap-3">

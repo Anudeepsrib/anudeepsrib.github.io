@@ -13,6 +13,7 @@ const categoryIcons: Record<string, React.ElementType> = {
     'AI Safety & Evaluation': ShieldCheck,
     'AI-Native Development': Bot,
     'Cloud & Production Systems': Cloud,
+    'Data Engineering': Braces,
 };
 
 const Skills = () => {
@@ -52,14 +53,16 @@ const Skills = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {skillCategories.map((category, catIndex) => {
                         const CategoryIcon = categoryIcons[category.name] || Code2;
+                        const isLast = catIndex === skillCategories.length - 1;
+                        const isSecondLast = catIndex === skillCategories.length - 2;
                         return (
                             <motion.div
                                 key={category.name}
                                 variants={fadeUp}
-                                className="glass-card p-6 hover-lift group"
+                                className={`glass-card p-6 hover-lift group flex flex-col ${skillCategories.length % 3 === 2 && isSecondLast ? 'lg:col-start-1' : ''} ${skillCategories.length % 3 === 2 && isLast ? 'lg:col-start-2' : ''} ${skillCategories.length % 3 === 1 && isLast ? 'lg:col-start-2' : ''}`}
                             >
                                 <div className="flex items-center gap-3 mb-6">
                                     <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
@@ -71,7 +74,7 @@ const Skills = () => {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 gap-2">
+                                <div className="grid grid-cols-1 gap-2 flex-1">
                                     {category.skills.map((skill, index) => {
                                         const Icon = getIconComponent(skill.icon);
                                         return (

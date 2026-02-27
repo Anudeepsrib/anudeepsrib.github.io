@@ -17,12 +17,10 @@ export const skillCategories: SkillCategory[] = [
     name: 'Agentic AI & Orchestration',
     description: 'Multi-agent systems, reasoning engines & tool-use',
     skills: [
-      { name: 'LangGraph', icon: 'SiLangchain', color: '#1C3C3C', context: 'Stateful multi-agent graphs with conditional routing & human-in-the-loop' },
-      { name: 'CrewAI / AutoGen', icon: 'SiRobotframework', color: '#00B0D8', context: 'Role-based multi-agent collaboration and autonomous task orchestration' },
+      { name: 'LangGraph / CrewAI', icon: 'SiLangchain', color: '#1C3C3C', context: 'Stateful multi-agent graphs with conditional routing & autonomous orchestration' },
       { name: 'MCP (Model Context Protocol)', icon: 'SiAnthropic', color: '#D97757', context: 'Anthropic\'s open standard for agent ↔ server tool-use and context sharing' },
       { name: 'OpenAI o3 / o4-mini', icon: 'SiOpenai', color: '#412991', context: 'Chain-of-thought reasoning, function calling, and structured outputs' },
-      { name: 'Claude 4 (Anthropic)', icon: 'SiAnthropic', color: '#D97757', context: 'Extended thinking, agentic coding, computer use, and 200k context' },
-      { name: 'Gemini 2.5 Pro (Google)', icon: 'SiGooglegemini', color: '#8E75B2', context: 'Multimodal reasoning, grounding, and million-token context windows' },
+      { name: 'Claude 4 / Gemini 2.5', icon: 'SiAnthropic', color: '#D97757', context: 'Extended thinking, agentic coding, multimodal reasoning, million-token context' },
     ]
   },
   {
@@ -30,9 +28,9 @@ export const skillCategories: SkillCategory[] = [
     description: 'Enterprise retrieval, grounding & search systems',
     skills: [
       { name: 'Advanced RAG Pipelines', icon: 'SiElasticsearch', color: '#005571', context: 'Agentic RAG, corrective retrieval, self-reflection, and hybrid search' },
-      { name: 'Vector Databases', icon: 'SiPinecone', color: '#000000', context: 'ChromaDB, Pinecone, Azure AI Search, Qdrant — enterprise-scale retrieval' },
+      { name: 'Vector Databases', icon: 'SiPinecone', color: '#000000', context: 'ChromaDB, Pinecone, Azure AI Search, Qdrant for enterprise-scale retrieval' },
       { name: 'GraphRAG & Knowledge Graphs', icon: 'SiNeo4J', color: '#4581C3', context: 'Structured reasoning over entity relationships and multi-hop retrieval' },
-      { name: 'Embeddings & Reranking', icon: 'SiLangchain', color: '#1C3C3C', context: 'Cohere Rerank, BGE, ColBERT — semantic search with late interaction' },
+      { name: 'Embeddings & Reranking', icon: 'SiLangchain', color: '#1C3C3C', context: 'Cohere Rerank, BGE, ColBERT for semantic search with late interaction' },
     ]
   },
   {
@@ -60,10 +58,19 @@ export const skillCategories: SkillCategory[] = [
     description: 'Enterprise infrastructure built for AI workloads',
     skills: [
       { name: 'Python & FastAPI', icon: 'SiPython', color: '#3776AB', context: 'Async APIs with Pydantic v2, RBAC middleware, and model serving' },
-      { name: 'Azure AI Platform', icon: 'TbBrandAzure', color: '#0078D4', context: 'Azure OpenAI, AI Search, Cosmos DB, AKS, and Functions' },
-      { name: 'AWS Bedrock / SageMaker', icon: 'SiAmazonwebservices', color: '#FF9900', context: 'Multi-model inference, fine-tuning, and serverless ML endpoints' },
-      { name: 'PySpark / Databricks', icon: 'SiApachespark', color: '#E25A1C', context: 'Distributed ETL pipelines and unified analytics at petabyte scale' },
+      { name: 'Azure AI / AWS Bedrock', icon: 'TbBrandAzure', color: '#0078D4', context: 'Azure OpenAI, AI Search, SageMaker, Bedrock for multi-cloud AI' },
       { name: 'Docker & Kubernetes', icon: 'SiDocker', color: '#2496ED', context: 'Containerized inference services with auto-scaling orchestration' },
+      { name: 'CI/CD & MLOps', icon: 'SiGithubactions', color: '#2088FF', context: 'GitHub Actions, MLflow, model registry, and automated deployment pipelines' },
+    ]
+  },
+  {
+    name: 'Data Engineering',
+    description: 'Scalable pipelines, warehousing & real-time processing',
+    skills: [
+      { name: 'PySpark / Databricks', icon: 'SiApachespark', color: '#E25A1C', context: 'Distributed ETL pipelines and unified analytics at petabyte scale' },
+      { name: 'SQL & dbt', icon: 'SiDbt', color: '#FF694B', context: 'Data modeling, transformations, and warehouse-native analytics' },
+      { name: 'Airflow / Prefect', icon: 'SiApacheairflow', color: '#017CEE', context: 'Workflow orchestration for batch and streaming data pipelines' },
+      { name: 'Kafka & Streaming', icon: 'SiApachekafka', color: '#231F20', context: 'Event-driven architectures and real-time data ingestion at scale' },
     ]
   },
 ];

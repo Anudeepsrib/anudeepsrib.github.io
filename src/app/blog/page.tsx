@@ -4,7 +4,7 @@ import Blog from "@/components/Blog";
 
 export const metadata = {
     title: 'Blog | AI & Data Science Insights',
-    description: 'Technical articles and insights on Generative AI, LLMs, RAG systems, and production ML. Written by Anudeep Sri Bathina, Lead Data Scientist at AT&T.',
+    description: 'Technical articles and insights on Generative AI, LLMs, RAG systems, and production ML. Written by Anudeep Sri Bathina, AI Architect at AT&T.',
 };
 
 export default function BlogPage() {

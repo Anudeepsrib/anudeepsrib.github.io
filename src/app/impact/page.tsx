@@ -6,7 +6,7 @@ export const metadata = {
 };
 
 const universities = [
-    'UMass Amherst', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
+    'UMass Dartmouth', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
 ];
 
 const globalPlatforms = [
@@ -18,7 +18,7 @@ const trainingPartners = [
 ];
 
 const impactMetrics = [
-    { value: '10+', label: 'Years AI/ML Experience', icon: GraduationCap },
+    { value: '11+', label: 'Years AI/ML Experience', icon: GraduationCap },
     { value: '2', label: 'Publications', icon: BookOpen },
     { value: '500+', label: 'Teaching Hours', icon: Mic },
     { value: '18+', label: 'Guest Lectures', icon: GraduationCap },
@@ -173,7 +173,7 @@ export default function ImpactPage() {
                     <div className="text-center mb-8">
                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Mentoring & Career Impact</h3>
                         <p className="text-gray-400 max-w-2xl mx-auto">
-                            I guide learners and professionals through Great Learning, Topmate, ADPList, and global communities—helping them build strong foundations in AI, ML, data science, and cloud technologies.
+                            I guide learners and professionals through Great Learning, Topmate, ADPList, and global communities, helping them build strong foundations in AI, ML, data science, and cloud technologies.
                         </p>
                     </div>
 

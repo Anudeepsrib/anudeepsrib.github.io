@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { GraduationCap, Globe, Users, Award, BookOpen, Mic, Handshake, UserCheck, MapPin, ArrowRight, Quote } from 'lucide-react';
 
 const universities = [
-    'UMass Amherst', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
+    'UMass Dartmouth', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
 ];
 
 const globalPlatforms = [
@@ -17,7 +17,7 @@ const trainingPartners = [
 ];
 
 const impactMetrics = [
-    { value: '9+', label: 'Years AI/ML Experience', icon: GraduationCap, accent: 'accent' },
+    { value: '11+', label: 'Years AI/ML Experience', icon: GraduationCap, accent: 'accent' },
     { value: '2', label: 'Publications', icon: BookOpen, accent: 'accent' },
     { value: '500+', label: 'Teaching Hours', icon: Mic, accent: 'accent-warm' },
     { value: '18+', label: 'Guest Lectures', icon: GraduationCap, accent: 'accent-warm' },
@@ -57,7 +57,7 @@ const testimonials = [
         source: "via ADPList"
     },
     {
-        quote: "An exceptional session — making complex Agentic AI concepts easy to understand. His motivating approach inspired me to take bold steps in my learning journey.",
+        quote: "An exceptional session, making complex Agentic AI concepts easy to understand. His motivating approach inspired me to take bold steps in my learning journey.",
         author: "Mide Sowunmi",
         role: "UX/UI Designer",
         company: "Comcast",

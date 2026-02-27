@@ -27,9 +27,9 @@ export default function WebMCP() {
             schema: { type: 'object', properties: {} },
             execute: () => ({
                 name: 'Anudeepsri Bathina',
-                role: 'Lead Data Scientist',
+                role: 'AI Architect',
                 company: 'Infosys',
-                experience: '9 years',
+                experience: '11 years',
                 location: 'Celina, Texas',
                 education: 'Vellore Institute of Technology (VIT)',
                 keySkills: [

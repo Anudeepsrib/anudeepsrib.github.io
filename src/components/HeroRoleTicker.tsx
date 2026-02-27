@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
  */
 const HeroRoleTicker: React.FC = () => {
   const roles = [
-    'Lead Data Scientist',
+    'AI Architect',
     'AI Architect',
     'GenAI Systems Builder',
     'Production ML Engineer',

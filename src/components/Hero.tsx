@@ -21,7 +21,7 @@ const Hero = () => {
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: 'top top',
-                end: '+=50%',
+                end: '+=5%',
                 pin: true,
                 scrub: 0.5,
             },

@@ -28,8 +28,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
     title: 'Anudeep | AI Architect',
-    description: "Lead Data Scientist and AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems. Expert in building production-grade AI solutions associated with high-impact business outcomes.",
-    keywords: ["Lead Data Scientist", "AI Architect", "Generative AI", "LLM", "Machine Learning", "Dallas", "USA", "RAG", "Vector Search", "Python", "Data Engineering"],
+    description: "AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems. Expert in building production-grade AI solutions associated with high-impact business outcomes.",
+    keywords: ["AI Architect", "Generative AI", "LLM", "Machine Learning", "Dallas", "USA", "RAG", "Vector Search", "Python", "Data Engineering"],
     icons: {
         icon: [
             { url: '/assets/logo.png', type: 'image/png' },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: `${resumeData.personalInfo.name} | ${resumeData.personalInfo.title}`,
-        description: "Lead Data Scientist and AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems.",
+        description: "AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems.",
         url: resumeData.personalInfo.website,
         siteName: `${resumeData.personalInfo.name} Portfolio`,
         images: [
