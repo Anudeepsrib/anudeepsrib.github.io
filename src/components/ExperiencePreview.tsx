@@ -32,7 +32,7 @@ const ExperiencePreview = () => {
                         {/* Company Logos/Names */}
                         <div className="flex flex-wrap items-center gap-4">
                             {[
-                                { company: 'AT&T', role: 'Gen AI' },
+                                { company: 'AT&T', role: 'AI Architect' },
                                 { company: 'Capgemini', role: 'Tech Lead' },
                                 { company: 'Gain Insights', role: 'ML Engineer' },
                             ].map((exp, index) => (
