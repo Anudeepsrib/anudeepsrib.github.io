@@ -10,12 +10,12 @@ const Timeline = () => {
     const reduceMotion = useReducedMotion();
     const [imgErrors, setImgErrors] = React.useState<{ [key: string]: boolean }>({});
 
-    // Company brand colors for visual distinction - Mapped to premium gradients
+    // Company brand colors for visual distinction - Warm copper variations
     const companyColors: { [key: string]: string } = {
-        'AT&T': 'from-blue-600/20 to-cyan-500/20',
-        'Capgemini': 'from-indigo-600/20 to-purple-500/20',
-        'GainInsights Solutions': 'from-emerald-600/20 to-teal-500/20',
-        'Cognizant': 'from-blue-800/20 to-indigo-700/20'
+        'AT&T': 'from-[var(--accent-primary)]/20 to-[var(--accent-warm)]/20',
+        'Capgemini': 'from-[var(--accent-secondary)]/20 to-[var(--accent-primary)]/20',
+        'GainInsights Solutions': 'from-[var(--accent-warm)]/20 to-[var(--accent-primary)]/20',
+        'Cognizant': 'from-[var(--accent-secondary)]/20 to-[var(--text-highlight)]/10'
     };
 
     return (
@@ -66,7 +66,7 @@ const Timeline = () => {
                                 className="group relative"
                             >
                                 {/* Card */}
-                                <div className={`glass-card p-8 hover-lift transition-all duration-500 border ${isCurrentRole ? 'border-accent/40 shadow-glow !overflow-visible' : 'border-white/5'}`}>
+                                <div className={`glass-card p-8 hover-lift transition-all duration-500 border ${isCurrentRole ? 'border-accent/40 shadow-glow !overflow-visible' : 'border-[var(--border-subtle)]'}`}>
                                     {/* Current Role Badge */}
                                     {isCurrentRole && (
                                         <div className="absolute -top-3 right-8 px-4 py-1 bg-gradient-to-r from-accent to-accent-secondary text-[var(--bg-primary)] text-xs font-mono font-bold rounded-full shadow-lg z-20">
@@ -78,7 +78,7 @@ const Timeline = () => {
                                         {/* Left: Company & Timeline */}
                                         <div className="lg:w-1/3">
                                             {/* Company Logo */}
-                                            <div className={`w-16 h-16 rounded-xl bg-white/10 p-2 flex items-center justify-center mb-4 shadow-inner ring-1 ring-white/10 ${gradientClass}`}>
+                                            <div className={`w-16 h-16 rounded-xl bg-[var(--bg-secondary)] p-2 flex items-center justify-center mb-4 shadow-inner ring-1 ring-[var(--border-subtle)] ${gradientClass}`}>
                                                 <div className="relative w-full h-full rounded-lg overflow-hidden bg-white flex items-center justify-center">
                                                     {hasLogo ? (
                                                         <Image
@@ -115,7 +115,7 @@ const Timeline = () => {
                                             </div>
 
                                             {/* Duration */}
-                                            <div className={`mt-4 px-3 py-1.5 inline-flex items-center gap-2 rounded-lg border ${isCurrentRole ? 'bg-accent/10 border-accent/30' : 'bg-white/5 border-white/10'}`}>
+                                            <div className={`mt-4 px-3 py-1.5 inline-flex items-center gap-2 rounded-lg border ${isCurrentRole ? 'bg-accent/10 border-accent/30' : 'bg-[var(--bg-secondary)] border-[var(--border-subtle)]'}`}>
                                                 <span className={`font-mono text-sm font-medium ${isCurrentRole ? 'text-accent' : 'text-text-secondary'}`}>
                                                     {job.startDate} | {job.endDate}
                                                 </span>
@@ -123,11 +123,11 @@ const Timeline = () => {
                                         </div>
 
                                         {/* Right: Role & Description */}
-                                        <div className="lg:w-2/3 lg:pl-10 lg:border-l border-white/5 relative">
+                                        <div className="lg:w-2/3 lg:pl-10 lg:border-l border-[var(--border-subtle)] relative">
                                             <div className="hidden lg:block absolute -left-[1px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                                             {/* Position */}
-                                            <h3 className="text-2xl font-exo font-bold text-white mb-4 group-hover:text-accent transition-colors">
+                                            <h3 className="text-2xl font-exo font-bold text-text-primary mb-4 group-hover:text-accent transition-colors">
                                                 {job.position}
                                             </h3>
 
@@ -152,7 +152,7 @@ const Timeline = () => {
 
                                 {/* Connector Line (except last item) */}
                                 {index < resumeData.experience.length - 1 && (
-                                    <div className="hidden lg:block absolute left-[2rem] top-full h-8 w-px bg-gradient-to-b from-white/10 to-transparent" />
+                                    <div className="hidden lg:block absolute left-[2rem] top-full h-8 w-px bg-gradient-to-b from-[var(--border-subtle)] to-transparent" />
                                 )}
                             </motion.div>
                         );

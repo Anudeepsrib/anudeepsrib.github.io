@@ -1,9 +1,10 @@
+'use client';
+import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { GraduationCap, Globe, Users, Award, BookOpen, Mic, Handshake, UserCheck, MapPin, Quote } from 'lucide-react';
-
-export const metadata = {
-    title: 'Impact | AI Architect Portfolio',
-    description: 'Teaching, mentoring, publications, and ecosystem impact in AI and data science.',
-};
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { fadeUp, stagger } from '@/lib/animation';
 
 const universities = [
     'UMass Dartmouth', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
@@ -47,143 +48,232 @@ const testimonials = [
 ];
 
 export default function ImpactPage() {
+    const reduceMotion = useReducedMotion();
+
     return (
-        <section className="py-24 relative overflow-hidden">
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-accent-glow/5 to-background pointer-events-none" />
+        <main className="min-h-screen bg-[var(--bg-primary)]">
+            <Navbar />
+            <section className="py-24 pt-32 relative overflow-hidden">
+                {/* Background */}
+                <div className="absolute inset-0 bg-[var(--bg-primary)]" />
+                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[180px] pointer-events-none" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[var(--accent-warm)]/5 rounded-full blur-[150px] pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Section Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
-                        <Award className="text-accent" size={18} />
-                        <span className="text-sm font-medium text-accent">Global Recognition</span>
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-secondary">
-                            Teaching & Global Impact
-                        </span>
-                    </h1>
-                    <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-                        Recognized by universities, AI organizations, and global platforms for advancing practical AI education, applied innovation, and workforce development.
-                    </p>
-                </div>
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    {/* Section Header */}
+                    <motion.div
+                        variants={stagger}
+                        initial={reduceMotion ? 'show' : 'hidden'}
+                        animate="show"
+                        className="text-center mb-20"
+                    >
+                        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift">
+                            <Award className="text-accent" size={18} />
+                            <span className="text-sm font-mono text-accent">Global Recognition</span>
+                        </motion.div>
+                        <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-exo font-bold mb-6 tracking-tight">
+                            <span className="gradient-text">Teaching & Global Impact</span>
+                        </motion.h1>
+                        <motion.p variants={fadeUp} className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
+                            Recognized by universities, AI organizations, and global platforms for advancing practical AI education, applied innovation, and workforce development.
+                        </motion.p>
+                    </motion.div>
 
-                {/* Categories Grid */}
-                <div className="grid md:grid-cols-3 gap-6 mb-16">
-                    {/* Universities */}
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/30 transition-colors">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-accent/10">
-                                <GraduationCap className="text-accent" size={24} />
+                    {/* Categories Grid */}
+                    <motion.div
+                        variants={stagger}
+                        initial={reduceMotion ? 'show' : 'hidden'}
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        className="grid md:grid-cols-3 gap-6 mb-16"
+                    >
+                        {/* Universities */}
+                        <motion.div variants={fadeUp} className="glass-card p-6 hover-lift">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
+                                    <GraduationCap className="text-accent" size={24} />
+                                </div>
+                                <h3 className="text-xl font-exo font-bold text-text-primary">Universities</h3>
                             </div>
-                            <h3 className="text-xl font-bold text-white">Universities</h3>
-                        </div>
-                        <p className="text-sm text-gray-400 mb-4">
-                            Invited to deliver lectures and workshops on AI, ML, CV, and data-driven innovation.
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {universities.map((uni) => (
-                                <span key={uni} className="px-3 py-1.5 text-xs font-medium rounded-full bg-accent/10 text-accent border border-accent/20">
-                                    {uni}
-                                </span>
+                            <p className="text-sm text-text-secondary mb-4">
+                                Invited to deliver lectures and workshops on AI, ML, CV, and data-driven innovation.
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                {universities.map((uni) => (
+                                    <span key={uni} className="px-3 py-1.5 text-xs font-medium rounded-full bg-[var(--accent-primary)]/10 text-accent border border-[var(--accent-primary)]/20">
+                                        {uni}
+                                    </span>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Global Platforms */}
+                        <motion.div variants={fadeUp} className="glass-card p-6 hover-lift">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 rounded-lg bg-[var(--accent-secondary)]/10">
+                                    <Globe className="text-[var(--accent-secondary)]" size={24} />
+                                </div>
+                                <h3 className="text-xl font-exo font-bold text-text-primary">Global AI Platforms</h3>
+                            </div>
+                            <p className="text-sm text-text-secondary mb-4">
+                                Speaker and contributor at international AI forums and conferences.
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                {globalPlatforms.map((platform) => (
+                                    <span key={platform} className="px-3 py-1.5 text-xs font-medium rounded-full bg-[var(--accent-secondary)]/10 text-[var(--accent-secondary)] border border-[var(--accent-secondary)]/20">
+                                        {platform}
+                                    </span>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Training Partners */}
+                        <motion.div variants={fadeUp} className="glass-card p-6 hover-lift">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 rounded-lg bg-[var(--accent-warm)]/10">
+                                    <Users className="text-[var(--accent-warm)]" size={24} />
+                                </div>
+                                <h3 className="text-xl font-exo font-bold text-text-primary">Training Partners</h3>
+                            </div>
+                            <p className="text-sm text-text-secondary mb-4">
+                                Instructor and mentor for structured AI/ML programs.
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                {trainingPartners.map((partner) => (
+                                    <span key={partner} className="px-3 py-1.5 text-xs font-medium rounded-full bg-[var(--accent-warm)]/10 text-[var(--accent-secondary)] border border-[var(--accent-warm)]/20">
+                                        {partner}
+                                    </span>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Impact Metrics */}
+                    <motion.div
+                        variants={stagger}
+                        initial={reduceMotion ? 'show' : 'hidden'}
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        className="mb-16"
+                    >
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {impactMetrics.map((metric) => (
+                                <motion.div
+                                    key={metric.label}
+                                    variants={fadeUp}
+                                    className="glass-card p-5 text-center hover-lift group"
+                                >
+                                    <metric.icon className="mx-auto mb-2 text-accent group-hover:scale-110 transition-transform" size={24} />
+                                    <div className="text-2xl md:text-3xl font-exo font-bold gradient-text mb-1">{metric.value}</div>
+                                    <div className="text-xs text-text-muted font-mono uppercase tracking-wide">{metric.label}</div>
+                                </motion.div>
                             ))}
                         </div>
-                    </div>
 
-                    {/* Global Platforms */}
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/30 transition-colors">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-accent-secondary/10">
-                                <Globe className="text-accent-secondary" size={24} />
-                            </div>
-                            <h3 className="text-xl font-bold text-white">Global AI Platforms</h3>
-                        </div>
-                        <p className="text-sm text-gray-400 mb-4">
-                            Speaker and contributor at international AI forums and conferences.
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {globalPlatforms.map((platform) => (
-                                <span key={platform} className="px-3 py-1.5 text-xs font-medium rounded-full bg-accent-secondary/10 text-accent-secondary border border-accent-secondary/20">
-                                    {platform}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Training Partners */}
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-glow/30 transition-colors">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-emerald-glow/10">
-                                <Users className="text-emerald-glow" size={24} />
-                            </div>
-                            <h3 className="text-xl font-bold text-white">Training Partners</h3>
-                        </div>
-                        <p className="text-sm text-gray-400 mb-4">
-                            Instructor and mentor for structured AI/ML programs.
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {trainingPartners.map((partner) => (
-                                <span key={partner} className="px-3 py-1.5 text-xs font-medium rounded-full bg-emerald-glow/10 text-emerald-300 border border-emerald-glow/20">
-                                    {partner}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Impact Metrics */}
-                <div className="mb-16">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {impactMetrics.map((metric, index) => (
-                            <div
-                                key={metric.label}
-                                className="p-5 rounded-xl bg-gradient-to-br from-white/5 to-white/5 border border-white/10 text-center hover:border-violet-glow/30 transition-all group"
+                        {/* Credibility-to-Conversion CTAs */}
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                            <a
+                                href="mailto:anudeepsrib@gmail.com?subject=Speaking%20Inquiry"
+                                className="btn-primary inline-flex items-center justify-center gap-2"
                             >
-                                <metric.icon className="mx-auto mb-2 text-violet-glow group-hover:scale-110 transition-transform" size={24} />
-                                <div className="text-2xl md:text-3xl font-bold text-white mb-1">{metric.value}</div>
-                                <div className="text-xs text-gray-400">{metric.label}</div>
-                            </div>
+                                Invite Me to Speak / Teach
+                                <span className="text-xs">→</span>
+                            </a>
+                            <a
+                                href="/assets/speaker-kit.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary inline-flex items-center justify-center gap-2"
+                            >
+                                Download Speaker Kit / One-Pager
+                                <span className="text-xs">→</span>
+                            </a>
+                        </div>
+                    </motion.div>
+
+                    {/* Mentoring Section */}
+                    <motion.div
+                        variants={stagger}
+                        initial={reduceMotion ? 'show' : 'hidden'}
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        className="mb-12"
+                    >
+                        <motion.div variants={fadeUp} className="text-center mb-8">
+                            <h3 className="text-2xl md:text-3xl font-exo font-bold text-text-primary mb-3">Mentoring & Career Impact</h3>
+                            <p className="text-text-secondary max-w-2xl mx-auto">
+                                I guide learners and professionals through Great Learning, Topmate, ADPList, and global communities, helping them build strong foundations in AI, ML, data science, and cloud technologies.
+                            </p>
+                        </motion.div>
+
+                        {/* Mentorship CTAs */}
+                        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                            <a
+                                href="https://adplist.org/mentors/anudeep-sri-bathina"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-primary inline-flex items-center justify-center gap-2"
+                            >
+                                See Mentoring Options
+                                <span className="text-xs">→</span>
+                            </a>
+                            <a
+                                href="https://adplist.org/mentors/anudeep-sri-bathina"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary inline-flex items-center justify-center gap-2"
+                            >
+                                Book a Session
+                                <span className="text-xs">→</span>
+                            </a>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Testimonials */}
+                    <motion.div
+                        variants={stagger}
+                        initial={reduceMotion ? 'show' : 'hidden'}
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        className="grid md:grid-cols-3 gap-6"
+                    >
+                        {testimonials.map((testimonial, index) => (
+                            <motion.div
+                                key={index}
+                                variants={fadeUp}
+                                transition={{ delay: index * 0.1 }}
+                                className="glass-card p-6 hover-lift relative"
+                            >
+                                <Quote className="absolute top-4 right-4 text-accent/20" size={32} />
+                                <p className="text-sm text-text-secondary mb-4 leading-relaxed italic">
+                                    &quot;{testimonial.quote}&quot;
+                                </p>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-[var(--accent-warm)] flex items-center justify-center text-[var(--bg-primary)] font-bold text-sm">
+                                        {testimonial.author[0]}
+                                    </div>
+                                    <div>
+                                        <div className="text-sm font-medium text-text-primary">{testimonial.author}</div>
+                                        <div className="text-xs text-text-muted">{testimonial.source}</div>
+                                    </div>
+                                </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
 
-                    {/* Credibility-to-Conversion CTAs */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                        <a
-                            href="mailto:anudeepsrib@gmail.com?subject=Speaking%20Inquiry"
-                            className="px-6 py-3 bg-violet-glow/10 border border-violet-glow/20 text-violet-glow rounded-lg hover:bg-violet-glow/20 transition-all flex items-center justify-center gap-2 hover-lift"
-                        >
-                            Invite Me to Speak / Teach
-                            <span className="text-xs">→</span>
-                        </a>
-                        <a
-                            href="/assets/speaker-kit.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
-                        >
-                            Download Speaker Kit / One-Pager
-                            <span className="text-xs">→</span>
-                        </a>
-                    </div>
-                </div>
-
-                {/* Mentoring Section */}
-                <div className="mb-12">
-                    <div className="text-center mb-8">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Mentoring & Career Impact</h3>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
-                            I guide learners and professionals through Great Learning, Topmate, ADPList, and global communities, helping them build strong foundations in AI, ML, data science, and cloud technologies.
-                        </p>
-                    </div>
-
-                    {/* Mentorship CTAs - Above Testimonials */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                    {/* Bottom CTAs */}
+                    <motion.div
+                        variants={fadeUp}
+                        initial={reduceMotion ? 'show' : 'hidden'}
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
+                    >
                         <a
                             href="https://adplist.org/mentors/anudeep-sri-bathina"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 bg-accent/10 border border-accent/20 text-accent rounded-lg hover:bg-accent/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                            className="btn-primary inline-flex items-center justify-center gap-2"
                         >
                             See Mentoring Options
                             <span className="text-xs">→</span>
@@ -192,60 +282,15 @@ export default function ImpactPage() {
                             href="https://adplist.org/mentors/anudeep-sri-bathina"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
+                            className="btn-secondary inline-flex items-center justify-center gap-2"
                         >
                             Book a Session
                             <span className="text-xs">→</span>
                         </a>
-                    </div>
+                    </motion.div>
                 </div>
-
-                {/* Testimonials */}
-                <div className="grid md:grid-cols-3 gap-6">
-                    {testimonials.map((testimonial, index) => (
-                        <div
-                            key={index}
-                            className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:shadow-lg hover:shadow-accent/5 transition-all"
-                        >
-                            <Quote className="absolute top-4 right-4 text-accent/20" size={32} />
-                            <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
-                                &quot;{testimonial.quote}&quot;
-                            </p>
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center text-white text-xs font-bold">
-                                    {testimonial.author[0]}
-                                </div>
-                                <div>
-                                    <div className="text-sm font-medium text-white">{testimonial.author}</div>
-                                    <div className="text-xs text-gray-400">{testimonial.source}</div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Mentorship CTAs - Below Testimonials */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                    <a
-                        href="https://adplist.org/mentors/anudeep-sri-bathina"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 bg-accent/10 border border-accent/20 text-accent rounded-lg hover:bg-accent/20 transition-all flex items-center justify-center gap-2 hover-lift"
-                    >
-                        See Mentoring Options
-                        <span className="text-xs">→</span>
-                    </a>
-                    <a
-                        href="https://adplist.org/mentors/anudeep-sri-bathina"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover-lift"
-                    >
-                        Book a Session
-                        <span className="text-xs">→</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+            </section>
+            <Footer />
+        </main>
     );
 }

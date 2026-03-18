@@ -29,7 +29,7 @@ const recognitions: RecognitionCategory[] = [
         category: "University Lectures",
         description: "Academic knowledge sharing across prestigious institutions",
         icon: School,
-        gradient: "from-blue-500 to-cyan-400",
+        gradient: "from-[#C8956C] to-[#E8B990]",
         items: [
             {
                 title: "Classification Models in ML",
@@ -80,7 +80,7 @@ const recognitions: RecognitionCategory[] = [
         category: "International Conferences",
         description: "Thought leadership at global stages",
         icon: Mic,
-        gradient: "from-purple-500 to-pink-400",
+        gradient: "from-[#A87B4F] to-[#C8956C]",
         items: [
             {
                 title: "AI in Business: Café Scientifique",
@@ -119,7 +119,7 @@ const recognitions: RecognitionCategory[] = [
         category: "Publications & Research",
         description: "Contributing to the body of knowledge in AI/ML",
         icon: BookOpen,
-        gradient: "from-amber-500 to-orange-400",
+        gradient: "from-[#E8B990] to-[#C8956C]",
         items: [
             {
                 title: "Transfer Learning for Groundfish Recognition",
@@ -144,7 +144,7 @@ const recognitions: RecognitionCategory[] = [
         category: "Awards & Recognition",
         description: "Industry acknowledgment for impact and innovation",
         icon: Award,
-        gradient: "from-emerald-500 to-teal-400",
+        gradient: "from-[#6B5A43] to-[#9C8B73]",
         items: [
             {
                 title: "RISE Award",

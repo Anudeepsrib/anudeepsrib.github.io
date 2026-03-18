@@ -32,7 +32,7 @@ const HeroRoleTicker: React.FC = () => {
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
-          className="absolute text-lg md:text-2xl font-bold font-syne text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200"
+          className="absolute text-lg md:text-2xl font-bold font-serif text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-warm)]"
         >
           {roles[currentIdx]}
         </motion.div>
