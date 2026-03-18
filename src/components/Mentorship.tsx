@@ -30,7 +30,7 @@ const mentorshipGroups: MentorshipCategory[] = [
         category: "Industry & Fellowship Programs",
         description: "Guiding emerging talent through cutting-edge AI/ML projects at scale",
         icon: Briefcase,
-        gradient: "from-blue-500 to-cyan-400",
+        gradient: "from-[#C8956C] to-[#E8B990]",
         items: [
             {
                 title: "KaggleX Fellowship Program",
@@ -55,7 +55,7 @@ const mentorshipGroups: MentorshipCategory[] = [
         category: "Global 1-on-1 Mentorship",
         description: "Personalized career guidance and technical mentoring across continents",
         icon: Users,
-        gradient: "from-purple-500 to-pink-400",
+        gradient: "from-[#A87B4F] to-[#C8956C]",
         items: [
             {
                 title: "ADPList",
@@ -84,7 +84,7 @@ const mentorshipGroups: MentorshipCategory[] = [
         category: "Academic & Educational",
         description: "Building strong foundations for next-generation technologists",
         icon: GraduationCap,
-        gradient: "from-amber-500 to-orange-400",
+        gradient: "from-[#E8B990] to-[#C8956C]",
         items: [
             {
                 title: "Graduate Teaching & Mentorship",
