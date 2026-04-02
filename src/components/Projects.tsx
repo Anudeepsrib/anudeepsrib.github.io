@@ -1,161 +1,98 @@
 'use client';
-import React, { useRef } from 'react';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FolderGit2, ExternalLink, ArrowRight, Github, Star } from 'lucide-react';
-import resumeData from '@/data/resumeData.json';
+import React from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
+import StaggerContainer from '@/components/ui/StaggerContainer';
 
-gsap.registerPlugin(ScrollTrigger);
+const projects = [
+    {
+        name: 'ClinIQ',
+        description:
+            'Enterprise Healthcare RAG with stateful LangGraph pipeline, multimodal ingestion, department-scoped vector stores, and LangSmith observability.',
+        tags: ['LangGraph', 'LangChain', 'FastAPI', 'OpenAI', 'ChromaDB'],
+        link: 'https://github.com/Anudeepsrib/ClinIQ',
+    },
+    {
+        name: 'Annapurna-AI',
+        description:
+            'India-first, culture-aware AI meal planner for South Indian vegetarian cooking with evidence-grounded wellness explanations.',
+        tags: ['Next.js', 'FastAPI', 'Gemini', 'LiteLLM'],
+        link: 'https://github.com/Anudeepsrib/Annapurna-AI',
+    },
+    {
+        name: 'Code Migration Assistant',
+        description:
+            'Security-first code migration tool with AI-powered risk assessment, visual dependency planning, and compliance scanning.',
+        tags: ['Python', 'NetworkX', 'AST', 'RAG'],
+        link: 'https://github.com/Anudeepsrib/code-migration-assistant',
+    },
+    {
+        name: 'Media Organizer',
+        description:
+            'Python toolkit for organizing mobile media (iOS & Android) with web dashboard and Gemini-powered AI features.',
+        tags: ['FastAPI', 'Gemini', 'ChromaDB'],
+        link: 'https://github.com/Anudeepsrib/Media-Organizer',
+    },
+];
 
-const Projects = () => {
-    const sectionRef = useRef<HTMLElement>(null);
-    const headerRef = useRef<HTMLDivElement>(null);
-    const cardsRef = useRef<HTMLDivElement>(null);
+const card = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    },
+};
 
-    const projects = resumeData.projects;
-
-    useGSAP(() => {
-        // Header animation
-        gsap.fromTo(
-            headerRef.current,
-            { y: 60, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse',
-                },
-            }
-        );
-
-        // Cards staggered animation
-        const cards = gsap.utils.toArray('.project-card');
-        gsap.fromTo(
-            cards,
-            { y: 80, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.7,
-                stagger: 0.15,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: cardsRef.current,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse',
-                },
-            }
-        );
-    }, { scope: sectionRef });
-
+export default function Projects() {
     return (
-        <section
-            ref={sectionRef}
-            id="projects"
-            className="py-24 md:py-32 relative overflow-hidden"
-        >
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-[var(--bg-primary)] z-0" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--accent-primary)]/5 rounded-full blur-[150px] pointer-events-none" />
-
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Header */}
-                <div ref={headerRef} className="mb-16">
-                    {/* Section Number */}
-                    <div className="section-number">04</div>
-
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal text-[var(--text-primary)] mb-6 tracking-tight">
-                        Open Source{' '}
-                        <span className="text-[var(--accent-primary)]">
-                            Projects
-                        </span>
+        <section className="relative py-28 md:py-36" id="projects">
+            <div className="mx-auto max-w-6xl px-6">
+                <ScrollReveal>
+                    <h2 className="text-3xl md:text-4xl font-display font-bold mb-3 tracking-tight">
+                        Open source
                     </h2>
-
-                    <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-                        Production-grade AI systems and tools, built in the open. Each project represents real-world engineering challenges solved with modern architectures.
+                    <p className="text-[var(--text-2)] max-w-md mb-14 text-[15px]">
+                        Systems I&apos;ve built and open-sourced.
                     </p>
-                </div>
+                </ScrollReveal>
 
-                {/* Project Cards Grid */}
-                <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    {projects.map((project, index) => (
-                        <a
-                            key={index}
+                <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {projects.map((project) => (
+                        <motion.a
+                            key={project.name}
                             href={project.link}
                             target="_blank"
-                            rel="noreferrer"
-                            className="project-card group block"
+                            rel="noopener noreferrer"
+                            variants={card}
+                            className="glass-card p-6 flex flex-col group"
                         >
-                            <div className="relative h-full bg-[var(--bg-elevated)]/80 backdrop-blur-sm border border-[var(--text-primary)]/8 rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-primary)]/40 hover:bg-[var(--bg-elevated)] hover:shadow-xl hover:shadow-[var(--accent-primary)]/5 hover:-translate-y-1 cursor-pointer">
-                                {/* Gradient Highlight on Hover */}
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--accent-primary)]/5 via-transparent to-[var(--accent-warm)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-                                {/* Card Content */}
-                                <div className="relative z-10">
-                                    {/* Header with Icon and Link */}
-                                    <div className="flex justify-between items-start mb-5">
-                                        <div className="p-3 bg-[var(--accent-primary)]/10 rounded-xl group-hover:bg-[var(--accent-primary)]/20 transition-colors">
-                                            <Github className="text-[var(--accent-primary)]" size={24} />
-                                        </div>
-                                        <ExternalLink
-                                            size={18}
-                                            className="text-[var(--text-tertiary)] group-hover:text-[var(--accent-primary)] transition-colors mt-1"
-                                        />
-                                    </div>
-
-                                    {/* Project Name */}
-                                    <h3 className="text-xl font-serif font-medium text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent-primary)] transition-colors">
-                                        {project.name}
-                                    </h3>
-
-                                    {/* Description */}
-                                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-6 line-clamp-3">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Tech Stack */}
-                                    <div className="flex flex-wrap gap-2 mt-auto">
-                                        {project.technologies.map((tech, i) => (
-                                            <span
-                                                key={i}
-                                                className="px-3 py-1.5 bg-[var(--bg-secondary)] text-xs font-mono text-[var(--accent-secondary)] rounded-lg border border-[var(--accent-primary)]/10 group-hover:border-[var(--accent-primary)]/20 transition-colors"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
+                            <div className="flex items-start justify-between mb-3">
+                                <h3 className="text-base font-display font-semibold text-[var(--text)] group-hover:text-[var(--blue)] transition-colors">
+                                    {project.name}
+                                </h3>
+                                <ArrowUpRight
+                                    size={15}
+                                    className="text-[var(--text-3)] group-hover:text-[var(--text-2)] transition-colors flex-shrink-0 mt-0.5"
+                                />
                             </div>
-                        </a>
-                    ))}
-                </div>
 
-                {/* View More Link */}
-                <div className="text-center">
-                    <a
-                        href={resumeData.personalInfo.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[var(--text-primary)]/5 border border-[var(--text-primary)]/10 hover:border-[var(--accent-primary)]/40 hover:bg-[var(--accent-primary)]/10 transition-all duration-300"
-                    >
-                        <Github size={18} className="text-[var(--accent-primary)]" />
-                        <span className="text-[var(--text-primary)] font-mono text-sm uppercase tracking-wider">
-                            View All Repositories
-                        </span>
-                        <ArrowRight
-                            size={16}
-                            className="text-[var(--accent-primary)] group-hover:translate-x-1 transition-transform"
-                        />
-                    </a>
-                </div>
+                            <p className="text-[13px] text-[var(--text-2)] leading-relaxed mb-5 flex-1">
+                                {project.description}
+                            </p>
+
+                            <div className="flex flex-wrap gap-1.5">
+                                {project.tags.map((tag) => (
+                                    <span key={tag} className="tech-pill">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </motion.a>
+                    ))}
+                </StaggerContainer>
             </div>
         </section>
     );
-};
-
-export default Projects;
+}

@@ -1,128 +1,81 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import resumeData from '@/data/resumeData.json';
-import { Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
-const Footer = () => {
-    const footerLinks = [
-        { name: 'Experience & Journey', href: '/journey' },
-        { name: 'Teaching & Impact', href: '/impact' },
-        { name: 'Recognitions', href: '/recognitions' },
-        { name: 'Blog & Insights', href: '/blog' },
-        { name: 'Mentorship', href: '/mentorship' },
-    ];
+const nav = [
+    { label: 'Experience', href: '/journey' },
+    { label: 'Mentorship', href: '/mentorship' },
+    { label: 'Recognitions', href: '/recognitions' },
+    { label: 'Blog', href: '/blog' },
+];
 
+const connect = [
+    { label: 'GitHub', href: 'https://github.com/anudeepsrib' },
+    { label: 'ADPList', href: 'https://adplist.org/mentors/anudeep-sri-bathina' },
+    { label: 'Topmate', href: 'https://topmate.io/anudeepsrib' },
+    { label: 'Substack', href: 'https://substack.com/@anudeepai' },
+    { label: 'Email', href: 'mailto:anudeepSri108@gmail.com' },
+];
+
+export default function Footer() {
     return (
-        <footer className="py-20 border-t border-[var(--border-subtle)] relative overflow-hidden bg-[var(--bg-secondary)]">
-            {/* Background Gradients */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[var(--accent-primary)]/30 to-transparent" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--accent-primary)]/5 rounded-full blur-[100px] pointer-events-none" />
-
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Main Footer Content */}
-                <div className="grid md:grid-cols-3 gap-12 mb-16">
-                    {/* About */}
-                    <div className="md:pr-12">
-                        <Link href="/" className="inline-block mb-6 group">
-                            <h3 className="text-2xl font-serif font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors flex items-center gap-3">
-                                <span className="tracking-tight">Anudeep Sri Bathina</span>
-                            </h3>
-                            <p className="text-[10px] font-mono text-[var(--accent-primary)] uppercase tracking-[0.3em] mt-1 group-hover:text-[var(--accent-secondary)] transition-colors">
-                                AI Architect & Engineer
+        <footer className="border-t border-[var(--border)]">
+            <div className="mx-auto max-w-6xl px-6 py-14">
+                <ScrollReveal>
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-12 md:gap-20 mb-12">
+                        <div>
+                            <p className="text-sm font-display font-semibold text-[var(--text)] mb-1">
+                                Anudeep Sri Bathina
                             </p>
-                        </Link>
-                        <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-8">
-                            AI Architect building production-grade AI systems.
-                            Speaker, author, and mentor helping professionals excel in AI/ML.
-                        </p>
-                        <div className="flex items-center gap-3">
-                            <a
-                                href={resumeData.personalInfo.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-3 glass-card text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-primary)]/10 hover:border-[var(--accent-primary)]/30 transition-all cursor-pointer box-content"
-                                aria-label="GitHub"
-                            >
-                                <Github size={20} />
-                            </a>
-                            <a
-                                href={resumeData.personalInfo.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-3 glass-card text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-primary)]/10 hover:border-[var(--accent-primary)]/30 transition-all cursor-pointer box-content"
-                                aria-label="LinkedIn"
-                            >
-                                <Linkedin size={20} />
-                            </a>
-                            <a
-                                href={`mailto:${resumeData.personalInfo.email}`}
-                                className="p-3 glass-card text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-primary)]/10 hover:border-[var(--accent-primary)]/30 transition-all cursor-pointer box-content"
-                                aria-label="Email"
-                            >
-                                <Mail size={20} />
-                            </a>
+                            <p className="text-[13px] text-[var(--text-3)] max-w-xs">
+                                AI Architect. Building production systems that scale.
+                            </p>
                         </div>
-                    </div>
 
-                    {/* Quick Links */}
-                    <div>
-                        <h4 className="text-sm font-mono font-medium text-[var(--text-tertiary)] uppercase tracking-widest mb-6">Navigate</h4>
-                        <ul className="space-y-4">
-                            {footerLinks.map((link) => (
-                                <li key={link.name}>
-                                    <Link
-                                        href={link.href}
-                                        className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] text-sm transition-all flex items-center gap-2 group w-fit"
-                                    >
-                                        <span className="w-1.5 h-1.5 bg-[var(--accent-primary)]/40 rounded-full group-hover:bg-[var(--accent-primary)] group-hover:scale-125 transition-all" />
-                                        {link.name}
+                        <div>
+                            <p className="text-[11px] font-mono text-[var(--text-3)] uppercase tracking-wider mb-3">
+                                Pages
+                            </p>
+                            <div className="flex flex-col gap-2">
+                                {nav.map((l) => (
+                                    <Link key={l.href} href={l.href} className="text-[13px] text-[var(--text-2)] hover:text-[var(--text)] transition-colors">
+                                        {l.label}
                                     </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                                ))}
+                            </div>
+                        </div>
 
-                    {/* Connect */}
-                    <div>
-                        <h4 className="text-sm font-mono font-medium text-[var(--text-tertiary)] uppercase tracking-widest mb-6">Connect</h4>
-                        <p className="text-[var(--text-secondary)] text-sm mb-8 leading-relaxed">
-                            Interested in collaboration, speaking opportunities, or mentorship?
-                        </p>
-                        <div className="flex flex-col gap-4">
-                            <a
-                                href="https://adplist.org/mentors/anudeep-sri-bathina"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-primary flex items-center justify-center gap-2 w-full md:w-auto"
-                            >
-                                Book Mentoring Session
-                                <ArrowRight size={16} />
-                            </a>
-                            <a
-                                href={`mailto:${resumeData.personalInfo.email}?subject=Collaboration%20Inquiry`}
-                                className="btn-secondary flex items-center justify-center gap-2 w-full md:w-auto"
-                            >
-                                <Mail size={16} />
-                                Send Collaboration Request
-                            </a>
+                        <div>
+                            <p className="text-[11px] font-mono text-[var(--text-3)] uppercase tracking-wider mb-3">
+                                Connect
+                            </p>
+                            <div className="flex flex-col gap-2">
+                                {connect.map((l) => (
+                                    <a
+                                        key={l.label}
+                                        href={l.href}
+                                        target={l.href.startsWith('mailto') ? undefined : '_blank'}
+                                        rel={l.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                                        className="text-[13px] text-[var(--text-2)] hover:text-[var(--text)] transition-colors"
+                                    >
+                                        {l.label}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
 
-                {/* Copyright */}
-                <div className="pt-8 border-t border-[var(--text-primary)]/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[var(--text-tertiary)] font-mono">
-                    <p className="text-center md:text-left">
-                        © {new Date().getFullYear()} Anudeep Sri Bathina. All systems operational.
+                <div className="pt-6 border-t border-[var(--border)] flex items-center justify-between">
+                    <p className="text-[11px] text-[var(--text-3)] font-mono">
+                        &copy; 2026
                     </p>
-                    <p className="text-center md:text-right flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
-                        Built with Next.js 15, TypeScript & Computational Design
+                    <p className="text-[11px] text-[var(--text-3)] font-mono">
+                        Next.js &middot; TypeScript
                     </p>
                 </div>
             </div>
         </footer>
     );
-};
-
-export default Footer;
+}

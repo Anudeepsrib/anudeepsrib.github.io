@@ -1,189 +1,42 @@
 import type { Config } from "tailwindcss";
-import { nextui } from "@nextui-org/react";
 
-/** @type {import('tailwindcss').Config} */
 const config: Config = {
   darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/react/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       fontFamily: {
-        // Perplexity-Inspired Typography
-        serif: ["'Playfair Display'", "Georgia", "serif"],
-        sans: ["'DM Sans'", "var(--font-sans)", "sans-serif"],
-        mono: ["'JetBrains Mono'", "var(--font-mono)", "monospace"],
-        // Legacy mappings
-        exo: ["'DM Sans'", "var(--font-sans)", "sans-serif"],
-        syne: ["'Playfair Display'", "Georgia", "serif"],
-        inter: ["'DM Sans'", "var(--font-sans)", "sans-serif"],
-        space: ["'DM Sans'", "var(--font-sans)", "sans-serif"],
-      },
-      colors: {
-        // Core Design System Colors — Warm
-        background: "var(--bg-primary)",
-        foreground: "var(--text-primary)",
-
-        // Accent Colors — Warm Copper
-        accent: {
-          DEFAULT: "var(--accent-primary)",
-          secondary: "var(--accent-secondary)",
-          warm: "var(--accent-warm)",
-        },
-
-        // Surface Colors — Warm
-        surface: {
-          DEFAULT: "var(--bg-secondary)",
-          elevated: "var(--bg-elevated)",
-        },
-
-        // Text Colors — Warm Charcoal
-        text: {
-          primary: "var(--text-primary)",
-          secondary: "var(--text-secondary)",
-          muted: "var(--text-tertiary)",
-          highlight: "var(--text-highlight)",
-        },
-
-        // Legacy semantic colors (mapped to warm system)
-        navy: {
-          950: "var(--bg-primary)",
-          900: "var(--bg-secondary)",
-          800: "var(--bg-elevated)",
-        },
-        seafoam: {
-          DEFAULT: "var(--accent-primary)",
-        },
-        coolgray: {
-          DEFAULT: "var(--text-secondary)",
-        },
-        offwhite: {
-          DEFAULT: "var(--text-primary)",
-        },
-
-        // Action Colors — Warm
-        cyan: {
-          DEFAULT: "var(--accent-primary)",
-          400: "var(--accent-warm)",
-          500: "var(--accent-primary)",
-          glow: "var(--accent-primary)",
-        },
-        amber: {
-          DEFAULT: "#C8956C",
-          400: "#E8B990",
-          500: "#C8956C",
-          glow: "#C8956C",
-        },
-        blue: {
-          600: "#A87B4F",
-        },
-
-        // Borders
-        border: {
-          DEFAULT: "var(--border-subtle)",
-          hover: "var(--border-hover)",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-        xl: "var(--radius-lg)",
-        "2xl": "var(--radius-xl)",
-        "3xl": "2.5rem",
-      },
-      boxShadow: {
-        glow: "var(--shadow-glow)",
-        card: "var(--shadow-card)",
-        "glow-lg": "0 0 60px rgba(200, 149, 108, 0.15)",
-        "glow-accent": "0 0 40px rgba(200, 149, 108, 0.12)",
-      },
-      backdropBlur: {
-        glass: "var(--glass-blur)",
-      },
-      transitionDuration: {
-        fast: "var(--duration-fast)",
-        normal: "var(--duration-normal)",
-        slow: "var(--duration-slow)",
+        display: ["'Satoshi'", "system-ui", "sans-serif"],
+        heading: ["'Cabinet Grotesk'", "system-ui", "sans-serif"],
+        body: ["'Satoshi'", "system-ui", "sans-serif"],
+        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+        sans: ["'Satoshi'", "system-ui", "sans-serif"],
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "hero-glow": "radial-gradient(circle at 50% 50%, rgba(200, 149, 108, 0.1) 0%, transparent 70%)",
-        "accent-glow": "radial-gradient(circle at 50% 50%, rgba(200, 149, 108, 0.1) 0%, transparent 70%)",
-        "gradient-cta": "linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))",
-        "gradient-accent": "linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-warm))",
+        "hero-glow":
+          "radial-gradient(circle at 50% 50%, rgba(79, 139, 255, 0.05) 0%, transparent 65%)",
       },
       keyframes: {
         "fade-up": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(20px)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)",
-          },
+          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "fade-in": {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
-        "slide-up": {
-          "0%": { transform: "translateY(100%)", opacity: "0" },
-          "100%": { transform: "translateY(0)", opacity: "1" },
-        },
-        "slide-in-right": {
-          "0%": { transform: "translateX(100%)", opacity: "0" },
-          "100%": { transform: "translateX(0)", opacity: "1" },
-        },
-        "pulse-glow": {
-          "0%, 100%": {
-            opacity: "1",
-            boxShadow: "0 0 20px var(--accent-primary)",
-          },
-          "50%": {
-            opacity: "0.8",
-            boxShadow: "0 0 40px var(--accent-primary)",
-          },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        "text-reveal": {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
-        }
       },
       animation: {
-        "fade-up": "fade-up 0.6s ease-out",
-        "fade-in": "fade-in 0.4s ease-out",
-        "slide-up": "slide-up 0.5s ease-out",
-        "slide-in-right": "slide-in-right 0.5s ease-out",
-        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
-        float: "float 6s ease-in-out infinite",
-        shimmer: "shimmer 2s linear infinite",
-        "text-reveal": "text-reveal 4s ease infinite",
+        "fade-up": "fade-up 0.5s ease-out",
+        "fade-in": "fade-in 0.3s ease-out",
       },
     },
   },
-  plugins: [nextui(), require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography")],
 };
 
 export default config;

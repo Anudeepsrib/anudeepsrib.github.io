@@ -1,166 +1,145 @@
 'use client';
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import Image from 'next/image';
-import resumeData from '@/data/resumeData.json';
-import { Briefcase, MapPin, ExternalLink, ChevronRight } from 'lucide-react';
-import { fadeUp, stagger } from '@/lib/animation';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
-const Timeline = () => {
-    const reduceMotion = useReducedMotion();
-    const [imgErrors, setImgErrors] = React.useState<{ [key: string]: boolean }>({});
+const phases = [
+    { period: '2011 - 2015', label: 'Foundation', color: 'var(--text-3)' },
+    { period: '2015 - 2021', label: 'Growth', color: 'var(--text-2)' },
+    { period: '2021 - 2024', label: 'Research', color: 'var(--warm)' },
+    { period: '2024 - Present', label: 'Impact', color: 'var(--blue)' },
+];
 
-    // Company brand colors for visual distinction - Warm copper variations
-    const companyColors: { [key: string]: string } = {
-        'AT&T': 'from-[var(--accent-primary)]/20 to-[var(--accent-warm)]/20',
-        'Capgemini': 'from-[var(--accent-secondary)]/20 to-[var(--accent-primary)]/20',
-        'GainInsights Solutions': 'from-[var(--accent-warm)]/20 to-[var(--accent-primary)]/20',
-        'Cognizant': 'from-[var(--accent-secondary)]/20 to-[var(--text-highlight)]/10'
-    };
+const experiences = [
+    {
+        company: 'AT&T',
+        role: 'AI Architect',
+        period: '2024 - Present',
+        location: 'United States',
+        description:
+            'Architecting enterprise GenAI solutions and LLM systems. Leading development of Python-based parsers and automated interpretation models. API deployments with FastAPI and Azure Vector Search.',
+        active: true,
+    },
+    {
+        company: 'Capgemini',
+        role: 'Technical Lead',
+        period: '2019 - 2021',
+        location: 'India',
+        description:
+            'Directed ML engineering teams to build data pipelines and predictive models. Recognized for high-impact delivery and technical leadership.',
+    },
+    {
+        company: 'GainInsights Solutions',
+        role: 'Big Data & ML Engineer',
+        period: '2019',
+        location: 'India',
+        description:
+            'Engineered scalable PySpark pipelines. Developed client-focused interfaces and optimized database queries for complex datasets.',
+    },
+    {
+        company: 'Cognizant',
+        role: 'Data Science Engineer',
+        period: '2015 - 2019',
+        location: 'India',
+        description:
+            'Led cloud data migration projects and implemented predictive analytics models. Specialized in automated data migration and visualization.',
+    },
+];
+
+function TimelineCard({
+    experience,
+    index,
+}: {
+    experience: (typeof experiences)[0];
+    index: number;
+}) {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: '-60px' });
+    const fromLeft = index % 2 === 0;
 
     return (
-        <section id="experience" className="py-24 relative overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[var(--bg-primary)]" />
+        <motion.div
+            ref={ref}
+            className={`relative flex items-start gap-8 mb-14 last:mb-0 ${
+                fromLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+            }`}
+            initial={{ opacity: 0, x: fromLeft ? -40 : 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+            <div className={`flex-1 glass-card p-6 ${fromLeft ? 'md:text-right' : ''}`}>
+                <div className={`flex items-center gap-2 mb-2 ${fromLeft ? 'md:justify-end' : ''}`}>
+                    {experience.active && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--blue)]" />
+                    )}
+                    <span className="text-[11px] font-mono text-[var(--text-3)]">{experience.period}</span>
+                </div>
+                <h3 className="text-base font-display font-semibold text-[var(--text)] mb-0.5">
+                    {experience.company}
+                </h3>
+                <p className="text-sm text-[var(--text-2)] mb-0.5">
+                    {experience.role}
+                </p>
+                <p className="text-[11px] text-[var(--text-3)] mb-3">{experience.location}</p>
+                <p className="text-[13px] text-[var(--text-2)] leading-relaxed">
+                    {experience.description}
+                </p>
+            </div>
 
-            {/* Decorative Blobs */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--accent-warm)]/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="hidden md:flex flex-col items-center flex-shrink-0">
+                <div
+                    className={`w-2 h-2 rounded-full ${
+                        experience.active
+                            ? 'bg-[var(--blue)]'
+                            : 'bg-[var(--text-3)]'
+                    }`}
+                />
+            </div>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Header */}
-                <motion.div
-                    variants={stagger}
-                    initial={reduceMotion ? 'show' : 'hidden'}
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift border-accent/20">
-                        <Briefcase className="text-accent" size={18} />
-                        <span className="text-sm font-mono text-accent tracking-wide">Career Journey</span>
-                    </motion.div>
-                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-exo font-bold mb-4">
-                        <span className="gradient-accent-text">Professional Experience</span>
-                    </motion.h2>
-                    <motion.p variants={fadeUp} className="text-xl text-text-secondary max-w-3xl">
-                        Building production-grade AI systems across Fortune 500 companies and innovative startups.
-                    </motion.p>
-                </motion.div>
+            <div className="hidden md:block flex-1" />
+        </motion.div>
+    );
+}
 
-                {/* Experience Cards */}
-                <div className="grid gap-8">
-                    {resumeData.experience.map((job, index) => {
-                        const gradientClass = companyColors[job.company] || 'from-accent/20 to-accent-warm/20';
-                        const isCurrentRole = job.endDate === 'Present';
-                        const hasLogo = (job as any).logo && !imgErrors[job.company];
+export default function Timeline() {
+    const lineRef = useRef(null);
+    const lineInView = useInView(lineRef, { once: true });
 
-                        return (
-                            <motion.div
-                                key={index}
-                                variants={fadeUp}
-                                initial={reduceMotion ? 'show' : 'hidden'}
-                                whileInView="show"
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group relative"
+    return (
+        <section className="relative py-20 md:py-28">
+            <div className="mx-auto max-w-5xl px-6">
+                {/* Phase strip */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--border)] rounded-lg overflow-hidden border border-[var(--border)] mb-16">
+                    {phases.map((phase) => (
+                        <div key={phase.label} className="bg-[var(--bg)] p-4">
+                            <span className="text-[10px] font-mono text-[var(--text-3)] block mb-1">
+                                {phase.period}
+                            </span>
+                            <h4
+                                className="text-sm font-display font-semibold"
+                                style={{ color: phase.color }}
                             >
-                                {/* Card */}
-                                <div className={`glass-card p-8 hover-lift transition-all duration-500 border ${isCurrentRole ? 'border-accent/40 shadow-glow !overflow-visible' : 'border-[var(--border-subtle)]'}`}>
-                                    {/* Current Role Badge */}
-                                    {isCurrentRole && (
-                                        <div className="absolute -top-3 right-8 px-4 py-1 bg-gradient-to-r from-accent to-accent-secondary text-[var(--bg-primary)] text-xs font-mono font-bold rounded-full shadow-lg z-20">
-                                            Current Role
-                                        </div>
-                                    )}
+                                {phase.label}
+                            </h4>
+                        </div>
+                    ))}
+                </div>
 
-                                    <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                                        {/* Left: Company & Timeline */}
-                                        <div className="lg:w-1/3">
-                                            {/* Company Logo */}
-                                            <div className={`w-16 h-16 rounded-xl bg-[var(--bg-secondary)] p-2 flex items-center justify-center mb-4 shadow-inner ring-1 ring-[var(--border-subtle)] ${gradientClass}`}>
-                                                <div className="relative w-full h-full rounded-lg overflow-hidden bg-white flex items-center justify-center">
-                                                    {hasLogo ? (
-                                                        <Image
-                                                            src={(job as any).logo}
-                                                            alt={job.company}
-                                                            width={64}
-                                                            height={64}
-                                                            className="object-contain p-1"
-                                                            onError={() => setImgErrors(prev => ({ ...prev, [job.company]: true }))}
-                                                        />
-                                                    ) : (
-                                                        <span className="text-black font-exo font-bold text-2xl">
-                                                            {job.company.charAt(0)}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                            </div>
+                {/* Timeline */}
+                <div className="relative" ref={lineRef}>
+                    <motion.div
+                        className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-[var(--border)] -translate-x-1/2"
+                        initial={{ scaleY: 0 }}
+                        animate={lineInView ? { scaleY: 1 } : {}}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        style={{ transformOrigin: 'top' }}
+                    />
 
-                                            {/* Company Name */}
-                                            <a
-                                                href={job.companyUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 text-xl font-exo font-bold text-text-primary hover:text-accent transition-colors group/link"
-                                            >
-                                                {job.company}
-                                                <ExternalLink size={16} className="opacity-0 group-hover/link:opacity-100 transition-opacity text-accent" />
-                                            </a>
-
-                                            {/* Location */}
-                                            <div className="flex items-center gap-2 text-text-muted text-sm mt-2">
-                                                <MapPin size={14} className="text-accent/70" />
-                                                <span>{job.location}</span>
-                                            </div>
-
-                                            {/* Duration */}
-                                            <div className={`mt-4 px-3 py-1.5 inline-flex items-center gap-2 rounded-lg border ${isCurrentRole ? 'bg-accent/10 border-accent/30' : 'bg-[var(--bg-secondary)] border-[var(--border-subtle)]'}`}>
-                                                <span className={`font-mono text-sm font-medium ${isCurrentRole ? 'text-accent' : 'text-text-secondary'}`}>
-                                                    {job.startDate} | {job.endDate}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        {/* Right: Role & Description */}
-                                        <div className="lg:w-2/3 lg:pl-10 lg:border-l border-[var(--border-subtle)] relative">
-                                            <div className="hidden lg:block absolute -left-[1px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                            {/* Position */}
-                                            <h3 className="text-2xl font-exo font-bold text-text-primary mb-4 group-hover:text-accent transition-colors">
-                                                {job.position}
-                                            </h3>
-
-                                            {/* Description */}
-                                            <p className="text-text-secondary leading-relaxed mb-6 font-light">
-                                                {job.description}
-                                            </p>
-
-                                            {/* View More Link */}
-                                            <a
-                                                href={job.companyUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 text-sm font-mono text-accent/80 hover:text-accent transition-all group/link"
-                                            >
-                                                <span className="border-b border-transparent group-hover/link:border-accent">Learn more about {job.company}</span>
-                                                <ChevronRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Connector Line (except last item) */}
-                                {index < resumeData.experience.length - 1 && (
-                                    <div className="hidden lg:block absolute left-[2rem] top-full h-8 w-px bg-gradient-to-b from-[var(--border-subtle)] to-transparent" />
-                                )}
-                            </motion.div>
-                        );
-                    })}
+                    {experiences.map((exp, i) => (
+                        <TimelineCard key={exp.company} experience={exp} index={i} />
+                    ))}
                 </div>
             </div>
         </section>
     );
-};
-
-export default Timeline;
+}

@@ -1,177 +1,186 @@
 'use client';
-import React, { useRef } from 'react';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Sparkles, FileText } from 'lucide-react';
+import React, { useRef, useEffect } from 'react';
+import { motion, useMotionValue, useTransform, useInView } from 'framer-motion';
+import { FileText, ChevronDown } from 'lucide-react';
+import MeshGradientBG from '@/components/ui/MeshGradientBG';
 
-gsap.registerPlugin(ScrollTrigger);
+const container = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    },
+};
 
-const Hero = () => {
+const revealUp = {
+    hidden: { y: '100%' },
+    visible: {
+        y: '0%',
+        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+};
+
+const fade = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: 'easeOut' },
+    },
+};
+
+const focusAreas = ['Agentic AI', 'RAG Pipelines', 'MLOps', 'Computer Vision'];
+
+export default function Hero() {
     const containerRef = useRef<HTMLElement>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
-    const headlineRef = useRef<HTMLHeadingElement>(null);
-    const badgeRef = useRef<HTMLDivElement>(null);
-    const textRef = useRef<HTMLParagraphElement>(null);
-    const ctaRef = useRef<HTMLDivElement>(null);
-    const statsRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(containerRef, { once: true });
 
-    useGSAP(() => {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: 'top top',
-                end: '+=5%',
-                pin: true,
-                scrub: 0.5,
-            },
-        });
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const spotlightX = useTransform(mouseX, (v) => `${v}px`);
+    const spotlightY = useTransform(mouseY, (v) => `${v}px`);
 
-        // Initial Entrance (Auto-play)
-        const entranceTl = gsap.timeline();
-        entranceTl
-            .fromTo(badgeRef.current, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' })
-            .fromTo(
-                headlineRef.current?.children ? gsap.utils.toArray(headlineRef.current.children) : [],
-                { y: 40, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out' },
-                '-=0.3'
-            )
-            .fromTo(textRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.5')
-            .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4')
-            .fromTo(statsRef.current?.children ? gsap.utils.toArray(statsRef.current.children) : [],
-                { scale: 0.9, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'back.out(1.4)' }, '-=0.5'
-            );
-
-        // Scroll Exit
-        tl.to(contentRef.current, {
-            y: '-10%',
-            opacity: 0,
-            duration: 1,
-            ease: 'power2.in'
-        });
-
-    }, { scope: containerRef });
+    useEffect(() => {
+        const handleMouse = (e: MouseEvent) => {
+            mouseX.set(e.clientX);
+            mouseY.set(e.clientY);
+        };
+        window.addEventListener('mousemove', handleMouse);
+        return () => window.removeEventListener('mousemove', handleMouse);
+    }, [mouseX, mouseY]);
 
     return (
         <section
             ref={containerRef}
             className="relative min-h-screen flex items-center justify-center overflow-hidden"
         >
-            {/* Warm Gradient Background */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-accent-glow opacity-40" />
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(180,200,230,0.08),transparent_70%)]" />
+            <MeshGradientBG />
 
-            {/* Content */}
-            <div ref={contentRef} className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-24">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Subtle spotlight that follows the cursor */}
+            <motion.div
+                className="fixed inset-0 pointer-events-none z-[2]"
+                style={{
+                    background: useTransform(
+                        [spotlightX, spotlightY],
+                        ([x, y]) =>
+                            `radial-gradient(700px circle at ${x} ${y}, rgba(0,229,240,0.03), transparent 60%)`
+                    ),
+                }}
+            />
 
-                    {/* Left Column */}
-                    <div className="lg:col-span-7">
-                        {/* Role Badge */}
-                        <div ref={badgeRef} className="inline-flex items-center gap-3 mb-8 opacity-0">
-                            <span className="flex items-center gap-2 px-4 py-2 glass-card text-sm font-mono text-[var(--accent-secondary)] border-[var(--accent-primary)]/20">
-                                <Sparkles className="w-4 h-4 text-[var(--accent-primary)]" />
-                                Production AI · Enterprise Scale
-                            </span>
+            <motion.div
+                className="max-w-6xl mx-auto px-6 relative z-10 w-full pt-28 pb-20"
+                variants={container}
+                initial="hidden"
+                animate={isInView ? 'visible' : 'hidden'}
+            >
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-center">
+                <div className="max-w-3xl">
+
+                    {/* Name — big, left-aligned, not centered */}
+                    <div className="mb-6">
+                        <div className="overflow-hidden">
+                            <motion.h1
+                                variants={revealUp}
+                                className="text-5xl sm:text-7xl md:text-8xl lg:text-[110px] font-display font-black tracking-tighter leading-[0.92]"
+                            >
+                                Anudeep Sri
+                            </motion.h1>
                         </div>
-
-                        {/* Headline — Large Serif Editorial */}
-                        <h1 ref={headlineRef} className="mb-8">
-                            <span className="block text-5xl md:text-7xl lg:text-[96px] font-serif font-normal text-[var(--text-primary)] tracking-tight leading-[0.95] opacity-0">
-                                Anudeepsri
-                            </span>
-                            <span className="block text-5xl md:text-7xl lg:text-[96px] font-serif font-normal text-[var(--accent-primary)] tracking-tight leading-[0.95] mt-2 opacity-0">
+                        <div className="overflow-hidden">
+                            <motion.h1
+                                variants={revealUp}
+                                className="text-5xl sm:text-7xl md:text-8xl lg:text-[110px] font-display font-black tracking-tighter leading-[0.92] accent"
+                            >
                                 Bathina
+                            </motion.h1>
+                        </div>
+                    </div>
+
+                    {/* Role line — simple, no sparkle icon */}
+                    <motion.p
+                        variants={fade}
+                        className="text-sm font-mono text-[var(--text-3)] uppercase tracking-[0.12em] mb-6"
+                    >
+                        AI Architect &middot; 11 years in production
+                    </motion.p>
+
+                    {/* Tagline */}
+                    <motion.p
+                        variants={fade}
+                        className="text-lg md:text-xl text-[var(--text-2)] max-w-xl leading-relaxed mb-10"
+                    >
+                        I build AI systems that survive past the demo.
+                        From enterprise RAG pipelines to agentic orchestration
+                        at AT&T, Capgemini, and UMass Dartmouth.
+                    </motion.p>
+
+                    {/* CTAs — understated, no cyan glow */}
+                    <motion.div
+                        variants={fade}
+                        className="flex flex-wrap items-center gap-3 mb-14"
+                    >
+                        <a href="#impact" className="btn-primary">
+                            Explore work
+                        </a>
+                        <a
+                            href="https://adplist.org/mentors/anudeep-sri-bathina"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-secondary"
+                        >
+                            Book mentorship
+                        </a>
+                        <a
+                            href="https://drive.google.com/file/d/1n3jCZKppGHYcyKl-XPA9IYAs8_qxnseb/view"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-sm text-[var(--text-3)] hover:text-[var(--text)] transition-colors ml-1"
+                        >
+                            <FileText size={14} />
+                            Resume
+                        </a>
+                    </motion.div>
+
+                    {/* Focus areas — simple text, no bordered pills */}
+                    <motion.div variants={fade} className="flex flex-wrap gap-x-6 gap-y-2">
+                        {focusAreas.map((area) => (
+                            <span
+                                key={area}
+                                className="text-xs font-mono text-[var(--text-3)]"
+                            >
+                                {area}
                             </span>
-                        </h1>
-
-                        {/* Value Proposition */}
-                        <p ref={textRef} className="text-lg md:text-xl text-[var(--text-secondary)] mb-10 max-w-xl leading-relaxed opacity-0">
-                            I architect{' '}
-                            <span className="text-[var(--text-primary)] font-medium relative inline-block">
-                                AI systems
-                                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[var(--accent-primary)]/40" />
-                            </span>{' '}
-                            that survive real-world scale.{' '}
-                            <span className="text-[var(--text-primary)] font-medium">11 years</span> turning demos into deployments.
-                        </p>
-
-                        {/* CTAs */}
-                        <div ref={ctaRef} className="flex flex-wrap items-center gap-6 opacity-0">
-                            <a
-                                href="#impact"
-                                className="btn-primary"
-                            >
-                                Explore Work
-                            </a>
-                            <a
-                                href="https://adplist.org/mentors/anudeep-sri-bathina"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-secondary"
-                            >
-                                Mentorship
-                            </a>
-                            <a
-                                href="https://drive.google.com/file/d/1n3jCZKppGHYcyKl-XPA9IYAs8_qxnseb/view"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-sm font-mono text-[var(--accent-secondary)] hover:text-[var(--accent-primary)] transition-colors ml-2"
-                            >
-                                <FileText size={16} />
-                                <span>Resume</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* Right Column: Professional Context */}
-                    <div className="lg:col-span-5 relative hidden lg:block">
-                        <div ref={statsRef} className="flex flex-col gap-6 relative">
-                            {/* Decorative Elements */}
-                            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[var(--accent-primary)]/10 rounded-full blur-3xl animate-pulse" />
-
-                            {/* Status Card */}
-                            <a
-                                href="/recognitions"
-                                className="glass-card p-8 hover-lift cursor-pointer group opacity-0 border-[var(--accent-primary)]/10"
-                            >
-                                <div className="flex items-center gap-3 mb-3">
-                                    <span className="relative flex h-3 w-3">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-primary)]/50 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-[var(--accent-primary)]"></span>
-                                    </span>
-                                    <span className="text-xs font-mono text-[var(--accent-secondary)] uppercase tracking-wider">Available for</span>
-                                </div>
-                                <p className="text-xl text-[var(--text-primary)] font-serif group-hover:text-[var(--accent-primary)] transition-colors">
-                                    AI Consulting · Speaking · Mentorship
-                                </p>
-                            </a>
-
-                            {/* Focus Areas Card */}
-                            <div className="glass-card p-8 hover-lift opacity-0">
-                                <p className="text-xs font-mono text-[var(--text-tertiary)] uppercase tracking-wider mb-4 border-b border-[var(--text-primary)]/5 pb-2">Focus Areas</p>
-                                <div className="flex flex-wrap gap-2.5">
-                                    {['Agentic AI Systems', 'RAG Systems', 'MLOps', 'Computer Vision'].map((tag) => (
-                                        <span key={tag} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-secondary)] border border-[var(--accent-primary)]/15 hover:bg-[var(--accent-primary)]/20 transition-colors cursor-default">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        ))}
+                    </motion.div>
                 </div>
 
-                {/* Scroll Indicator */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
-                    <span className="text-[10px] font-mono text-[var(--accent-primary)] uppercase tracking-[0.2em]">Scroll</span>
-                    <div className="w-px h-12 bg-gradient-to-b from-[var(--accent-primary)] to-transparent" />
+                {/* Logo — right side */}
+                <motion.div
+                    variants={fade}
+                    className="hidden lg:flex items-center justify-center"
+                >
+                    <img
+                        src="/assets/logo.png"
+                        alt="Anudeep Sri Bathina"
+                        className="w-48 h-48 xl:w-56 xl:h-56 rounded-2xl shadow-2xl"
+                    />
+                </motion.div>
                 </div>
-            </div>
+
+                {/* Scroll cue */}
+                <motion.div
+                    className="absolute bottom-10 left-6 flex items-center gap-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.4 }}
+                    transition={{ delay: 1.8, duration: 0.8 }}
+                >
+                    <div className="w-px h-10 bg-gradient-to-b from-[var(--blue)] to-transparent" />
+                    <span className="text-[10px] font-mono text-[var(--text-3)] uppercase tracking-[0.15em]">
+                        Scroll
+                    </span>
+                </motion.div>
+            </motion.div>
         </section>
     );
-};
-
-export default Hero;
+}

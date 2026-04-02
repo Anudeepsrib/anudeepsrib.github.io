@@ -1,75 +1,61 @@
 'use client';
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import resumeData from '@/data/resumeData.json';
-import { GraduationCap, ExternalLink } from 'lucide-react';
-import { fadeUp, stagger } from '@/lib/animation';
+import { ArrowUpRight } from 'lucide-react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
-const Education = () => {
-    const reduceMotion = useReducedMotion();
+const education = [
+    {
+        institution: 'University of Massachusetts Dartmouth',
+        degree: 'M.S. Computer Science',
+        period: '2021 - 2024',
+        description: 'Computer vision research (YOLOv8, ResNet-50). Published thesis and co-authored CRC Press publication.',
+        url: 'https://www.umassd.edu',
+    },
+    {
+        institution: 'VIT University',
+        degree: 'B.Tech Computer Science',
+        period: '2011 - 2015',
+        description: 'Foundation in CS&E. Robotics projects and technical leadership.',
+        url: 'https://vit.ac.in',
+    },
+];
 
+export default function Education() {
     return (
-        <section id="education" className="py-16 relative">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[var(--bg-secondary)]" />
+        <section className="relative py-20 md:py-28">
+            <div className="mx-auto max-w-4xl px-6">
+                <ScrollReveal>
+                    <h2 className="text-2xl md:text-3xl font-display font-bold mb-10 tracking-tight">
+                        Education
+                    </h2>
+                </ScrollReveal>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <motion.div
-                    variants={stagger}
-                    initial={reduceMotion ? 'show' : 'hidden'}
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="mb-12"
-                >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-4 hover-lift">
-                        <GraduationCap className="text-accent" size={18} />
-                        <span className="text-sm font-mono text-accent">Academic Foundation</span>
-                    </motion.div>
-                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-exo font-bold mb-4">
-                        <span className="gradient-text">Education</span>
-                    </motion.h2>
-                    <motion.p variants={fadeUp} className="text-xl text-text-secondary max-w-3xl">
-                        Foundational expertise in computer science, AI, machine learning, and data systems.
-                    </motion.p>
-                </motion.div>
-
-                <div className="grid gap-6">
-                    {resumeData.education.map((edu, index) => (
-                        <motion.div
-                            key={index}
-                            variants={fadeUp}
-                            initial={reduceMotion ? 'show' : 'hidden'}
-                            whileInView="show"
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ delay: index * 0.1 }}
-                            className="glass-card p-6 hover-lift flex flex-col md:flex-row md:items-start gap-6"
-                        >
-                            <div className="flex-grow">
-                                <h3 className="text-xl font-exo font-bold text-text-primary mb-2">{edu.institution}</h3>
-                                <div className="text-accent text-lg font-mono font-medium mb-1">{edu.degree}</div>
-                                <div className="text-text-muted mb-4 font-mono text-sm">{edu.startDate} - {edu.endDate}</div>
-                                <p className="text-text-secondary leading-relaxed">{edu.description}</p>
-                            </div>
-
-                            {edu.institutionUrl && (
-                                <div className="flex-shrink-0">
-                                    <a
-                                        href={edu.institutionUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn-secondary text-sm inline-flex items-center gap-2"
-                                    >
-                                        Visit Website
-                                        <ExternalLink size={14} />
-                                    </a>
+                <div className="flex flex-col gap-1">
+                    {education.map((edu, i) => (
+                        <ScrollReveal key={edu.institution} delay={i * 0.1}>
+                            <a
+                                href={edu.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex justify-between items-start gap-4 py-5 border-b border-[var(--border)] group"
+                            >
+                                <div>
+                                    <h3 className="text-[15px] font-display font-semibold text-[var(--text)] group-hover:text-[var(--blue)] transition-colors mb-0.5">
+                                        {edu.institution}
+                                    </h3>
+                                    <p className="text-sm text-[var(--warm)] mb-0.5">{edu.degree}</p>
+                                    <p className="text-[11px] font-mono text-[var(--text-3)] mb-2">{edu.period}</p>
+                                    <p className="text-[13px] text-[var(--text-2)] leading-relaxed">{edu.description}</p>
                                 </div>
-                            )}
-                        </motion.div>
+                                <ArrowUpRight
+                                    size={14}
+                                    className="text-[var(--text-3)] group-hover:text-[var(--text-2)] transition-colors flex-shrink-0 mt-1"
+                                />
+                            </a>
+                        </ScrollReveal>
                     ))}
                 </div>
             </div>
         </section>
     );
-};
-
-export default Education;
+}

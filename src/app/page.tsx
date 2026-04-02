@@ -1,7 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import WhyWorkWithMe from '@/components/WhyWorkWithMe';
-import ExperiencePreview from '@/components/ExperiencePreview';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Impact from '@/components/Impact';
@@ -15,7 +14,6 @@ export default function Home() {
             <Navbar />
             <Hero />
             <WhyWorkWithMe />
-            <ExperiencePreview />
             <Skills />
             <Projects />
             <Impact />
@@ -25,4 +23,3 @@ export default function Home() {
         </main>
     );
 }
-
