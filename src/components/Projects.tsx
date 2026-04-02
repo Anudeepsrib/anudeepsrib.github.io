@@ -229,7 +229,7 @@ export default function Projects() {
                         <h2 className="text-3xl md:text-4xl font-display font-bold mb-3 tracking-tight">
                             Open source
                         </h2>
-                        <p className="text-[var(--text-2)] max-w-md mb-14 text-[15px]">
+                        <p className="text-[var(--text-2)] max-w-md mb-14 text-base">
                             Systems I&apos;ve built and open-sourced.
                         </p>
                     </ScrollReveal>
@@ -266,7 +266,7 @@ export default function Projects() {
                                     />
                                 </div>
 
-                                <p className="text-[13px] text-[var(--text-2)] leading-relaxed mb-5">
+                                <p className="text-sm text-[var(--text-2)] leading-relaxed mb-5">
                                     {project.description}
                                 </p>
 

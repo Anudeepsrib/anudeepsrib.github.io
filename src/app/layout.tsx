@@ -114,7 +114,7 @@ export default function RootLayout({
                 />
             </head>
             <body
-                className="bg-[#0A0A0F] text-[#F5F5F7] antialiased selection:bg-[rgba(0,240,255,0.25)] selection:text-[#F5F5F7]"
+                className="bg-[var(--bg)] text-[var(--text)] antialiased selection:bg-[rgba(145,199,255,0.25)] selection:text-[var(--text)]"
                 suppressHydrationWarning
             >
                 <SmoothScroll />

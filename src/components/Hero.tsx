@@ -267,7 +267,7 @@ export default function Hero() {
                     animate={{ opacity: 0.3 }}
                     transition={{ delay: 2, duration: 0.8 }}
                 >
-                    <span className="text-[10px] font-mono text-[var(--text-3)] uppercase tracking-[0.15em]">
+                    <span className="text-[11px] font-mono text-[var(--text-3)] uppercase tracking-[0.15em]">
                         Scroll
                     </span>
                     <motion.div

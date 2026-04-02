@@ -4,6 +4,7 @@ import path from 'path';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import StaggerContainer from '@/components/ui/StaggerContainer';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
   title: 'System Design Case Studies | Anudeep Sri Bathina',
@@ -40,7 +41,6 @@ async function getCaseStudies(): Promise<CaseStudy[]> {
         const fullPath = path.join(systemsDir, fileName);
         const fileContents = fs.readFileSync(fullPath, 'utf8');
         
-        // Parse frontmatter
         const frontmatterMatch = fileContents.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
         if (!frontmatterMatch) return null;
         
@@ -61,7 +61,6 @@ async function getCaseStudies(): Promise<CaseStudy[]> {
               } else if (key === 'featuredArchitecture') {
                 data[key] = value === 'true';
               } else if (key === 'slo') {
-                // Parse SLO object
                 const sloMatch = value.match(/\{([^}]+)\}/);
                 if (sloMatch) {
                   data.slo = {};
@@ -101,11 +100,6 @@ async function getCaseStudies(): Promise<CaseStudy[]> {
   return caseStudies.filter((study): study is CaseStudy => study !== null);
 }
 
-function extractMermaidDiagram(content: string): string | null {
-  const mermaidMatch = content.match(/```mermaid\n([\s\S]*?)\n```/);
-  return mermaidMatch ? mermaidMatch[1] : null;
-}
-
 function extractTradeoffs(content: string): string | null {
   const tradeoffsMatch = content.match(/## Key design decisions & trade-offs\n([\s\S]*?)(?=\n##|$)/);
   return tradeoffsMatch ? tradeoffsMatch[1] : null;
@@ -121,6 +115,7 @@ export default async function CaseStudiesPage() {
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      <Navbar />
       <div className="container mx-auto px-6 py-20">
         <ScrollReveal>
           <div className="text-center mb-16">
@@ -135,20 +130,17 @@ export default async function CaseStudiesPage() {
 
         <StaggerContainer className="space-y-12">
           {caseStudies.map((study, index) => {
-            const diagram = extractMermaidDiagram(study.content);
             const tradeoffs = extractTradeoffs(study.content);
             const failureModes = extractFailureModes(study.content);
             
             return (
               <ScrollReveal key={study.title} delay={index * 0.1}>
                 <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl p-8 backdrop-blur-sm">
-                  {/* Header */}
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                     <div>
                       <h2 className="text-2xl font-bold font-cabinet-grotesk mb-2">{study.title}</h2>
                       <p className="text-[var(--text-2)] mb-4">{study.summary}</p>
                       
-                      {/* Status and SLO Badge */}
                       <div className="flex flex-wrap items-center gap-3 mb-4">
                         <span className={`px-3 py-1 rounded-full text-xs font-mono ${
                           study.status === 'production' 
@@ -169,7 +161,6 @@ export default async function CaseStudiesPage() {
                         )}
                       </div>
                       
-                      {/* Constraint Pills */}
                       <div className="flex flex-wrap gap-2 mb-4">
                         {study.constraints.map((constraint) => (
                           <span
@@ -181,7 +172,6 @@ export default async function CaseStudiesPage() {
                         ))}
                       </div>
                       
-                      {/* Stack Pills */}
                       <div className="flex flex-wrap gap-2">
                         {study.stack.map((tech) => (
                           <span
@@ -206,19 +196,23 @@ export default async function CaseStudiesPage() {
                     )}
                   </div>
 
-                  {/* Architecture Diagram */}
-                  {diagram && (
-                    <div className="mb-8">
-                      <h3 className="text-lg font-semibold mb-4 font-cabinet-grotesk">Architecture</h3>
-                      <div className="bg-[var(--bg)] rounded-xl p-6 border border-[var(--border)] overflow-x-auto">
-                        <div className="mermaid">
-                          {diagram}
+                  <div className="mb-8">
+                    <h3 className="text-lg font-semibold mb-4 font-cabinet-grotesk">Architecture</h3>
+                    <div className="bg-[var(--bg)] rounded-xl p-6 border border-[var(--border)] overflow-x-auto">
+                      <div className="flex items-center justify-center py-12 text-[var(--text-3)]">
+                        <div className="text-center">
+                          <div className="mb-4">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="mx-auto">
+                              <path d="M12 2L2 7L12 12L22 7V17L12 22L2 17V7Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                          <p className="text-sm font-mono">Architecture diagram coming soon</p>
+                          <p className="text-xs mt-2">Detailed system design will be available</p>
                         </div>
                       </div>
                     </div>
-                  )}
+                  </div>
 
-                  {/* Trade-offs Analysis */}
                   {tradeoffs && (
                     <div className="mb-8">
                       <h3 className="text-lg font-semibold mb-4 font-cabinet-grotesk">Design Decisions & Trade-offs</h3>
@@ -228,7 +222,6 @@ export default async function CaseStudiesPage() {
                     </div>
                   )}
 
-                  {/* Failure Modes */}
                   {failureModes && (
                     <div className="mb-8">
                       <h3 className="text-lg font-semibold mb-4 font-cabinet-grotesk">Failure Modes & Mitigations</h3>
@@ -261,7 +254,6 @@ export default async function CaseStudiesPage() {
                     </div>
                   )}
 
-                  {/* Domain Tags */}
                   <div className="pt-4 border-t border-[var(--border)]">
                     <div className="flex flex-wrap gap-2">
                       {study.domains.map((domain) => (

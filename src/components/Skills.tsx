@@ -57,7 +57,7 @@ export default function Skills() {
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-3 tracking-tight">
                         What I work with
                     </h2>
-                    <p className="text-[var(--text-2)] max-w-md mb-14 text-[15px]">
+                    <p className="text-[var(--text-2)] max-w-md mb-14 text-base">
                         Tools and frameworks behind the systems I ship.
                     </p>
                 </ScrollReveal>
@@ -71,7 +71,7 @@ export default function Skills() {
                         >
                             <div className="flex items-center gap-3 mb-4">
                                 <cat.icon size={16} className="text-[var(--text-3)]" strokeWidth={1.5} />
-                                <h3 className="text-sm font-display font-semibold text-[var(--text)]">
+                                <h3 className="text-[15px] font-display font-semibold text-[var(--text)]">
                                     {cat.title}
                                 </h3>
                             </div>

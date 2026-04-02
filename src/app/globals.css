@@ -27,8 +27,10 @@
   --border: rgba(255, 255, 255, 0.07);
   --text: #e8e8ec;
   --text-2: #83838f;
-  --text-3: #4e4e5a;
-  --blue: #4F8BFF;
+  --text-3: #6b6b7a;
+  --blue: #91C7FF;
+  --accent-1: #91C7FF;
+  --accent-2: #E8A634;
   --warm: #E8A634;
   --font-display: 'Satoshi', system-ui, sans-serif;
   --font-body: 'Satoshi', system-ui, sans-serif;
@@ -155,7 +157,7 @@
   .section-number {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     color: var(--text-3);
     letter-spacing: 0.08em;
     margin-bottom: 1rem;
@@ -165,7 +167,7 @@
   /* Tag / pill — neutral by default, accent is opt-in */
   .tech-pill {
     padding: 0.25rem 0.625rem;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-family: var(--font-mono);
     color: var(--text-2);
     background: rgba(255, 255, 255, 0.04);
@@ -244,6 +246,34 @@
   background: radial-gradient(circle at 50% 50%, rgba(79, 139, 255, 0.05) 0%, transparent 65%);
 }
 
+
+/* ------------------------------------------------
+   Mermaid diagrams
+   ------------------------------------------------ */
+.mermaid {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.mermaid .node {
+  fill: var(--accent-1);
+  stroke: var(--accent-1);
+}
+
+.mermaid .edge {
+  stroke: var(--text-2);
+}
+
+.mermaid .label {
+  fill: var(--text);
+  color: var(--text);
+}
 
 /* ------------------------------------------------
    Reduced motion

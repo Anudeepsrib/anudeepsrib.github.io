@@ -18,7 +18,7 @@ const config: Config = {
       },
       backgroundImage: {
         "hero-glow":
-          "radial-gradient(circle at 50% 50%, rgba(79, 139, 255, 0.05) 0%, transparent 65%)",
+          "radial-gradient(circle at 50% 50%, rgba(145, 199, 255, 0.05) 0%, transparent 65%)",
       },
       keyframes: {
         "fade-up": {

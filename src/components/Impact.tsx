@@ -80,7 +80,7 @@ export default function Impact() {
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-3 tracking-tight">
                         Teaching & impact
                     </h2>
-                    <p className="text-[var(--text-2)] max-w-lg mb-16 text-[15px]">
+                    <p className="text-[var(--text-2)] max-w-lg mb-16 text-base">
                         Mentoring AI practitioners across 20+ countries through hands-on sessions, guest lectures, and workshops.
                     </p>
                 </ScrollReveal>
@@ -96,7 +96,7 @@ export default function Impact() {
                             <div className="text-2xl md:text-3xl font-display font-bold text-[var(--text)] mb-1">
                                 <AnimatedCounter target={s.value} suffix={s.suffix} />
                             </div>
-                            <p className="text-[11px] text-[var(--text-3)] font-mono">
+                            <p className="text-[12px] font-mono text-[var(--text-3)]">
                                 {s.label}
                             </p>
                         </motion.div>

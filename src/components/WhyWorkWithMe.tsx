@@ -26,7 +26,7 @@ export default function WhyWorkWithMe() {
                         </ScrollReveal>
 
                         <ScrollReveal delay={0.08}>
-                            <p className="text-[var(--text-2)] text-[15px] leading-relaxed mb-8 max-w-lg">
+                            <p className="text-[var(--text-2)] text-base leading-relaxed mb-8 max-w-lg">
                                 I bring deep research rigor and battle-hardened production engineering.
                                 Models that work in notebooks don&apos;t interest me. I build systems
                                 that hold up under real traffic, real data, and real deadlines.
@@ -38,7 +38,7 @@ export default function WhyWorkWithMe() {
                                 <span className="text-5xl font-display font-black accent">
                                     <AnimatedCounter target={11} />
                                 </span>
-                                <span className="text-[var(--text-2)] text-sm">
+                                <span className="text-[var(--text-2)] text-[15px]">
                                     years shipping production AI
                                 </span>
                             </div>
@@ -89,7 +89,7 @@ export default function WhyWorkWithMe() {
                                                     : 'bg-[var(--text-3)]'
                                             }`}
                                         />
-                                        <span className="text-[11px] font-mono text-[var(--text-3)] block mb-0.5">
+                                        <span className="text-[12px] font-mono text-[var(--text-3)] block mb-0.5">
                                             {item.year}
                                         </span>
                                         <h4 className="text-sm font-display font-medium text-[var(--text)]">
