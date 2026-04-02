@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Github, Linkedin } from 'lucide-react';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 
 const links = [
     { label: 'Experience', href: '/journey' },
+    { label: 'Systems', href: '/case-studies' },
     { label: 'Mentorship', href: '/mentorship' },
     { label: 'Awards', href: '/recognitions' },
     { label: 'Blog', href: '/blog' },
@@ -66,6 +67,26 @@ export default function Navbar() {
                                 {l.label}
                             </Link>
                         ))}
+                        <div className="flex items-center gap-2 ml-4 pl-4 border-l border-[var(--border)]">
+                            <a 
+                                href="https://github.com/anudeepsrib" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-[var(--text-3)] hover:text-[var(--text-2)] transition-colors"
+                                aria-label="GitHub Profile"
+                            >
+                                <Github size={15} />
+                            </a>
+                            <a 
+                                href="https://www.linkedin.com/in/anudeepsri/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-[var(--text-3)] hover:text-[var(--text-2)] transition-colors"
+                                aria-label="LinkedIn Profile"
+                            >
+                                <Linkedin size={15} />
+                            </a>
+                        </div>
                     </div>
 
                     {/* Mobile */}
@@ -99,6 +120,28 @@ export default function Navbar() {
                                         {l.label}
                                     </Link>
                                 ))}
+                                <div className="flex items-center gap-4 pt-2 border-t border-[var(--border)]">
+                                    <a 
+                                        href="https://github.com/anudeepsrib" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="text-[var(--text-3)] hover:text-[var(--text-2)] transition-colors flex items-center gap-2"
+                                        aria-label="GitHub Profile"
+                                    >
+                                        <Github size={16} />
+                                        <span className="text-sm">GitHub</span>
+                                    </a>
+                                    <a 
+                                        href="https://www.linkedin.com/in/anudeepsri/" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="text-[var(--text-3)] hover:text-[var(--text-2)] transition-colors flex items-center gap-2"
+                                        aria-label="LinkedIn Profile"
+                                    >
+                                        <Linkedin size={16} />
+                                        <span className="text-sm">LinkedIn</span>
+                                    </a>
+                                </div>
                             </div>
                         </motion.div>
                     )}

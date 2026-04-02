@@ -17,26 +17,36 @@ const testimonials = [
         name: 'Michael',
         role: 'Freelance Developer',
         text: 'Anudeep is incredibly insightful, listening carefully and offering technical yet straightforward comments that are truly beneficial.',
+        source: 'ADPList',
+        sourceUrl: 'https://adplist.org/mentors/anudeep-sri-bathina',
     },
     {
         name: 'Shashank H.V.',
         role: 'Student, UMass Dartmouth',
         text: "Extremely insightful and valuable discussion. Anudeep's depth of knowledge in Data and AI is evident, and his willingness to openly share his expertise is commendable.",
+        source: 'ADPList',
+        sourceUrl: 'https://adplist.org/mentors/anudeep-sri-bathina',
     },
     {
         name: 'Baran Khazaee',
         role: 'MSc CS, UC Davis',
         text: 'His tailored advice on skills, job applications, and interviews was practical and insightful, leaving me confident and motivated.',
+        source: 'ADPList',
+        sourceUrl: 'https://adplist.org/mentors/anudeep-sri-bathina',
     },
     {
         name: 'Nelisa Sebastian',
         role: 'Data Analyst, Northeastern',
         text: 'His strategic guidance and ability to simplify complex AI and career paths into clear, actionable steps were incredibly helpful.',
+        source: 'ADPList',
+        sourceUrl: 'https://adplist.org/mentors/anudeep-sri-bathina',
     },
     {
         name: 'Mide Sowunmi',
         role: 'UX/UI Designer, Comcast',
         text: 'An exceptional session, making complex Agentic AI concepts easy to understand. His motivating approach inspired me to take bold steps.',
+        source: 'ADPList',
+        sourceUrl: 'https://adplist.org/mentors/anudeep-sri-bathina',
     },
 ];
 
@@ -107,11 +117,19 @@ export default function Impact() {
                                 <blockquote className="text-lg md:text-xl text-[var(--text)] leading-relaxed mb-4 font-body">
                                     &ldquo;{testimonials[active].text}&rdquo;
                                 </blockquote>
-                                <p className="text-sm text-[var(--text-3)]">
+                                <p className="text-sm text-[var(--text-3)] mb-2">
                                     {testimonials[active].name}
                                     <span className="mx-1.5 text-[var(--border)]">&mdash;</span>
                                     {testimonials[active].role}
                                 </p>
+                                <a 
+                                    href={testimonials[active].sourceUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-xs text-[var(--accent-1)] hover:text-[var(--accent-1)]/80 transition-colors"
+                                >
+                                    via {testimonials[active].source} →
+                                </a>
                             </motion.div>
                         </AnimatePresence>
 

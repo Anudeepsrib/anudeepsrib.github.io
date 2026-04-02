@@ -39,17 +39,6 @@
             "location": "India"
         },
         {
-            "name": "Smart Portfolio with AI Chat",
-            "description": "A Next.js portfolio featuring a RAG-based AI chatbot capable of answering questions about my professional background, deployed to production.",
-            "technologies": [
-                "Next.js",
-                "LLMs",
-                "RAG",
-                "Vector Search"
-            ],
-            "link": "https://github.com/anudeepsrib"
-        },
-        {
             "company": "Cognizant",
             "position": "Data Science Engineer",
             "startDate": "2015",

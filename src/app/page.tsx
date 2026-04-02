@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import Currently from '@/components/Currently';
 import WhyWorkWithMe from '@/components/WhyWorkWithMe';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
@@ -13,6 +14,7 @@ export default function Home() {
         <main className="min-h-screen">
             <Navbar />
             <Hero />
+            <Currently />
             <WhyWorkWithMe />
             <Skills />
             <Projects />

@@ -26,18 +26,22 @@ export default function WebMCP() {
             description: 'Get professional details about Anudeepsri Bathina.',
             schema: { type: 'object', properties: {} },
             execute: () => ({
-                name: 'Anudeepsri Bathina',
+                name: 'Anudeep Sri Bathina',
                 role: 'AI Architect',
-                company: 'Infosys',
+                company: 'AT&T',
                 experience: '11 years',
-                location: 'Celina, Texas',
-                education: 'Vellore Institute of Technology (VIT)',
+                location: 'Plano, TX',
+                education: [
+                    'M.S. Computer Science, UMass Dartmouth',
+                    'B.Tech CS, VIT University'
+                ],
                 keySkills: [
                     'Generative AI',
                     'LLMs',
                     'RAG',
                     'Agentic AI',
                     'Python',
+                    'FastAPI',
                 ],
             }),
         });
@@ -84,7 +88,7 @@ export default function WebMCP() {
                 properties: {
                     path: {
                         type: 'string',
-                        enum: ['/', '/about', '/projects', '/blog', '/contact'],
+                        enum: ['/', '/journey', '/case-studies', '/mentorship', '/recognitions', '/blog'],
                         description: 'Target route to navigate to.',
                     },
                 },
@@ -103,8 +107,10 @@ export default function WebMCP() {
             description: 'Get official contact channels.',
             schema: { type: 'object', properties: {} },
             execute: () => ({
-                linkedin: 'https://www.linkedin.com/in/anudeepsrib',
-                github: 'https://github.com/Anudeepsrib',
+                linkedin: 'https://www.linkedin.com/in/anudeepsri/',
+                github: 'https://github.com/anudeepsrib',
+                adplist: 'https://adplist.org/mentors/anudeep-sri-bathina',
+                email: 'anudeepSri108@gmail.com',
             }),
         });
     }, [router]);
