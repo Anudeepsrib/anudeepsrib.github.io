@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Preloader() {
@@ -25,9 +26,11 @@ export default function Preloader() {
                         className="flex flex-col items-center gap-5"
                     >
                         {/* Logo mark */}
-                        <img
+                        <Image
                             src="/assets/logo.png"
                             alt="Anudeep Logo"
+                            width={56}
+                            height={56}
                             className="w-14 h-14 rounded-xl shadow-lg"
                         />
 

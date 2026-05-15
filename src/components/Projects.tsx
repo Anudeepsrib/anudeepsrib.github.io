@@ -1,9 +1,15 @@
 'use client';
+
 import React, { useState } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, X, Box, Zap, Shield, BarChart3 } from 'lucide-react';
-import ScrollReveal from '@/components/ui/ScrollReveal';
-import StaggerContainer from '@/components/ui/StaggerContainer';
+import Container from '@/components/ui/Container';
+import CTAButton from '@/components/ui/CTAButton';
+import GradientCard from '@/components/ui/GradientCard';
+import MotionWrapper from '@/components/ui/MotionWrapper';
+import ProjectCard from '@/components/ui/ProjectCard';
+import SectionHeader from '@/components/ui/SectionHeader';
+import { fadeUp, scaleIn, stagger } from '@/lib/animation';
 
 const projects = [
     {
@@ -101,18 +107,29 @@ const projects = [
     },
 ];
 
-const card = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-    },
-};
-
 interface ProjectDetailModalProps {
     project: typeof projects[0];
     onClose: () => void;
+}
+
+function DetailBlock({
+    icon,
+    title,
+    children,
+}: {
+    icon: React.ReactNode;
+    title: string;
+    children: React.ReactNode;
+}) {
+    return (
+        <div className="rounded-lg border border-[var(--border)] bg-black/18 p-5">
+            <h4 className="mb-3 flex items-center gap-2 text-base font-semibold text-[var(--text)]">
+                {icon}
+                {title}
+            </h4>
+            {children}
+        </div>
+    );
 }
 
 function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
@@ -121,98 +138,82 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/78 p-4 backdrop-blur-md sm:p-6"
             onClick={onClose}
         >
             <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-8"
-                onClick={(e) => e.stopPropagation()}
+                initial={{ scale: 0.97, opacity: 0, y: 12 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.97, opacity: 0, y: 12 }}
+                transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                className="max-h-[90vh] w-full max-w-4xl overflow-y-auto"
+                onClick={(event) => event.stopPropagation()}
             >
-                <div className="flex justify-between items-start mb-6">
-                    <div>
-                        <h3 className="text-2xl font-bold font-cabinet-grotesk mb-2">{project.name}</h3>
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="text-sm text-[var(--accent-1)] font-mono">{project.metrics}</span>
-                            <span className="text-sm text-[var(--text-3)]">★ {project.stars}</span>
+                <GradientCard className="p-5 sm:p-7 md:p-8">
+                    <div className="mb-7 flex items-start justify-between gap-5">
+                        <div>
+                            <h3 className="text-2xl font-bold leading-tight text-[var(--text)] md:text-3xl">
+                                {project.name}
+                            </h3>
+                            <div className="mt-3 flex flex-wrap items-center gap-3">
+                                <span className="text-xs font-mono text-[var(--accent)]">{project.metrics}</span>
+                                <span className="text-xs text-[var(--text-3)]">★ {project.stars}</span>
+                            </div>
+                            <div className="mt-4 flex flex-wrap gap-2">
+                                {project.tags.map((tag) => (
+                                    <span key={tag} className="tech-pill">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
-                        <div className="flex flex-wrap gap-2">
-                            {project.tags.map((tag) => (
-                                <span key={tag} className="tech-pill">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                    <button
-                        onClick={onClose}
-                        className="text-[var(--text-3)] hover:text-[var(--text)] transition-colors"
-                    >
-                        <X size={20} />
-                    </button>
-                </div>
-
-                <div className="space-y-6">
-                    <div>
-                        <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                            <Zap size={16} className="text-[var(--accent-1)]" />
-                            Problem
-                        </h4>
-                        <p className="text-[var(--text-2)]">{project.problem}</p>
-                    </div>
-
-                    <div>
-                        <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                            <Box size={16} className="text-[var(--accent-1)]" />
-                            Architecture
-                        </h4>
-                        <ul className="space-y-2">
-                            {project.architecture.map((item, index) => (
-                                <li key={index} className="flex items-start gap-2 text-[var(--text-2)]">
-                                    <span className="w-1.5 h-1.5 bg-[var(--accent-1)] rounded-full mt-2 flex-shrink-0"></span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                            <Shield size={16} className="text-[var(--accent-1)]" />
-                            Key Decisions
-                        </h4>
-                        <ul className="space-y-2">
-                            {project.decisions.map((decision, index) => (
-                                <li key={index} className="flex items-start gap-2 text-[var(--text-2)]">
-                                    <span className="w-1.5 h-1.5 bg-[var(--accent-2)] rounded-full mt-2 flex-shrink-0"></span>
-                                    {decision}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                            <BarChart3 size={16} className="text-[var(--accent-1)]" />
-                            Results
-                        </h4>
-                        <p className="text-[var(--text-2)]">{project.results}</p>
-                    </div>
-
-                    <div className="pt-4 border-t border-[var(--border)]">
-                        <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--accent-1)] text-white rounded-lg hover:bg-[var(--accent-1)]/90 transition-colors"
+                        <button
+                            onClick={onClose}
+                            className="rounded-md p-2 text-[var(--text-3)] transition-colors hover:bg-white/[0.05] hover:text-[var(--text)]"
+                            aria-label="Close project details"
                         >
-                            View on GitHub
-                            <ArrowUpRight size={16} />
-                        </a>
+                            <X size={20} />
+                        </button>
                     </div>
-                </div>
+
+                    <div className="grid gap-4">
+                        <DetailBlock title="Problem" icon={<Zap size={16} className="text-[var(--accent)]" />}>
+                            <p className="text-sm leading-7 text-[var(--text-2)]">{project.problem}</p>
+                        </DetailBlock>
+
+                        <DetailBlock title="Architecture" icon={<Box size={16} className="text-[var(--accent)]" />}>
+                            <ul className="space-y-2">
+                                {project.architecture.map((item) => (
+                                    <li key={item} className="flex items-start gap-3 text-sm leading-6 text-[var(--text-2)]">
+                                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </DetailBlock>
+
+                        <DetailBlock title="Key Decisions" icon={<Shield size={16} className="text-[var(--accent)]" />}>
+                            <ul className="space-y-2">
+                                {project.decisions.map((decision) => (
+                                    <li key={decision} className="flex items-start gap-3 text-sm leading-6 text-[var(--text-2)]">
+                                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                                        {decision}
+                                    </li>
+                                ))}
+                            </ul>
+                        </DetailBlock>
+
+                        <DetailBlock title="Results" icon={<BarChart3 size={16} className="text-[var(--accent)]" />}>
+                            <p className="text-sm leading-7 text-[var(--text-2)]">{project.results}</p>
+                        </DetailBlock>
+
+                        <div className="pt-2">
+                            <CTAButton href={project.link} external variant="secondary" icon={<ArrowUpRight size={15} />}>
+                                View on GitHub
+                            </CTAButton>
+                        </div>
+                    </div>
+                </GradientCard>
             </motion.div>
         </motion.div>
     );
@@ -223,72 +224,45 @@ export default function Projects() {
 
     return (
         <>
-            <section className="relative py-28 md:py-36" id="projects">
-                <div className="mx-auto max-w-6xl px-6">
-                    <ScrollReveal>
-                        <h2 className="text-3xl md:text-4xl font-display font-bold mb-3 tracking-tight">
-                            Open source
-                        </h2>
-                        <p className="text-[var(--text-2)] max-w-md mb-14 text-base">
-                            Systems I&apos;ve built and open-sourced.
-                        </p>
-                    </ScrollReveal>
+            <section className="premium-section relative z-10" id="projects">
+                <div className="section-divider" />
+                <Container>
+                    <MotionWrapper variants={fadeUp}>
+                        <SectionHeader
+                            title="Open source"
+                            description="Systems I&apos;ve built and open-sourced."
+                        />
+                    </MotionWrapper>
 
-                    <StaggerContainer className="space-y-6">
-                        {projects.map((project, index) => (
+                    <MotionWrapper
+                        staggerChildren
+                        variants={stagger}
+                        className="grid grid-cols-1 gap-3 lg:grid-cols-2"
+                    >
+                        {projects.map((project) => (
                             <motion.div
                                 key={project.name}
-                                variants={card}
-                                className={`glass-card p-6 group cursor-pointer transition-all duration-300 hover:scale-[1.02] ${
-                                    project.hero ? 'md:col-span-2 border-[var(--accent-1)]/30 bg-[var(--accent-1)]/5' : ''
-                                }`}
-                                onClick={() => setSelectedProject(project)}
+                                variants={scaleIn}
+                                className={project.hero ? 'lg:col-span-2' : undefined}
                             >
-                                <div className="flex items-start justify-between mb-3">
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <h3 className="text-base font-display font-semibold text-[var(--text)] group-hover:text-[var(--accent-1)] transition-colors">
-                                                {project.name}
-                                            </h3>
-                                            {project.hero && (
-                                                <span className="px-2 py-0.5 bg-[var(--accent-1)]/20 text-[var(--accent-1)] text-xs font-mono rounded-full">
-                                                    FEATURED
-                                                </span>
-                                            )}
-                                        </div>
-                                        <div className="text-xs font-mono text-[var(--accent-1)] mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            {project.metrics} • ★ {project.stars}
-                                        </div>
-                                    </div>
-                                    <ArrowUpRight
-                                        size={15}
-                                        className="text-[var(--text-3)] group-hover:text-[var(--text-2)] transition-colors flex-shrink-0 mt-0.5"
-                                    />
-                                </div>
-
-                                <p className="text-sm text-[var(--text-2)] leading-relaxed mb-5">
-                                    {project.description}
-                                </p>
-
-                                <div className="flex flex-wrap gap-1.5">
-                                    {project.tags.map((tag) => (
-                                        <span key={tag} className="tech-pill">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
+                                <ProjectCard
+                                    project={project}
+                                    onClick={() => setSelectedProject(project)}
+                                />
                             </motion.div>
                         ))}
-                    </StaggerContainer>
-                </div>
+                    </MotionWrapper>
+                </Container>
             </section>
 
-            {selectedProject && (
-                <ProjectDetailModal
-                    project={selectedProject}
-                    onClose={() => setSelectedProject(null)}
-                />
-            )}
+            <AnimatePresence>
+                {selectedProject && (
+                    <ProjectDetailModal
+                        project={selectedProject}
+                        onClose={() => setSelectedProject(null)}
+                    />
+                )}
+            </AnimatePresence>
         </>
     );
 }

@@ -1,7 +1,10 @@
 'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import ScrollReveal from '@/components/ui/ScrollReveal';
+import Container from '@/components/ui/Container';
+import MotionWrapper from '@/components/ui/MotionWrapper';
+import { fadeUp } from '@/lib/animation';
 
 const nav = [
     { label: 'Experience', href: '/journey' },
@@ -20,62 +23,66 @@ const connect = [
 
 export default function Footer() {
     return (
-        <footer className="border-t border-[var(--border)]">
-            <div className="mx-auto max-w-6xl px-6 py-14">
-                <ScrollReveal>
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-12 md:gap-20 mb-12">
+        <footer className="relative z-10 border-t border-[var(--border)] bg-black/[0.16]">
+            <Container className="py-12 sm:py-14">
+                <MotionWrapper variants={fadeUp}>
+                    <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto_auto] md:gap-20">
                         <div>
-                            <p className="text-sm font-display font-semibold text-[var(--text)] mb-1">
+                            <p className="text-sm font-semibold text-[var(--text)]">
                                 Anudeep Sri Bathina
                             </p>
-                            <p className="text-[13px] text-[var(--text-3)] max-w-xs">
+                            <p className="mt-2 max-w-xs text-sm leading-6 text-[var(--text-3)]">
                                 AI Architect. Building production systems that scale.
                             </p>
                         </div>
 
                         <div>
-                            <p className="text-[11px] font-mono text-[var(--text-3)] uppercase tracking-wider mb-3">
+                            <p className="mb-3 text-xs font-medium uppercase text-[var(--text-3)] [letter-spacing:0]">
                                 Pages
                             </p>
                             <div className="flex flex-col gap-2">
-                                {nav.map((l) => (
-                                    <Link key={l.href} href={l.href} className="text-[13px] text-[var(--text-2)] hover:text-[var(--text)] transition-colors">
-                                        {l.label}
+                                {nav.map((link) => (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        className="text-sm text-[var(--text-2)] transition-colors hover:text-[var(--text)]"
+                                    >
+                                        {link.label}
                                     </Link>
                                 ))}
                             </div>
                         </div>
 
                         <div>
-                            <p className="text-[11px] font-mono text-[var(--text-3)] uppercase tracking-wider mb-3">
+                            <p className="mb-3 text-xs font-medium uppercase text-[var(--text-3)] [letter-spacing:0]">
                                 Connect
                             </p>
                             <div className="flex flex-col gap-2">
-                                {connect.map((l) => (
+                                {connect.map((link) => (
                                     <a
-                                        key={l.label}
-                                        href={l.href}
-                                        target={l.href.startsWith('mailto') ? undefined : '_blank'}
-                                        rel={l.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                                        className="text-[13px] text-[var(--text-2)] hover:text-[var(--text)] transition-colors"
+                                        key={link.label}
+                                        href={link.href}
+                                        target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                                        rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                                        className="text-sm text-[var(--text-2)] transition-colors hover:text-[var(--text)]"
                                     >
-                                        {l.label}
+                                        {link.label}
                                     </a>
                                 ))}
                             </div>
                         </div>
                     </div>
-                </ScrollReveal>
+                </MotionWrapper>
 
-                <div className="pt-6 border-t border-[var(--border)] flex items-center justify-between">
-                    <p className="text-[11px] text-[var(--text-3)] font-mono">
+                <div className="mt-10 flex items-center justify-between border-t border-[var(--border)] pt-6">
+                    <p className="text-xs text-[var(--text-3)]">
                         &copy; 2026
                     </p>
-                    <p className="text-[11px] text-[var(--text-3)] font-mono">
+                    <p className="text-xs text-[var(--text-3)]">
                         Next.js &middot; TypeScript
                     </p>
                 </div>
-            </div>
+            </Container>
         </footer>
     );
 }

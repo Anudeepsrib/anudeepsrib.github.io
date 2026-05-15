@@ -1,5 +1,5 @@
 'use client';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 
 interface ScrollRevealProps {
@@ -10,10 +10,10 @@ interface ScrollRevealProps {
 }
 
 const directionMap = {
-    up: { y: 60 },
-    down: { y: -60 },
-    left: { x: 60 },
-    right: { x: -60 },
+    up: { y: 24 },
+    down: { y: -24 },
+    left: { x: 24 },
+    right: { x: -24 },
 };
 
 export default function ScrollReveal({
@@ -24,6 +24,15 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
+    const reduceMotion = useReducedMotion();
+
+    if (reduceMotion) {
+        return (
+            <div ref={ref} className={className}>
+                {children}
+            </div>
+        );
+    }
 
     return (
         <motion.div

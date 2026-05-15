@@ -2,40 +2,11 @@
 
 export default function MeshGradientBG() {
     return (
-        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
-            <div
-                className="mesh-orb mesh-orb-cyan"
-                style={{
-                    top: '-10%',
-                    left: '10%',
-                    width: '600px',
-                    height: '600px',
-                    animationDuration: '25s',
-                }}
-            />
-            <div
-                className="mesh-orb mesh-orb-amber"
-                style={{
-                    bottom: '10%',
-                    right: '5%',
-                    width: '500px',
-                    height: '500px',
-                    animationDelay: '-8s',
-                    animationDuration: '20s',
-                }}
-            />
-            <div
-                className="mesh-orb mesh-orb-cyan"
-                style={{
-                    top: '40%',
-                    left: '50%',
-                    width: '400px',
-                    height: '400px',
-                    animationDelay: '-15s',
-                    animationDuration: '30s',
-                    opacity: 0.5,
-                }}
-            />
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+            <div className="absolute inset-0 bg-[var(--bg)]" />
+            <div className="soft-grid absolute inset-0 opacity-70" />
+            <div className="absolute -inset-x-16 -top-40 h-[38rem] bg-[radial-gradient(ellipse_at_50%_0%,rgba(125,211,252,0.18),transparent_58%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_44%,rgba(5,6,10,0.58)_100%)]" />
         </div>
     );
 }

@@ -1,42 +1,14 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
-import { motion, useMotionValue, useTransform, useInView } from 'framer-motion';
+
+import React from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { FileText, Github, Linkedin } from 'lucide-react';
-import MeshGradientBG from '@/components/ui/MeshGradientBG';
-
-const container = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.12, delayChildren: 0.2 },
-    },
-};
-
-const revealUp = {
-    hidden: { y: '100%' },
-    visible: {
-        y: '0%',
-        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-    },
-};
-
-const fade = {
-    hidden: { opacity: 0, y: 15 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: 'easeOut' },
-    },
-};
-
-const logoReveal = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] },
-    },
-};
+import Container from '@/components/ui/Container';
+import CTAButton from '@/components/ui/CTAButton';
+import GradientCard from '@/components/ui/GradientCard';
+import StatusPill from '@/components/ui/StatusPill';
+import { fadeUp, heroContainer, scaleIn } from '@/lib/animation';
 
 const focusAreas = [
     { label: 'Agentic AI', detail: 'LangGraph · CrewAI · MCP' },
@@ -52,94 +24,35 @@ const companies = [
 ];
 
 export default function Hero() {
-    const containerRef = useRef<HTMLElement>(null);
-    const isInView = useInView(containerRef, { once: true });
-
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-    const spotlightX = useTransform(mouseX, (v) => `${v}px`);
-    const spotlightY = useTransform(mouseY, (v) => `${v}px`);
-
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (!containerRef.current) return;
-            const rect = containerRef.current.getBoundingClientRect();
-            mouseX.set(e.clientX - rect.left);
-            mouseY.set(e.clientY - rect.top);
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [mouseX, mouseY]);
-
     return (
-        <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            <MeshGradientBG />
-            
-            {/* Mouse-following spotlight */}
-            <motion.div
-                className="pointer-events-none absolute inset-0 z-10 opacity-30"
-                style={{
-                    background: `radial-gradient(600px circle at ${spotlightX} ${spotlightY}, rgba(79, 139, 255, 0.15), transparent 40%)`,
-                }}
-            />
-
-            <div className="container mx-auto max-w-6xl px-6 relative z-20">
+        <section className="relative z-10 flex min-h-screen items-center overflow-hidden pb-14 pt-24 sm:pt-28 lg:pb-16">
+            <Container>
                 <motion.div
-                    variants={container}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+                    variants={heroContainer}
+                    initial={false}
+                    animate="show"
+                    className="grid items-center gap-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.75fr)] lg:gap-14"
                 >
-                    {/* Left — content */}
-                    <div className="space-y-6">
-                        {/* Name */}
-                        <div className="overflow-hidden">
-                            <motion.h1
-                                variants={revealUp}
-                                className="text-5xl sm:text-7xl md:text-8xl lg:text-[110px] font-display font-black tracking-tighter leading-[0.92] accent"
-                            >
-                                Anudeep Sri
-                            </motion.h1>
-                            <motion.h1
-                                variants={revealUp}
-                                className="text-5xl sm:text-7xl md:text-8xl lg:text-[110px] font-display font-black tracking-tighter leading-[0.92] accent"
-                            >
-                                Bathina
-                            </motion.h1>
-                        </div>
-
-                        {/* Status + Role line */}
-                        <motion.div variants={fade} className="flex items-center gap-3 mb-5">
-                            <span className="flex items-center gap-1.5">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                                </span>
-                                <span className="text-[11px] font-mono text-emerald-400/80">Available</span>
-                            </span>
-                            <span className="w-px h-3 bg-[var(--border)]" />
-                            <span className="text-sm font-mono text-[var(--text-3)] uppercase tracking-[0.12em]">
+                    <div>
+                        <motion.div variants={fadeUp} className="mb-5 flex flex-wrap items-center gap-3">
+                            <StatusPill>Available</StatusPill>
+                            <span className="text-xs font-medium uppercase text-[var(--text-3)] [letter-spacing:0]">
                                 AI Architect - 11 years in production
                             </span>
                         </motion.div>
 
-                        {/* Company strip */}
-                        <motion.div variants={fade} className="flex items-center gap-5 mb-5">
-                            {companies.map((co) => (
-                                <img
-                                    key={co.name}
-                                    src={co.logo}
-                                    alt={co.name}
-                                    className="h-4 opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all"
-                                />
-                            ))}
-                        </motion.div>
+                        <div className="overflow-hidden">
+                            <motion.h1
+                                variants={fadeUp}
+                                className="max-w-4xl font-display text-[clamp(3.3rem,7.4vw,6.7rem)] font-black leading-[0.94] text-[var(--text)] [letter-spacing:0]"
+                            >
+                                Anudeep Sri Bathina
+                            </motion.h1>
+                        </div>
 
-                        {/* Tagline paragraph with metrics */}
                         <motion.p
-                            variants={fade}
-                            className="text-lg md:text-xl text-[var(--text-2)] max-w-lg leading-relaxed mb-8"
+                            variants={fadeUp}
+                            className="mt-6 max-w-2xl text-lg leading-8 text-[var(--text-2)] md:text-xl md:leading-9"
                         >
                             I build AI systems that survive past the demo -
                             enterprise RAG serving 15K+ users at AT&T,
@@ -147,139 +60,119 @@ export default function Hero() {
                             and zero PII leaks in production.
                         </motion.p>
 
-                        {/* CTAs with proper hierarchy */}
-                        <motion.div
-                            variants={fade}
-                            className="flex flex-wrap items-center gap-3 mb-10"
-                        >
-                            {/* Primary — what a recruiter wants */}
-                            <a href="#projects" className="btn-primary">
-                                View projects
-                            </a>
-
-                            {/* Secondary — professional credibility */}
-                            <a
+                        <motion.div variants={fadeUp} className="mt-7 flex flex-wrap items-center gap-3">
+                            <CTAButton href="#projects">View projects</CTAButton>
+                            <CTAButton
                                 href="/resume/Anudeep-Sri-Bathina-Resume.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-secondary"
+                                external
+                                variant="secondary"
+                                icon={<FileText size={15} />}
                             >
-                                <FileText size={14} />
                                 Resume
-                            </a>
-
-                            {/* Tertiary — social links inline */}
-                            <div className="flex items-center gap-3 ml-2">
-                                <a 
-                                    href="https://github.com/anudeepsrib" 
-                                    target="_blank" 
+                            </CTAButton>
+                            <div className="flex items-center gap-2 pl-1">
+                                <a
+                                    href="https://github.com/anudeepsrib"
+                                    target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-[var(--text-3)] hover:text-[var(--text)] transition-colors" 
+                                    className="rounded-md p-2 text-[var(--text-3)] transition-colors hover:bg-white/[0.04] hover:text-[var(--text)]"
                                     aria-label="GitHub"
                                 >
-                                    <Github size={16} />
+                                    <Github size={17} />
                                 </a>
-                                <a 
-                                    href="https://www.linkedin.com/in/anudeepsri/" 
-                                    target="_blank" 
+                                <a
+                                    href="https://www.linkedin.com/in/anudeepsri/"
+                                    target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-[var(--text-3)] hover:text-[var(--text)] transition-colors" 
+                                    className="rounded-md p-2 text-[var(--text-3)] transition-colors hover:bg-white/[0.04] hover:text-[var(--text)]"
                                     aria-label="LinkedIn"
                                 >
-                                    <Linkedin size={16} />
+                                    <Linkedin size={17} />
                                 </a>
                             </div>
                         </motion.div>
 
-                        {/* Focus area pills with hover tooltips */}
-                        <motion.div variants={fade} className="flex flex-wrap gap-2">
+                        <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-2">
                             {focusAreas.map((area) => (
                                 <div key={area.label} className="group relative">
-                                    <span className="tech-pill cursor-default group-hover:border-[rgba(255,255,255,0.15)] transition-colors">
+                                    <span className="tech-pill cursor-default transition-colors group-hover:border-[rgba(125,211,252,0.24)] group-hover:text-[var(--text)]">
                                         {area.label}
                                     </span>
-                                    {/* Tooltip on hover */}
-                                    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 text-[10px] font-mono text-[var(--text-2)] bg-[var(--surface)] border border-[var(--border)] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30">
+                                    <span className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-[var(--border)] bg-[var(--surface-raised)] px-3 py-1.5 text-[10px] font-medium text-[var(--text-2)] opacity-0 shadow-premium transition-opacity group-hover:opacity-100">
                                         {area.detail}
                                     </span>
                                 </div>
                             ))}
                         </motion.div>
+
+                        <motion.div variants={fadeUp} className="mt-8 flex items-center gap-5">
+                            {companies.map((company) => (
+                                <Image
+                                    key={company.name}
+                                    src={company.logo}
+                                    alt={company.name}
+                                    width={92}
+                                    height={20}
+                                    className="max-h-5 max-w-[92px] object-contain opacity-45 grayscale invert transition-all hover:opacity-80 hover:grayscale-0"
+                                />
+                            ))}
+                        </motion.div>
                     </div>
 
-                    {/* Right — Proof card */}
-                    <motion.div
-                        variants={logoReveal}
-                        className="hidden lg:flex items-start justify-end pt-6"
-                    >
-                        <div className="relative w-64">
-                            {/* Ambient glow behind card */}
-                            <motion.div
-                                className="absolute -inset-8 rounded-3xl blur-[50px] pointer-events-none"
-                                style={{ background: 'radial-gradient(circle, rgba(79,139,255,0.25), transparent 70%)' }}
-                                animate={{ opacity: [0.2, 0.4, 0.2] }}
-                                transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
-                            />
-                            <div className="relative glass-card p-6 space-y-5">
-                                {/* Current role */}
+                    <motion.div variants={scaleIn} className="relative">
+                        <GradientCard featured className="p-5 sm:p-6 md:p-7">
+                            <div className="mb-6">
                                 <div>
-                                    <p className="text-[10px] font-mono text-[var(--text-3)] uppercase tracking-wider mb-1">Current</p>
-                                    <p className="text-sm font-display font-semibold text-[var(--text)]">AI Architect</p>
-                                    <p className="text-xs text-[var(--blue)]">AT&T</p>
-                                </div>
-
-                                {/* Key metrics */}
-                                <div className="grid grid-cols-2 gap-3">
-                                    <div>
-                                        <p className="text-xl font-display font-bold text-[var(--text)]">11<span className="text-[var(--blue)]">+</span></p>
-                                        <p className="text-[10px] font-mono text-[var(--text-3)]">Years in prod</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-xl font-display font-bold text-[var(--text)]">1K<span className="text-[var(--warm)]">+</span></p>
-                                        <p className="text-[10px] font-mono text-[var(--text-3)]">Mentored</p>
-                                    </div>
-                                </div>
-
-                                {/* Credibility markers */}
-                                <div className="pt-3 border-t border-[var(--border)] space-y-2">
-                                    <div className="flex items-center gap-2">
-                                        <span className="w-1 h-1 rounded-full bg-[var(--warm)]" />
-                                        <span className="text-[11px] text-[var(--text-2)]">Published - CRC Press</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="w-1 h-1 rounded-full bg-[var(--blue)]" />
-                                        <span className="text-[11px] text-[var(--text-2)]">Speaker - BSBI Berlin</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="w-1 h-1 rounded-full bg-[var(--blue)]" />
-                                        <span className="text-[11px] text-[var(--text-2)]">KaggleX Fellow - Google</span>
-                                    </div>
+                                    <p className="mb-2 text-[11px] font-medium uppercase text-[var(--text-3)] [letter-spacing:0]">
+                                        Current
+                                    </p>
+                                    <p className="text-xl font-semibold text-[var(--text)]">AI Architect</p>
+                                    <p className="mt-1 text-sm text-[var(--accent)]">AT&T</p>
                                 </div>
                             </div>
+
+                            <div className="grid grid-cols-2 gap-3">
+                                <div className="rounded-lg border border-[var(--border)] bg-black/20 p-4">
+                                    <p className="font-display text-3xl font-bold leading-none text-[var(--text)] [letter-spacing:0]">
+                                        11<span className="text-[var(--accent)]">+</span>
+                                    </p>
+                                    <p className="mt-2 text-xs text-[var(--text-3)]">Years in prod</p>
+                                </div>
+                                <div className="rounded-lg border border-[var(--border)] bg-black/20 p-4">
+                                    <p className="font-display text-3xl font-bold leading-none text-[var(--text)] [letter-spacing:0]">
+                                        1K<span className="text-[var(--accent)]">+</span>
+                                    </p>
+                                    <p className="mt-2 text-xs text-[var(--text-3)]">Mentored</p>
+                                </div>
+                            </div>
+
+                            <div className="mt-6 space-y-3 border-t border-[var(--border)] pt-5">
+                                {[
+                                    'Published - CRC Press',
+                                    'Speaker - BSBI Berlin',
+                                    'KaggleX Fellow - Google',
+                                ].map((item) => (
+                                    <div key={item} className="flex items-center gap-3">
+                                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_18px_rgba(125,211,252,0.8)]" />
+                                        <span className="text-sm text-[var(--text-2)]">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </GradientCard>
+
+                        <div className="mt-3 grid grid-cols-2 gap-3">
+                            <GradientCard className="p-4">
+                                <p className="text-2xl font-bold leading-none text-[var(--text)]">15K+</p>
+                                <p className="mt-2 text-xs text-[var(--text-3)]">Enterprise users</p>
+                            </GradientCard>
+                            <GradientCard className="p-4">
+                                <p className="text-2xl font-bold leading-none text-[var(--text)]">&lt;2.5s</p>
+                                <p className="mt-2 text-xs text-[var(--text-3)]">p95 latency</p>
+                            </GradientCard>
                         </div>
                     </motion.div>
                 </motion.div>
-
-                {/* Centered scroll cue with animated chevron */}
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.3 }}
-                    transition={{ delay: 2, duration: 0.8 }}
-                >
-                    <span className="text-[11px] font-mono text-[var(--text-3)] uppercase tracking-[0.15em]">
-                        Scroll
-                    </span>
-                    <motion.div
-                        animate={{ y: [0, 6, 0] }}
-                        transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}
-                    >
-                        <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-                            <path d="M1 1L8 8L15 1" stroke="var(--text-3)" strokeWidth="1.5" strokeLinecap="round" />
-                        </svg>
-                    </motion.div>
-                </motion.div>
-            </div>
+            </Container>
         </section>
     );
 }

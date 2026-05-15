@@ -21,17 +21,24 @@
    ------------------------------------------------ */
 
 :root {
-  --bg: #0a0a0f;
-  --surface: #111118;
-  --surface-raised: #18181f;
-  --border: rgba(255, 255, 255, 0.07);
-  --text: #e8e8ec;
-  --text-2: #83838f;
-  --text-3: #6b6b7a;
-  --blue: #91C7FF;
-  --accent-1: #91C7FF;
-  --accent-2: #E8A634;
-  --warm: #E8A634;
+  --bg: #05060a;
+  --bg-secondary: #090b12;
+  --surface: rgba(13, 16, 25, 0.78);
+  --surface-raised: rgba(18, 23, 35, 0.9);
+  --surface-glass: rgba(255, 255, 255, 0.045);
+  --border: rgba(255, 255, 255, 0.085);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: #f4f7fb;
+  --text-2: #a9b2c3;
+  --text-3: #6f788a;
+  --muted: #363d4d;
+  --blue: #7dd3fc;
+  --accent: #7dd3fc;
+  --accent-1: #7dd3fc;
+  --accent-2: #a7f3d0;
+  --warm: #f5c46b;
+  --glow: rgba(125, 211, 252, 0.24);
+  --shadow-card: 0 24px 80px rgba(0, 0, 0, 0.34);
   --font-display: 'Satoshi', system-ui, sans-serif;
   --font-body: 'Satoshi', system-ui, sans-serif;
   --font-heading: 'Cabinet Grotesk', system-ui, sans-serif;
@@ -52,7 +59,10 @@
   }
 
   body {
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 50% -20%, rgba(125, 211, 252, 0.11), transparent 34rem),
+      radial-gradient(circle at 100% 10%, rgba(167, 243, 208, 0.06), transparent 28rem),
+      var(--bg);
     color: var(--text);
     font-family: var(--font-body);
     font-size: 1rem;
@@ -78,7 +88,7 @@
 
   h1, h2, h3 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
     line-height: 1.1;
     color: var(--text);
   }
@@ -94,17 +104,23 @@
 
 @layer components {
 
-  /* Card — simple elevated surface, no blur circus */
+  /* Card */
   .glass-card {
-    background: var(--surface);
+    position: relative;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.022)),
+      var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    border-radius: 8px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .glass-card:hover {
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(125, 211, 252, 0.22);
     background: var(--surface-raised);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42), 0 0 48px rgba(125, 211, 252, 0.055);
   }
 
   /* No ::before highlight stripe. Real cards don't need that. */
@@ -112,7 +128,7 @@
   /* Gradient text — use it once or twice, not everywhere */
   /* Use sparingly — only hero name accent */
   .gradient-text {
-    background: linear-gradient(135deg, var(--blue) 0%, #7AA8FF 50%, var(--warm) 100%);
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent) 58%, #d8f7ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -123,55 +139,65 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.625rem 1.5rem;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.15rem;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 650;
     font-family: var(--font-body);
-    background: var(--text);
-    color: var(--bg);
-    border: none;
+    background: linear-gradient(180deg, #f8fbff 0%, #cfeeff 100%);
+    color: #041018;
+    border: 1px solid rgba(255, 255, 255, 0.42);
     border-radius: 8px;
     cursor: pointer;
-    transition: opacity 0.15s ease;
+    box-shadow: 0 16px 50px rgba(125, 211, 252, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
   }
-  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 58px rgba(125, 211, 252, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  }
 
   .btn-secondary {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.625rem 1.5rem;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.15rem;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     font-family: var(--font-body);
-    background: transparent;
+    background: rgba(255, 255, 255, 0.035);
     color: var(--text);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--border-strong);
     border-radius: 8px;
     cursor: pointer;
-    transition: border-color 0.15s ease;
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   }
-  .btn-secondary:hover { border-color: rgba(255, 255, 255, 0.35); }
+  .btn-secondary:hover {
+    transform: translateY(-1px);
+    border-color: rgba(125, 211, 252, 0.32);
+    background: rgba(125, 211, 252, 0.055);
+  }
 
   /* Section label — small, quiet */
   .section-number {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-3);
-    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0;
     margin-bottom: 1rem;
     text-transform: uppercase;
   }
 
   /* Tag / pill — neutral by default, accent is opt-in */
   .tech-pill {
-    padding: 0.25rem 0.625rem;
-    font-size: 0.75rem;
+    padding: 0.28rem 0.58rem;
+    font-size: 0.72rem;
     font-family: var(--font-mono);
-    color: var(--text-2);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: rgba(229, 242, 255, 0.76);
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.075);
     border-radius: 6px;
     line-height: 1.5;
   }
@@ -187,7 +213,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.025;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -196,7 +222,30 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.35) 100%);
+  background: radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.52) 100%);
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), transparent 82%);
+}
+
+.premium-section {
+  position: relative;
+  padding-block: clamp(5.5rem, 10vw, 9rem);
+}
+
+.section-divider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(72rem, calc(100% - 3rem));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
 }
 
 /* Mesh blobs — very subtle, not a rave */
@@ -226,6 +275,12 @@
   0%   { transform: translate(0, 0) scale(1); }
   50%  { transform: translate(25px, -20px) scale(1.05); }
   100% { transform: translate(-15px, 15px) scale(0.95); }
+}
+
+@keyframes gradient-drift {
+  0% { transform: translate3d(-1.5%, -1%, 0) scale(1); opacity: 0.76; }
+  50% { transform: translate3d(1.5%, 1%, 0) scale(1.03); opacity: 0.94; }
+  100% { transform: translate3d(-1%, 1.4%, 0) scale(1.01); opacity: 0.8; }
 }
 
 @keyframes marquee {

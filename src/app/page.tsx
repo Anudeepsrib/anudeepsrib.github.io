@@ -8,10 +8,12 @@ import Impact from '@/components/Impact';
 import Authorship from '@/components/Authorship';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import AnimatedBackground from '@/components/ui/AnimatedBackground';
 
 export default function Home() {
     return (
-        <main className="min-h-screen">
+        <main className="relative min-h-screen overflow-hidden">
+            <AnimatedBackground />
             <Navbar />
             <Hero />
             <Currently />

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
-import Preloader from '@/components/Preloader';
 import resumeData from '@/data/resumeData.json';
 
 const jetbrainsMono = JetBrains_Mono({
@@ -118,7 +117,6 @@ export default function RootLayout({
                 suppressHydrationWarning
             >
                 <SmoothScroll />
-                <Preloader />
                 <div className="grain-overlay" />
                 <div className="vignette" />
                 <div className="relative min-h-screen flex flex-col">
