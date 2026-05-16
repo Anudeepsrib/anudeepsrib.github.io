@@ -57,9 +57,18 @@ const config: Config = {
           "100%": { opacity: "1" },
         },
         "gradient-drift": {
-          "0%": { transform: "translate3d(-1.5%, -1%, 0) scale(1)", opacity: "0.76" },
-          "50%": { transform: "translate3d(1.5%, 1%, 0) scale(1.03)", opacity: "0.94" },
-          "100%": { transform: "translate3d(-1%, 1.4%, 0) scale(1.01)", opacity: "0.8" },
+          "0%": {
+            transform: "translate3d(-1.5%, -1%, 0) scale(1)",
+            opacity: "0.76",
+          },
+          "50%": {
+            transform: "translate3d(1.5%, 1%, 0) scale(1.03)",
+            opacity: "0.94",
+          },
+          "100%": {
+            transform: "translate3d(-1%, 1.4%, 0) scale(1.01)",
+            opacity: "0.8",
+          },
         },
       },
       animation: {

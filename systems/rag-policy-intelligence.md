@@ -59,34 +59,38 @@ flowchart TD
 ## Key design decisions & trade-offs
 
 ### Hybrid rerank (BM25 + semantic)
+
 - **Decision:** Combine keyword BM25 with vector similarity before reranking.
 - **Why:** Policy documents use exact terminology; pure semantic search missed regulatory clauses.
 - **Trade-off:** Added ~80ms latency but reduced “no result” cases by 34%.
 
 ### Tenant-scoped embeddings
+
 - **Decision:** Generate separate embedding spaces per tenant with isolated index partitions.
 - **Why:** Prevent cross-tenant data leakage and allow per-tenant fine-tuning.
 - **Trade-off:** Increased storage by ~2.3x and management complexity.
 
 ### Aggressive PII redaction at indexing
+
 - **Decision:** Run PII detection and redaction before document chunking.
 - **Why:** Safer than runtime-only redaction; reduces inference-time failures.
 - **Trade-off:** Some legitimate terms (e.g., employee IDs in procedures) are masked, requiring manual allow-lists.
 
 ### LLM choice: GPT-4o-mini
+
 - **Decision:** Use GPT-4o-mini instead of GPT-4o for generation.
 - **Why:** Acceptable quality for policy Q&A at 1/10th the cost.
 - **Trade-off:** Slightly lower reasoning depth on edge cases; mitigated by few-shot prompts.
 
 ## Failure modes & mitigations
 
-| Failure mode | Detection | Mitigation |
-|--------------|------------|-------------|
-| Retrieval misses key clause | Low citation count OR low relevance score | Fallback to broader search + suggest manual review |
-| PII redaction over-masks | User feedback “answer too generic” | Allow-list per tenant + audit redaction decisions |
-| LLM hallucinates citation | Citation validation post-generation | Reject response if citation IDs not found in index |
-| High latency during peak | p95 > 2.5s alert | Auto-scale search partitions; cache frequent queries |
-| Tenant bleed | Cross-tenant access in logs | Monthly audit + automated isolation tests |
+| Failure mode                | Detection                                 | Mitigation                                           |
+| --------------------------- | ----------------------------------------- | ---------------------------------------------------- |
+| Retrieval misses key clause | Low citation count OR low relevance score | Fallback to broader search + suggest manual review   |
+| PII redaction over-masks    | User feedback “answer too generic”        | Allow-list per tenant + audit redaction decisions    |
+| LLM hallucinates citation   | Citation validation post-generation       | Reject response if citation IDs not found in index   |
+| High latency during peak    | p95 > 2.5s alert                          | Auto-scale search partitions; cache frequent queries |
+| Tenant bleed                | Cross-tenant access in logs               | Monthly audit + automated isolation tests            |
 
 ## Technologies used and why
 

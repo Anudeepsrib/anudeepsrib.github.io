@@ -1,5 +1,5 @@
-import FloatingNav from '@/components/ui/FloatingNav';
+import FloatingNav from "@/components/ui/FloatingNav";
 
 export default function Navbar() {
-    return <FloatingNav />;
+  return <FloatingNav />;
 }

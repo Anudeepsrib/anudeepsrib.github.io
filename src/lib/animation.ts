@@ -52,6 +52,6 @@ export const simpleFloat = {
   animate: {
     y: [0, -6, 0],
     x: [0, 3, 0],
-    transition: { duration: 14, repeat: Infinity, ease: 'easeInOut' },
+    transition: { duration: 14, repeat: Infinity, ease: "easeInOut" },
   },
 };

@@ -1,113 +1,78 @@
-smart-portfolio/
-├── .env.local
+# Project Structure
+
+This repository is a static Next.js portfolio. Generated folders such as `.next/`, `out/`, and `node_modules/` are intentionally ignored.
+
+```text
+anudeepsrib.github.io/
+├── .github/
+│   └── workflows/
+│       └── nextjs.yml
+├── notes/
+│   ├── eval-beyond-accuracy.md
+│   ├── rag-failure-patterns.md
+│   └── why-genai-demos-fail.md
+├── public/
+│   ├── assets/
+│   │   ├── companies/
+│   │   │   ├── att.png
+│   │   │   ├── capgemini.png
+│   │   │   ├── cognizant.png
+│   │   │   └── gaininsights.png
+│   │   └── logo.png
+│   ├── fonts/
+│   ├── resume/
+│   │   └── Anudeep-Sri-Bathina-Resume.pdf
+│   ├── CNAME
+│   ├── favicon.svg
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── app/
+│   │   ├── blog/
+│   │   ├── case-studies/
+│   │   ├── impact/
+│   │   ├── journey/
+│   │   ├── mentorship/
+│   │   ├── notes/
+│   │   ├── recognitions/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── ui/
+│   │   └── section components
+│   ├── data/
+│   │   ├── AdditionalData.json
+│   │   ├── resumeData.json
+│   │   └── skills.ts
+│   └── lib/
+│       ├── animation.ts
+│       ├── content.ts
+│       └── utils.ts
+├── systems/
+│   ├── llm-eval-harness.md
+│   └── rag-policy-intelligence.md
+├── .env.example
 ├── .eslintrc.json
-├── .git/
 ├── .gitignore
-├── .next/
-├── LICENSE
-├── README.md
-├── next-env.d.ts
+├── .nvmrc
+├── AUDIT_REPORT.md
 ├── next.config.mjs
-├── node_modules/
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.js
 ├── prettier.config.js
-├── public/
-│   ├── icons/
-│   │   └── tech-icons.svg
-│   ├── images/
-│   │   ├── building-ai-agents-nextjs-langchain.png
-│   │   ├── complete_openai_api_guide.png
-│   │   ├── laravel-react-crash-course.png
-│   │   ├── mastering-react-key-concepts-tips-beginners-2025.png
-│   │   └── python-playground-generative-ai-tutorial.png
-│   ├── next.svg
-│   └── vercel.svg
-├── posts/
-│   ├── building-ai-agents-nextjs-langchain.md
-│   ├── complete_openai_api_guide.md
-│   ├── laravel-react-crash-course.md
-│   ├── mastering-react-key-concepts-tips-beginners-2025.md
-│   └── python-playground-generative-ai-tutorial.md
-├── scripts/
-│   └── generate.ts
-├── src/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── chat/route.ts
-│   │   │   ├── github/insights/route.ts
-│   │   │   └── validate-stack/route.ts
-│   │   ├── blog/
-│   │   │   ├── [id]/page.tsx
-│   │   │   └── page.tsx
-│   │   ├── projects/page.tsx
-│   │   ├── tech-stack-architect/page.tsx
-│   │   ├── favicon-32x32.png
-│   │   ├── favicon.ico
-│   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   ├── assets/
-│   │   └── Ahmed.jpeg
-│   ├── components/
-│   │   ├── AIChatBox.tsx
-│   │   ├── AIChatButton.tsx
-│   │   ├── AboutMe.tsx
-│   │   ├── FeaturedProjects.tsx
-│   │   ├── Footer.tsx
-│   │   ├── GitHubStats.tsx
-│   │   ├── Hobbies.tsx
-│   │   ├── Languages.tsx
-│   │   ├── LatestPosts.tsx
-│   │   ├── MarkdownContent.tsx
-│   │   ├── Navbar.tsx
-│   │   ├── ProjectCard.tsx
-│   │   ├── ProjectsGrid.tsx
-│   │   ├── TableOfContents.tsx
-│   │   ├── Technologies.tsx
-│   │   ├── ThemeProvider.tsx
-│   │   ├── ThemeToggle.tsx
-│   │   ├── Timeline.tsx
-│   │   ├── tech-stack-architect/
-│   │   │   ├── StackBuilder.tsx
-│   │   │   ├── TechInfo.tsx
-│   │   │   ├── TechNode.tsx
-│   │   │   ├── aiValidation.ts
-│   │   │   ├── compatibilityUtils.ts
-│   │   │   ├── components/
-│   │   │   │   ├── FlowArea.tsx
-│   │   │   │   ├── FlowControls.tsx
-│   │   │   │   ├── MainFlow.tsx
-│   │   │   │   ├── SaveStackDialog.tsx
-│   │   │   │   ├── ShortcutsHelp.tsx
-│   │   │   │   ├── Sidebar.tsx
-│   │   │   │   ├── TemplateModal.tsx
-│   │   │   │   └── ValidationModal.tsx
-│   │   │   ├── historyManager.ts
-│   │   │   ├── hooks/
-│   │   │   │   ├── useStackExport.ts
-│   │   │   │   ├── useStackState.ts
-│   │   │   │   └── useStackValidation.ts
-│   │   │   ├── stackTemplates.ts
-│   │   │   ├── stackUtils.ts
-│   │   │   ├── techData.ts
-│   │   │   ├── techDataFetcher.ts
-│   │   │   └── utils.ts
-│   │   └── ui/
-│   │       ├── button.tsx
-│   │       ├── dialog.tsx
-│   │       ├── input.tsx
-│   │       └── label.tsx
-│   ├── data/
-│   │   ├── resumeDtata.json
-│   │   └── skills.ts
-│   ├── lib/
-│   │   ├── github.ts
-│   │   ├── supabase.ts
-│   │   └── utils.ts
-│   └── react-syntax-highlighter.d.ts
+├── README.md
+├── SECURITY.md
 ├── tailwind.config.ts
 ├── tsconfig.json
-├── utils/
-│   └── markdown.ts
+└── vercel.json
+```
+
+## Runtime Notes
+
+- `src/lib/content.ts` is server-only build-time content loading for markdown files.
+- `posts/` is currently empty because old copied template posts were removed. Add a route under `src/app/blog/[slug]/` again when authored posts are reintroduced.
+- `notes/` and `systems/` provide the current public markdown content.
+- The app uses `output: "export"` and does not include API routes.
