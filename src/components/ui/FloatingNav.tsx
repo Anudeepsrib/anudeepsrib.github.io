@@ -20,8 +20,9 @@ const links = [
 export default function FloatingNav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState({ pathname: "", open: false });
   const reduceMotion = useReducedMotion();
+  const open = mobileMenu.pathname === pathname && mobileMenu.open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -30,9 +31,12 @@ export default function FloatingNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  const closeMenu = () => setMobileMenu({ pathname, open: false });
+  const toggleMenu = () =>
+    setMobileMenu((state) => ({
+      pathname,
+      open: state.pathname === pathname ? !state.open : true,
+    }));
 
   return (
     <>
@@ -53,6 +57,7 @@ export default function FloatingNav() {
         >
           <Link
             href="/"
+            onClick={closeMenu}
             className="flex items-center gap-2.5 rounded-md outline-none transition-opacity hover:opacity-80"
           >
             <Image
@@ -108,7 +113,7 @@ export default function FloatingNav() {
 
           <button
             className="rounded-md p-2 text-[var(--text-2)] transition-colors hover:bg-white/[0.045] md:hidden"
-            onClick={() => setOpen((value) => !value)}
+            onClick={toggleMenu}
             aria-label={open ? "Close" : "Menu"}
           >
             {open ? <X size={18} /> : <Menu size={18} />}
@@ -129,6 +134,7 @@ export default function FloatingNav() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={closeMenu}
                     className={cn(
                       "rounded-md px-3 py-3 text-sm transition-colors",
                       pathname === link.href
@@ -144,6 +150,7 @@ export default function FloatingNav() {
                     href="https://github.com/anudeepsrib"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={closeMenu}
                     className="flex flex-1 items-center gap-2 rounded-md px-3 py-2 text-sm text-[var(--text-3)] transition-colors hover:bg-white/[0.035] hover:text-[var(--text)]"
                   >
                     <Github size={15} />
@@ -153,6 +160,7 @@ export default function FloatingNav() {
                     href="https://www.linkedin.com/in/anudeepsri/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={closeMenu}
                     className="flex flex-1 items-center gap-2 rounded-md px-3 py-2 text-sm text-[var(--text-3)] transition-colors hover:bg-white/[0.035] hover:text-[var(--text)]"
                   >
                     <Linkedin size={15} />
