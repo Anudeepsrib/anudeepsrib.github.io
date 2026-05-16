@@ -79,8 +79,8 @@ export default function Skills() {
       <Container>
         <MotionWrapper variants={fadeUp}>
           <SectionHeader
-            title="What I work with"
-            description="Tools and frameworks behind the systems I ship."
+            title="Production Toolkit"
+            description="The tools, patterns, and architectures I use to ship reliable AI systems at enterprise scale."
           />
         </MotionWrapper>
 

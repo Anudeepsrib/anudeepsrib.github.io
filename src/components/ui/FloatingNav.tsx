@@ -12,10 +12,9 @@ import { cn } from "@/lib/utils";
 const links = [
   { label: "Projects", href: "/#projects" },
   { label: "Experience", href: "/journey" },
-  { label: "Systems", href: "/case-studies" },
-  { label: "Mentorship", href: "/mentorship" },
-  { label: "Awards", href: "/recognitions" },
   { label: "Writing", href: "/blog" },
+  { label: "Mentorship", href: "/mentorship" },
+  { label: "Speaking", href: "/recognitions" },
 ];
 
 export default function FloatingNav() {

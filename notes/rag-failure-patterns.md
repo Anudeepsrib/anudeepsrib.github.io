@@ -90,4 +90,4 @@ Questions requiring reasoning across two documents return answers from only one.
 
 ## Takeaway
 
-RAG reliability is a systems problem. You need validation, tenant-awareness, recency, and multi-hop strategies—not just better vectors.
+RAG reliability is a systems problem. You need validation, tenant-awareness, recency, and multi-hop strategies - not just better vectors.

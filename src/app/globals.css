@@ -70,7 +70,7 @@
 }
 
 /* ------------------------------------------------
-   Tokens — keep this short, stop over-engineering
+   Tokens - keep this short, stop over-engineering
    ------------------------------------------------ */
 
 :root {
@@ -192,7 +192,7 @@
 }
 
 /* ------------------------------------------------
-   Component utilities — NOT a design system.
+   Component utilities - NOT a design system.
    Use sparingly. Most styles live in components.
    ------------------------------------------------ */
 
@@ -228,8 +228,8 @@
 
   /* No ::before highlight stripe. Real cards don't need that. */
 
-  /* Gradient text — use it once or twice, not everywhere */
-  /* Use sparingly — only hero name accent */
+  /* Gradient text - use it once or twice, not everywhere */
+  /* Use sparingly - only hero name accent */
   .gradient-text {
     background: linear-gradient(
       135deg,
@@ -242,7 +242,7 @@
     background-clip: text;
   }
 
-  /* Buttons — solid and understated */
+  /* Buttons - solid and understated */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -297,7 +297,7 @@
     background: rgba(125, 211, 252, 0.055);
   }
 
-  /* Section label — small, quiet */
+  /* Section label - small, quiet */
   .section-number {
     display: block;
     font-family: var(--font-mono);
@@ -308,7 +308,7 @@
     text-transform: uppercase;
   }
 
-  /* Tag / pill — neutral by default, accent is opt-in */
+  /* Tag / pill - neutral by default, accent is opt-in */
   .tech-pill {
     padding: 0.28rem 0.58rem;
     font-size: 0.72rem;
@@ -374,7 +374,7 @@
   );
 }
 
-/* Mesh blobs — very subtle, not a rave */
+/* Mesh blobs - very subtle, not a rave */
 .mesh-orb {
   position: absolute;
   border-radius: 50%;
@@ -393,7 +393,7 @@
 }
 
 /* ------------------------------------------------
-   Animations — minimal set
+   Animations - minimal set
    ------------------------------------------------ */
 
 @keyframes drift {

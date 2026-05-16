@@ -14,7 +14,6 @@ import {
 import Container from "@/components/ui/Container";
 import CTAButton from "@/components/ui/CTAButton";
 import GradientCard from "@/components/ui/GradientCard";
-import StatusPill from "@/components/ui/StatusPill";
 import { fadeUp, heroContainer, scaleIn } from "@/lib/animation";
 
 const focusAreas = [
@@ -50,7 +49,7 @@ const recruiterSignals = [
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex min-h-screen items-center overflow-hidden pb-14 pt-24 sm:pt-28 lg:pb-16">
+    <section className="relative z-10 flex min-h-screen items-center overflow-hidden pb-10 pt-20 sm:pt-24 lg:pb-12">
       <Container>
         <motion.div
           variants={heroContainer}
@@ -59,18 +58,7 @@ export default function Hero() {
           className="grid items-center gap-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.75fr)] lg:gap-14"
         >
           <div>
-            <motion.div
-              variants={fadeUp}
-              className="mb-5 flex flex-wrap items-center gap-3"
-            >
-              <StatusPill>Available</StatusPill>
-              <span className="text-xs font-medium uppercase text-[var(--text-3)] [letter-spacing:0]">
-                AI Architect — 11 years in production
-              </span>
-              <span className="rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.5px] text-[var(--accent)]">
-                Open to Staff AI Engineer / Platform roles (L5–L6)
-              </span>
-            </motion.div>
+
 
             <div className="overflow-hidden">
               <motion.h1
@@ -83,24 +71,24 @@ export default function Hero() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-6 max-w-2xl text-lg leading-8 text-[var(--text-2)] md:text-xl md:leading-9"
+              className="mt-4 max-w-2xl text-lg leading-8 text-[var(--text-2)] md:text-xl md:leading-9"
             >
-              I design GenAI, RAG, and agentic systems with the parts that make
-              production real: retrieval boundaries, evaluation gates,
-              observability, latency budgets, and privacy-aware controls.
+              I build production-grade GenAI systems that survive real traffic,
+              real constraints, and real scrutiny - with explicit retrieval
+              boundaries, rigorous evaluation, and measurable reliability.
             </motion.p>
 
             <motion.div
               variants={fadeUp}
-              className="mt-7 flex flex-wrap items-center gap-3"
+              className="mt-5 flex flex-wrap items-center gap-3"
             >
               <CTAButton href="#projects">View projects</CTAButton>
               <CTAButton
-                href="/case-studies"
+                href="https://github.com/Anudeepsrib?tab=repositories"
                 variant="secondary"
                 icon={<Network size={15} />}
               >
-                System designs
+                Open source
               </CTAButton>
               <CTAButton
                 href="/resume/Anudeep-Sri-Bathina-Resume.pdf"
@@ -240,14 +228,16 @@ export default function Hero() {
                   15K+
                 </p>
                 <p className="mt-2 text-xs text-[var(--text-3)]">
-                  Enterprise users
+                  Enterprise GenAI users
                 </p>
               </GradientCard>
               <GradientCard className="p-4">
                 <p className="text-2xl font-bold leading-none text-[var(--text)]">
-                  &lt;2.5s
+                  2.4s
                 </p>
-                <p className="mt-2 text-xs text-[var(--text-3)]">p95 latency</p>
+                <p className="mt-2 text-xs text-[var(--text-3)]">
+                  p95 RAG @ $0.42/1K
+                </p>
               </GradientCard>
             </div>
           </motion.div>

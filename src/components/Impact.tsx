@@ -12,8 +12,8 @@ import { fadeUp, scaleIn, stagger } from "@/lib/animation";
 const stats = [
   { value: 11, suffix: "+", label: "Years building AI" },
   { value: 1000, suffix: "+", label: "Learners reached" },
-  { value: 500, suffix: "+", label: "Teaching hours" },
-  { value: 20, suffix: "+", label: "Countries" },
+  { value: 2.3, suffix: "M+", label: "Business value delivered" },
+  { value: 20, suffix: "+", label: "Countries reached" },
 ];
 
 const testimonials = [

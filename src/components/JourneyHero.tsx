@@ -17,7 +17,7 @@ export default function JourneyHero() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          Career timeline
+          Path to Impact
         </motion.h1>
         <motion.p
           className="max-w-md text-[15px] text-[var(--text-2)]"
@@ -25,8 +25,8 @@ export default function JourneyHero() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.15 }}
         >
-          11+ years across 4 organizations, from research to enterprise-scale
-          AI.
+          From foundational learning to leading enterprise AI - a decade of
+          building production-grade systems across Fortune 500 companies.
         </motion.p>
       </div>
     </section>

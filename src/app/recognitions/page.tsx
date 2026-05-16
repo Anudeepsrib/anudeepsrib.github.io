@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Recognitions from "@/components/Recognitions";
 
 export const metadata = {
-  title: "Recognitions | Anudeep Sri Bathina",
+  title: "Speaking | Anudeep Sri Bathina",
   description:
     "Speaking engagements, CRC Press publications, KaggleX fellowship, and industry recognition. Invited speaker at BSBI, DeepLearning.AI, and 18+ guest lectures.",
 };

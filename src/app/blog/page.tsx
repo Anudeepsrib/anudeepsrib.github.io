@@ -34,21 +34,21 @@ const featuredEssays = [
     title: "LLM Observability: The Engineering Imperative for Production AI Systems",
     date: "Feb 2026",
     url: "https://anudeepsri.medium.com/llm-observability-e068c6d98925",
-    hook: "Traditional monitoring breaks for stochastic LLM and agentic systems. The four pillars — tracing for multi-hop RAG/agent flows, LLM-as-Judge + RAGAS evals, drift detection, and token economics — with tooling patterns that power production gates like the LLM Evaluation Harness.",
+    hook: "Traditional monitoring breaks for stochastic LLM and agentic systems. The four pillars - tracing for multi-hop RAG/agent flows, LLM-as-Judge + RAGAS evals, drift detection, and token economics - with tooling patterns that power production gates like the LLM Evaluation Harness.",
     tags: ["Observability", "Evals", "Agentic", "Production"],
   },
   {
     title: "LangSmith vs Arize vs Braintrust: The Definitive 2026 Comparison",
     date: "Mar 2026",
     url: "https://anudeepsri.medium.com/langsmith-vs-arize-vs-braintrust-e397e4728a76",
-    hook: "Practical decision framework for RAG and multi-agent production workloads. When to pick LangSmith for deep LangGraph tracing, Arize for enterprise drift & compliance, or Braintrust for eval-first CI — the exact trade-offs behind the open-sourced eval reference repos.",
+    hook: "Practical decision framework for RAG and multi-agent production workloads. When to pick LangSmith for deep LangGraph tracing, Arize for enterprise drift & compliance, or Braintrust for eval-first CI - the exact trade-offs behind the open-sourced eval reference repos.",
     tags: ["Tooling", "Evals", "RAG", "CI/CD"],
   },
   {
     title: "A Technical Deep Dive into Databricks AI Ecosystem",
     date: "Mar 2026",
     url: "https://anudeepsri.medium.com/a-technical-deep-dive-into-databricks-ai-ecosystem-26f032111ad4",
-    hook: "Mosaic AI, Vector Search for RAG, agent frameworks, evaluation tooling, and model serving at enterprise scale. How the patterns from ClinIQ, EvidenceIQ, and the RAG Policy Intelligence case study are actually operationalized in production.",
+    hook: "Mosaic AI, Vector Search for RAG, agent frameworks, evaluation tooling, and model serving at enterprise scale. How the patterns from ClinIQ, EvidenceIQ, and the other open-source reference repos are operationalized in real production environments.",
     tags: ["Databricks", "RAG", "Platform", "Enterprise"],
   },
   {
@@ -62,7 +62,7 @@ const featuredEssays = [
     title: "The LangChain Ecosystem",
     date: "Mar 2026",
     url: "https://anudeepsri.medium.com/the-langchain-ecosystem-6a167c4ae63f",
-    hook: "LangGraph orchestration, LangSmith tracing, and the full stack for traceable, evaluable RAG and agentic systems that ship. Directly complements the architecture decisions and trade-offs in the case studies.",
+    hook: "LangGraph orchestration, LangSmith tracing, and the full stack for traceable, evaluable RAG and agentic systems that ship. Directly complements the architecture decisions in the open-source reference implementations on GitHub.",
     tags: ["LangChain", "LangGraph", "Agents", "Observability"],
   },
 ];
@@ -83,7 +83,7 @@ export default async function BlogPage() {
             </h1>
             <p className="mx-auto max-w-3xl text-lg text-[var(--text-2)]">
               Technical essays on production LLM systems, RAG architectures,
-              observability, and agentic AI — plus in-depth field notes from
+              observability, and agentic AI - plus in-depth field notes from
               building at scale.
             </p>
           </div>
@@ -100,18 +100,20 @@ export default async function BlogPage() {
                 original field notes
               </p>
             </div>
-            <Link
-              href="/case-studies"
+            <a
+              href="https://github.com/Anudeepsrib?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group rounded-lg border border-[var(--border)] bg-white/[0.025] p-5 transition-colors hover:border-[rgba(125,211,252,0.28)]"
             >
               <Layers3 className="mb-4 text-[var(--accent-1)]" size={18} />
               <p className="text-base font-semibold text-[var(--text)]">
-                System design cases
+                Open source architectures
               </p>
               <p className="mt-1 text-sm text-[var(--text-3)]">
-                RAG and LLM evaluation trade-offs
+                Production RAG, evals &amp; agentic patterns on GitHub
               </p>
-            </Link>
+            </a>
             <a
               href="https://medium.com/@anudeepsri"
               target="_blank"
@@ -226,7 +228,7 @@ export default async function BlogPage() {
           </section>
         )}
 
-        {/* Featured Essays on Medium — Best of Writing */}
+        {/* Featured Essays on Medium - Best of Writing */}
         <ScrollReveal>
           <section className="mb-20">
             <div className="mb-8 flex items-end justify-between">

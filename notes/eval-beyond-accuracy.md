@@ -108,4 +108,4 @@ Whether the model follows explicit constraints (format, length, tone, tool usage
 
 ## Takeaway
 
-Production LLM systems need a dashboard, not a single accuracy score. Track calibration, refusal correctness, cost per correct answer, and controllability—and set automated gates for regressions.
+Production LLM systems need a dashboard, not a single accuracy score. Track calibration, refusal correctness, cost per correct answer, and controllability - and set automated gates for regressions.

@@ -11,38 +11,68 @@ const universityLectures = [
     title: "Classification Models in ML",
     venue: "IET MBCET",
     date: "Dec 2024",
+    description: "Hands-on session on supervised learning fundamentals.",
   },
   {
     title: "Recommendation Systems",
-    venue: "PVP Siddhartha",
+    venue: "PVP Siddhartha Institute",
     date: "Mar 2022",
+    description: "Technical session on building recommendation engines.",
   },
-  { title: "Innovation in AI", venue: "VIT Amaravati", date: "Mar 2022" },
-  { title: "Big Data Analytics FDP", venue: "VIT Vellore", date: "Apr 2021" },
-  { title: "Computer Vision & ML", venue: "VIT Vellore", date: "Mar 2020" },
-  { title: "Database Systems", venue: "VIT Chennai", date: "Oct 2017" },
+  {
+    title: "Innovation in AI",
+    venue: "VIT University, Amaravati",
+    date: "Mar 2022",
+    description: "Talk on emerging trends in Artificial Intelligence.",
+  },
+  {
+    title: "Big Data Analytics FDP",
+    venue: "VIT University, Vellore",
+    date: "Apr 2021",
+    description: "Faculty development program on big data tools.",
+  },
+  {
+    title: "Computer Vision & ML",
+    venue: "VIT University, Vellore",
+    date: "Mar 2020",
+    description: "Exploring intersection of hardware architecture and ML.",
+  },
+  {
+    title: "Database Systems",
+    venue: "VIT University, Chennai",
+    date: "Oct 2017",
+    description: "Guest lecture on modern database architectures.",
+  },
 ];
 
 const conferences = [
   {
-    title: "AI in Business: Cafe Scientifique",
-    venue: "BSBI, Berlin",
+    title: "AI in Business: Café Scientifique",
+    venue: "Berlin School of Business & Innovation",
+    location: "Berlin, Germany",
     date: "Jun 2021",
+    description: "Invited speaker/panelist for AI in business applications.",
   },
   {
     title: "Cloud Computing Conference",
-    venue: "Boussias, Greece",
+    venue: "Boussias Communications",
+    location: "Greece",
     date: "Mar 2021",
+    description: "International conference on cloud technologies at scale.",
   },
   {
     title: "Pie & AI: AI for Everyone",
-    venue: "DeepLearning.AI, Lahore",
+    venue: "DeepLearning.AI",
+    location: "Lahore (Virtual)",
     date: "Sep 2020",
+    description: "Community event fostering AI literacy and accessibility.",
   },
   {
     title: "AI Talk Show Panel",
-    venue: "Industry Consortium, Jaipur",
+    venue: "Industry Consortium",
+    location: "Jaipur, India",
     date: "Jun 2020",
+    description: "Panel discussion on the future of AI and its societal impact.",
   },
 ];
 
@@ -106,7 +136,7 @@ export default function Recognitions() {
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            Recognition
+            Speaking
           </motion.h1>
           <motion.p
             className="max-w-md text-[15px] text-[var(--text-2)]"
@@ -114,60 +144,95 @@ export default function Recognitions() {
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            Speaking, publications, and industry recognition.
+            Speaking engagements, publications, and industry recognition across
+            universities, conferences, and global AI communities.
           </motion.p>
         </div>
       </section>
 
-      {/* Lectures */}
+      {/* Stats */}
+      <div className="border-y border-[var(--border)] bg-[var(--bg-secondary)] py-8">
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-6 text-center md:grid-cols-5">
+          {[
+            { number: "18+", label: "Speaking Engagements" },
+            { number: "7+", label: "Countries Reached" },
+            { number: "2", label: "Publications" },
+            { number: "5+", label: "Universities" },
+            { number: "1000+", label: "Learners Impacted" },
+          ].map((stat, i) => (
+            <div key={i}>
+              <div className="font-display text-3xl font-semibold text-[var(--text)]">
+                {stat.number}
+              </div>
+              <div className="mt-1 text-xs tracking-widest text-[var(--text-3)]">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* University Lectures */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-4xl px-6">
-          <SectionHeading>University lectures</SectionHeading>
-          <StaggerContainer className="flex flex-col">
-            {universityLectures.map((l) => (
-              <motion.div
-                key={l.title}
-                variants={item}
-                className="flex items-baseline justify-between gap-4 border-b border-[var(--border)] py-3.5"
-              >
-                <div>
-                  <h3 className="font-display text-sm font-medium text-[var(--text)]">
-                    {l.title}
-                  </h3>
-                  <p className="text-[11px] text-[var(--text-3)]">{l.venue}</p>
+          <SectionHeading>University Lectures</SectionHeading>
+          <div className="grid gap-4 md:grid-cols-2">
+            {universityLectures.map((lecture, i) => (
+              <ScrollReveal key={i} delay={i * 0.03}>
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] p-5 transition-all hover:border-[var(--accent-1)]/30">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="font-display text-[15px] font-semibold text-[var(--text)]">
+                        {lecture.title}
+                      </h3>
+                      <p className="mt-0.5 text-xs text-[var(--text-3)]">{lecture.venue}</p>
+                    </div>
+                    <span className="font-mono text-[10px] text-[var(--text-3)]">
+                      {lecture.date}
+                    </span>
+                  </div>
+                  {lecture.description && (
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--text-2)]">
+                      {lecture.description}
+                    </p>
+                  )}
                 </div>
-                <span className="flex-shrink-0 font-mono text-[11px] text-[var(--text-3)]">
-                  {l.date}
-                </span>
-              </motion.div>
+              </ScrollReveal>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
-      {/* Conferences */}
+      {/* International Conferences */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-4xl px-6">
-          <SectionHeading>International conferences</SectionHeading>
-          <StaggerContainer className="flex flex-col">
-            {conferences.map((c) => (
-              <motion.div
-                key={c.title}
-                variants={item}
-                className="flex items-baseline justify-between gap-4 border-b border-[var(--border)] py-3.5"
-              >
-                <div>
-                  <h3 className="font-display text-sm font-medium text-[var(--text)]">
-                    {c.title}
-                  </h3>
-                  <p className="text-[11px] text-[var(--text-3)]">{c.venue}</p>
+          <SectionHeading>International Conferences</SectionHeading>
+          <div className="grid gap-4 md:grid-cols-2">
+            {conferences.map((conf, i) => (
+              <ScrollReveal key={i} delay={i * 0.03}>
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] p-5 transition-all hover:border-[var(--accent-1)]/30">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="font-display text-[15px] font-semibold text-[var(--text)]">
+                        {conf.title}
+                      </h3>
+                      <p className="mt-0.5 text-xs text-[var(--text-3)]">
+                        {conf.venue} · {conf.location}
+                      </p>
+                    </div>
+                    <span className="font-mono text-[10px] text-[var(--text-3)]">
+                      {conf.date}
+                    </span>
+                  </div>
+                  {conf.description && (
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--text-2)]">
+                      {conf.description}
+                    </p>
+                  )}
                 </div>
-                <span className="flex-shrink-0 font-mono text-[11px] text-[var(--text-3)]">
-                  {c.date}
-                </span>
-              </motion.div>
+              </ScrollReveal>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
@@ -206,10 +271,10 @@ export default function Recognitions() {
         </div>
       </section>
 
-      {/* Awards */}
+      {/* Awards & Fellowships */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-4xl px-6">
-          <SectionHeading>Awards</SectionHeading>
+          <SectionHeading>Awards &amp; Fellowships</SectionHeading>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
             {awards.map((award) => (
               <div key={award.title}>
@@ -224,6 +289,26 @@ export default function Recognitions() {
           </div>
         </div>
       </section>
+
+      {/* CTA */}
+      <div className="border-t border-[var(--border)] bg-[var(--bg-secondary)] py-16">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <h3 className="font-display text-2xl font-semibold text-[var(--text)]">
+            Invite Me to Speak
+          </h3>
+          <p className="mx-auto mt-3 max-w-md text-[var(--text-2)]">
+            Available for guest lectures, panels, workshops, and keynotes on
+            production AI systems, LLM architectures, and career development in
+            tech.
+          </p>
+          <a
+            href="mailto:anudeepSri108@gmail.com?subject=Speaking%20Invitation"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg border border-[var(--accent-1)]/30 bg-[var(--accent-1)]/10 px-6 py-3 text-sm font-medium text-[var(--accent-1)] transition-colors hover:bg-[var(--accent-1)]/20"
+          >
+            Get in Touch <ArrowUpRight size={16} />
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

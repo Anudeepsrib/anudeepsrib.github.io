@@ -41,7 +41,7 @@ export default function WhyWorkWithMe() {
                 and real deadlines.
               </p>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-[0.6fr_1fr] sm:items-end">
+              <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:items-end">
                 <div className="rounded-lg border border-[var(--border)] bg-black/20 p-5">
                   <div className="flex items-baseline gap-2">
                     <span className="text-5xl font-black leading-none text-[var(--text)] [letter-spacing:0]">
@@ -53,6 +53,17 @@ export default function WhyWorkWithMe() {
                   </div>
                   <p className="mt-3 text-sm leading-6 text-[var(--text-2)]">
                     years shipping production AI
+                  </p>
+                </div>
+
+                <div className="rounded-lg border border-[var(--border)] bg-black/20 p-5">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl font-black leading-none text-[var(--text)] [letter-spacing:0]">
+                      <AnimatedCounter target={8} />
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-[var(--text-2)]">
+                    engineers led across projects
                   </p>
                 </div>
 

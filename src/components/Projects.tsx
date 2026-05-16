@@ -15,7 +15,7 @@ const projects = [
   {
     name: "ClinIQ",
     description:
-      "Healthcare RAG reference implementation focused on scoped retrieval, clinical citations, and safer handling of sensitive text.",
+      "Enterprise Healthcare RAG reference implementation with scoped retrieval, clinical citations, and production-grade privacy controls.",
     tags: [
       "LangGraph",
       "LangChain",
@@ -26,17 +26,17 @@ const projects = [
     ],
     link: "https://github.com/Anudeepsrib/ClinIQ",
     hero: true,
-    metrics: "Healthcare RAG · citations · privacy controls",
+    metrics: "Healthcare RAG · citations · PII safety",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "Production Healthcare RAG with PII boundaries & auditability",
+    patternFor: "Production Healthcare RAG with department-scoped retrieval & PII boundaries",
     problem:
-      "Clinical and policy-heavy workflows need fast retrieval without blurring department boundaries or losing source traceability.",
+      "Clinical and policy-heavy workflows need fast, accurate retrieval without blurring department boundaries or exposing sensitive data.",
     architecture: [
       "Document ingestion layer for clinical guidelines and reference material",
       "Scoped vector stores to keep retrieval boundaries explicit",
       "LangGraph orchestration for multi-step retrieval and answer assembly",
       "PII/PHI redaction checks before sensitive text enters retrieval flows",
-      "Observability hooks for evaluation and citation review",
+      "LangSmith observability for evaluation and citation review",
     ],
     decisions: [
       "Favor explicit retrieval scopes over a single shared index",
@@ -44,15 +44,15 @@ const projects = [
       "Use graph orchestration where deterministic routing matters more than a single chain",
     ],
     results:
-      "Open-sourced as a reusable reference for teams building compliant RAG in regulated domains. Clone to explore the full scoped retrieval + citation + Presidio pipeline.",
+      "Open-sourced as a reusable reference for teams building compliant RAG in regulated domains. Full scoped retrieval + citation + Presidio pipeline ready to adapt.",
   },
   {
     name: "EvidenceIQ",
     description:
-      "Evidence-grounded research assistant pattern for retrieving, ranking, and explaining source-backed findings.",
+      "Evidence-grounded RAG pattern for retrieving, ranking, and explaining source-backed findings with strong citation guarantees.",
     tags: ["RAG", "Evaluation", "Citations", "Python", "LLM"],
     link: "https://github.com/Anudeepsrib/EvidenceIQ",
-    metrics: "evidence retrieval · source ranking · review workflow",
+    metrics: "evidence retrieval · source ranking · citations",
     openSourceCategory: "Open Source Reference Implementation",
     patternFor: "Evidence-grounded RAG with source ranking & review workflows",
     problem:
@@ -72,67 +72,16 @@ const projects = [
       "Open-sourced reference pattern for teams that need defensible, citation-first answers. Full retrieval + ranking + citation contract implementation ready to adapt.",
   },
   {
-    name: "Annapurna-AI",
-    description:
-      "Culture-aware AI meal planning concept for South Indian vegetarian cooking and wellness-oriented recommendations.",
-    tags: ["Next.js", "FastAPI", "Gemini", "LiteLLM", "SQLModel"],
-    link: "https://github.com/Anudeepsrib/Annapurna-AI",
-    metrics: "meal planning · multimodal input · model routing",
-    openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "Domain-specific agentic apps with model routing & cultural context",
-    problem:
-      "Generic meal planners often miss cultural context, dietary preferences, and practical grocery constraints.",
-    architecture: [
-      "Next.js frontend for planning workflows and recipe discovery",
-      "FastAPI service boundary for recommendation and user preference logic",
-      "Gemini multimodal path for recipe or ingredient understanding",
-      "LiteLLM abstraction for provider routing and cost control",
-      "Typed persistence layer for recipes, plans, and preferences",
-    ],
-    decisions: [
-      "Keep cultural preference modeling separate from generic nutrition rules",
-      "Use model routing so high-cost reasoning is reserved for harder tasks",
-      "Make food and wellness explanations evidence-grounded and reviewable",
-    ],
-    results:
-      "Open-sourced example of production-ready agentic product architecture with LiteLLM routing and typed boundaries. Adapt the multimodal + preference engine pattern for any vertical.",
-  },
-  {
-    name: "Decision-Support-System",
-    description:
-      "Decision intelligence project focused on ranking alternatives, explaining trade-offs, and supporting auditable recommendations.",
-    tags: ["Decision Intelligence", "Python", "Analytics", "Explainability"],
-    link: "https://github.com/Anudeepsrib/Decision-Support-System",
-    metrics: "ranking · trade-offs · explainability",
-    openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "Auditable decision intelligence with traceable trade-off explanations",
-    problem:
-      "Decision workflows need transparent scoring and defensible recommendations instead of opaque single-answer outputs.",
-    architecture: [
-      "Criteria modeling layer captures weights, constraints, and assumptions",
-      "Scoring pipeline ranks alternatives with traceable intermediate values",
-      "Explanation layer surfaces trade-offs and sensitivity to weight changes",
-      "Report-ready outputs support human review before action",
-    ],
-    decisions: [
-      "Keep scoring deterministic where possible",
-      "Expose assumptions and weights rather than hiding them inside a model response",
-      "Optimize for decision review, not automated autopilot",
-    ],
-    results:
-      "Open-sourced reference for explainable decision systems. Full scoring + sensitivity + human-review pipeline ready for enterprise decision platforms.",
-  },
-  {
     name: "InferIQ",
     description:
-      "Inference quality and evaluation concept for checking LLM outputs before they are trusted in workflows.",
+      "Production-grade LLM evaluation harness for checking output quality, safety, and regression before models reach users or CI/CD.",
     tags: ["LLM Evaluation", "Quality Gates", "Python", "Observability"],
     link: "https://github.com/Anudeepsrib/InferIQ",
-    metrics: "eval gates · output checks · observability",
+    metrics: "eval gates · output checks · regression detection",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "LLM output quality gates & regression checks for CI/CD and release",
+    patternFor: "LLM output quality gates & regression checks for production release",
     problem:
-      "Teams need repeatable checks for answer quality, safety, and regression before model output reaches users.",
+      "Teams need repeatable, multi-dimensional checks for answer quality, safety, and regression before model output reaches users.",
     architecture: [
       "Evaluation set design for representative and adversarial prompts",
       "Scoring layer separates correctness, safety, citation quality, and latency",
@@ -146,6 +95,58 @@ const projects = [
     ],
     results:
       "Open-sourced reference implementation for production LLM quality gates. Adapt the multi-dimensional scoring + regression detection for your inference pipeline or agentic system.",
+  },
+  {
+    name: "Code Migration Assistant",
+    description:
+      "Enterprise-grade, security-first code migration tool with AI-powered risk assessment, visual dependency planning, and compliance scanning.",
+    tags: ["Python", "AST", "NetworkX", "RAG", "OpenAI", "Security"],
+    link: "https://github.com/Anudeepsrib/code-migration-assistant",
+    metrics: "code migration · risk assessment · compliance",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Enterprise code migration with AI risk analysis and dependency visualization",
+    problem:
+      "Large-scale code migrations are high-risk, time-consuming, and prone to hidden dependency and security issues.",
+    architecture: [
+      "AST-based static analysis for deep code understanding",
+      "Graph-based dependency modeling using NetworkX",
+      "RAG-powered risk assessment and migration recommendation engine",
+      "Visual dependency explorer for planning and review",
+      "Compliance and security scanning layer",
+    ],
+    decisions: [
+      "Combine static analysis with LLM reasoning for higher accuracy",
+      "Prioritize visual tools so humans stay in the loop for high-risk changes",
+      "Build security and compliance checks as first-class citizens",
+    ],
+    results:
+      "Open-sourced enterprise reference for teams performing large-scale code migrations. Demonstrates practical combination of static analysis, graph modeling, and generative AI.",
+  },
+  {
+    name: "Annapurna-AI",
+    description:
+      "Culture-aware, India-first AI meal planner and grocery assistant for South Indian vegetarian cooking with evidence-grounded recommendations.",
+    tags: ["Next.js", "FastAPI", "Gemini", "LiteLLM", "SQLModel"],
+    link: "https://github.com/Anudeepsrib/Annapurna-AI",
+    metrics: "multimodal · model routing · cultural AI",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Domain-specific agentic applications with model routing & cultural context",
+    problem:
+      "Generic meal planners often miss cultural context, dietary preferences, and practical grocery constraints in regional cuisines.",
+    architecture: [
+      "Next.js frontend for planning workflows and recipe discovery",
+      "FastAPI service boundary for recommendation and user preference logic",
+      "Gemini multimodal path for recipe or ingredient understanding",
+      "LiteLLM abstraction for provider routing and cost control",
+      "Typed persistence layer for recipes, plans, and preferences",
+    ],
+    decisions: [
+      "Keep cultural preference modeling separate from generic nutrition rules",
+      "Use model routing so high-cost reasoning is reserved for harder tasks",
+      "Make food and wellness explanations evidence-grounded and reviewable",
+    ],
+    results:
+      "Open-sourced example of production-ready agentic product architecture with LiteLLM routing and typed boundaries. Adapt the multimodal + preference engine pattern for any vertical domain.",
   },
 ];
 
@@ -310,7 +311,7 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
                 variant="secondary"
                 icon={<ArrowUpRight size={15} />}
               >
-                View on GitHub — Clone &amp; adapt this pattern
+                View on GitHub - Clone &amp; adapt this pattern
               </CTAButton>
               <p className="mt-2 text-[10px] text-[var(--text-3)]">
                 Open source reference implementation • Production-grade patterns for your stack
@@ -335,8 +336,8 @@ export default function Projects() {
         <Container>
           <MotionWrapper variants={fadeUp}>
             <SectionHeader
-              title="Open source"
-              description="Systems I've built and open-sourced."
+              title="Open Source Reference Implementations"
+              description="Production patterns and architectures I've released for teams building dependable AI systems at scale."
             />
           </MotionWrapper>
 

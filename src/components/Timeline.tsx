@@ -16,8 +16,9 @@ const experiences = [
     role: "AI Architect",
     period: "2024 - Present",
     location: "United States",
+    logo: "/assets/companies/att.png",
     description:
-      "Architecting enterprise GenAI solutions and LLM systems. Leading development of Python-based parsers and automated interpretation models. API deployments with FastAPI and Azure Vector Search.",
+      "Architecting enterprise GenAI solutions and LLM systems serving 15K+ internal users. Built Python document parsers processing 50K+ pages/month at 97.2% accuracy. Deployed RAG pipelines via FastAPI + Azure AI Search with p95 latency of 2.4s.",
     active: true,
   },
   {
@@ -25,24 +26,27 @@ const experiences = [
     role: "Technical Lead",
     period: "2019 - 2021",
     location: "India",
+    logo: "/assets/companies/capgemini.png",
     description:
-      "Directed ML engineering teams to build data pipelines and predictive models. Recognized for high-impact delivery and technical leadership.",
+      "Led a team of 8 ML engineers. Delivered 12+ production data pipelines, reducing model training time by 65% through PySpark optimization. Increased model deployment frequency from quarterly to weekly. Achieved 94% accuracy in customer churn prediction, saving $2.3M in retention costs.",
   },
   {
     company: "GainInsights Solutions",
     role: "Big Data & ML Engineer",
     period: "2019",
     location: "India",
+    logo: "/assets/companies/gaininsights.png",
     description:
-      "Engineered scalable PySpark pipelines. Developed client-focused interfaces and optimized database queries for complex datasets.",
+      "Engineered scalable PySpark pipelines processing 10M+ records/day. Improved ETL performance by 78% and reduced job failures by 92%. Built real-time dashboards serving 500+ concurrent users with sub-second query response.",
   },
   {
     company: "Cognizant",
     role: "Data Science Engineer",
     period: "2015 - 2019",
     location: "India",
+    logo: "/assets/companies/cognizant.png",
     description:
-      "Led cloud data migration projects and implemented predictive analytics models. Specialized in automated data migration and visualization.",
+      "Led cloud data migration for 6TB of enterprise data across 3 AWS regions (completed 3 months ahead of schedule with 99.8% integrity). Implemented predictive analytics models that increased sales forecasting accuracy by 43% and reduced inventory costs by $1.1M annually.",
   },
 ];
 
@@ -106,41 +110,71 @@ function TimelineCard({
 }
 
 export default function Timeline() {
-  const lineRef = useRef(null);
-  const lineInView = useInView(lineRef, { once: true });
-
   return (
-    <section className="relative py-20 md:py-28">
-      <div className="mx-auto max-w-5xl px-6">
-        {/* Phase strip */}
-        <div className="mb-16 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
+    <section className="relative py-16 md:py-24">
+      <div className="mx-auto max-w-4xl px-6">
+        {/* Phase Overview */}
+        <div className="mb-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
           {phases.map((phase) => (
-            <div key={phase.label} className="bg-[var(--bg)] p-4">
-              <span className="mb-1 block font-mono text-[10px] text-[var(--text-3)]">
+            <div key={phase.label} className="bg-[var(--bg-secondary)] p-5">
+              <div className="font-mono text-[10px] tracking-widest text-[var(--text-3)]">
                 {phase.period}
-              </span>
-              <h4
-                className="font-display text-sm font-semibold"
+              </div>
+              <div
+                className="mt-1 font-display text-lg font-semibold"
                 style={{ color: phase.color }}
               >
                 {phase.label}
-              </h4>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Timeline */}
-        <div className="relative" ref={lineRef}>
-          <motion.div
-            className="absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 bg-[var(--border)] md:block"
-            initial={{ scaleY: 0 }}
-            animate={lineInView ? { scaleY: 1 } : {}}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformOrigin: "top" }}
-          />
+        {/* Experience Cards */}
+        <div className="space-y-8">
+          {experiences.map((exp, index) => (
+            <div
+              key={index}
+              className="group rounded-2xl border border-[var(--border)] bg-[var(--bg-secondary)] p-7 transition-all hover:border-[var(--accent-1)]/20"
+            >
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                {/* Company Info */}
+                <div className="flex items-start gap-4">
+                  {exp.logo && (
+                    <div className="mt-1 h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-white/5 p-1.5">
+                      <img
+                        src={exp.logo}
+                        alt={exp.company}
+                        className="h-full w-full object-contain opacity-90"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-display text-xl font-semibold text-[var(--text)]">
+                        {exp.company}
+                      </h3>
+                      {exp.active && (
+                        <span className="rounded-full bg-[var(--accent-1)]/10 px-2.5 py-0.5 text-[10px] font-medium tracking-widest text-[var(--accent-1)]">
+                          CURRENT
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[15px] font-medium text-[var(--text-2)]">
+                      {exp.role}
+                    </p>
+                    <p className="text-xs text-[var(--text-3)]">
+                      {exp.period} · {exp.location}
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-          {experiences.map((exp, i) => (
-            <TimelineCard key={exp.company} experience={exp} index={i} />
+              {/* Description */}
+              <div className="mt-5 text-[14.5px] leading-relaxed text-[var(--text-2)]">
+                {exp.description}
+              </div>
+            </div>
           ))}
         </div>
       </div>

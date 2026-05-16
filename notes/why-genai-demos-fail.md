@@ -8,7 +8,7 @@ description: "From prototype to production: the gap between demos and deployable
 
 ## Context
 
-Demos impress. Production systems endure. The gap isn’t tech—it’s constraints, data, and operational discipline.
+Demos impress. Production systems endure. The gap isn't tech - it's constraints, data, and operational discipline.
 
 ## Demo fallacy 1: Single-turn optimism
 
@@ -122,4 +122,4 @@ Demos impress. Production systems endure. The gap isn’t tech—it’s constrai
 
 ## Takeaway
 
-Production AI isn’t about the best single answer—it’s about consistent, safe, and cost-aware answers at scale. Demos skip the hard parts.
+Production AI isn't about the best single answer - it's about consistent, safe, and cost-aware answers at scale. Demos skip the hard parts.
