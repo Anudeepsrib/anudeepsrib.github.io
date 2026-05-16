@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -142,9 +143,11 @@ export default function Timeline() {
                 <div className="flex items-start gap-4">
                   {exp.logo && (
                     <div className="mt-1 h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-white/5 p-1.5">
-                      <img
+                      <Image
                         src={exp.logo}
-                        alt={exp.company}
+                        alt={`${exp.company} logo`}
+                        width={40}
+                        height={40}
                         className="h-full w-full object-contain opacity-90"
                       />
                     </div>
