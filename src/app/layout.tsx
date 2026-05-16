@@ -144,9 +144,14 @@ export default function RootLayout({
         className="bg-[var(--bg)] text-[var(--text)] antialiased selection:bg-[rgba(145,199,255,0.25)] selection:text-[var(--text)]"
         suppressHydrationWarning
       >
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <div className="grain-overlay" />
         <div className="vignette" />
-        <div className="relative flex min-h-screen flex-col">{children}</div>
+        <div id="main-content" className="relative flex min-h-screen flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );

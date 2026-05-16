@@ -5,12 +5,19 @@ import StaggerContainer from "@/components/ui/StaggerContainer";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getAllNotes, getAllPosts } from "@/lib/content";
-import { Calendar, Clock, ArrowRight, ExternalLink } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Calendar,
+  Clock,
+  ExternalLink,
+  Layers3,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog | Anudeep Sri Bathina",
+  title: "Writing & Field Notes | Anudeep Sri Bathina",
   description:
-    "Technical articles and insights on Generative AI, LLMs, RAG systems, and production ML. Written by Anudeep Sri Bathina, AI Architect at AT&T.",
+    "Technical essays on production LLM systems, RAG architectures, observability, evaluation, and agentic AI. Featured on Medium + in-depth field notes. By Anudeep Sri Bathina, AI Architect.",
 };
 
 function formatDate(dateString: string): string {
@@ -21,6 +28,44 @@ function formatDate(dateString: string): string {
     day: "numeric",
   });
 }
+
+const featuredEssays = [
+  {
+    title: "LLM Observability: The Engineering Imperative for Production AI Systems",
+    date: "Feb 2026",
+    url: "https://anudeepsri.medium.com/llm-observability-e068c6d98925",
+    hook: "Traditional monitoring breaks for stochastic LLM and agentic systems. The four pillars — tracing for multi-hop RAG/agent flows, LLM-as-Judge + RAGAS evals, drift detection, and token economics — with tooling patterns that power production gates like the LLM Evaluation Harness.",
+    tags: ["Observability", "Evals", "Agentic", "Production"],
+  },
+  {
+    title: "LangSmith vs Arize vs Braintrust: The Definitive 2026 Comparison",
+    date: "Mar 2026",
+    url: "https://anudeepsri.medium.com/langsmith-vs-arize-vs-braintrust-e397e4728a76",
+    hook: "Practical decision framework for RAG and multi-agent production workloads. When to pick LangSmith for deep LangGraph tracing, Arize for enterprise drift & compliance, or Braintrust for eval-first CI — the exact trade-offs behind the open-sourced eval reference repos.",
+    tags: ["Tooling", "Evals", "RAG", "CI/CD"],
+  },
+  {
+    title: "A Technical Deep Dive into Databricks AI Ecosystem",
+    date: "Mar 2026",
+    url: "https://anudeepsri.medium.com/a-technical-deep-dive-into-databricks-ai-ecosystem-26f032111ad4",
+    hook: "Mosaic AI, Vector Search for RAG, agent frameworks, evaluation tooling, and model serving at enterprise scale. How the patterns from ClinIQ, EvidenceIQ, and the RAG Policy Intelligence case study are actually operationalized in production.",
+    tags: ["Databricks", "RAG", "Platform", "Enterprise"],
+  },
+  {
+    title: "How to Build AI-Powered Applications",
+    date: "Feb 2026",
+    url: "https://anudeepsri.medium.com/how-to-build-ai-powered-applications-a490370a5d1f",
+    hook: "From prototype to production: growing evals from real traces, RAG/agent patterns, and shipping quality gates alongside the codebase. The methodology behind every open-source reference implementation I release on GitHub.",
+    tags: ["Production", "RAG", "Agents", "Evals"],
+  },
+  {
+    title: "The LangChain Ecosystem",
+    date: "Mar 2026",
+    url: "https://anudeepsri.medium.com/the-langchain-ecosystem-6a167c4ae63f",
+    hook: "LangGraph orchestration, LangSmith tracing, and the full stack for traceable, evaluable RAG and agentic systems that ship. Directly complements the architecture decisions and trade-offs in the case studies.",
+    tags: ["LangChain", "LangGraph", "Agents", "Observability"],
+  },
+];
 
 export default async function BlogPage() {
   const posts = getAllPosts();
@@ -34,12 +79,53 @@ export default async function BlogPage() {
         <ScrollReveal>
           <div className="mb-16 text-center">
             <h1 className="font-cabinet-grotesk mb-6 bg-gradient-to-r from-[var(--accent-1)] to-[var(--accent-2)] bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
-              Blog & Notes
+              Writing &amp; Field Notes
             </h1>
             <p className="mx-auto max-w-3xl text-lg text-[var(--text-2)]">
-              Technical articles and field notes on Generative AI, LLMs, RAG
-              systems, and production machine learning.
+              Technical essays on production LLM systems, RAG architectures,
+              observability, and agentic AI — plus in-depth field notes from
+              building at scale.
             </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <div className="mb-14 grid gap-3 md:grid-cols-3">
+            <div className="rounded-lg border border-[var(--border)] bg-white/[0.025] p-5">
+              <BookOpen className="mb-4 text-[var(--accent-1)]" size={18} />
+              <p className="text-2xl font-bold text-[var(--text)]">
+                {notes.length}
+              </p>
+              <p className="mt-1 text-sm text-[var(--text-3)]">
+                original field notes
+              </p>
+            </div>
+            <Link
+              href="/case-studies"
+              className="group rounded-lg border border-[var(--border)] bg-white/[0.025] p-5 transition-colors hover:border-[rgba(125,211,252,0.28)]"
+            >
+              <Layers3 className="mb-4 text-[var(--accent-1)]" size={18} />
+              <p className="text-base font-semibold text-[var(--text)]">
+                System design cases
+              </p>
+              <p className="mt-1 text-sm text-[var(--text-3)]">
+                RAG and LLM evaluation trade-offs
+              </p>
+            </Link>
+            <a
+              href="https://medium.com/@anudeepsri"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-lg border border-[var(--border)] bg-white/[0.025] p-5 transition-colors hover:border-[rgba(125,211,252,0.28)]"
+            >
+              <ExternalLink className="mb-4 text-[var(--accent-1)]" size={18} />
+              <p className="text-base font-semibold text-[var(--text)]">
+                Technical essays
+              </p>
+              <p className="mt-1 text-sm text-[var(--text-3)]">
+                Production RAG, observability &amp; agentic systems on Medium
+              </p>
+            </a>
           </div>
         </ScrollReveal>
 
@@ -140,53 +226,79 @@ export default async function BlogPage() {
           </section>
         )}
 
-        {/* External Publications */}
+        {/* Featured Essays on Medium — Best of Writing */}
         <ScrollReveal>
-          <section>
-            <h2 className="font-cabinet-grotesk mb-8 text-2xl font-bold">
-              Also Published On
-            </h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <a
-                href="https://anudeepsrib.substack.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:border-[var(--accent-1)]/30 group rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02]"
-              >
-                <div className="mb-3 flex items-center justify-between">
-                  <h3 className="font-cabinet-grotesk text-lg font-semibold text-[var(--text)] transition-colors group-hover:text-[var(--accent-1)]">
-                    Substack
-                  </h3>
-                  <ExternalLink
-                    size={16}
-                    className="text-[var(--text-3)] transition-colors group-hover:text-[var(--accent-1)]"
-                  />
-                </div>
-                <p className="text-sm text-[var(--text-2)]">
-                  Deep dives on AI architecture, production ML systems, and
-                  technical leadership.
+          <section className="mb-20">
+            <div className="mb-8 flex items-end justify-between">
+              <div>
+                <h2 className="font-cabinet-grotesk text-2xl font-bold">
+                  Featured Essays on Medium
+                </h2>
+                <p className="mt-1 text-sm text-[var(--text-3)]">
+                  Deep technical writing on production LLM systems, RAG
+                  architectures, observability, and agentic AI.
                 </p>
-              </a>
-
+              </div>
               <a
                 href="https://medium.com/@anudeepsri"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:border-[var(--accent-1)]/30 group rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02]"
+                className="hidden items-center gap-1 text-sm font-medium text-[var(--accent-1)] transition-colors hover:text-[var(--accent-1)]/80 md:flex"
               >
-                <div className="mb-3 flex items-center justify-between">
-                  <h3 className="font-cabinet-grotesk text-lg font-semibold text-[var(--text)] transition-colors group-hover:text-[var(--accent-1)]">
-                    Medium
-                  </h3>
-                  <ExternalLink
-                    size={16}
-                    className="text-[var(--text-3)] transition-colors group-hover:text-[var(--accent-1)]"
-                  />
-                </div>
-                <p className="text-sm text-[var(--text-2)]">
-                  Technical tutorials and case studies on modern AI/ML
-                  engineering.
-                </p>
+                Full archive <ExternalLink size={14} />
+              </a>
+            </div>
+
+            <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {featuredEssays.map((essay, index) => (
+                <ScrollReveal key={index} delay={index * 0.05}>
+                  <a
+                    href={essay.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block h-full rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] p-5 backdrop-blur-sm transition-all duration-300 hover:border-[var(--accent-1)]/30 hover:scale-[1.01]"
+                  >
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="font-mono text-xs text-[var(--text-3)]">
+                        {essay.date}
+                      </span>
+                      <ExternalLink
+                        size={15}
+                        className="text-[var(--text-3)] transition-colors group-hover:text-[var(--accent-1)]"
+                      />
+                    </div>
+
+                    <h3 className="font-cabinet-grotesk mb-3 text-[15px] font-semibold leading-tight text-[var(--text)] transition-colors group-hover:text-[var(--accent-1)]">
+                      {essay.title}
+                    </h3>
+
+                    <p className="mb-4 line-clamp-3 text-sm leading-6 text-[var(--text-2)]">
+                      {essay.hook}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5">
+                      {essay.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded border border-[var(--border)] bg-white/[0.03] px-2 py-0.5 font-mono text-[10px] text-[var(--text-3)]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </a>
+                </ScrollReveal>
+              ))}
+            </StaggerContainer>
+
+            <div className="mt-4 text-center md:hidden">
+              <a
+                href="https://medium.com/@anudeepsri"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-sm font-medium text-[var(--accent-1)]"
+              >
+                Read more on Medium <ExternalLink size={14} />
               </a>
             </div>
           </section>

@@ -27,6 +27,8 @@ const projects = [
     link: "https://github.com/Anudeepsrib/ClinIQ",
     hero: true,
     metrics: "Healthcare RAG · citations · privacy controls",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Production Healthcare RAG with PII boundaries & auditability",
     problem:
       "Clinical and policy-heavy workflows need fast retrieval without blurring department boundaries or losing source traceability.",
     architecture: [
@@ -42,7 +44,7 @@ const projects = [
       "Use graph orchestration where deterministic routing matters more than a single chain",
     ],
     results:
-      "Review this project for RAG architecture, sensitive-data boundaries, and citation-first answer design.",
+      "Open-sourced as a reusable reference for teams building compliant RAG in regulated domains. Clone to explore the full scoped retrieval + citation + Presidio pipeline.",
   },
   {
     name: "EvidenceIQ",
@@ -51,6 +53,8 @@ const projects = [
     tags: ["RAG", "Evaluation", "Citations", "Python", "LLM"],
     link: "https://github.com/Anudeepsrib/EvidenceIQ",
     metrics: "evidence retrieval · source ranking · review workflow",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Evidence-grounded RAG with source ranking & review workflows",
     problem:
       "LLM answers become hard to trust when source collection, ranking, and explanation are not separated and reviewable.",
     architecture: [
@@ -65,7 +69,7 @@ const projects = [
       "Design for analyst review when confidence is low",
     ],
     results:
-      "Review this project for evidence-aware RAG patterns and evaluation-oriented answer design.",
+      "Open-sourced reference pattern for teams that need defensible, citation-first answers. Full retrieval + ranking + citation contract implementation ready to adapt.",
   },
   {
     name: "Annapurna-AI",
@@ -74,6 +78,8 @@ const projects = [
     tags: ["Next.js", "FastAPI", "Gemini", "LiteLLM", "SQLModel"],
     link: "https://github.com/Anudeepsrib/Annapurna-AI",
     metrics: "meal planning · multimodal input · model routing",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Domain-specific agentic apps with model routing & cultural context",
     problem:
       "Generic meal planners often miss cultural context, dietary preferences, and practical grocery constraints.",
     architecture: [
@@ -89,7 +95,7 @@ const projects = [
       "Make food and wellness explanations evidence-grounded and reviewable",
     ],
     results:
-      "Review this project for domain-specific AI product architecture and model-routing choices.",
+      "Open-sourced example of production-ready agentic product architecture with LiteLLM routing and typed boundaries. Adapt the multimodal + preference engine pattern for any vertical.",
   },
   {
     name: "Decision-Support-System",
@@ -98,6 +104,8 @@ const projects = [
     tags: ["Decision Intelligence", "Python", "Analytics", "Explainability"],
     link: "https://github.com/Anudeepsrib/Decision-Support-System",
     metrics: "ranking · trade-offs · explainability",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Auditable decision intelligence with traceable trade-off explanations",
     problem:
       "Decision workflows need transparent scoring and defensible recommendations instead of opaque single-answer outputs.",
     architecture: [
@@ -112,7 +120,7 @@ const projects = [
       "Optimize for decision review, not automated autopilot",
     ],
     results:
-      "Review this project for transparent decision-support architecture and explainability patterns.",
+      "Open-sourced reference for explainable decision systems. Full scoring + sensitivity + human-review pipeline ready for enterprise decision platforms.",
   },
   {
     name: "InferIQ",
@@ -121,6 +129,8 @@ const projects = [
     tags: ["LLM Evaluation", "Quality Gates", "Python", "Observability"],
     link: "https://github.com/Anudeepsrib/InferIQ",
     metrics: "eval gates · output checks · observability",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "LLM output quality gates & regression checks for CI/CD and release",
     problem:
       "Teams need repeatable checks for answer quality, safety, and regression before model output reaches users.",
     architecture: [
@@ -135,7 +145,7 @@ const projects = [
       "Design quality gates that can run in CI or release workflows",
     ],
     results:
-      "Review this project for LLM evaluation gates and production-readiness checks.",
+      "Open-sourced reference implementation for production LLM quality gates. Adapt the multi-dimensional scoring + regression detection for your inference pipeline or agentic system.",
   },
 ];
 
@@ -206,6 +216,18 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
               >
                 {project.name}
               </h3>
+              {project.openSourceCategory && (
+                <div className="mt-2 inline-flex items-center gap-2">
+                  <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-0.5 text-xs font-semibold uppercase tracking-wide text-emerald-400">
+                    {project.openSourceCategory}
+                  </span>
+                  {project.patternFor && (
+                    <span className="text-xs text-[var(--text-3)]">
+                      {project.patternFor}
+                    </span>
+                  )}
+                </div>
+              )}
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 <span className="font-mono text-xs text-[var(--accent)]">
                   {project.metrics}
@@ -288,8 +310,11 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
                 variant="secondary"
                 icon={<ArrowUpRight size={15} />}
               >
-                View on GitHub
+                View on GitHub — Clone &amp; adapt this pattern
               </CTAButton>
+              <p className="mt-2 text-[10px] text-[var(--text-3)]">
+                Open source reference implementation • Production-grade patterns for your stack
+              </p>
             </div>
           </div>
         </GradientCard>

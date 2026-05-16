@@ -59,6 +59,8 @@ Highest-risk fixes:
   - Fixed by adding `role="dialog"`, `aria-modal`, labelled title, and Escape close handling.
 - `.gitignore` missed explicit `.env` handling.
   - Fixed by adding `.env`, `.env.local`, `.env.*.local`, generated outputs, logs, `.vercel/`, `.agent/`, and key files.
+- Follow-up portfolio polish found the case-study page still showing an "architecture coming soon" placeholder.
+  - Fixed by rendering the actual public architecture markdown, adding a recruiter-oriented hero proof strip, adding a Projects nav entry, improving blog/writing summary cards, and adding a keyboard skip link.
 
 ## Files Changed
 
@@ -171,6 +173,7 @@ Browser smoke test:
 Opened http://localhost:3001 in the in-app browser.
 Verified home page title, hero name, navigation, project content, /case-studies, and /notes/rag-failure-patterns.
 Checked browser console errors: 0.
+Follow-up smoke test verified the new hero proof strip, Projects nav, skip link, case-study architecture content, and blog writing summary.
 ```
 
 ## Results

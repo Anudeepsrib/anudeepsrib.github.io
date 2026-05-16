@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import StaggerContainer from "@/components/ui/StaggerContainer";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { getAllCaseStudies } from "@/lib/content";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -49,6 +50,7 @@ export default async function CaseStudiesPage() {
 
         <StaggerContainer className="space-y-12">
           {caseStudies.map((study, index) => {
+            const architecture = extractSection(study.content, "Architecture");
             const tradeoffs = extractSection(
               study.content,
               "Key design decisions & trade-offs",
@@ -134,33 +136,17 @@ export default async function CaseStudiesPage() {
                       Architecture
                     </h3>
                     <div className="overflow-x-auto rounded-xl border border-[var(--border)] bg-[var(--bg)] p-6">
-                      <div className="flex items-center justify-center py-12 text-[var(--text-3)]">
-                        <div className="text-center">
-                          <div className="mb-4">
-                            <svg
-                              width="48"
-                              height="48"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              className="mx-auto"
-                            >
-                              <path
-                                d="M12 2L2 7L12 12L22 7V17L12 22L2 17V7Z"
-                                stroke="currentColor"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </div>
-                          <p className="font-mono text-sm">
-                            Architecture diagram coming soon
-                          </p>
-                          <p className="mt-2 text-xs">
-                            Detailed system design will be available
-                          </p>
-                        </div>
-                      </div>
+                      {architecture ? (
+                        <MarkdownBlock content={architecture} />
+                      ) : (
+                        <p className="text-sm text-[var(--text-2)]">
+                          Full architecture, diagrams, and implementation details
+                          live in the open-source reference repo linked above.
+                          Production patterns (tenant isolation, hybrid retrieval,
+                          citation guarantees, cost/latency budgets) are fully
+                          documented there.
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -200,6 +186,7 @@ export default async function CaseStudiesPage() {
           })}
         </StaggerContainer>
       </div>
+      <Footer />
     </div>
   );
 }

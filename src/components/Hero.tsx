@@ -3,7 +3,14 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FileText, Github, Linkedin } from "lucide-react";
+import {
+  BookOpen,
+  FileText,
+  Github,
+  Linkedin,
+  Network,
+  ShieldCheck,
+} from "lucide-react";
 import Container from "@/components/ui/Container";
 import CTAButton from "@/components/ui/CTAButton";
 import GradientCard from "@/components/ui/GradientCard";
@@ -23,6 +30,24 @@ const companies = [
   { name: "Cognizant", logo: "/assets/companies/cognizant.png" },
 ];
 
+const recruiterSignals = [
+  {
+    label: "Build-ready",
+    detail: "Strict lint, type-check, static export",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Architecture-first",
+    detail: "RAG, evals, safety, deployment trade-offs",
+    icon: Network,
+  },
+  {
+    label: "Proof surfaces",
+    detail: "Projects, notes, publications, resume",
+    icon: BookOpen,
+  },
+];
+
 export default function Hero() {
   return (
     <section className="relative z-10 flex min-h-screen items-center overflow-hidden pb-14 pt-24 sm:pt-28 lg:pb-16">
@@ -40,7 +65,10 @@ export default function Hero() {
             >
               <StatusPill>Available</StatusPill>
               <span className="text-xs font-medium uppercase text-[var(--text-3)] [letter-spacing:0]">
-                AI Architect - 11 years in production
+                AI Architect — 11 years in production
+              </span>
+              <span className="rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.5px] text-[var(--accent)]">
+                Open to Staff AI Engineer / Platform roles (L5–L6)
               </span>
             </motion.div>
 
@@ -57,9 +85,9 @@ export default function Hero() {
               variants={fadeUp}
               className="mt-6 max-w-2xl text-lg leading-8 text-[var(--text-2)] md:text-xl md:leading-9"
             >
-              I build AI systems that survive past the demo - enterprise RAG
-              serving 15K+ users at AT&T, with p95 latency under 2.5 seconds and
-              privacy-aware retrieval controls.
+              I design GenAI, RAG, and agentic systems with the parts that make
+              production real: retrieval boundaries, evaluation gates,
+              observability, latency budgets, and privacy-aware controls.
             </motion.p>
 
             <motion.div
@@ -67,6 +95,13 @@ export default function Hero() {
               className="mt-7 flex flex-wrap items-center gap-3"
             >
               <CTAButton href="#projects">View projects</CTAButton>
+              <CTAButton
+                href="/case-studies"
+                variant="secondary"
+                icon={<Network size={15} />}
+              >
+                System designs
+              </CTAButton>
               <CTAButton
                 href="/resume/Anudeep-Sri-Bathina-Resume.pdf"
                 external
@@ -97,6 +132,33 @@ export default function Hero() {
               </div>
             </motion.div>
 
+            <motion.div
+              variants={fadeUp}
+              className="mt-7 grid max-w-2xl gap-2 sm:grid-cols-3"
+              aria-label="Recruiter review highlights"
+            >
+              {recruiterSignals.map((signal) => {
+                const Icon = signal.icon;
+
+                return (
+                  <div
+                    key={signal.label}
+                    className="rounded-lg border border-[var(--border)] bg-white/[0.025] p-3"
+                  >
+                    <div className="mb-2 flex items-center gap-2 text-[var(--text)]">
+                      <Icon size={15} className="text-[var(--accent)]" />
+                      <span className="text-sm font-semibold">
+                        {signal.label}
+                      </span>
+                    </div>
+                    <p className="text-xs leading-5 text-[var(--text-3)]">
+                      {signal.detail}
+                    </p>
+                  </div>
+                );
+              })}
+            </motion.div>
+
             <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-2">
               {focusAreas.map((area) => (
                 <div key={area.label} className="group relative">
@@ -121,7 +183,7 @@ export default function Hero() {
                   alt={company.name}
                   width={92}
                   height={20}
-                  className="max-h-5 max-w-[92px] object-contain opacity-45 grayscale invert transition-all hover:opacity-80 hover:grayscale-0"
+                  className="max-h-5 max-w-[92px] object-contain opacity-60 grayscale invert transition-all hover:opacity-90 hover:grayscale-0"
                 />
               ))}
             </motion.div>

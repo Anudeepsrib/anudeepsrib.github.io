@@ -10,6 +10,8 @@ interface ProjectCardProps {
     tags: string[];
     metrics: string;
     hero?: boolean;
+    openSourceCategory?: string;
+    patternFor?: string;
   };
   onClick: () => void;
 }
@@ -42,7 +44,17 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                   FEATURED
                 </span>
               )}
+              {project.openSourceCategory && (
+                <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase text-emerald-400">
+                  OPEN SOURCE
+                </span>
+              )}
             </div>
+            {project.patternFor && (
+              <div className="mb-2 text-[10px] font-medium text-[var(--text-3)]">
+                {project.patternFor}
+              </div>
+            )}
             <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--text-3)]">
               <span className="font-mono text-[var(--accent)]">
                 {project.metrics}

@@ -10,11 +10,12 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 import { cn } from "@/lib/utils";
 
 const links = [
+  { label: "Projects", href: "/#projects" },
   { label: "Experience", href: "/journey" },
   { label: "Systems", href: "/case-studies" },
   { label: "Mentorship", href: "/mentorship" },
   { label: "Awards", href: "/recognitions" },
-  { label: "Blog", href: "/blog" },
+  { label: "Writing", href: "/blog" },
 ];
 
 export default function FloatingNav() {
@@ -57,7 +58,7 @@ export default function FloatingNav() {
           >
             <Image
               src="/assets/logo.png"
-              alt=""
+              alt="Anudeep Sri Bathina"
               width={28}
               height={28}
               className="h-7 w-7 rounded-md"
