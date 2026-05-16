@@ -1,161 +1,375 @@
-'use client';
-import React, { useRef } from 'react';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FolderGit2, ExternalLink, ArrowRight, Github, Star } from 'lucide-react';
-import resumeData from '@/data/resumeData.json';
+"use client";
 
-gsap.registerPlugin(ScrollTrigger);
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, X, Box, Zap, Shield, BarChart3 } from "lucide-react";
+import Container from "@/components/ui/Container";
+import CTAButton from "@/components/ui/CTAButton";
+import GradientCard from "@/components/ui/GradientCard";
+import MotionWrapper from "@/components/ui/MotionWrapper";
+import ProjectCard from "@/components/ui/ProjectCard";
+import SectionHeader from "@/components/ui/SectionHeader";
+import { fadeUp, scaleIn, stagger } from "@/lib/animation";
 
-const Projects = () => {
-    const sectionRef = useRef<HTMLElement>(null);
-    const headerRef = useRef<HTMLDivElement>(null);
-    const cardsRef = useRef<HTMLDivElement>(null);
+const projects = [
+  {
+    name: "ClinIQ",
+    description:
+      "Enterprise Healthcare RAG reference implementation with scoped retrieval, clinical citations, and production-grade privacy controls.",
+    tags: [
+      "LangGraph",
+      "LangChain",
+      "FastAPI",
+      "OpenAI",
+      "ChromaDB",
+      "Presidio",
+    ],
+    link: "https://github.com/Anudeepsrib/ClinIQ",
+    hero: true,
+    metrics: "Healthcare RAG · citations · PII safety",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Production Healthcare RAG with department-scoped retrieval & PII boundaries",
+    problem:
+      "Clinical and policy-heavy workflows need fast, accurate retrieval without blurring department boundaries or exposing sensitive data.",
+    architecture: [
+      "Document ingestion layer for clinical guidelines and reference material",
+      "Scoped vector stores to keep retrieval boundaries explicit",
+      "LangGraph orchestration for multi-step retrieval and answer assembly",
+      "PII/PHI redaction checks before sensitive text enters retrieval flows",
+      "LangSmith observability for evaluation and citation review",
+    ],
+    decisions: [
+      "Favor explicit retrieval scopes over a single shared index",
+      "Keep redaction and citation validation as first-class pipeline stages",
+      "Use graph orchestration where deterministic routing matters more than a single chain",
+    ],
+    results:
+      "Open-sourced as a reusable reference for teams building compliant RAG in regulated domains. Full scoped retrieval + citation + Presidio pipeline ready to adapt.",
+  },
+  {
+    name: "EvidenceIQ",
+    description:
+      "Evidence-grounded RAG pattern for retrieving, ranking, and explaining source-backed findings with strong citation guarantees.",
+    tags: ["RAG", "Evaluation", "Citations", "Python", "LLM"],
+    link: "https://github.com/Anudeepsrib/EvidenceIQ",
+    metrics: "evidence retrieval · source ranking · citations",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Evidence-grounded RAG with source ranking & review workflows",
+    problem:
+      "LLM answers become hard to trust when source collection, ranking, and explanation are not separated and reviewable.",
+    architecture: [
+      "Retriever layer separates candidate evidence from final synthesis",
+      "Ranking stage promotes source quality and relevance before generation",
+      "Prompt contracts keep citations attached to each claim",
+      "Evaluation hooks support answer review and regression checks",
+    ],
+    decisions: [
+      "Treat citations as required output structure, not optional decoration",
+      "Keep retrieval and generation independently testable",
+      "Design for analyst review when confidence is low",
+    ],
+    results:
+      "Open-sourced reference pattern for teams that need defensible, citation-first answers. Full retrieval + ranking + citation contract implementation ready to adapt.",
+  },
+  {
+    name: "InferIQ",
+    description:
+      "Production-grade LLM evaluation harness for checking output quality, safety, and regression before models reach users or CI/CD.",
+    tags: ["LLM Evaluation", "Quality Gates", "Python", "Observability"],
+    link: "https://github.com/Anudeepsrib/InferIQ",
+    metrics: "eval gates · output checks · regression detection",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "LLM output quality gates & regression checks for production release",
+    problem:
+      "Teams need repeatable, multi-dimensional checks for answer quality, safety, and regression before model output reaches users.",
+    architecture: [
+      "Evaluation set design for representative and adversarial prompts",
+      "Scoring layer separates correctness, safety, citation quality, and latency",
+      "Regression thresholds catch model or prompt changes before release",
+      "Observability output supports triage and continuous improvement",
+    ],
+    decisions: [
+      "Use multiple quality dimensions instead of a single pass/fail score",
+      "Make eval failures actionable with traceable examples",
+      "Design quality gates that can run in CI or release workflows",
+    ],
+    results:
+      "Open-sourced reference implementation for production LLM quality gates. Adapt the multi-dimensional scoring + regression detection for your inference pipeline or agentic system.",
+  },
+  {
+    name: "Code Migration Assistant",
+    description:
+      "Enterprise-grade, security-first code migration tool with AI-powered risk assessment, visual dependency planning, and compliance scanning.",
+    tags: ["Python", "AST", "NetworkX", "RAG", "OpenAI", "Security"],
+    link: "https://github.com/Anudeepsrib/code-migration-assistant",
+    metrics: "code migration · risk assessment · compliance",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Enterprise code migration with AI risk analysis and dependency visualization",
+    problem:
+      "Large-scale code migrations are high-risk, time-consuming, and prone to hidden dependency and security issues.",
+    architecture: [
+      "AST-based static analysis for deep code understanding",
+      "Graph-based dependency modeling using NetworkX",
+      "RAG-powered risk assessment and migration recommendation engine",
+      "Visual dependency explorer for planning and review",
+      "Compliance and security scanning layer",
+    ],
+    decisions: [
+      "Combine static analysis with LLM reasoning for higher accuracy",
+      "Prioritize visual tools so humans stay in the loop for high-risk changes",
+      "Build security and compliance checks as first-class citizens",
+    ],
+    results:
+      "Open-sourced enterprise reference for teams performing large-scale code migrations. Demonstrates practical combination of static analysis, graph modeling, and generative AI.",
+  },
+  {
+    name: "Annapurna-AI",
+    description:
+      "Culture-aware, India-first AI meal planner and grocery assistant for South Indian vegetarian cooking with evidence-grounded recommendations.",
+    tags: ["Next.js", "FastAPI", "Gemini", "LiteLLM", "SQLModel"],
+    link: "https://github.com/Anudeepsrib/Annapurna-AI",
+    metrics: "multimodal · model routing · cultural AI",
+    openSourceCategory: "Open Source Reference Implementation",
+    patternFor: "Domain-specific agentic applications with model routing & cultural context",
+    problem:
+      "Generic meal planners often miss cultural context, dietary preferences, and practical grocery constraints in regional cuisines.",
+    architecture: [
+      "Next.js frontend for planning workflows and recipe discovery",
+      "FastAPI service boundary for recommendation and user preference logic",
+      "Gemini multimodal path for recipe or ingredient understanding",
+      "LiteLLM abstraction for provider routing and cost control",
+      "Typed persistence layer for recipes, plans, and preferences",
+    ],
+    decisions: [
+      "Keep cultural preference modeling separate from generic nutrition rules",
+      "Use model routing so high-cost reasoning is reserved for harder tasks",
+      "Make food and wellness explanations evidence-grounded and reviewable",
+    ],
+    results:
+      "Open-sourced example of production-ready agentic product architecture with LiteLLM routing and typed boundaries. Adapt the multimodal + preference engine pattern for any vertical domain.",
+  },
+];
 
-    const projects = resumeData.projects;
+interface ProjectDetailModalProps {
+  project: (typeof projects)[0];
+  onClose: () => void;
+}
 
-    useGSAP(() => {
-        // Header animation
-        gsap.fromTo(
-            headerRef.current,
-            { y: 60, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse',
-                },
-            }
-        );
+function DetailBlock({
+  icon,
+  title,
+  children,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="bg-black/18 rounded-lg border border-[var(--border)] p-5">
+      <h4 className="mb-3 flex items-center gap-2 text-base font-semibold text-[var(--text)]">
+        {icon}
+        {title}
+      </h4>
+      {children}
+    </div>
+  );
+}
 
-        // Cards staggered animation
-        const cards = gsap.utils.toArray('.project-card');
-        gsap.fromTo(
-            cards,
-            { y: 80, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.7,
-                stagger: 0.15,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: cardsRef.current,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse',
-                },
-            }
-        );
-    }, { scope: sectionRef });
+function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
+  const titleId = `project-${project.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 
-    return (
-        <section
-            ref={sectionRef}
-            id="projects"
-            className="py-24 md:py-32 relative overflow-hidden"
-        >
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-[var(--bg-primary)] z-0" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--accent-primary)]/5 rounded-full blur-[150px] pointer-events-none" />
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Header */}
-                <div ref={headerRef} className="mb-16">
-                    {/* Section Number */}
-                    <div className="section-number">04</div>
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
 
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal text-[var(--text-primary)] mb-6 tracking-tight">
-                        Open Source{' '}
-                        <span className="text-[var(--accent-primary)]">
-                            Projects
-                        </span>
-                    </h2>
-
-                    <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-                        Production-grade AI systems and tools, built in the open. Each project represents real-world engineering challenges solved with modern architectures.
-                    </p>
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="bg-black/78 fixed inset-0 z-[80] flex items-center justify-center p-4 backdrop-blur-md sm:p-6"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+    >
+      <motion.div
+        initial={{ scale: 0.97, opacity: 0, y: 12 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.97, opacity: 0, y: 12 }}
+        transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+        className="max-h-[90vh] w-full max-w-4xl overflow-y-auto"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <GradientCard className="p-5 sm:p-7 md:p-8">
+          <div className="mb-7 flex items-start justify-between gap-5">
+            <div>
+              <h3
+                id={titleId}
+                className="text-2xl font-bold leading-tight text-[var(--text)] md:text-3xl"
+              >
+                {project.name}
+              </h3>
+              {project.openSourceCategory && (
+                <div className="mt-2 inline-flex items-center gap-2">
+                  <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-0.5 text-xs font-semibold uppercase tracking-wide text-emerald-400">
+                    {project.openSourceCategory}
+                  </span>
+                  {project.patternFor && (
+                    <span className="text-xs text-[var(--text-3)]">
+                      {project.patternFor}
+                    </span>
+                  )}
                 </div>
-
-                {/* Project Cards Grid */}
-                <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    {projects.map((project, index) => (
-                        <a
-                            key={index}
-                            href={project.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="project-card group block"
-                        >
-                            <div className="relative h-full bg-[var(--bg-elevated)]/80 backdrop-blur-sm border border-[var(--text-primary)]/8 rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent-primary)]/40 hover:bg-[var(--bg-elevated)] hover:shadow-xl hover:shadow-[var(--accent-primary)]/5 hover:-translate-y-1 cursor-pointer">
-                                {/* Gradient Highlight on Hover */}
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--accent-primary)]/5 via-transparent to-[var(--accent-warm)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-                                {/* Card Content */}
-                                <div className="relative z-10">
-                                    {/* Header with Icon and Link */}
-                                    <div className="flex justify-between items-start mb-5">
-                                        <div className="p-3 bg-[var(--accent-primary)]/10 rounded-xl group-hover:bg-[var(--accent-primary)]/20 transition-colors">
-                                            <Github className="text-[var(--accent-primary)]" size={24} />
-                                        </div>
-                                        <ExternalLink
-                                            size={18}
-                                            className="text-[var(--text-tertiary)] group-hover:text-[var(--accent-primary)] transition-colors mt-1"
-                                        />
-                                    </div>
-
-                                    {/* Project Name */}
-                                    <h3 className="text-xl font-serif font-medium text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent-primary)] transition-colors">
-                                        {project.name}
-                                    </h3>
-
-                                    {/* Description */}
-                                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-6 line-clamp-3">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Tech Stack */}
-                                    <div className="flex flex-wrap gap-2 mt-auto">
-                                        {project.technologies.map((tech, i) => (
-                                            <span
-                                                key={i}
-                                                className="px-3 py-1.5 bg-[var(--bg-secondary)] text-xs font-mono text-[var(--accent-secondary)] rounded-lg border border-[var(--accent-primary)]/10 group-hover:border-[var(--accent-primary)]/20 transition-colors"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    ))}
-                </div>
-
-                {/* View More Link */}
-                <div className="text-center">
-                    <a
-                        href={resumeData.personalInfo.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[var(--text-primary)]/5 border border-[var(--text-primary)]/10 hover:border-[var(--accent-primary)]/40 hover:bg-[var(--accent-primary)]/10 transition-all duration-300"
-                    >
-                        <Github size={18} className="text-[var(--accent-primary)]" />
-                        <span className="text-[var(--text-primary)] font-mono text-sm uppercase tracking-wider">
-                            View All Repositories
-                        </span>
-                        <ArrowRight
-                            size={16}
-                            className="text-[var(--accent-primary)] group-hover:translate-x-1 transition-transform"
-                        />
-                    </a>
-                </div>
+              )}
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <span className="font-mono text-xs text-[var(--accent)]">
+                  {project.metrics}
+                </span>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tech-pill">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-        </section>
-    );
-};
+            <button
+              onClick={onClose}
+              className="rounded-md p-2 text-[var(--text-3)] transition-colors hover:bg-white/[0.05] hover:text-[var(--text)]"
+              aria-label="Close project details"
+            >
+              <X size={20} />
+            </button>
+          </div>
 
-export default Projects;
+          <div className="grid gap-4">
+            <DetailBlock
+              title="Problem"
+              icon={<Zap size={16} className="text-[var(--accent)]" />}
+            >
+              <p className="text-sm leading-7 text-[var(--text-2)]">
+                {project.problem}
+              </p>
+            </DetailBlock>
+
+            <DetailBlock
+              title="Architecture"
+              icon={<Box size={16} className="text-[var(--accent)]" />}
+            >
+              <ul className="space-y-2">
+                {project.architecture.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-sm leading-6 text-[var(--text-2)]"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </DetailBlock>
+
+            <DetailBlock
+              title="Key Decisions"
+              icon={<Shield size={16} className="text-[var(--accent)]" />}
+            >
+              <ul className="space-y-2">
+                {project.decisions.map((decision) => (
+                  <li
+                    key={decision}
+                    className="flex items-start gap-3 text-sm leading-6 text-[var(--text-2)]"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                    {decision}
+                  </li>
+                ))}
+              </ul>
+            </DetailBlock>
+
+            <DetailBlock
+              title="Results"
+              icon={<BarChart3 size={16} className="text-[var(--accent)]" />}
+            >
+              <p className="text-sm leading-7 text-[var(--text-2)]">
+                {project.results}
+              </p>
+            </DetailBlock>
+
+            <div className="pt-2">
+              <CTAButton
+                href={project.link}
+                external
+                variant="secondary"
+                icon={<ArrowUpRight size={15} />}
+              >
+                View on GitHub - Clone &amp; adapt this pattern
+              </CTAButton>
+              <p className="mt-2 text-[10px] text-[var(--text-3)]">
+                Open source reference implementation • Production-grade patterns for your stack
+              </p>
+            </div>
+          </div>
+        </GradientCard>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[0] | null
+  >(null);
+
+  return (
+    <>
+      <section className="premium-section relative z-10" id="projects">
+        <div className="section-divider" />
+        <Container>
+          <MotionWrapper variants={fadeUp}>
+            <SectionHeader
+              title="Open Source Reference Implementations"
+              description="Production patterns and architectures I've released for teams building dependable AI systems at scale."
+            />
+          </MotionWrapper>
+
+          <MotionWrapper
+            staggerChildren
+            variants={stagger}
+            className="grid grid-cols-1 gap-3 lg:grid-cols-2"
+          >
+            {projects.map((project) => (
+              <motion.div
+                key={project.name}
+                variants={scaleIn}
+                className={project.hero ? "lg:col-span-2" : undefined}
+              >
+                <ProjectCard
+                  project={project}
+                  onClick={() => setSelectedProject(project)}
+                />
+              </motion.div>
+            ))}
+          </MotionWrapper>
+        </Container>
+      </section>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectDetailModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

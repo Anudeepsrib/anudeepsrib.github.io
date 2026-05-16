@@ -1,144 +1,85 @@
-# Smart Portfolio with AI Integration
+# Anudeep Sri Bathina Portfolio
 
-This project is a modern portfolio website built with Next.js 15, featuring AI-powered components including a chatbot, tech stack validation, and interactive visualizations.
+Static Next.js portfolio for Anudeep Sri Bathina, focused on AI engineering, GenAI, RAG, agentic systems, evaluation, and full-stack AI product architecture.
 
-## Key Features
-
-- **AI-powered Chatbot**: Interactive portfolio exploration using LangChain and OpenAI, with vector search capabilities through Supabase pgvector
-- **Tech Stack Architecture Visualization**: Interactive drag-and-drop interface to design and validate technology stacks with AI feedback
-- **GitHub Integration**: Dynamic GitHub statistics, featured projects, and contribution graphs
-- **Responsive Design**: Fully responsive UI with dark/light mode support using Tailwind CSS and NextUI components
-- **Blog System**: Markdown-based blog with reading time estimation and syntax highlighting
-- **Performance Optimized**: Server components, static generation, and efficient caching strategies
+This repository is intentionally a public, static portfolio. It does not ship a chatbot, OpenAI integration, Supabase pgvector database, private GitHub API token flow, or server API routes. Future server-side AI features should be deployed on a server runtime such as Vercel functions and must keep secrets out of the browser.
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS, NextUI components, Framer Motion
-- **Database**: Supabase with pgvector for vector embeddings
-- **AI/ML**: 
-  - LangChain for chat functionality
-  - OpenAI for embeddings and completions
-  - ReactFlow for tech stack visualization
-- **GitHub API**: Octokit for repository and contribution data
-- **UI Components**: 
-  - React Icons
-  - Lucide React
-  - Recharts for data visualization
-- **Content**: 
-  - React Markdown
-  - Gray Matter for frontmatter parsing
-  - React Syntax Highlighter
+- Next.js 15 App Router with static export
+- React 18 and TypeScript
+- Tailwind CSS with local fonts
+- Framer Motion with reduced-motion handling
+- Markdown content rendered with `react-markdown`, `remark-gfm`, `gray-matter`, and `reading-time`
+- GitHub Actions for GitHub Pages deployment
+- Vercel config for static Next.js deployment
 
-## Features Summary
+## Featured Projects
 
-1. **Home Page**: Featuring about section, skills, timeline, and featured projects
-2. **Tech Stack Architect**: Interactive tool for designing and validating technology stacks with AI feedback
-3. **Blog System**: Markdown-based blog with filtering capabilities
-4. **AI Chatbot**: Conversational interface for exploring the portfolio
-5. **GitHub Integration**: Dynamic display of repositories and statistics
+- [ClinIQ](https://github.com/Anudeepsrib/ClinIQ): Healthcare RAG architecture with scoped retrieval, citation handling, and sensitive-data controls.
+- [EvidenceIQ](https://github.com/Anudeepsrib/EvidenceIQ): Evidence-grounded retrieval and source-ranking pattern for explainable LLM answers.
+- [Annapurna-AI](https://github.com/Anudeepsrib/Annapurna-AI): Culture-aware AI meal planning architecture with model routing and typed service boundaries.
+- [Decision-Support-System](https://github.com/Anudeepsrib/Decision-Support-System): Decision intelligence workflow for ranking alternatives and explaining trade-offs.
+- [InferIQ](https://github.com/Anudeepsrib/InferIQ): LLM inference quality and evaluation gates for safer production release workflows.
 
-## Prerequisites
+## Local Setup
 
-- Node.js 18.17 or later
-- npm or yarn package manager
-- Git
+Prerequisites:
 
-## Installation Guide
+- Node.js 20
+- npm 10+
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/medevs/smart-portfolio.git
-   cd smart-portfolio
-   ```
-2. **Install Dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-3. **Environment Setup**
-   Create a `.env.local` file in the root directory with the following variables:
-   ```env
-   # OpenAI
-   OPENAI_API_KEY=your_openai_api_key
+```bash
+git clone https://github.com/Anudeepsrib/anudeepsrib.github.io.git
+cd anudeepsrib.github.io
+npm install
+npm run dev
+```
 
-   # Supabase
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+The development server runs at `http://localhost:3000`.
 
-   # GitHub
-   NEXT_PUBLIC_GITHUB_TOKEN=your_github_token
+## Environment Variables
 
-   # Optional: Add any other API keys needed for additional features
-   ```
-4. **Database Setup**
-   Run the following SQL in your Supabase SQL editor to set up vector search:
-   ```sql
-   -- Enable the pgvector extension
-   create extension if not exists vector;
+No environment variables are required for the current static portfolio.
 
-   -- Create documents table for vector storage
-   create table if not exists documents (
-     id bigserial primary key,
-     content text,
-     metadata jsonb,
-     embedding vector(1536)
-   );
+Use `.env.example` as a placeholder reference only. Private keys such as `GITHUB_TOKEN`, `OPENAI_API_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` must stay server-only. Never expose personal access tokens or service-role keys through `NEXT_PUBLIC_*`.
 
-   -- Create the matching function
-   create or replace function match_documents(
-     query_embedding vector(1536),
-     filter jsonb default '{}'::jsonb,
-     match_count int default 10
-   ) returns table (
-     id bigint,
-     content text,
-     metadata jsonb,
-     similarity float
-   )
-   language plpgsql
-   as $$
-   begin
-     return query
-     select
-       id,
-       content,
-       metadata,
-       1 - (documents.embedding <=> query_embedding) as similarity
-     from documents
-     where metadata @> filter
-     order by documents.embedding <=> query_embedding
-     limit match_count;
-   end;
-   $$;
-   ```
-5. **Development Server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-   The application will be available at `http://localhost:3000`
-6. **Build for Production**
-   ```bash
-   npm run build
-   # or
-   yarn build
-   ```
+Safe public variables may use `NEXT_PUBLIC_*` only when the value is truly safe for every visitor to see, such as a public site URL.
 
-## Project Structure
+## Quality Commands
 
-For a detailed breakdown of the project’s folders and files, see [Project-Structure.md](./Project-Structure.md).
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm run format
+npm audit
+npm run depcheck
+```
 
-## Available Scripts
+`npm run build` creates a static export in `out/` because `next.config.mjs` uses `output: "export"`.
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+## Deployment
 
-## License
+### GitHub Pages
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The workflow in `.github/workflows/nextjs.yml` uses Node 20, `npm ci`, lint, type-check, and `next build`, then uploads `./out` to GitHub Pages. The workflow runs on `main` and `master`; the remote default branch is currently `master`.
+
+### Vercel
+
+`vercel.json` uses the normal `npm run vercel-build` command. No `--legacy-peer-deps` workaround is required after dependency cleanup.
+
+### Static Export Limitation
+
+GitHub Pages can host only the static export. Server features such as AI chat, private GitHub API token access, Supabase service-role operations, or OpenAI calls cannot run on GitHub Pages. Add those only through server-side routes on a server runtime, and keep a static fallback for GitHub Pages.
+
+## Known Limitations
+
+- The portfolio currently uses static project copy and local markdown content.
+- There is no live GitHub stats widget or client-side GitHub token usage.
+- There is no OpenAI, LangChain, Supabase, or pgvector runtime integration in this repository.
+- Case-study content is redacted and should not include confidential employer details.
+
+## Security
+
+See [SECURITY.md](./SECURITY.md) for secret handling and vulnerability reporting.

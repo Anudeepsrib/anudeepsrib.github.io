@@ -1,19 +1,20 @@
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Recognitions from '@/components/Recognitions';
+import React from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Recognitions from "@/components/Recognitions";
 
 export const metadata = {
-    title: 'Recognitions | Speaking, Publications & Awards',
-    description: 'Invited speaker at BSBI Café Scientifique, CRC Press author, and recognized AI thought leader. View talks, publications, and industry recognition.',
+  title: "Speaking | Anudeep Sri Bathina",
+  description:
+    "Speaking engagements, CRC Press publications, KaggleX fellowship, and industry recognition. Invited speaker at BSBI, DeepLearning.AI, and 18+ guest lectures.",
 };
 
 export default function RecognitionsPage() {
-    return (
-        <main className="min-h-screen bg-[var(--bg-primary)]">
-            <Navbar />
-            <Recognitions />
-            <Footer />
-        </main>
-    );
+  return (
+    <main className="min-h-screen">
+      <Navbar />
+      <Recognitions />
+      <Footer />
+    </main>
+  );
 }

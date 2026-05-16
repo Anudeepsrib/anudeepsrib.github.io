@@ -1,344 +1,314 @@
-'use client';
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Mic, BookOpen, Award, ExternalLink, School, Globe, Sparkles, Calendar, MapPin } from 'lucide-react';
-import { fadeUp, stagger } from '@/lib/animation';
+"use client";
+import React from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import StaggerContainer from "@/components/ui/StaggerContainer";
+import { ArrowUpRight } from "lucide-react";
 
-interface RecognitionItem {
-    title: string;
-    organization: string;
-    description: string;
-    link?: string;
-    linkText?: string;
-    date?: string;
-    location?: string;
-}
-
-interface RecognitionCategory {
-    id: number;
-    category: string;
-    description: string;
-    icon: any;
-    gradient: string;
-    items: RecognitionItem[];
-}
-
-const recognitions: RecognitionCategory[] = [
-    {
-        id: 1,
-        category: "University Lectures",
-        description: "Academic knowledge sharing across prestigious institutions",
-        icon: School,
-        gradient: "from-[#C8956C] to-[#E8B990]",
-        items: [
-            {
-                title: "Classification Models in ML",
-                organization: "IET MBCET - STTP Program",
-                description: "Hands-on session on supervised learning fundamentals.",
-                date: "December 2024",
-                link: "https://www.linkedin.com/posts/iet-mbcet_techinnovation-datascience-futureoftech-activity-7265386187622670336-t-GZ",
-                linkText: "View Event"
-            },
-            {
-                title: "Recommendation Systems",
-                organization: "PVP Siddhartha Institute",
-                description: "Technical session on building recommendation engines.",
-                date: "March 2022",
-                link: "https://www.pvpsiddhartha.ac.in/naac_2023/5.1.3.List%20of%20programs%28WW%29.pdf",
-                linkText: "View Records"
-            },
-            {
-                title: "Innovation in AI",
-                organization: "VIT University, Amaravati",
-                description: "Talk on emerging trends in Artificial Intelligence.",
-                date: "March 2022"
-            },
-            {
-                title: "Big Data Analytics FDP",
-                organization: "VIT University, Vellore",
-                description: "Faculty development program on big data tools.",
-                date: "April 2021"
-            },
-            {
-                title: "Computer Vision & ML",
-                organization: "VIT University, Vellore",
-                description: "Exploring intersection of hardware architecture and ML.",
-                date: "March 2020"
-            },
-            {
-                title: "Database Systems",
-                organization: "VIT University, Chennai",
-                description: "Guest lecture on modern database architectures.",
-                date: "October 2017",
-                link: "https://chennai.vit.ac.in/files/guestlecture2017.pdf",
-                linkText: "View Announcement"
-            }
-        ]
-    },
-    {
-        id: 2,
-        category: "International Conferences",
-        description: "Thought leadership at global stages",
-        icon: Mic,
-        gradient: "from-[#A87B4F] to-[#C8956C]",
-        items: [
-            {
-                title: "AI in Business: Café Scientifique",
-                organization: "Berlin School of Business & Innovation",
-                description: "Invited speaker/panelist for AI in business applications.",
-                date: "June 2021",
-                location: "Berlin, Germany",
-                link: "https://www.berlinsbi.com/events-and-webinars/cafe-scientifique/5th-cafe-scientifique",
-                linkText: "View Event"
-            },
-            {
-                title: "Cloud Computing Conference",
-                organization: "Boussias Communications",
-                description: "International conference on cloud technologies at scale.",
-                date: "March 2021",
-                location: "Greece"
-            },
-            {
-                title: "Pie & AI: AI for Everyone",
-                organization: "DeepLearning.AI",
-                description: "Community event fostering AI literacy and accessibility.",
-                date: "September 2020",
-                location: "Lahore (Virtual)"
-            },
-            {
-                title: "AI Talk Show Panel",
-                organization: "Industry Consortium",
-                description: "Panel discussion on the future of AI and its societal impact.",
-                date: "June 2020",
-                location: "Jaipur, India"
-            }
-        ]
-    },
-    {
-        id: 3,
-        category: "Publications & Research",
-        description: "Contributing to the body of knowledge in AI/ML",
-        icon: BookOpen,
-        gradient: "from-[#E8B990] to-[#C8956C]",
-        items: [
-            {
-                title: "Transfer Learning for Groundfish Recognition",
-                organization: "UMass Dartmouth (Thesis)",
-                description: "Cross-database recognition using YOLOv8 & ResNet50, achieving 94.10% mAP.",
-                date: "2024",
-                link: "https://doi.org/10.62791/20352",
-                linkText: "View Thesis"
-            },
-            {
-                title: "Blueprint of IoT for Smart Cities",
-                organization: "CRC Press / Taylor & Francis",
-                description: "Handbook chapter on IoT blueprinting for emerging markets.",
-                date: "2024",
-                link: "https://doi.org/10.1201/9781003225317",
-                linkText: "View Publication"
-            }
-        ]
-    },
-    {
-        id: 4,
-        category: "Awards & Recognition",
-        description: "Industry acknowledgment for impact and innovation",
-        icon: Award,
-        gradient: "from-[#6B5A43] to-[#9C8B73]",
-        items: [
-            {
-                title: "RISE Award",
-                organization: "AT&T",
-                description: "Recognized for significant innovation and impact in AI systems.",
-                date: "2025"
-            },
-            {
-                title: "KaggleX Fellowship Mentor",
-                organization: "Google / Kaggle",
-                description: "Selected as mentor for Cohorts 3 (ML) and 4 (GenAI).",
-                date: "2023-2024"
-            }
-        ]
-    }
+const universityLectures = [
+  {
+    title: "Classification Models in ML",
+    venue: "IET MBCET",
+    date: "Dec 2024",
+    description: "Hands-on session on supervised learning fundamentals.",
+  },
+  {
+    title: "Recommendation Systems",
+    venue: "PVP Siddhartha Institute",
+    date: "Mar 2022",
+    description: "Technical session on building recommendation engines.",
+  },
+  {
+    title: "Innovation in AI",
+    venue: "VIT University, Amaravati",
+    date: "Mar 2022",
+    description: "Talk on emerging trends in Artificial Intelligence.",
+  },
+  {
+    title: "Big Data Analytics FDP",
+    venue: "VIT University, Vellore",
+    date: "Apr 2021",
+    description: "Faculty development program on big data tools.",
+  },
+  {
+    title: "Computer Vision & ML",
+    venue: "VIT University, Vellore",
+    date: "Mar 2020",
+    description: "Exploring intersection of hardware architecture and ML.",
+  },
+  {
+    title: "Database Systems",
+    venue: "VIT University, Chennai",
+    date: "Oct 2017",
+    description: "Guest lecture on modern database architectures.",
+  },
 ];
 
-const Recognitions = () => {
-    const reduceMotion = useReducedMotion();
+const conferences = [
+  {
+    title: "AI in Business: Café Scientifique",
+    venue: "Berlin School of Business & Innovation",
+    location: "Berlin, Germany",
+    date: "Jun 2021",
+    description: "Invited speaker/panelist for AI in business applications.",
+  },
+  {
+    title: "Cloud Computing Conference",
+    venue: "Boussias Communications",
+    location: "Greece",
+    date: "Mar 2021",
+    description: "International conference on cloud technologies at scale.",
+  },
+  {
+    title: "Pie & AI: AI for Everyone",
+    venue: "DeepLearning.AI",
+    location: "Lahore (Virtual)",
+    date: "Sep 2020",
+    description: "Community event fostering AI literacy and accessibility.",
+  },
+  {
+    title: "AI Talk Show Panel",
+    venue: "Industry Consortium",
+    location: "Jaipur, India",
+    date: "Jun 2020",
+    description: "Panel discussion on the future of AI and its societal impact.",
+  },
+];
 
-    // Stats for hero section
-    const stats = [
-        { value: "18+", label: "Speaking Engagements" },
-        { value: "7", label: "Countries Reached" },
-        { value: "2", label: "Publications" },
-        { value: "5+", label: "Universities" }
-    ];
+const publications = [
+  {
+    title: "Transfer Learning for Groundfish Recognition",
+    venue: "UMass Dartmouth, 2024",
+    description:
+      "Cross-database recognition using YOLOv8 and ResNet50, achieving 94.10% mAP.",
+    link: "https://doi.org/10.62791/20352",
+  },
+  {
+    title: "Blueprint of IoT for Smart Cities",
+    venue: "CRC Press / Taylor & Francis, 2024",
+    description:
+      "Co-authored handbook chapter on IoT blueprinting for smart city development.",
+    link: "https://doi.org/10.1201/9781003225317",
+  },
+];
 
-    return (
-        <section className="py-24 pt-32 relative overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[var(--bg-primary)]" />
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[180px] pointer-events-none" />
-            <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-[var(--accent-warm)]/5 rounded-full blur-[150px] pointer-events-none" />
+const awards = [
+  { title: "RISE Award", org: "AT&T, 2025" },
+  { title: "KaggleX Fellowship", org: "Google/Kaggle, 2023-2024" },
+];
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Hero Header */}
-                <motion.div
-                    variants={stagger}
-                    initial={reduceMotion ? 'show' : 'hidden'}
-                    animate="show"
-                    className="text-center mb-20"
-                >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift">
-                        <Sparkles className="text-accent" size={18} />
-                        <span className="text-sm font-mono text-accent">Recognition & Impact</span>
-                    </motion.div>
-                    <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-exo font-bold mb-6 tracking-tight">
-                        <span className="gradient-text">Global Recognitions</span>
-                    </motion.h1>
-                    <motion.p variants={fadeUp} className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-                        Speaking engagements, publications, and industry recognition across
-                        universities, conferences, and global AI communities.
-                    </motion.p>
-                </motion.div>
-
-                {/* Stats Banner */}
-                <motion.div
-                    variants={stagger}
-                    initial={reduceMotion ? 'show' : 'hidden'}
-                    animate="show"
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
-                >
-                    {stats.map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            variants={fadeUp}
-                            className="glass-card p-6 text-center hover-lift"
-                        >
-                            <div className="text-3xl md:text-4xl font-exo font-bold gradient-text mb-2">
-                                {stat.value}
-                            </div>
-                            <p className="text-text-muted text-sm font-mono uppercase tracking-wide">
-                                {stat.label}
-                            </p>
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                {/* Recognition Categories */}
-                <div className="space-y-16">
-                    {recognitions.map((category, catIndex) => {
-                        const Icon = category.icon;
-                        return (
-                            <motion.div
-                                key={category.id}
-                                variants={stagger}
-                                initial={reduceMotion ? 'show' : 'hidden'}
-                                whileInView="show"
-                                viewport={{ once: true, margin: "-100px" }}
-                            >
-                                {/* Category Header */}
-                                <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
-                                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.gradient} p-[2px]`}>
-                                        <div className="w-full h-full rounded-xl bg-[var(--bg-primary)] flex items-center justify-center">
-                                            <Icon size={24} className="text-text-primary" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h2 className="text-2xl font-exo font-bold text-text-primary">
-                                            {category.category}
-                                        </h2>
-                                        <p className="text-text-muted text-sm">{category.description}</p>
-                                    </div>
-                                </motion.div>
-
-                                {/* Items Grid */}
-                                <div className="grid md:grid-cols-2 gap-4">
-                                    {category.items.map((item, itemIndex) => (
-                                        <motion.div
-                                            key={itemIndex}
-                                            variants={fadeUp}
-                                            transition={{ delay: itemIndex * 0.05 }}
-                                            className="glass-card p-6 hover-lift group cursor-pointer"
-                                        >
-                                            {/* Date Badge */}
-                                            {item.date && (
-                                                <div className="flex items-center gap-4 mb-3">
-                                                    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-mono bg-gradient-to-r ${category.gradient} text-white`}>
-                                                        <Calendar size={12} />
-                                                        {item.date}
-                                                    </span>
-                                                    {item.location && (
-                                                        <span className="inline-flex items-center gap-1 text-xs text-text-muted">
-                                                            <MapPin size={12} />
-                                                            {item.location}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                            )}
-
-                                            {/* Title */}
-                                            <h3 className="text-lg font-exo font-bold text-text-primary mb-1 group-hover:text-accent transition-colors">
-                                                {item.title}
-                                            </h3>
-
-                                            {/* Organization */}
-                                            <p className="text-accent text-sm font-medium mb-2">
-                                                {item.organization}
-                                            </p>
-
-                                            {/* Description */}
-                                            <p className="text-text-secondary text-sm leading-relaxed mb-4">
-                                                {item.description}
-                                            </p>
-
-                                            {/* Link */}
-                                            {item.link && (
-                                                <a
-                                                    href={item.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-1 text-sm font-mono text-accent hover:gap-2 transition-all"
-                                                >
-                                                    {item.linkText || "View"}
-                                                    <ExternalLink size={14} />
-                                                </a>
-                                            )}
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        );
-                    })}
-                </div>
-
-                {/* CTA Section */}
-                <motion.div
-                    variants={fadeUp}
-                    initial={reduceMotion ? 'show' : 'hidden'}
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="mt-20 text-center"
-                >
-                    <div className="glass-card p-8 max-w-2xl mx-auto">
-                        <Globe className="mx-auto text-accent mb-4" size={32} />
-                        <h3 className="text-xl font-exo font-bold text-text-primary mb-2">
-                            Invite Me to Speak
-                        </h3>
-                        <p className="text-text-secondary text-sm mb-6">
-                            Available for guest lectures, panels, and workshops on AI/ML, Data Science, and Production Systems.
-                        </p>
-                        <a
-                            href="mailto:anudeepsrib@gmail.com?subject=Speaking%20Inquiry"
-                            className="btn-primary inline-flex items-center gap-2"
-                        >
-                            Get in Touch
-                            <ExternalLink size={16} />
-                        </a>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
+const item = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+  },
 };
 
-export default Recognitions;
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <ScrollReveal>
+      <h2 className="mb-8 font-display text-xl font-bold tracking-tight md:text-2xl">
+        {children}
+      </h2>
+    </ScrollReveal>
+  );
+}
+
+export default function Recognitions() {
+  const heroRef = useRef(null);
+  const heroInView = useInView(heroRef, { once: true });
+
+  return (
+    <div className="pt-24">
+      {/* Hero */}
+      <section
+        ref={heroRef}
+        className="relative overflow-hidden py-20 md:py-32"
+      >
+        <div className="hero-glow absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2" />
+        <div className="relative z-10 mx-auto max-w-4xl px-6">
+          <motion.h1
+            className="mb-4 font-display text-4xl font-bold tracking-tighter md:text-6xl lg:text-7xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Speaking
+          </motion.h1>
+          <motion.p
+            className="max-w-md text-[15px] text-[var(--text-2)]"
+            initial={{ opacity: 0, y: 15 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            Speaking engagements, publications, and industry recognition across
+            universities, conferences, and global AI communities.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <div className="border-y border-[var(--border)] bg-[var(--bg-secondary)] py-8">
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-6 text-center md:grid-cols-5">
+          {[
+            { number: "18+", label: "Speaking Engagements" },
+            { number: "7+", label: "Countries Reached" },
+            { number: "2", label: "Publications" },
+            { number: "5+", label: "Universities" },
+            { number: "1000+", label: "Learners Impacted" },
+          ].map((stat, i) => (
+            <div key={i}>
+              <div className="font-display text-3xl font-semibold text-[var(--text)]">
+                {stat.number}
+              </div>
+              <div className="mt-1 text-xs tracking-widest text-[var(--text-3)]">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* University Lectures */}
+      <section className="py-14 md:py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <SectionHeading>University Lectures</SectionHeading>
+          <div className="grid gap-4 md:grid-cols-2">
+            {universityLectures.map((lecture, i) => (
+              <ScrollReveal key={i} delay={i * 0.03}>
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] p-5 transition-all hover:border-[var(--accent-1)]/30">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="font-display text-[15px] font-semibold text-[var(--text)]">
+                        {lecture.title}
+                      </h3>
+                      <p className="mt-0.5 text-xs text-[var(--text-3)]">{lecture.venue}</p>
+                    </div>
+                    <span className="font-mono text-[10px] text-[var(--text-3)]">
+                      {lecture.date}
+                    </span>
+                  </div>
+                  {lecture.description && (
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--text-2)]">
+                      {lecture.description}
+                    </p>
+                  )}
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* International Conferences */}
+      <section className="py-14 md:py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <SectionHeading>International Conferences</SectionHeading>
+          <div className="grid gap-4 md:grid-cols-2">
+            {conferences.map((conf, i) => (
+              <ScrollReveal key={i} delay={i * 0.03}>
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] p-5 transition-all hover:border-[var(--accent-1)]/30">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="font-display text-[15px] font-semibold text-[var(--text)]">
+                        {conf.title}
+                      </h3>
+                      <p className="mt-0.5 text-xs text-[var(--text-3)]">
+                        {conf.venue} · {conf.location}
+                      </p>
+                    </div>
+                    <span className="font-mono text-[10px] text-[var(--text-3)]">
+                      {conf.date}
+                    </span>
+                  </div>
+                  {conf.description && (
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--text-2)]">
+                      {conf.description}
+                    </p>
+                  )}
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Publications */}
+      <section className="py-14 md:py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <SectionHeading>Publications</SectionHeading>
+          <div className="flex flex-col">
+            {publications.map((pub, i) => (
+              <ScrollReveal key={pub.title} delay={i * 0.1}>
+                <a
+                  href={pub.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start justify-between gap-4 border-b border-[var(--border)] py-4"
+                >
+                  <div>
+                    <h3 className="mb-0.5 font-display text-sm font-semibold text-[var(--text)] transition-colors group-hover:text-[var(--blue)]">
+                      {pub.title}
+                    </h3>
+                    <p className="mb-1.5 font-mono text-[11px] text-[var(--warm)]">
+                      {pub.venue}
+                    </p>
+                    <p className="text-[13px] leading-relaxed text-[var(--text-2)]">
+                      {pub.description}
+                    </p>
+                  </div>
+                  <ArrowUpRight
+                    size={13}
+                    className="mt-1 flex-shrink-0 text-[var(--text-3)] transition-colors group-hover:text-[var(--text-2)]"
+                  />
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Awards & Fellowships */}
+      <section className="py-14 md:py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <SectionHeading>Awards &amp; Fellowships</SectionHeading>
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
+            {awards.map((award) => (
+              <div key={award.title}>
+                <h3 className="font-display text-sm font-semibold text-[var(--text)]">
+                  {award.title}
+                </h3>
+                <p className="font-mono text-[11px] text-[var(--text-3)]">
+                  {award.org}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <div className="border-t border-[var(--border)] bg-[var(--bg-secondary)] py-16">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <h3 className="font-display text-2xl font-semibold text-[var(--text)]">
+            Invite Me to Speak
+          </h3>
+          <p className="mx-auto mt-3 max-w-md text-[var(--text-2)]">
+            Available for guest lectures, panels, workshops, and keynotes on
+            production AI systems, LLM architectures, and career development in
+            tech.
+          </p>
+          <a
+            href="mailto:anudeepSri108@gmail.com?subject=Speaking%20Invitation"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg border border-[var(--accent-1)]/30 bg-[var(--accent-1)]/10 px-6 py-3 text-sm font-medium text-[var(--accent-1)] transition-colors hover:bg-[var(--accent-1)]/20"
+          >
+            Get in Touch <ArrowUpRight size={16} />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}

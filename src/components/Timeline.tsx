@@ -1,166 +1,183 @@
-'use client';
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import Image from 'next/image';
-import resumeData from '@/data/resumeData.json';
-import { Briefcase, MapPin, ExternalLink, ChevronRight } from 'lucide-react';
-import { fadeUp, stagger } from '@/lib/animation';
+"use client";
+import React from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
-const Timeline = () => {
-    const reduceMotion = useReducedMotion();
-    const [imgErrors, setImgErrors] = React.useState<{ [key: string]: boolean }>({});
+const phases = [
+  { period: "2011 - 2015", label: "Foundation", color: "var(--text-3)" },
+  { period: "2015 - 2021", label: "Growth", color: "var(--text-2)" },
+  { period: "2021 - 2024", label: "Research", color: "var(--warm)" },
+  { period: "2024 - Present", label: "Impact", color: "var(--blue)" },
+];
 
-    // Company brand colors for visual distinction - Warm copper variations
-    const companyColors: { [key: string]: string } = {
-        'AT&T': 'from-[var(--accent-primary)]/20 to-[var(--accent-warm)]/20',
-        'Capgemini': 'from-[var(--accent-secondary)]/20 to-[var(--accent-primary)]/20',
-        'GainInsights Solutions': 'from-[var(--accent-warm)]/20 to-[var(--accent-primary)]/20',
-        'Cognizant': 'from-[var(--accent-secondary)]/20 to-[var(--text-highlight)]/10'
-    };
+const experiences = [
+  {
+    company: "AT&T",
+    role: "AI Architect",
+    period: "2024 - Present",
+    location: "United States",
+    logo: "/assets/companies/att.png",
+    description:
+      "Architecting enterprise GenAI solutions and LLM systems serving 15K+ internal users. Built Python document parsers processing 50K+ pages/month at 97.2% accuracy. Deployed RAG pipelines via FastAPI + Azure AI Search with p95 latency of 2.4s.",
+    active: true,
+  },
+  {
+    company: "Capgemini",
+    role: "Technical Lead",
+    period: "2019 - 2021",
+    location: "India",
+    logo: "/assets/companies/capgemini.png",
+    description:
+      "Led a team of 8 ML engineers. Delivered 12+ production data pipelines, reducing model training time by 65% through PySpark optimization. Increased model deployment frequency from quarterly to weekly. Achieved 94% accuracy in customer churn prediction, saving $2.3M in retention costs.",
+  },
+  {
+    company: "GainInsights Solutions",
+    role: "Big Data & ML Engineer",
+    period: "2019",
+    location: "India",
+    logo: "/assets/companies/gaininsights.png",
+    description:
+      "Engineered scalable PySpark pipelines processing 10M+ records/day. Improved ETL performance by 78% and reduced job failures by 92%. Built real-time dashboards serving 500+ concurrent users with sub-second query response.",
+  },
+  {
+    company: "Cognizant",
+    role: "Data Science Engineer",
+    period: "2015 - 2019",
+    location: "India",
+    logo: "/assets/companies/cognizant.png",
+    description:
+      "Led cloud data migration for 6TB of enterprise data across 3 AWS regions (completed 3 months ahead of schedule with 99.8% integrity). Implemented predictive analytics models that increased sales forecasting accuracy by 43% and reduced inventory costs by $1.1M annually.",
+  },
+];
 
-    return (
-        <section id="experience" className="py-24 relative overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[var(--bg-primary)]" />
+function TimelineCard({
+  experience,
+  index,
+}: {
+  experience: (typeof experiences)[0];
+  index: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const fromLeft = index % 2 === 0;
 
-            {/* Decorative Blobs */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--accent-warm)]/5 rounded-full blur-[100px] pointer-events-none" />
+  return (
+    <motion.div
+      ref={ref}
+      className={`relative mb-14 flex items-start gap-8 last:mb-0 ${
+        fromLeft ? "md:flex-row" : "md:flex-row-reverse"
+      }`}
+      initial={{ opacity: 0, x: fromLeft ? -40 : 40 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div
+        className={`glass-card flex-1 p-6 ${fromLeft ? "md:text-right" : ""}`}
+      >
+        <div
+          className={`mb-2 flex items-center gap-2 ${fromLeft ? "md:justify-end" : ""}`}
+        >
+          {experience.active && (
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--blue)]" />
+          )}
+          <span className="font-mono text-[11px] text-[var(--text-3)]">
+            {experience.period}
+          </span>
+        </div>
+        <h3 className="mb-0.5 font-display text-base font-semibold text-[var(--text)]">
+          {experience.company}
+        </h3>
+        <p className="mb-0.5 text-sm text-[var(--text-2)]">{experience.role}</p>
+        <p className="mb-3 text-[11px] text-[var(--text-3)]">
+          {experience.location}
+        </p>
+        <p className="text-[13px] leading-relaxed text-[var(--text-2)]">
+          {experience.description}
+        </p>
+      </div>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Header */}
-                <motion.div
-                    variants={stagger}
-                    initial={reduceMotion ? 'show' : 'hidden'}
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6 hover-lift border-accent/20">
-                        <Briefcase className="text-accent" size={18} />
-                        <span className="text-sm font-mono text-accent tracking-wide">Career Journey</span>
-                    </motion.div>
-                    <motion.h2 variants={fadeUp} className="text-5xl md:text-6xl font-exo font-bold mb-4">
-                        <span className="gradient-accent-text">Professional Experience</span>
-                    </motion.h2>
-                    <motion.p variants={fadeUp} className="text-xl text-text-secondary max-w-3xl">
-                        Building production-grade AI systems across Fortune 500 companies and innovative startups.
-                    </motion.p>
-                </motion.div>
+      <div className="hidden flex-shrink-0 flex-col items-center md:flex">
+        <div
+          className={`h-2 w-2 rounded-full ${
+            experience.active ? "bg-[var(--blue)]" : "bg-[var(--text-3)]"
+          }`}
+        />
+      </div>
 
-                {/* Experience Cards */}
-                <div className="grid gap-8">
-                    {resumeData.experience.map((job, index) => {
-                        const gradientClass = companyColors[job.company] || 'from-accent/20 to-accent-warm/20';
-                        const isCurrentRole = job.endDate === 'Present';
-                        const hasLogo = (job as any).logo && !imgErrors[job.company];
+      <div className="hidden flex-1 md:block" />
+    </motion.div>
+  );
+}
 
-                        return (
-                            <motion.div
-                                key={index}
-                                variants={fadeUp}
-                                initial={reduceMotion ? 'show' : 'hidden'}
-                                whileInView="show"
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group relative"
-                            >
-                                {/* Card */}
-                                <div className={`glass-card p-8 hover-lift transition-all duration-500 border ${isCurrentRole ? 'border-accent/40 shadow-glow !overflow-visible' : 'border-[var(--border-subtle)]'}`}>
-                                    {/* Current Role Badge */}
-                                    {isCurrentRole && (
-                                        <div className="absolute -top-3 right-8 px-4 py-1 bg-gradient-to-r from-accent to-accent-secondary text-[var(--bg-primary)] text-xs font-mono font-bold rounded-full shadow-lg z-20">
-                                            Current Role
-                                        </div>
-                                    )}
-
-                                    <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                                        {/* Left: Company & Timeline */}
-                                        <div className="lg:w-1/3">
-                                            {/* Company Logo */}
-                                            <div className={`w-16 h-16 rounded-xl bg-[var(--bg-secondary)] p-2 flex items-center justify-center mb-4 shadow-inner ring-1 ring-[var(--border-subtle)] ${gradientClass}`}>
-                                                <div className="relative w-full h-full rounded-lg overflow-hidden bg-white flex items-center justify-center">
-                                                    {hasLogo ? (
-                                                        <Image
-                                                            src={(job as any).logo}
-                                                            alt={job.company}
-                                                            width={64}
-                                                            height={64}
-                                                            className="object-contain p-1"
-                                                            onError={() => setImgErrors(prev => ({ ...prev, [job.company]: true }))}
-                                                        />
-                                                    ) : (
-                                                        <span className="text-black font-exo font-bold text-2xl">
-                                                            {job.company.charAt(0)}
-                                                        </span>
-                                                    )}
-                                                </div>
-                                            </div>
-
-                                            {/* Company Name */}
-                                            <a
-                                                href={job.companyUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 text-xl font-exo font-bold text-text-primary hover:text-accent transition-colors group/link"
-                                            >
-                                                {job.company}
-                                                <ExternalLink size={16} className="opacity-0 group-hover/link:opacity-100 transition-opacity text-accent" />
-                                            </a>
-
-                                            {/* Location */}
-                                            <div className="flex items-center gap-2 text-text-muted text-sm mt-2">
-                                                <MapPin size={14} className="text-accent/70" />
-                                                <span>{job.location}</span>
-                                            </div>
-
-                                            {/* Duration */}
-                                            <div className={`mt-4 px-3 py-1.5 inline-flex items-center gap-2 rounded-lg border ${isCurrentRole ? 'bg-accent/10 border-accent/30' : 'bg-[var(--bg-secondary)] border-[var(--border-subtle)]'}`}>
-                                                <span className={`font-mono text-sm font-medium ${isCurrentRole ? 'text-accent' : 'text-text-secondary'}`}>
-                                                    {job.startDate} | {job.endDate}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        {/* Right: Role & Description */}
-                                        <div className="lg:w-2/3 lg:pl-10 lg:border-l border-[var(--border-subtle)] relative">
-                                            <div className="hidden lg:block absolute -left-[1px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                            {/* Position */}
-                                            <h3 className="text-2xl font-exo font-bold text-text-primary mb-4 group-hover:text-accent transition-colors">
-                                                {job.position}
-                                            </h3>
-
-                                            {/* Description */}
-                                            <p className="text-text-secondary leading-relaxed mb-6 font-light">
-                                                {job.description}
-                                            </p>
-
-                                            {/* View More Link */}
-                                            <a
-                                                href={job.companyUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 text-sm font-mono text-accent/80 hover:text-accent transition-all group/link"
-                                            >
-                                                <span className="border-b border-transparent group-hover/link:border-accent">Learn more about {job.company}</span>
-                                                <ChevronRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Connector Line (except last item) */}
-                                {index < resumeData.experience.length - 1 && (
-                                    <div className="hidden lg:block absolute left-[2rem] top-full h-8 w-px bg-gradient-to-b from-[var(--border-subtle)] to-transparent" />
-                                )}
-                            </motion.div>
-                        );
-                    })}
-                </div>
+export default function Timeline() {
+  return (
+    <section className="relative py-16 md:py-24">
+      <div className="mx-auto max-w-4xl px-6">
+        {/* Phase Overview */}
+        <div className="mb-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
+          {phases.map((phase) => (
+            <div key={phase.label} className="bg-[var(--bg-secondary)] p-5">
+              <div className="font-mono text-[10px] tracking-widest text-[var(--text-3)]">
+                {phase.period}
+              </div>
+              <div
+                className="mt-1 font-display text-lg font-semibold"
+                style={{ color: phase.color }}
+              >
+                {phase.label}
+              </div>
             </div>
-        </section>
-    );
-};
+          ))}
+        </div>
 
-export default Timeline;
+        {/* Experience Cards */}
+        <div className="space-y-8">
+          {experiences.map((exp, index) => (
+            <div
+              key={index}
+              className="group rounded-2xl border border-[var(--border)] bg-[var(--bg-secondary)] p-7 transition-all hover:border-[var(--accent-1)]/20"
+            >
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                {/* Company Info */}
+                <div className="flex items-start gap-4">
+                  {exp.logo && (
+                    <div className="mt-1 h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-white/5 p-1.5">
+                      <img
+                        src={exp.logo}
+                        alt={exp.company}
+                        className="h-full w-full object-contain opacity-90"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-display text-xl font-semibold text-[var(--text)]">
+                        {exp.company}
+                      </h3>
+                      {exp.active && (
+                        <span className="rounded-full bg-[var(--accent-1)]/10 px-2.5 py-0.5 text-[10px] font-medium tracking-widest text-[var(--accent-1)]">
+                          CURRENT
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[15px] font-medium text-[var(--text-2)]">
+                      {exp.role}
+                    </p>
+                    <p className="text-xs text-[var(--text-3)]">
+                      {exp.period} · {exp.location}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="mt-5 text-[14.5px] leading-relaxed text-[var(--text-2)]">
+                {exp.description}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

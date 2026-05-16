@@ -1,32 +1,57 @@
-export const defaultTransition = { duration: 0.6, ease: [0.2, 0.8, 0.2, 1] };
+export const defaultTransition = { duration: 0.64, ease: [0.16, 1, 0.3, 1] };
 
 export const heroContainer = {
-  hidden: {},
+  hidden: { opacity: 1 },
   show: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
+      delayChildren: 0.08,
     },
   },
 };
 
 export const stagger = {
-  hidden: {},
+  hidden: { opacity: 1 },
   show: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.075,
+      delayChildren: 0.05,
     },
   },
 };
 
 export const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0, transition: defaultTransition },
+};
+
+export const fadeIn = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: defaultTransition },
+};
+
+export const scaleIn = {
+  hidden: { opacity: 0, y: 14, scale: 0.985 },
+  show: { opacity: 1, y: 0, scale: 1, transition: defaultTransition },
+};
+
+export const cardHover = {
+  y: -6,
+  transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
+};
+
+export const ctaHover = {
+  x: 2,
+  y: -1,
+  transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] },
 };
 
 export const simpleFloat = {
   animate: {
-    y: [0, -12, 0],
-    x: [0, 6, 0],
-    transition: { duration: 12, repeat: Infinity, ease: 'easeInOut' },
+    y: [0, -6, 0],
+    x: [0, 3, 0],
+    transition: { duration: 14, repeat: Infinity, ease: "easeInOut" },
   },
 };

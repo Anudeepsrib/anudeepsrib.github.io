@@ -1,124 +1,158 @@
-import type { Metadata } from 'next';
-import { Playfair_Display, DM_Sans, JetBrains_Mono } from 'next/font/google';
-import './globals.css';
-import BackgroundGraph from '@/components/BackgroundGraph';
-import SmoothScroll from '@/components/SmoothScroll';
-import Preloader from '@/components/Preloader';
-import WebMCP from '@/components/WebMCP';
-import resumeData from '@/data/resumeData.json';
+import type { Metadata } from "next";
+import { JetBrains_Mono } from "next/font/google";
+import "./globals.css";
+import resumeData from "@/data/resumeData.json";
 
-const playfair = Playfair_Display({
-    subsets: ['latin'],
-    variable: '--font-serif',
-    display: 'swap',
-});
-
-const dmSans = DM_Sans({
-    subsets: ['latin'],
-    variable: '--font-sans',
-    display: 'swap',
-});
+const SITE_URL = "https://anudeepsri.com";
 
 const jetbrainsMono = JetBrains_Mono({
-    weight: ['400', '500', '600'],
-    subsets: ['latin'],
-    variable: '--font-mono',
-    display: 'swap',
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-    title: 'Anudeep | AI Architect',
-    description: "AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems. Expert in building production-grade AI solutions associated with high-impact business outcomes.",
-    keywords: ["AI Architect", "Generative AI", "LLM", "Machine Learning", "Dallas", "USA", "RAG", "Vector Search", "Python", "Data Engineering"],
-    icons: {
-        icon: [
-            { url: '/assets/logo.png', type: 'image/png' },
-        ],
-        apple: '/assets/logo.png',
-    },
-    openGraph: {
-        title: `${resumeData.personalInfo.name} | ${resumeData.personalInfo.title}`,
-        description: "AI Architect specializing in Generative AI, LLMs, and scalable machine learning systems.",
-        url: resumeData.personalInfo.website,
-        siteName: `${resumeData.personalInfo.name} Portfolio`,
-        images: [
-            {
-                url: resumeData.personalInfo.image,
-                width: 800,
-                height: 600,
-            },
-        ],
-        type: 'website',
-    },
+  metadataBase: new URL(SITE_URL),
+  title: "Anudeep Sri Bathina | AI Architect",
+  description:
+    "AI Architect with 11+ years building production-grade AI systems, LLM/RAG solutions, and enterprise-scale platforms at AT&T, Capgemini, Cognizant, and UMass Dartmouth.",
+  keywords: [
+    "AI Architect",
+    "Generative AI",
+    "LLM",
+    "RAG Systems",
+    "Machine Learning",
+    "Agentic AI",
+    "MLOps",
+    "Computer Vision",
+    "Python",
+    "FastAPI",
+  ],
+  icons: {
+    icon: [{ url: "/assets/logo.png", type: "image/png" }],
+    apple: "/assets/logo.png",
+  },
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: `${resumeData.personalInfo.name} | ${resumeData.personalInfo.title}`,
+    description:
+      "AI Architect with 11+ years building production-grade AI systems and enterprise-scale platforms.",
+    url: SITE_URL,
+    siteName: `${resumeData.personalInfo.name} Portfolio`,
+    images: [
+      {
+        url: "/assets/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Anudeep Sri Bathina portfolio logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${resumeData.personalInfo.name} | ${resumeData.personalInfo.title}`,
+    description:
+      "AI Architect with 11+ years building production-grade AI systems.",
+  },
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: resumeData.personalInfo.name,
-        jobTitle: resumeData.personalInfo.title,
-        description: resumeData.personalInfo.summary,
-        url: 'https://anudeepsri.com',
-        image: 'https://anudeepsri.com/assets/profile-pic.jpeg',
-        email: resumeData.personalInfo.email,
-        sameAs: [
-            resumeData.personalInfo.github,
-            resumeData.personalInfo.linkedin,
-            'https://adplist.org/mentors/anudeep-sri-bathina',
-            'https://topmate.io/anudeepsri',
-        ],
-        alumniOf: [
-            {
-                '@type': 'EducationalOrganization',
-                name: 'University of Massachusetts Dartmouth',
-            },
-            {
-                '@type': 'EducationalOrganization',
-                name: 'VIT University',
-            },
-        ],
-        worksFor: {
-            '@type': 'Organization',
-            name: 'AT&T',
-        },
-        knowsAbout: [
-            'Generative AI',
-            'Large Language Models',
-            'RAG Systems',
-            'Machine Learning',
-            'Data Engineering',
-            'Python',
-            'FastAPI',
-        ],
-    };
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: resumeData.personalInfo.name,
+    jobTitle: resumeData.personalInfo.title,
+    description: resumeData.personalInfo.summary,
+    url: SITE_URL,
+    image: `${SITE_URL}/assets/logo.png`,
+    email: resumeData.personalInfo.email,
+    sameAs: [
+      resumeData.personalInfo.github,
+      resumeData.personalInfo.linkedin,
+      "https://adplist.org/mentors/anudeep-sri-bathina",
+      "https://topmate.io/anudeepsrib",
+      "https://substack.com/@anudeepai",
+    ],
+    alumniOf: [
+      {
+        "@type": "EducationalOrganization",
+        name: "University of Massachusetts Dartmouth",
+      },
+      {
+        "@type": "EducationalOrganization",
+        name: "VIT University",
+      },
+    ],
+    worksFor: {
+      "@type": "Organization",
+      name: "AT&T",
+    },
+    knowsAbout: [
+      "Generative AI",
+      "Large Language Models",
+      "RAG Systems",
+      "Agentic AI",
+      "Computer Vision",
+      "MLOps",
+      "Python",
+      "FastAPI",
+    ],
+  };
 
-    return (
-        <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-            <head>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-                />
-            </head>
-            <body
-                className="bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--accent-primary)]/30 selection:text-[var(--text-primary)]"
-                suppressHydrationWarning
-            >
-                <SmoothScroll />
-                <Preloader />
-                <WebMCP />
-                <div className="grain-overlay" />
-                <div className="vignette" />
-                <div className="relative min-h-screen flex flex-col">
-                    <BackgroundGraph />
-                    {children}
-                </div>
-            </body>
-        </html>
-    );
+  return (
+    <html
+      lang="en"
+      className={`${jetbrainsMono.variable} dark`}
+      suppressHydrationWarning
+    >
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/satoshi-700.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/satoshi-400.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/cabinet-grotesk-700.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body
+        className="bg-[var(--bg)] text-[var(--text)] antialiased selection:bg-[rgba(145,199,255,0.25)] selection:text-[var(--text)]"
+        suppressHydrationWarning
+      >
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
+        <div className="grain-overlay" />
+        <div className="vignette" />
+        <div id="main-content" className="relative flex min-h-screen flex-col">
+          {children}
+        </div>
+      </body>
+    </html>
+  );
 }

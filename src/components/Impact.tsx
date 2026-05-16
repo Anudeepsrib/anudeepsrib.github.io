@@ -1,254 +1,159 @@
-'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { GraduationCap, Globe, Users, Award, BookOpen, Mic, Handshake, UserCheck, MapPin, ArrowRight, Quote } from 'lucide-react';
+"use client";
 
-const universities = [
-    'UMass Dartmouth', 'Northern Kentucky University', 'VIT University', 'PVP Siddhartha', 'JECRC University'
-];
+import React, { useState, useEffect, useCallback } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import Container from "@/components/ui/Container";
+import MetricCard from "@/components/ui/MetricCard";
+import MotionWrapper from "@/components/ui/MotionWrapper";
+import SectionHeader from "@/components/ui/SectionHeader";
+import TestimonialCard from "@/components/ui/TestimonialCard";
+import { fadeUp, scaleIn, stagger } from "@/lib/animation";
 
-const globalPlatforms = [
-    'DeepLearning.AI (Pie & AI)', 'Berlin School of Business & Innovation', 'Cloud Computing Conference (Boussias)'
-];
-
-const trainingPartners = [
-    'Great Learning', 'Wiley', 'Verzeo', 'Analytics Vidhya', 'Kaggle'
-];
-
-const impactMetrics = [
-    { value: '11+', label: 'Years AI/ML Experience', icon: GraduationCap, accent: 'accent' },
-    { value: '2', label: 'Publications', icon: BookOpen, accent: 'accent' },
-    { value: '500+', label: 'Teaching Hours', icon: Mic, accent: 'accent-warm' },
-    { value: '18+', label: 'Guest Lectures', icon: GraduationCap, accent: 'accent-warm' },
-    { value: '10+', label: 'Partners', icon: Handshake, accent: 'accent' },
-    { value: '1000+', label: 'Learners', icon: Users, accent: 'accent-warm' },
-    { value: '200+', label: 'Mentoring Sessions', icon: UserCheck, accent: 'accent' },
-    { value: '20+', label: 'Countries', icon: MapPin, accent: 'accent-warm' },
+const stats = [
+  { value: 11, suffix: "+", label: "Years building AI" },
+  { value: 1000, suffix: "+", label: "Learners reached" },
+  { value: 2.3, suffix: "M+", label: "Business value delivered" },
+  { value: 20, suffix: "+", label: "Countries reached" },
 ];
 
 const testimonials = [
-    {
-        quote: "Anudeep is incredibly insightful, listening carefully and offering technical yet straightforward comments that are truly beneficial. His ability to break down complex concepts into understandable terms is admirable.",
-        author: "Michael",
-        role: "Freelance Developer",
-        company: "Self-taught",
-        source: "via ADPList"
-    },
-    {
-        quote: "Extremely insightful and valuable discussion. Anudeep's depth of knowledge in Data and AI is evident, and his willingness to openly share his expertise is commendable.",
-        author: "Shashank H.V.",
-        role: "Student",
-        company: "UMass Dartmouth",
-        source: "via Topmate"
-    },
-    {
-        quote: "His tailored advice on skills, job applications, and interviews was practical and insightful, leaving me confident and motivated. Highly recommended!",
-        author: "Baran Khazaee",
-        role: "MSc Computer Science",
-        company: "UC Davis",
-        source: "via ADPList"
-    },
-    {
-        quote: "His strategic guidance and ability to simplify complex AI and career paths into clear, actionable steps were incredibly helpful. I left with much more clarity, confidence, and direction.",
-        author: "Nelisa Sebastian",
-        role: "Data Analyst",
-        company: "Northeastern University",
-        source: "via ADPList"
-    },
-    {
-        quote: "An exceptional session, making complex Agentic AI concepts easy to understand. His motivating approach inspired me to take bold steps in my learning journey.",
-        author: "Mide Sowunmi",
-        role: "UX/UI Designer",
-        company: "Comcast",
-        source: "via ADPList"
-    },
-    {
-        quote: "Direct and strategic feedback on turning my project into a portfolio asset and pursuing AI roles through freelance work. Honest advice that helped clarify my long-term direction.",
-        author: "Natalia Kent",
-        role: "AI Enthusiast",
-        company: "Freelance",
-        source: "via ADPList"
-    }
+  {
+    name: "Michael",
+    role: "Freelance Developer",
+    text: "Anudeep is incredibly insightful, listening carefully and offering technical yet straightforward comments that are truly beneficial.",
+    source: "ADPList",
+    sourceUrl: "https://adplist.org/mentors/anudeep-sri-bathina",
+  },
+  {
+    name: "Shashank H.V.",
+    role: "Student, UMass Dartmouth",
+    text: "Extremely insightful and valuable discussion. Anudeep's depth of knowledge in Data and AI is evident, and his willingness to openly share his expertise is commendable.",
+    source: "ADPList",
+    sourceUrl: "https://adplist.org/mentors/anudeep-sri-bathina",
+  },
+  {
+    name: "Baran Khazaee",
+    role: "MSc CS, UC Davis",
+    text: "His tailored advice on skills, job applications, and interviews was practical and insightful, leaving me confident and motivated.",
+    source: "ADPList",
+    sourceUrl: "https://adplist.org/mentors/anudeep-sri-bathina",
+  },
+  {
+    name: "Nelisa Sebastian",
+    role: "Data Analyst, Northeastern",
+    text: "His strategic guidance and ability to simplify complex AI and career paths into clear, actionable steps were incredibly helpful.",
+    source: "ADPList",
+    sourceUrl: "https://adplist.org/mentors/anudeep-sri-bathina",
+  },
+  {
+    name: "Mide Sowunmi",
+    role: "UX/UI Designer, Comcast",
+    text: "An exceptional session, making complex Agentic AI concepts easy to understand. His motivating approach inspired me to take bold steps.",
+    source: "ADPList",
+    sourceUrl: "https://adplist.org/mentors/anudeep-sri-bathina",
+  },
 ];
 
-const Impact = () => {
-    return (
-        <section id="impact" className="py-24 md:py-32 relative overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[var(--bg-secondary)]" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--accent-primary)]/3 to-transparent pointer-events-none" />
+const partners = [
+  "UMass Dartmouth",
+  "NKU",
+  "VIT University",
+  "DeepLearning.AI",
+  "BSBI Berlin",
+  "Great Learning",
+  "Wiley",
+  "Verzeo",
+  "Analytics Vidhya",
+  "Kaggle",
+];
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    {/* Section Number */}
-                    <div className="section-number">05</div>
+export default function Impact() {
+  const [active, setActive] = useState(0);
+  const reduceMotion = useReducedMotion();
 
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal mb-4">
-                        <span className="text-[var(--text-primary)]">Teaching & Global Impact</span>
-                    </h2>
-                    <p className="text-lg text-[var(--text-secondary)] max-w-3xl">
-                        Advancing practical AI education and applied innovation across global platforms.
-                    </p>
-                </motion.div>
+  const next = useCallback(() => {
+    setActive((previous) => (previous + 1) % testimonials.length);
+  }, []);
 
-                {/* Categories Grid */}
-                <div className="grid md:grid-cols-3 gap-6 mb-16">
-                    {/* Universities */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="glass-card p-6 hover-lift"
-                    >
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
-                                <GraduationCap className="text-[var(--accent-primary)]" size={24} />
-                            </div>
-                            <h3 className="text-lg font-serif font-medium text-[var(--text-primary)]">Universities</h3>
-                        </div>
-                        <p className="text-sm text-[var(--text-secondary)] mb-4">
-                            Invited to deliver lectures and workshops on AI, ML, and data-driven innovation.
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {universities.map((uni) => (
-                                <span key={uni} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-secondary)] border border-[var(--accent-primary)]/15">
-                                    {uni}
-                                </span>
-                            ))}
-                        </div>
-                    </motion.div>
+  useEffect(() => {
+    if (reduceMotion) return;
+    const timer = setInterval(next, 6000);
+    return () => clearInterval(timer);
+  }, [next, reduceMotion]);
 
-                    {/* Global Platforms */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="glass-card p-6 hover-lift"
-                    >
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-[var(--accent-warm)]/10">
-                                <Globe className="text-[var(--accent-warm)]" size={24} />
-                            </div>
-                            <h3 className="text-lg font-serif font-medium text-[var(--text-primary)]">Global Platforms</h3>
-                        </div>
-                        <p className="text-sm text-[var(--text-secondary)] mb-4">
-                            Featured speaker at international AI conferences and educational platforms.
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {globalPlatforms.map((platform) => (
-                                <span key={platform} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-warm)]/10 text-[var(--accent-secondary)] border border-[var(--accent-warm)]/15">
-                                    {platform}
-                                </span>
-                            ))}
-                        </div>
-                    </motion.div>
+  return (
+    <section className="premium-section relative z-10" id="impact">
+      <div className="section-divider" />
+      <Container>
+        <MotionWrapper variants={fadeUp}>
+          <SectionHeader
+            title="Teaching & impact"
+            description="Mentoring AI practitioners across 20+ countries through hands-on sessions, guest lectures, and workshops."
+          />
+        </MotionWrapper>
 
-                    {/* Training Partners */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="glass-card p-6 hover-lift"
-                    >
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-[var(--accent-primary)]/10">
-                                <Handshake className="text-[var(--accent-primary)]" size={24} />
-                            </div>
-                            <h3 className="text-lg font-serif font-medium text-[var(--text-primary)]">Training Partners</h3>
-                        </div>
-                        <p className="text-sm text-[var(--text-secondary)] mb-4">
-                            Collaborated with leading EdTech platforms to deliver industry-ready AI curriculum.
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {trainingPartners.map((partner) => (
-                                <span key={partner} className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-secondary)] border border-[var(--accent-primary)]/15">
-                                    {partner}
-                                </span>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
+        <MotionWrapper
+          staggerChildren
+          variants={stagger}
+          className="mb-10 grid grid-cols-2 gap-3 md:grid-cols-4"
+        >
+          {stats.map((stat) => (
+            <motion.div key={stat.label} variants={scaleIn}>
+              <MetricCard
+                value={stat.value}
+                suffix={stat.suffix}
+                label={stat.label}
+              />
+            </motion.div>
+          ))}
+        </MotionWrapper>
 
-                {/* Impact Metrics */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-                    {impactMetrics.map((metric, index) => {
-                        const Icon = metric.icon;
-                        const isWarm = metric.accent === 'accent-warm';
-                        return (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.05 }}
-                                className="glass-card p-4 text-center hover-lift"
-                            >
-                                <Icon className={isWarm ? 'text-[var(--accent-warm)] mx-auto mb-2' : 'text-[var(--accent-primary)] mx-auto mb-2'} size={20} />
-                                <div className={`text-2xl md:text-3xl font-serif font-medium ${isWarm ? 'text-[var(--accent-warm)]' : 'text-[var(--accent-primary)]'}`}>
-                                    {metric.value}
-                                </div>
-                                <div className="text-xs text-[var(--text-tertiary)] font-mono mt-1">{metric.label}</div>
-                            </motion.div>
-                        );
-                    })}
-                </div>
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <MotionWrapper variants={fadeUp}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <TestimonialCard {...testimonials[active]} />
+              </motion.div>
+            </AnimatePresence>
 
-                {/* Testimonials */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-12"
-                >
-                    <h3 className="text-2xl font-serif font-medium text-center text-[var(--text-primary)] mb-8">
-                        What Mentees Say
-                    </h3>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {testimonials.map((testimonial, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="glass-card p-6 relative"
-                            >
-                                <Quote className="text-[var(--accent-primary)]/20 absolute top-4 right-4" size={32} />
-                                <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-4 relative z-10 italic">
-                                    &quot;{testimonial.quote}&quot;
-                                </p>
-                                <div className="border-t border-[var(--border-subtle)] pt-4">
-                                    <div className="font-medium text-[var(--text-primary)]">{testimonial.author}</div>
-                                    <div className="text-xs text-[var(--text-tertiary)] font-mono">{testimonial.role}, {testimonial.company}</div>
-                                    <div className="text-xs text-[var(--accent-primary)] font-mono mt-1">{testimonial.source}</div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* CTA */}
-                <div className="text-center">
-                    <Link
-                        href="/mentorship"
-                        className="btn-primary inline-flex items-center gap-2"
-                    >
-                        Explore Mentorship Programs
-                        <ArrowRight size={18} />
-                    </Link>
-                </div>
+            <div className="mt-5 flex gap-2">
+              {testimonials.map((testimonial, index) => (
+                <button
+                  key={testimonial.name}
+                  onClick={() => setActive(index)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    index === active
+                      ? "w-8 bg-[var(--accent)]"
+                      : "w-2 bg-[var(--muted)] hover:bg-[var(--text-3)]"
+                  }`}
+                  aria-label={`Testimonial ${index + 1}`}
+                />
+              ))}
             </div>
-        </section>
-    );
-};
+          </MotionWrapper>
 
-export default Impact;
+          <MotionWrapper variants={fadeUp}>
+            <div className="rounded-lg border border-[var(--border)] bg-white/[0.025] p-5">
+              <div className="flex flex-wrap gap-2">
+                {partners.map((name) => (
+                  <span
+                    key={name}
+                    className="rounded-md border border-[var(--border)] bg-black/15 px-3 py-2 text-xs text-[var(--text-3)]"
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </MotionWrapper>
+        </div>
+      </Container>
+    </section>
+  );
+}
