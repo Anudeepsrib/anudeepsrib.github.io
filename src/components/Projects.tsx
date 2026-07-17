@@ -372,6 +372,7 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
 }
 
 export default function Projects() {
+  const reduceMotion = useReducedMotion();
   const [selectedProject, setSelectedProject] = useState<
     (typeof projects)[0] | null
   >(null);
@@ -403,6 +404,20 @@ export default function Projects() {
               <motion.div
                 key={project.name}
                 variants={scaleIn}
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: -6,
+                        scale: 1.005,
+                        transition: {
+                          type: "spring",
+                          stiffness: 320,
+                          damping: 26,
+                        },
+                      }
+                }
+                whileTap={reduceMotion ? undefined : { scale: 0.995 }}
                 className={project.hero ? "lg:col-span-2" : undefined}
               >
                 <ProjectCard
