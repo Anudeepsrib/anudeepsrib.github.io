@@ -19,8 +19,8 @@ export default function TestimonialCard({
   sourceUrl,
 }: TestimonialCardProps) {
   return (
-    <GradientCard className="p-6 sm:p-8">
-      <blockquote className="text-lg leading-8 text-[var(--text)] md:text-xl md:leading-9">
+    <GradientCard className="h-full p-6 sm:p-7">
+      <blockquote className="text-base leading-7 text-[var(--text)] md:text-lg md:leading-8">
         &ldquo;{text}&rdquo;
       </blockquote>
       <div className="mt-8 flex flex-col gap-3 border-t border-[var(--border)] pt-5 sm:flex-row sm:items-end sm:justify-between">
@@ -32,7 +32,8 @@ export default function TestimonialCard({
           href={sourceUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--accent)] transition-colors hover:text-white"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--accent)] transition-colors hover:text-[var(--text)]"
+          aria-label={`View ${source} source for ${name} (opens in a new tab)`}
         >
           via {source}
           <ExternalLink size={12} />

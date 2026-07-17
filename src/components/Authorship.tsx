@@ -7,23 +7,7 @@ import MotionWrapper from "@/components/ui/MotionWrapper";
 import PublicationCard from "@/components/ui/PublicationCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { fadeUp, scaleIn, stagger } from "@/lib/animation";
-
-const publications = [
-  {
-    title: "Transfer Learning for Groundfish Recognition",
-    venue: "UMass Dartmouth, 2024",
-    description:
-      "Cross-database recognition using YOLOv8 and ResNet50, achieving 94.10% mAP for sustainable fisheries management.",
-    link: "https://doi.org/10.62791/20352",
-  },
-  {
-    title: "Blueprint of IoT for Smart Cities",
-    venue: "CRC Press / Taylor & Francis, 2024",
-    description:
-      "Co-authored handbook chapter on IoT blueprinting and management challenges for smart city development.",
-    link: "https://doi.org/10.1201/9781003225317",
-  },
-];
+import resumeData from "@/data/resumeData.json";
 
 export default function Authorship() {
   return (
@@ -32,8 +16,8 @@ export default function Authorship() {
       <Container>
         <MotionWrapper variants={fadeUp}>
           <SectionHeader
-            title="Research"
-            description="Peer-reviewed publications in computer vision and IoT."
+            title="Research that sharpens the work."
+            description="Published work in computer vision and IoT, carried forward into a production practice grounded in evidence."
           />
         </MotionWrapper>
 
@@ -42,9 +26,14 @@ export default function Authorship() {
           variants={stagger}
           className="grid gap-3 md:grid-cols-2"
         >
-          {publications.map((publication) => (
+          {resumeData.publications.map((publication) => (
             <motion.div key={publication.title} variants={scaleIn}>
-              <PublicationCard {...publication} />
+              <PublicationCard
+                title={publication.title}
+                venue={`${publication.publisher}, ${publication.year}`}
+                description={publication.description}
+                link={publication.link}
+              />
             </motion.div>
           ))}
         </MotionWrapper>

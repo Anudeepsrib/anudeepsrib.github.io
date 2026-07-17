@@ -8,6 +8,7 @@ import CTAButton from "@/components/ui/CTAButton";
 import GradientCard from "@/components/ui/GradientCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import { fadeUp } from "@/lib/animation";
+import resumeData from "@/data/resumeData.json";
 
 export default function CTASection() {
   return (
@@ -18,29 +19,30 @@ export default function CTASection() {
           <GradientCard featured className="p-6 sm:p-8 md:p-10">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
               <div>
-                <h2 className="text-4xl font-bold leading-tight text-[var(--text)] [letter-spacing:0] md:text-6xl">
-                  Let&apos;s talk.
+                <span className="section-number">Contact / Plano, Texas</span>
+                <h2 className="max-w-3xl text-4xl font-bold leading-[0.95] text-[var(--text)] md:text-6xl">
+                  Bring me the problem that has to work in production.
                 </h2>
 
                 <p className="mt-5 max-w-xl text-base leading-7 text-[var(--text-2)]">
-                  AI consulting, speaking, mentorship, or research
-                  collaboration.
+                  Open to Staff+ AI engineering and platform roles, plus AI
+                  consulting, speaking, mentorship, and research collaboration.
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-3 lg:justify-end">
                 <CTAButton
-                  href="https://adplist.org/mentors/anudeep-sri-bathina"
-                  external
-                >
-                  Book a session
-                </CTAButton>
-                <CTAButton
-                  href="mailto:anudeepSri108@gmail.com"
-                  variant="secondary"
+                  href={`mailto:${resumeData.personalInfo.email}`}
                   icon={<Mail size={15} />}
                 >
-                  Email
+                  Start a conversation
+                </CTAButton>
+                <CTAButton
+                  href="https://adplist.org/mentors/anudeep-sri-bathina"
+                  external
+                  variant="secondary"
+                >
+                  Book mentorship
                 </CTAButton>
               </div>
             </div>

@@ -69,7 +69,7 @@ export default async function NotePage({ params }: PageProps) {
               FIELD NOTE
             </div>
 
-            <h1 className="font-cabinet-grotesk mb-6 bg-gradient-to-r from-[var(--accent-2)] to-[var(--accent-1)] bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+            <h1 className="mb-6 font-heading text-4xl font-black tracking-[-0.04em] text-[var(--text)] md:text-6xl">
               {note.title}
             </h1>
 
@@ -81,7 +81,7 @@ export default async function NotePage({ params }: PageProps) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <div className="prose prose-invert max-w-none">
+          <div className="portfolio-prose prose max-w-none">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{

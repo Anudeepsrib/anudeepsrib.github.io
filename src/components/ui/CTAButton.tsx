@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -22,7 +19,6 @@ export default function CTAButton({
   icon,
   className,
 }: CTAButtonProps) {
-  const reduceMotion = useReducedMotion();
   const classes = {
     primary: "btn-primary",
     secondary: "btn-secondary",
@@ -31,14 +27,14 @@ export default function CTAButton({
   };
 
   return (
-    <motion.a
+    <a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       className={cn(classes[variant], "group", className)}
-      whileHover={reduceMotion ? undefined : { x: 2, y: -1 }}
-      whileTap={reduceMotion ? undefined : { scale: 0.985 }}
-      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+      aria-label={
+        external ? `${String(children)} (opens in a new tab)` : undefined
+      }
     >
       {icon}
       {children}
@@ -48,6 +44,6 @@ export default function CTAButton({
           className="transition-transform group-hover:translate-x-0.5"
         />
       )}
-    </motion.a>
+    </a>
   );
 }

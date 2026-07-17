@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import MetricCard from "@/components/ui/MetricCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
@@ -10,10 +9,10 @@ import TestimonialCard from "@/components/ui/TestimonialCard";
 import { fadeUp, scaleIn, stagger } from "@/lib/animation";
 
 const stats = [
-  { value: 11, suffix: "+", label: "Years building AI" },
   { value: 1000, suffix: "+", label: "Learners reached" },
-  { value: 2.3, suffix: "M+", label: "Business value delivered" },
-  { value: 20, suffix: "+", label: "Countries reached" },
+  { value: 20, suffix: "+", label: "Countries represented" },
+  { value: 500, suffix: "+", label: "Mentoring hours" },
+  { value: 70, suffix: "+", label: "Topmate sessions" },
 ];
 
 const testimonials = [
@@ -54,7 +53,7 @@ const testimonials = [
   },
 ];
 
-const partners = [
+const communities = [
   "UMass Dartmouth",
   "NKU",
   "VIT University",
@@ -68,34 +67,23 @@ const partners = [
 ];
 
 export default function Impact() {
-  const [active, setActive] = useState(0);
-  const reduceMotion = useReducedMotion();
-
-  const next = useCallback(() => {
-    setActive((previous) => (previous + 1) % testimonials.length);
-  }, []);
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    const timer = setInterval(next, 6000);
-    return () => clearInterval(timer);
-  }, [next, reduceMotion]);
-
   return (
-    <section className="premium-section relative z-10" id="impact">
-      <div className="section-divider" />
+    <section
+      className="premium-section relative z-10 bg-[var(--bg-secondary)]"
+      id="mentoring"
+    >
       <Container>
         <MotionWrapper variants={fadeUp}>
           <SectionHeader
-            title="Teaching & impact"
-            description="Mentoring AI practitioners across 20+ countries through hands-on sessions, guest lectures, and workshops."
+            title="Influence scales through people."
+            description="Mentoring, teaching, and making complex AI work easier to understand for practitioners across 20+ countries."
           />
         </MotionWrapper>
 
         <MotionWrapper
           staggerChildren
           variants={stagger}
-          className="mb-10 grid grid-cols-2 gap-3 md:grid-cols-4"
+          className="mb-12 grid grid-cols-2 gap-3 md:grid-cols-4"
         >
           {stats.map((stat) => (
             <motion.div key={stat.label} variants={scaleIn}>
@@ -108,49 +96,32 @@ export default function Impact() {
           ))}
         </MotionWrapper>
 
-        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <MotionWrapper variants={fadeUp}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
-                transition={{ duration: 0.3 }}
-              >
-                <TestimonialCard {...testimonials[active]} />
+        <div className="grid gap-10 lg:grid-cols-[1fr_260px]">
+          <MotionWrapper
+            staggerChildren
+            variants={stagger}
+            className="grid gap-3 md:grid-cols-2"
+          >
+            {testimonials.map((testimonial) => (
+              <motion.div key={testimonial.name} variants={fadeUp}>
+                <TestimonialCard {...testimonial} />
               </motion.div>
-            </AnimatePresence>
-
-            <div className="mt-5 flex gap-2">
-              {testimonials.map((testimonial, index) => (
-                <button
-                  key={testimonial.name}
-                  onClick={() => setActive(index)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    index === active
-                      ? "w-8 bg-[var(--accent)]"
-                      : "w-2 bg-[var(--muted)] hover:bg-[var(--text-3)]"
-                  }`}
-                  aria-label={`Testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
+            ))}
           </MotionWrapper>
 
           <MotionWrapper variants={fadeUp}>
-            <div className="rounded-lg border border-[var(--border)] bg-white/[0.025] p-5">
-              <div className="flex flex-wrap gap-2">
-                {partners.map((name) => (
-                  <span
-                    key={name}
-                    className="rounded-md border border-[var(--border)] bg-black/15 px-3 py-2 text-xs text-[var(--text-3)]"
-                  >
+            <aside className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] p-6 lg:sticky lg:top-28">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.13em] text-[var(--accent)]">
+                Communities &amp; institutions
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {communities.map((name) => (
+                  <span key={name} className="tech-pill">
                     {name}
                   </span>
                 ))}
               </div>
-            </div>
+            </aside>
           </MotionWrapper>
         </div>
       </Container>

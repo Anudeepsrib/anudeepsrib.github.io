@@ -8,69 +8,9 @@ import MotionWrapper from "@/components/ui/MotionWrapper";
 import SectionHeader from "@/components/ui/SectionHeader";
 import SkillCategoryCard from "@/components/ui/SkillCategoryCard";
 import { fadeUp, scaleIn, stagger } from "@/lib/animation";
+import { skillCategories } from "@/data/skills";
 
-const skillCategories = [
-  {
-    icon: Bot,
-    title: "Agentic AI & Orchestration",
-    techs: [
-      "LangGraph/CrewAI",
-      "MCP (Anthropic)",
-      "OpenAI o3/o4-mini",
-      "Claude 4/Gemini 2.5",
-    ],
-  },
-  {
-    icon: Database,
-    title: "RAG & Knowledge Systems",
-    techs: [
-      "Advanced RAG Pipelines",
-      "ChromaDB/Pinecone/Qdrant",
-      "GraphRAG",
-      "Cohere/BGE/ColBERT",
-    ],
-  },
-  {
-    icon: Shield,
-    title: "AI Safety & Eval",
-    techs: [
-      "LangSmith/Langfuse",
-      "Guardrails & Grading",
-      "Presidio (PII/PHI)",
-      "Red-teaming & Evals",
-    ],
-  },
-  {
-    icon: Code2,
-    title: "AI-Native Dev",
-    techs: [
-      "Claude Code/Codex CLI",
-      "Cursor/Windsurf",
-      "GitHub Copilot",
-      "A2A Protocol",
-    ],
-  },
-  {
-    icon: Cloud,
-    title: "Cloud & Infra",
-    techs: [
-      "Python & FastAPI",
-      "Azure AI/AWS Bedrock",
-      "Docker & Kubernetes",
-      "CI/CD & MLOps",
-    ],
-  },
-  {
-    icon: BarChart3,
-    title: "Data Engineering",
-    techs: [
-      "PySpark/Databricks",
-      "SQL & dbt",
-      "Airflow/Prefect",
-      "Kafka & Streaming",
-    ],
-  },
-];
+const categoryIcons = [Bot, Database, Shield, Code2, Cloud, BarChart3];
 
 export default function Skills() {
   return (
@@ -79,8 +19,8 @@ export default function Skills() {
       <Container>
         <MotionWrapper variants={fadeUp}>
           <SectionHeader
-            title="Production Toolkit"
-            description="The tools, patterns, and architectures I use to ship reliable AI systems at enterprise scale."
+            title="Depth where production gets difficult."
+            description="The tools matter. The architectural judgment behind retrieval, evaluation, safety, infrastructure, and data flow matters more."
           />
         </MotionWrapper>
 
@@ -89,12 +29,13 @@ export default function Skills() {
           variants={stagger}
           className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3"
         >
-          {skillCategories.map((category) => (
-            <motion.div key={category.title} variants={scaleIn}>
+          {skillCategories.map((category, index) => (
+            <motion.div key={category.name} variants={scaleIn}>
               <SkillCategoryCard
-                icon={category.icon}
-                title={category.title}
-                techs={category.techs}
+                icon={categoryIcons[index]}
+                title={category.name}
+                description={category.description}
+                techs={category.skills.map((skill) => skill.name)}
               />
             </motion.div>
           ))}

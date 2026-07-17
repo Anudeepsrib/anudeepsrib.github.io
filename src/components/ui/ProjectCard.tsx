@@ -13,72 +13,70 @@ interface ProjectCardProps {
     openSourceCategory?: string;
     patternFor?: string;
   };
-  onClick: () => void;
+  onClick: (trigger: HTMLButtonElement) => void;
 }
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
-    <GradientCard
-      interactive
-      featured={project.hero}
-      role="button"
-      tabIndex={0}
-      onClick={onClick}
-      onKeyDown={(event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          onClick();
-        }
-      }}
-      className={project.hero ? "p-6 md:p-8" : "p-6"}
+    <button
+      type="button"
+      onClick={(event) => onClick(event.currentTarget)}
+      className="block h-full w-full rounded-[1.5rem] text-left"
+      aria-label={`Open ${project.name} project details`}
     >
-      <div className="flex h-full flex-col">
-        <div className="mb-5 flex items-start justify-between gap-6">
-          <div>
-            <div className="mb-3 flex flex-wrap items-center gap-2">
-              <h3 className="text-xl font-semibold leading-tight text-[var(--text)] md:text-2xl">
-                {project.name}
-              </h3>
-              {project.hero && (
-                <span className="rounded-full border border-[rgba(125,211,252,0.22)] bg-[rgba(125,211,252,0.09)] px-2.5 py-1 text-[10px] font-semibold uppercase text-[var(--accent)]">
-                  FEATURED
-                </span>
-              )}
-              {project.openSourceCategory && (
-                <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase text-emerald-400">
-                  OPEN SOURCE
-                </span>
-              )}
-            </div>
-            {project.patternFor && (
-              <div className="mb-2 text-[10px] font-medium text-[var(--text-3)]">
-                {project.patternFor}
+      <GradientCard
+        interactive
+        featured={project.hero}
+        className={`h-full ${project.hero ? "p-6 md:p-8" : "p-6"}`}
+      >
+        <div className="flex h-full flex-col">
+          <div className="mb-5 flex items-start justify-between gap-6">
+            <div>
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                <h3 className="text-xl font-semibold leading-tight text-[var(--text)] md:text-2xl">
+                  {project.name}
+                </h3>
+                {project.hero && (
+                  <span className="rounded-full bg-[var(--accent-soft)] px-2.5 py-1 text-[10px] font-semibold uppercase text-[var(--accent)]">
+                    Featured
+                  </span>
+                )}
+                {project.openSourceCategory && (
+                  <span className="rounded-full bg-[var(--sage-soft)] px-2.5 py-1 text-[10px] font-semibold uppercase text-[var(--accent-2)]">
+                    Open source
+                  </span>
+                )}
               </div>
-            )}
-            <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--text-3)]">
-              <span className="font-mono text-[var(--accent)]">
-                {project.metrics}
-              </span>
+              {project.patternFor && (
+                <div className="mb-2 text-[10px] font-medium text-[var(--text-3)]">
+                  {project.patternFor}
+                </div>
+              )}
+              <div className="flex flex-wrap items-center gap-2 text-xs text-[var(--text-3)]">
+                <span className="font-mono text-[var(--accent)]">
+                  {project.metrics}
+                </span>
+              </div>
             </div>
+            <ArrowUpRight
+              size={18}
+              className="mt-1 shrink-0 text-[var(--text-3)] transition-colors group-hover:text-[var(--accent)]"
+            />
           </div>
-          <ArrowUpRight
-            size={18}
-            className="mt-1 shrink-0 text-[var(--text-3)] transition-colors group-hover:text-[var(--accent)]"
-          />
-        </div>
 
-        <p className="mb-6 text-sm leading-6 text-[var(--text-2)] md:text-[15px]">
-          {project.description}
-        </p>
+          <p className="mb-6 text-sm leading-6 text-[var(--text-2)] md:text-[15px]">
+            {project.description}
+          </p>
 
-        <div className="mt-auto flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span key={tag} className="tech-pill">
-              {tag}
-            </span>
-          ))}
+          <div className="mt-auto flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span key={tag} className="tech-pill">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
-    </GradientCard>
+      </GradientCard>
+    </button>
   );
 }

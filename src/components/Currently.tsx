@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import { Activity } from "lucide-react";
 import Container from "@/components/ui/Container";
-import GradientCard from "@/components/ui/GradientCard";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import { fadeUp, stagger } from "@/lib/animation";
 
@@ -16,20 +14,17 @@ const currentExplorations = [
 
 export default function Currently() {
   return (
-    <section className="premium-section relative z-10 py-14" id="currently">
+    <section className="relative z-10 pb-20 md:pb-28" id="currently">
       <Container>
         <MotionWrapper variants={fadeUp}>
-          <GradientCard className="p-5 sm:p-7 md:p-8">
-            <div className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[rgba(125,211,252,0.16)] bg-[rgba(125,211,252,0.08)] text-[var(--accent)]">
-                  <Activity size={18} />
-                </div>
-                <h2 className="text-xl font-semibold text-[var(--text)]">
-                  Currently exploring
-                </h2>
-              </div>
-              <p className="text-xs text-[var(--text-3)]">Reviewed May 2026</p>
+          <div className="grid gap-6 rounded-[1.5rem] border border-[var(--border)] bg-[var(--text)] p-6 sm:p-8 lg:grid-cols-[0.5fr_1.5fr]">
+            <div>
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+                Current questions
+              </p>
+              <h2 className="mt-3 text-2xl font-bold text-[var(--bg)]">
+                What I&apos;m exploring now
+              </h2>
             </div>
 
             <MotionWrapper
@@ -40,14 +35,16 @@ export default function Currently() {
               {currentExplorations.map((exploration) => (
                 <div
                   key={exploration}
-                  className="rounded-lg border border-[var(--border)] bg-black/15 px-4 py-3 text-sm leading-6 text-[var(--text-2)]"
+                  className="rounded-xl border border-[var(--muted)] px-4 py-3 text-sm leading-6"
                 >
                   <span className="mr-2 text-[var(--accent)]">→</span>
-                  {exploration}
+                  <span className="text-[var(--bg)] opacity-75">
+                    {exploration}
+                  </span>
                 </div>
               ))}
             </MotionWrapper>
-          </GradientCard>
+          </div>
         </MotionWrapper>
       </Container>
     </section>

@@ -31,7 +31,8 @@ function formatDate(dateString: string): string {
 
 const featuredEssays = [
   {
-    title: "LLM Observability: The Engineering Imperative for Production AI Systems",
+    title:
+      "LLM Observability: The Engineering Imperative for Production AI Systems",
     date: "Feb 2026",
     url: "https://anudeepsri.medium.com/llm-observability-e068c6d98925",
     hook: "Traditional monitoring breaks for stochastic LLM and agentic systems. The four pillars - tracing for multi-hop RAG/agent flows, LLM-as-Judge + RAGAS evals, drift detection, and token economics - with tooling patterns that power production gates like the LLM Evaluation Harness.",
@@ -78,7 +79,7 @@ export default async function BlogPage() {
       <div className="container mx-auto px-6 py-20">
         <ScrollReveal>
           <div className="mb-16 text-center">
-            <h1 className="font-cabinet-grotesk mb-6 bg-gradient-to-r from-[var(--accent-1)] to-[var(--accent-2)] bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+            <h1 className="mb-6 font-heading text-5xl font-black tracking-[-0.04em] text-[var(--text)] md:text-7xl">
               Writing &amp; Field Notes
             </h1>
             <p className="mx-auto max-w-3xl text-lg text-[var(--text-2)]">
@@ -91,7 +92,7 @@ export default async function BlogPage() {
 
         <ScrollReveal>
           <div className="mb-14 grid gap-3 md:grid-cols-3">
-            <div className="rounded-lg border border-[var(--border)] bg-white/[0.025] p-5">
+            <div className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] p-5">
               <BookOpen className="mb-4 text-[var(--accent-1)]" size={18} />
               <p className="text-2xl font-bold text-[var(--text)]">
                 {notes.length}
@@ -104,7 +105,7 @@ export default async function BlogPage() {
               href="https://github.com/Anudeepsrib?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-lg border border-[var(--border)] bg-white/[0.025] p-5 transition-colors hover:border-[rgba(125,211,252,0.28)]"
+              className="group rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors hover:border-[var(--border-strong)]"
             >
               <Layers3 className="mb-4 text-[var(--accent-1)]" size={18} />
               <p className="text-base font-semibold text-[var(--text)]">
@@ -118,7 +119,7 @@ export default async function BlogPage() {
               href="https://medium.com/@anudeepsri"
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-lg border border-[var(--border)] bg-white/[0.025] p-5 transition-colors hover:border-[rgba(125,211,252,0.28)]"
+              className="group rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors hover:border-[var(--border-strong)]"
             >
               <ExternalLink className="mb-4 text-[var(--accent-1)]" size={18} />
               <p className="text-base font-semibold text-[var(--text)]">

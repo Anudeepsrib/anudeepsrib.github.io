@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ForRecruiters from "@/components/ForRecruiters";
 import Currently from "@/components/Currently";
 import WhyWorkWithMe from "@/components/WhyWorkWithMe";
 import KeyImpact from "@/components/KeyImpact";
@@ -18,11 +17,10 @@ export default function Home() {
       <AnimatedBackground />
       <Navbar />
       <Hero />
-      <ForRecruiters />
-      <Currently />
-      <WhyWorkWithMe />
       <KeyImpact />
+      <WhyWorkWithMe />
       <Skills />
+      <Currently />
       <Projects />
       <Impact />
       <Authorship />
