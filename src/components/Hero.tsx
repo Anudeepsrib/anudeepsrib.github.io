@@ -1,246 +1,185 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  BookOpen,
-  FileText,
-  Github,
-  Linkedin,
-  Network,
-  ShieldCheck,
-} from "lucide-react";
+import { FileText, Github, Linkedin, MapPin } from "lucide-react";
 import Container from "@/components/ui/Container";
 import CTAButton from "@/components/ui/CTAButton";
-import GradientCard from "@/components/ui/GradientCard";
 import { fadeUp, heroContainer, scaleIn } from "@/lib/animation";
+import resumeData from "@/data/resumeData.json";
 
-const focusAreas = [
-  { label: "Agentic AI", detail: "LangGraph · CrewAI · MCP" },
-  { label: "RAG Systems", detail: "Azure AI Search · ChromaDB · GraphRAG" },
-  { label: "MLOps", detail: "FastAPI · Docker · LangSmith" },
-  { label: "Computer Vision", detail: "YOLOv8 · ResNet · 94.1% mAP" },
+const systemLayers = [
+  ["01", "Retrieve", "Scoped, source-grounded context"],
+  ["02", "Evaluate", "Quality gates before release"],
+  ["03", "Guard", "Explicit privacy and safety boundaries"],
+  ["04", "Observe", "Latency, cost, and answer quality"],
 ];
 
-const companies = [
-  { name: "AT&T", logo: "/assets/companies/att.png" },
-  { name: "Capgemini", logo: "/assets/companies/capgemini.png" },
-  { name: "Cognizant", logo: "/assets/companies/cognizant.png" },
-];
-
-const recruiterSignals = [
-  {
-    label: "Build-ready",
-    detail: "Strict lint, type-check, static export",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Architecture-first",
-    detail: "RAG, evals, safety, deployment trade-offs",
-    icon: Network,
-  },
-  {
-    label: "Proof surfaces",
-    detail: "Projects, notes, publications, resume",
-    icon: BookOpen,
-  },
-];
+const companyLogoSizes: Record<string, { width: number; height: number }> = {
+  "AT&T": { width: 860, height: 900 },
+  Capgemini: { width: 1280, height: 805 },
+  "GainInsights Solutions": { width: 225, height: 225 },
+  Cognizant: { width: 1526, height: 1290 },
+};
 
 export default function Hero() {
+  const { personalInfo, experience } = resumeData;
+
   return (
-    <section className="relative z-10 flex min-h-screen items-center overflow-hidden pb-10 pt-20 sm:pt-24 lg:pb-12">
+    <section
+      className="relative z-10 flex min-h-[92svh] items-center overflow-hidden pb-16 pt-28 sm:pt-32 lg:pb-20"
+      id="top"
+    >
       <Container>
         <motion.div
           variants={heroContainer}
           initial={false}
           animate="show"
-          className="grid items-center gap-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.75fr)] lg:gap-14"
+          className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10"
         >
-          <div>
+          <div className="lg:col-span-7">
+            <motion.div
+              variants={fadeUp}
+              className="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--text-3)]"
+            >
+              <span className="text-[var(--accent)]">{personalInfo.title}</span>
+              <span aria-hidden="true">/</span>
+              <span className="inline-flex items-center gap-1.5">
+                <MapPin size={12} aria-hidden="true" />
+                {personalInfo.location}
+              </span>
+            </motion.div>
 
-
-            <div className="overflow-hidden">
-              <motion.h1
-                variants={fadeUp}
-                className="max-w-4xl font-display text-[clamp(3.3rem,7.4vw,6.7rem)] font-black leading-[0.94] text-[var(--text)] [letter-spacing:0]"
-              >
-                Anudeep Sri Bathina
-              </motion.h1>
-            </div>
+            <motion.h1
+              variants={fadeUp}
+              className="max-w-4xl font-heading text-[clamp(3.8rem,8.2vw,7.8rem)] font-black leading-[0.84] tracking-[-0.065em] text-[var(--text)]"
+            >
+              AI systems,
+              <span className="mt-2 block font-normal italic text-[var(--accent)]">
+                built to hold up.
+              </span>
+            </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 max-w-2xl text-lg leading-8 text-[var(--text-2)] md:text-xl md:leading-9"
+              className="mt-8 max-w-2xl text-lg leading-8 text-[var(--text-2)] md:text-xl md:leading-9"
             >
-              I build production-grade GenAI systems that survive real traffic,
-              real constraints, and real scrutiny - with explicit retrieval
-              boundaries, rigorous evaluation, and measurable reliability.
+              I&apos;m {personalInfo.name}, an AI Architect with 11 years of
+              experience turning GenAI, RAG, and data platforms into reliable
+              production systems—with explicit boundaries, rigorous evaluation,
+              and measurable impact.
             </motion.p>
 
             <motion.div
               variants={fadeUp}
-              className="mt-5 flex flex-wrap items-center gap-3"
+              className="mt-8 flex flex-wrap items-center gap-3"
             >
-              <CTAButton href="#projects">View projects</CTAButton>
-              <CTAButton
-                href="https://github.com/Anudeepsrib?tab=repositories"
-                variant="secondary"
-                icon={<Network size={15} />}
-              >
-                Open source
-              </CTAButton>
+              <CTAButton href="#projects">See selected work</CTAButton>
               <CTAButton
                 href="/resume/Anudeep-Sri-Bathina-Resume.pdf"
                 external
                 variant="secondary"
-                icon={<FileText size={15} />}
+                icon={<FileText size={15} aria-hidden="true" />}
               >
                 Resume
               </CTAButton>
-              <div className="flex items-center gap-2 pl-1">
-                <a
-                  href="https://github.com/anudeepsrib"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md p-2 text-[var(--text-3)] transition-colors hover:bg-white/[0.04] hover:text-[var(--text)]"
-                  aria-label="GitHub"
-                >
-                  <Github size={17} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/anudeepsri/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md p-2 text-[var(--text-3)] transition-colors hover:bg-white/[0.04] hover:text-[var(--text)]"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={17} />
-                </a>
-              </div>
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--text-3)] transition hover:bg-[var(--surface)] hover:text-[var(--accent)]"
+                aria-label="GitHub profile (opens in a new tab)"
+              >
+                <Github size={18} aria-hidden="true" />
+              </a>
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--text-3)] transition hover:bg-[var(--surface)] hover:text-[var(--accent)]"
+                aria-label="LinkedIn profile (opens in a new tab)"
+              >
+                <Linkedin size={18} aria-hidden="true" />
+              </a>
             </motion.div>
 
             <motion.div
               variants={fadeUp}
-              className="mt-7 grid max-w-2xl gap-2 sm:grid-cols-3"
-              aria-label="Recruiter review highlights"
+              className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-[var(--border)] pt-6"
+              aria-label="Experience across"
             >
-              {recruiterSignals.map((signal) => {
-                const Icon = signal.icon;
-
-                return (
-                  <div
-                    key={signal.label}
-                    className="rounded-lg border border-[var(--border)] bg-white/[0.025] p-3"
-                  >
-                    <div className="mb-2 flex items-center gap-2 text-[var(--text)]">
-                      <Icon size={15} className="text-[var(--accent)]" />
-                      <span className="text-sm font-semibold">
-                        {signal.label}
-                      </span>
-                    </div>
-                    <p className="text-xs leading-5 text-[var(--text-3)]">
-                      {signal.detail}
-                    </p>
-                  </div>
-                );
-              })}
-            </motion.div>
-
-            <motion.div variants={fadeUp} className="mt-7 flex flex-wrap gap-2">
-              {focusAreas.map((area) => (
-                <div key={area.label} className="group relative">
-                  <span className="tech-pill cursor-default transition-colors group-hover:border-[rgba(125,211,252,0.24)] group-hover:text-[var(--text)]">
-                    {area.label}
-                  </span>
-                  <span className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-[var(--border)] bg-[var(--surface-raised)] px-3 py-1.5 text-[10px] font-medium text-[var(--text-2)] opacity-0 shadow-premium transition-opacity group-hover:opacity-100">
-                    {area.detail}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-8 flex items-center gap-5"
-            >
-              {companies.map((company) => (
+              {experience.map((company) => (
                 <Image
-                  key={company.name}
+                  key={company.company}
                   src={company.logo}
-                  alt={company.name}
-                  width={92}
-                  height={20}
-                  className="max-h-5 max-w-[92px] object-contain opacity-60 grayscale invert transition-all hover:opacity-90 hover:grayscale-0"
+                  alt={company.company}
+                  width={companyLogoSizes[company.company].width}
+                  height={companyLogoSizes[company.company].height}
+                  style={{ width: "auto", height: "24px" }}
+                  className="company-logo max-w-24 object-contain opacity-60 transition-opacity hover:opacity-100"
                 />
               ))}
             </motion.div>
           </div>
 
-          <motion.div variants={scaleIn} className="relative">
-            <GradientCard featured className="p-5 sm:p-6 md:p-7">
-              <div className="mb-6">
+          <motion.aside
+            variants={scaleIn}
+            className="relative lg:col-span-5 lg:pl-6"
+            aria-label="Anudeep's production AI approach"
+          >
+            <div className="rounded-[2rem] border border-[var(--border-strong)] bg-[var(--text)] p-5 text-[var(--bg)] shadow-premium sm:p-7">
+              <div className="flex items-start justify-between gap-4 border-b border-[var(--muted)] pb-6">
                 <div>
-                  <p className="mb-2 text-[11px] font-medium uppercase text-[var(--text-3)] [letter-spacing:0]">
+                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--bg)] opacity-70">
+                    Production AI / operating model
+                  </p>
+                  <h2 className="mt-3 max-w-xs font-heading text-3xl font-bold leading-none text-[var(--bg)]">
+                    Make trust part of the architecture.
+                  </h2>
+                </div>
+                <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-[var(--accent)]" />
+              </div>
+
+              <ol className="divide-y divide-[var(--muted)]">
+                {systemLayers.map(([number, title, detail]) => (
+                  <li
+                    key={title}
+                    className="grid grid-cols-[2rem_1fr] gap-3 py-5 transition-transform duration-200 hover:translate-x-1"
+                  >
+                    <span className="font-mono text-[10px] text-[var(--bg)] opacity-60">
+                      {number}
+                    </span>
+                    <div>
+                      <p className="font-heading text-xl font-bold text-[var(--bg)]">
+                        {title}
+                      </p>
+                      <p className="mt-1 text-sm text-[var(--bg)] opacity-70">
+                        {detail}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="mt-2 grid gap-3 rounded-[1.25rem] bg-[var(--bg)] p-4 text-[var(--text)] sm:grid-cols-[1fr_auto] sm:items-end">
+                <div>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--text-3)]">
                     Current
                   </p>
-                  <p className="text-xl font-semibold text-[var(--text)]">
-                    AI Architect
-                  </p>
-                  <p className="mt-1 text-sm text-[var(--accent)]">AT&T</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-lg border border-[var(--border)] bg-black/20 p-4">
-                  <p className="font-display text-3xl font-bold leading-none text-[var(--text)] [letter-spacing:0]">
-                    11<span className="text-[var(--accent)]">+</span>
-                  </p>
-                  <p className="mt-2 text-xs text-[var(--text-3)]">
-                    Years in prod
+                  <p className="mt-1 font-heading text-lg font-bold text-[var(--text)]">
+                    {experience[0].position} · {experience[0].company}
                   </p>
                 </div>
-                <div className="rounded-lg border border-[var(--border)] bg-black/20 p-4">
-                  <p className="font-display text-3xl font-bold leading-none text-[var(--text)] [letter-spacing:0]">
-                    1K<span className="text-[var(--accent)]">+</span>
-                  </p>
-                  <p className="mt-2 text-xs text-[var(--text-3)]">Mentored</p>
-                </div>
+                <span className="w-fit rounded-full border border-[var(--accent)] px-3 py-1 font-mono text-[9px] font-semibold uppercase tracking-wide text-[var(--accent)]">
+                  Open to Staff+ roles
+                </span>
               </div>
-
-              <div className="mt-6 space-y-3 border-t border-[var(--border)] pt-5">
-                {[
-                  "Published - CRC Press",
-                  "Speaker - BSBI Berlin",
-                  "KaggleX Fellow - Google",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_18px_rgba(125,211,252,0.8)]" />
-                    <span className="text-sm text-[var(--text-2)]">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </GradientCard>
-
-            <div className="mt-3 grid grid-cols-2 gap-3">
-              <GradientCard className="p-4">
-                <p className="text-2xl font-bold leading-none text-[var(--text)]">
-                  15K+
-                </p>
-                <p className="mt-2 text-xs text-[var(--text-3)]">
-                  Enterprise GenAI users
-                </p>
-              </GradientCard>
-              <GradientCard className="p-4">
-                <p className="text-2xl font-bold leading-none text-[var(--text)]">
-                  2.4s
-                </p>
-                <p className="mt-2 text-xs text-[var(--text-3)]">
-                  p95 RAG @ $0.42/1K
-                </p>
-              </GradientCard>
             </div>
-          </motion.div>
+
+            <div className="absolute -bottom-5 -left-2 hidden rotate-[-3deg] rounded-full border border-[var(--border-strong)] bg-[var(--surface-raised)] px-4 py-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--text-2)] shadow-premium sm:block">
+              Research rigor → production reality
+            </div>
+          </motion.aside>
         </motion.div>
       </Container>
     </section>

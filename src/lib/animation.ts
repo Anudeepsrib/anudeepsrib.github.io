@@ -23,35 +23,11 @@ export const stagger = {
 };
 
 export const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 1, y: 18 },
   show: { opacity: 1, y: 0, transition: defaultTransition },
 };
 
-export const fadeIn = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: defaultTransition },
-};
-
 export const scaleIn = {
-  hidden: { opacity: 0, y: 14, scale: 0.985 },
+  hidden: { opacity: 1, y: 14, scale: 0.985 },
   show: { opacity: 1, y: 0, scale: 1, transition: defaultTransition },
-};
-
-export const cardHover = {
-  y: -6,
-  transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
-};
-
-export const ctaHover = {
-  x: 2,
-  y: -1,
-  transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] },
-};
-
-export const simpleFloat = {
-  animate: {
-    y: [0, -6, 0],
-    x: [0, 3, 0],
-    transition: { duration: 14, repeat: Infinity, ease: "easeInOut" },
-  },
 };

@@ -38,7 +38,7 @@ export default function ScrollReveal({
     <motion.div
       ref={ref}
       className={className}
-      initial={{ opacity: 0, ...directionMap[direction] }}
+      initial={{ opacity: 1, ...directionMap[direction] }}
       animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
       transition={{
         duration: 0.7,

@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, X, Box, Zap, Shield, BarChart3 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import CTAButton from "@/components/ui/CTAButton";
@@ -28,7 +28,8 @@ const projects = [
     hero: true,
     metrics: "Healthcare RAG · citations · PII safety",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "Production Healthcare RAG with department-scoped retrieval & PII boundaries",
+    patternFor:
+      "Production Healthcare RAG with department-scoped retrieval & PII boundaries",
     problem:
       "Clinical and policy-heavy workflows need fast, accurate retrieval without blurring department boundaries or exposing sensitive data.",
     architecture: [
@@ -79,7 +80,8 @@ const projects = [
     link: "https://github.com/Anudeepsrib/InferIQ",
     metrics: "eval gates · output checks · regression detection",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "LLM output quality gates & regression checks for production release",
+    patternFor:
+      "LLM output quality gates & regression checks for production release",
     problem:
       "Teams need repeatable, multi-dimensional checks for answer quality, safety, and regression before model output reaches users.",
     architecture: [
@@ -104,7 +106,8 @@ const projects = [
     link: "https://github.com/Anudeepsrib/code-migration-assistant",
     metrics: "code migration · risk assessment · compliance",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "Enterprise code migration with AI risk analysis and dependency visualization",
+    patternFor:
+      "Enterprise code migration with AI risk analysis and dependency visualization",
     problem:
       "Large-scale code migrations are high-risk, time-consuming, and prone to hidden dependency and security issues.",
     architecture: [
@@ -130,7 +133,8 @@ const projects = [
     link: "https://github.com/Anudeepsrib/Annapurna-AI",
     metrics: "multimodal · model routing · cultural AI",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "Domain-specific agentic applications with model routing & cultural context",
+    patternFor:
+      "Domain-specific agentic applications with model routing & cultural context",
     problem:
       "Generic meal planners often miss cultural context, dietary preferences, and practical grocery constraints in regional cuisines.",
     architecture: [
@@ -177,6 +181,8 @@ function DetailBlock({
 
 function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
   const titleId = `project-${project.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -186,14 +192,22 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
     };
 
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
   }, [onClose]);
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={reduceMotion ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={reduceMotion ? undefined : { opacity: 0 }}
+      transition={{ duration: reduceMotion ? 0 : 0.2 }}
       className="bg-black/78 fixed inset-0 z-[80] flex items-center justify-center p-4 backdrop-blur-md sm:p-6"
       onClick={onClose}
       role="dialog"
@@ -201,10 +215,13 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
       aria-labelledby={titleId}
     >
       <motion.div
-        initial={{ scale: 0.97, opacity: 0, y: 12 }}
+        initial={reduceMotion ? false : { scale: 0.97, opacity: 0, y: 12 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.97, opacity: 0, y: 12 }}
-        transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+        exit={reduceMotion ? undefined : { scale: 0.97, opacity: 0, y: 12 }}
+        transition={{
+          duration: reduceMotion ? 0 : 0.24,
+          ease: [0.16, 1, 0.3, 1],
+        }}
         className="max-h-[90vh] w-full max-w-4xl overflow-y-auto"
         onClick={(event) => event.stopPropagation()}
       >
@@ -243,8 +260,10 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
               </div>
             </div>
             <button
+              ref={closeButtonRef}
+              type="button"
               onClick={onClose}
-              className="rounded-md p-2 text-[var(--text-3)] transition-colors hover:bg-white/[0.05] hover:text-[var(--text)]"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border)] text-[var(--text-3)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
               aria-label="Close project details"
             >
               <X size={20} />
@@ -314,7 +333,8 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
                 View on GitHub - Clone &amp; adapt this pattern
               </CTAButton>
               <p className="mt-2 text-[10px] text-[var(--text-3)]">
-                Open source reference implementation • Production-grade patterns for your stack
+                Open source reference implementation • Production-grade patterns
+                for your stack
               </p>
             </div>
           </div>
@@ -328,6 +348,12 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<
     (typeof projects)[0] | null
   >(null);
+  const projectTrigger = useRef<HTMLButtonElement | null>(null);
+
+  const closeProject = () => {
+    setSelectedProject(null);
+    requestAnimationFrame(() => projectTrigger.current?.focus());
+  };
 
   return (
     <>
@@ -336,8 +362,8 @@ export default function Projects() {
         <Container>
           <MotionWrapper variants={fadeUp}>
             <SectionHeader
-              title="Open Source Reference Implementations"
-              description="Production patterns and architectures I've released for teams building dependable AI systems at scale."
+              title="Selected systems & open-source work."
+              description="Reference implementations that make the architecture, trade-offs, and operating boundaries visible—not just the demo."
             />
           </MotionWrapper>
 
@@ -354,7 +380,10 @@ export default function Projects() {
               >
                 <ProjectCard
                   project={project}
-                  onClick={() => setSelectedProject(project)}
+                  onClick={(trigger) => {
+                    projectTrigger.current = trigger;
+                    setSelectedProject(project);
+                  }}
                 />
               </motion.div>
             ))}
@@ -366,7 +395,7 @@ export default function Projects() {
         {selectedProject && (
           <ProjectDetailModal
             project={selectedProject}
-            onClose={() => setSelectedProject(null)}
+            onClose={closeProject}
           />
         )}
       </AnimatePresence>

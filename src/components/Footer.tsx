@@ -5,34 +5,37 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import MotionWrapper from "@/components/ui/MotionWrapper";
 import { fadeUp } from "@/lib/animation";
+import resumeData from "@/data/resumeData.json";
 
 const nav = [
-  { label: "Experience", href: "/journey" },
-  { label: "Mentorship", href: "/mentorship" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Selected work", href: "/#projects" },
+  { label: "Mentorship", href: "/#mentoring" },
   { label: "Recognitions", href: "/recognitions" },
   { label: "Blog", href: "/blog" },
 ];
 
 const connect = [
-  { label: "GitHub", href: "https://github.com/anudeepsrib" },
+  { label: "GitHub", href: resumeData.personalInfo.github },
+  { label: "LinkedIn", href: resumeData.personalInfo.linkedin },
   { label: "ADPList", href: "https://adplist.org/mentors/anudeep-sri-bathina" },
   { label: "Topmate", href: "https://topmate.io/anudeepsrib" },
   { label: "Substack", href: "https://substack.com/@anudeepai" },
-  { label: "Email", href: "mailto:anudeepSri108@gmail.com" },
+  { label: "Email", href: `mailto:${resumeData.personalInfo.email}` },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 border-t border-[var(--border)] bg-black/[0.16]">
+    <footer className="relative z-10 border-t border-[var(--border)] bg-[var(--bg-secondary)]">
       <Container className="py-12 sm:py-14">
         <MotionWrapper variants={fadeUp}>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto_auto] md:gap-20">
             <div>
               <p className="text-sm font-semibold text-[var(--text)]">
-                Anudeep Sri Bathina
+                {resumeData.personalInfo.name}
               </p>
               <p className="mt-2 max-w-xs text-sm leading-6 text-[var(--text-3)]">
-                AI Architect. Building production systems that scale.
+                AI Architect. Building production systems that hold up.
               </p>
             </div>
 

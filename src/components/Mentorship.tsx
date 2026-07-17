@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -52,7 +52,7 @@ const programs = [
 ];
 
 const item = {
-  hidden: { opacity: 0, y: 15 },
+  hidden: { opacity: 1, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
@@ -63,6 +63,7 @@ const item = {
 export default function Mentorship() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
+  const reduceMotion = useReducedMotion();
 
   return (
     <div className="pt-24">
@@ -75,17 +76,20 @@ export default function Mentorship() {
         <div className="relative z-10 mx-auto max-w-4xl px-6">
           <motion.h1
             className="mb-4 font-display text-4xl font-bold tracking-tighter md:text-6xl lg:text-7xl"
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? false : { opacity: 1, y: 18 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.7,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
             Mentorship
           </motion.h1>
           <motion.p
             className="max-w-md text-[15px] text-[var(--text-2)]"
-            initial={{ opacity: 0, y: 15 }}
+            initial={reduceMotion ? false : { opacity: 1, y: 10 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{ duration: reduceMotion ? 0 : 0.5, delay: 0.15 }}
           >
             Guiding AI practitioners through hands-on mentoring, academic
             instruction, and global community engagement.

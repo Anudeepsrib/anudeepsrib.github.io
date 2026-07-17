@@ -1,19 +1,24 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Home } from "lucide-react";
 
 export default function NotFound() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <div className="hero-glow absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2" />
 
       <div className="relative z-10 px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={reduceMotion ? false : { opacity: 1, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.6,
+            ease: [0.16, 1, 0.3, 1],
+          }}
         >
           <h1 className="mb-2 font-display text-[100px] font-black leading-none tracking-tighter text-[var(--text)] md:text-[160px]">
             404

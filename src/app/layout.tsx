@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import resumeData from "@/data/resumeData.json";
 
@@ -65,6 +66,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const themeScript = `try{const saved=localStorage.getItem("theme");const theme=saved||((matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");document.documentElement.dataset.theme=theme}catch{document.documentElement.dataset.theme="dark"}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -108,12 +110,11 @@ export default function RootLayout({
   };
 
   return (
-    <html
-      lang="en"
-      className={`${jetbrainsMono.variable} dark`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={jetbrainsMono.variable} suppressHydrationWarning>
       <head>
+        <Script id="theme" strategy="beforeInteractive">
+          {themeScript}
+        </Script>
         <link
           rel="preload"
           href="/fonts/satoshi-700.woff2"
@@ -141,7 +142,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="bg-[var(--bg)] text-[var(--text)] antialiased selection:bg-[rgba(145,199,255,0.25)] selection:text-[var(--text)]"
+        className="bg-[var(--bg)] text-[var(--text)] antialiased"
         suppressHydrationWarning
       >
         <a href="#main-content" className="skip-link">

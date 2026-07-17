@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import StaggerContainer from "@/components/ui/StaggerContainer";
@@ -72,7 +72,8 @@ const conferences = [
     venue: "Industry Consortium",
     location: "Jaipur, India",
     date: "Jun 2020",
-    description: "Panel discussion on the future of AI and its societal impact.",
+    description:
+      "Panel discussion on the future of AI and its societal impact.",
   },
 ];
 
@@ -98,15 +99,6 @@ const awards = [
   { title: "KaggleX Fellowship", org: "Google/Kaggle, 2023-2024" },
 ];
 
-const item = {
-  hidden: { opacity: 0, y: 12 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <ScrollReveal>
@@ -120,6 +112,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 export default function Recognitions() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
+  const reduceMotion = useReducedMotion();
 
   return (
     <div className="pt-24">
@@ -132,17 +125,20 @@ export default function Recognitions() {
         <div className="relative z-10 mx-auto max-w-4xl px-6">
           <motion.h1
             className="mb-4 font-display text-4xl font-bold tracking-tighter md:text-6xl lg:text-7xl"
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? false : { opacity: 1, y: 18 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.7,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
             Speaking
           </motion.h1>
           <motion.p
             className="max-w-md text-[15px] text-[var(--text-2)]"
-            initial={{ opacity: 0, y: 15 }}
+            initial={reduceMotion ? false : { opacity: 1, y: 10 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{ duration: reduceMotion ? 0 : 0.5, delay: 0.15 }}
           >
             Speaking engagements, publications, and industry recognition across
             universities, conferences, and global AI communities.
@@ -185,7 +181,9 @@ export default function Recognitions() {
                       <h3 className="font-display text-[15px] font-semibold text-[var(--text)]">
                         {lecture.title}
                       </h3>
-                      <p className="mt-0.5 text-xs text-[var(--text-3)]">{lecture.venue}</p>
+                      <p className="mt-0.5 text-xs text-[var(--text-3)]">
+                        {lecture.venue}
+                      </p>
                     </div>
                     <span className="font-mono text-[10px] text-[var(--text-3)]">
                       {lecture.date}

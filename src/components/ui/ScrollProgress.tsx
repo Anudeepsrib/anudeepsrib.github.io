@@ -1,9 +1,17 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) return null;
 
   return (
     <motion.div
