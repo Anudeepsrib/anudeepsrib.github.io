@@ -6,7 +6,7 @@
     "location": "Plano, TX, United States",
     "github": "https://github.com/anudeepsrib",
     "linkedin": "https://www.linkedin.com/in/anudeepsri/",
-    "website": "https://anudeepsrib.github.io",
+    "website": "https://anudeepsri.com",
     "summary": "AI Architect with 11 years of experience building scalable AI systems, LLM/RAG solutions, and production-grade data platforms. Invited speaker at Berlin School of Business and Innovation (BSBI) Café Scientifique (AI in Business, Jun 4, 2021) and guest speaker for academic/industry programs including an STTP on Machine Learning Fundamentals (Dec 3, 2024). Author/contributor to CRC Press / Taylor & Francis publications and active mentor via ADPList and Topmate.",
     "image": "/assets/logo.png"
   },
@@ -132,42 +132,9 @@
     "AWS",
     "PySpark / Databricks",
     "Docker & Kubernetes",
-    "Next.js 15",
+    "Next.js 16",
     "React / TypeScript",
     "LiteLLM"
-  ],
-  "projects": [
-    {
-      "name": "ClinIQ",
-      "description": "Enterprise Healthcare RAG with stateful LangGraph pipeline, multimodal ingestion, department-scoped vector stores, and LangSmith observability.",
-      "technologies": [
-        "LangGraph",
-        "LangChain",
-        "FastAPI",
-        "OpenAI",
-        "ChromaDB",
-        "Presidio"
-      ],
-      "link": "https://github.com/Anudeepsrib/ClinIQ"
-    },
-    {
-      "name": "Annapurna-AI",
-      "description": "India-first, culture-aware AI meal planner and grocery assistant for South Indian vegetarian cooking with evidence-grounded wellness explanations.",
-      "technologies": ["Next.js", "FastAPI", "Gemini", "LiteLLM", "SQLModel"],
-      "link": "https://github.com/Anudeepsrib/Annapurna-AI"
-    },
-    {
-      "name": "Code Migration Assistant",
-      "description": "Enterprise-grade, security-first code migration tool with AI-powered risk assessment, visual dependency planning, and compliance scanning.",
-      "technologies": ["Python", "NetworkX", "AST", "RAG", "OpenAI"],
-      "link": "https://github.com/Anudeepsrib/code-migration-assistant"
-    },
-    {
-      "name": "Media Organizer",
-      "description": "Python toolkit for organizing mobile media files (iOS & Android) with an enterprise web dashboard and Gemini-powered AI features.",
-      "technologies": ["FastAPI", "Google Gemini", "ChromaDB", "Pydantic"],
-      "link": "https://github.com/Anudeepsrib/Media-Organizer"
-    }
   ],
   "languages": [
     {

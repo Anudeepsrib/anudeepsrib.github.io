@@ -245,6 +245,7 @@ export default function Recognitions() {
                   href={pub.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${pub.title} publication (opens in a new tab)`}
                   className="group flex items-start justify-between gap-4 border-b border-[var(--border)] py-4"
                 >
                   <div>
@@ -295,9 +296,8 @@ export default function Recognitions() {
             Invite Me to Speak
           </h3>
           <p className="mx-auto mt-3 max-w-md text-[var(--text-2)]">
-            Available for guest lectures, panels, workshops, and keynotes on
-            production AI systems, LLM architectures, and career development in
-            tech.
+            Topics include production AI systems, LLM architectures, and career
+            development in tech.
           </p>
           <a
             href="mailto:anudeepSri108@gmail.com?subject=Speaking%20Invitation"

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FileText, Github, Linkedin, MapPin } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Container from "@/components/ui/Container";
 import CTAButton from "@/components/ui/CTAButton";
 import { fadeUp, heroContainer, scaleIn } from "@/lib/animation";
@@ -24,6 +24,7 @@ const companyLogoSizes: Record<string, { width: number; height: number }> = {
 
 export default function Hero() {
   const { personalInfo, experience } = resumeData;
+  const reduceMotion = useReducedMotion();
 
   return (
     <section
@@ -66,7 +67,7 @@ export default function Hero() {
             >
               I&apos;m {personalInfo.name}, an AI Architect with 11 years of
               experience turning GenAI, RAG, and data platforms into reliable
-              production systems—with explicit boundaries, rigorous evaluation,
+              production systems, with explicit boundaries, rigorous evaluation,
               and measurable impact.
             </motion.p>
 
@@ -76,12 +77,11 @@ export default function Hero() {
             >
               <CTAButton href="#projects">See selected work</CTAButton>
               <CTAButton
-                href="/resume/Anudeep-Sri-Bathina-Resume.pdf"
-                external
+                href={`mailto:${personalInfo.email}`}
                 variant="secondary"
-                icon={<FileText size={15} aria-hidden="true" />}
+                icon={<Mail size={15} aria-hidden="true" />}
               >
-                Resume
+                Get in touch
               </CTAButton>
               <a
                 href={personalInfo.github}
@@ -124,6 +124,15 @@ export default function Hero() {
 
           <motion.aside
             variants={scaleIn}
+            whileHover={
+              reduceMotion
+                ? undefined
+                : {
+                    y: -5,
+                    rotate: -0.2,
+                    transition: { type: "spring", stiffness: 260, damping: 24 },
+                  }
+            }
             className="relative lg:col-span-5 lg:pl-6"
             aria-label="Anudeep's production AI approach"
           >
@@ -142,9 +151,11 @@ export default function Hero() {
 
               <ol className="divide-y divide-[var(--muted)]">
                 {systemLayers.map(([number, title, detail]) => (
-                  <li
+                  <motion.li
                     key={title}
-                    className="grid grid-cols-[2rem_1fr] gap-3 py-5 transition-transform duration-200 hover:translate-x-1"
+                    whileHover={reduceMotion ? undefined : { x: 6 }}
+                    transition={{ type: "spring", stiffness: 360, damping: 28 }}
+                    className="grid grid-cols-[2rem_1fr] gap-3 py-5"
                   >
                     <span className="font-mono text-[10px] text-[var(--bg)] opacity-60">
                       {number}
@@ -157,7 +168,7 @@ export default function Hero() {
                         {detail}
                       </p>
                     </div>
-                  </li>
+                  </motion.li>
                 ))}
               </ol>
 
@@ -171,7 +182,7 @@ export default function Hero() {
                   </p>
                 </div>
                 <span className="w-fit rounded-full border border-[var(--accent)] px-3 py-1 font-mono text-[9px] font-semibold uppercase tracking-wide text-[var(--accent)]">
-                  Open to Staff+ roles
+                  11 years in AI &amp; data
                 </span>
               </div>
             </div>

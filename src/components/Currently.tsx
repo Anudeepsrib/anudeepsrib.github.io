@@ -19,7 +19,7 @@ export default function Currently() {
         <MotionWrapper variants={fadeUp}>
           <div className="grid gap-6 rounded-[1.5rem] border border-[var(--border)] bg-[var(--text)] p-6 sm:p-8 lg:grid-cols-[0.5fr_1.5fr]">
             <div>
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--accent-inverse)]">
                 Current questions
               </p>
               <h2 className="mt-3 text-2xl font-bold text-[var(--bg)]">
@@ -37,7 +37,7 @@ export default function Currently() {
                   key={exploration}
                   className="rounded-xl border border-[var(--muted)] px-4 py-3 text-sm leading-6"
                 >
-                  <span className="mr-2 text-[var(--accent)]">→</span>
+                  <span className="mr-2 text-[var(--accent-inverse)]">→</span>
                   <span className="text-[var(--bg)] opacity-75">
                     {exploration}
                   </span>

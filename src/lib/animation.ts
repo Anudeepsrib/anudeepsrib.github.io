@@ -1,4 +1,7 @@
-export const defaultTransition = { duration: 0.64, ease: [0.16, 1, 0.3, 1] };
+export const defaultTransition = {
+  duration: 0.64,
+  ease: [0.16, 1, 0.3, 1] as const,
+};
 
 export const heroContainer = {
   hidden: { opacity: 1 },

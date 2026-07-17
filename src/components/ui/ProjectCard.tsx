@@ -17,13 +17,10 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
+  const descriptionId = `project-${project.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-description`;
+
   return (
-    <button
-      type="button"
-      onClick={(event) => onClick(event.currentTarget)}
-      className="block h-full w-full rounded-[1.5rem] text-left"
-      aria-label={`Open ${project.name} project details`}
-    >
+    <article className="group relative h-full">
       <GradientCard
         interactive
         featured={project.hero}
@@ -64,7 +61,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             />
           </div>
 
-          <p className="mb-6 text-sm leading-6 text-[var(--text-2)] md:text-[15px]">
+          <p
+            id={descriptionId}
+            className="mb-6 text-sm leading-6 text-[var(--text-2)] md:text-[15px]"
+          >
             {project.description}
           </p>
 
@@ -77,6 +77,14 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           </div>
         </div>
       </GradientCard>
-    </button>
+      <button
+        type="button"
+        onClick={(event) => onClick(event.currentTarget)}
+        className="absolute inset-0 z-20 rounded-[1.5rem]"
+        aria-describedby={descriptionId}
+      >
+        <span className="sr-only">Open details about {project.name}</span>
+      </button>
+    </article>
   );
 }

@@ -17,7 +17,13 @@ export default function PublicationCard({
   link,
 }: PublicationCardProps) {
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" className="block">
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${title} at ${venue} (opens in a new tab)`}
+      className="block"
+    >
       <GradientCard interactive className="h-full p-6">
         <div className="flex items-start justify-between gap-6">
           <div>

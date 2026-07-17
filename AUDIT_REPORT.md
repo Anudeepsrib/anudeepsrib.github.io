@@ -34,7 +34,7 @@ Highest-risk fixes:
 - `vercel.json` used `npm install --legacy-peer-deps`.
   - Fixed by removing the workaround and relying on normal install/build behavior.
 - GitHub Pages workflow built only with `next build`.
-  - Fixed by using Node 20, `npm ci`, `npm run lint`, `npm run typecheck`, and `npm run build`.
+  - Fixed by using Node 24-compatible actions, Node 24, `npm ci`, `npm run lint`, `npm run typecheck`, and `npm run build`.
 - `npm audit` initially reported 12 vulnerabilities, including a critical Next.js advisory.
   - Fixed by upgrading Next.js and applying a PostCSS override; final audit reports 0 vulnerabilities.
 
@@ -59,8 +59,7 @@ Highest-risk fixes:
   - Fixed by adding `role="dialog"`, `aria-modal`, labelled title, and Escape close handling.
 - `.gitignore` missed explicit `.env` handling.
   - Fixed by adding `.env`, `.env.local`, `.env.*.local`, generated outputs, logs, `.vercel/`, `.agent/`, and key files.
-- Follow-up portfolio polish found the case-study page still showing an "architecture coming soon" placeholder.
-  - Fixed by rendering the actual public architecture markdown, adding a recruiter-oriented hero proof strip, adding a Projects nav entry, improving blog/writing summary cards, and adding a keyboard skip link.
+- Follow-up portfolio polish added a recruiter-oriented hero proof strip, improved blog and writing summary cards, and added a keyboard skip link.
 
 ## Files Changed
 
@@ -91,7 +90,6 @@ Documentation:
 App and source:
 
 - `src/app/blog/page.tsx`
-- `src/app/case-studies/page.tsx`
 - `src/app/globals.css`
 - `src/app/impact/page.tsx`
 - `src/app/journey/page.tsx`
@@ -122,7 +120,6 @@ Removed stale or unsafe files:
 Content:
 
 - `notes/*.md`
-- `systems/*.md`
 - `public/sitemap.xml`
 - `remap-lottie-colors.js`
 
@@ -171,9 +168,9 @@ Browser smoke test:
 
 ```text
 Opened http://localhost:3001 in the in-app browser.
-Verified home page title, hero name, navigation, project content, /case-studies, and /notes/rag-failure-patterns.
+Verified home page title, hero name, navigation, project content, and /notes/rag-failure-patterns.
 Checked browser console errors: 0.
-Follow-up smoke test verified the new hero proof strip, Projects nav, skip link, case-study architecture content, and blog writing summary.
+Follow-up smoke test verified the new hero proof strip, Projects nav, skip link, and blog writing summary.
 ```
 
 ## Results
@@ -193,7 +190,6 @@ Final build output exported these static routes:
 - `/`
 - `/_not-found`
 - `/blog`
-- `/case-studies`
 - `/impact`
 - `/journey`
 - `/mentorship`
@@ -213,7 +209,7 @@ Before:
 
 After:
 
-- GitHub Pages uses Node 20, `npm ci`, lint, type-check, build, and uploads `./out`.
+- GitHub Pages uses Node 24-compatible actions, Node 24, `npm ci`, lint, type-check, build, and uploads `./out`.
 - Vercel uses normal `npm run vercel-build`.
 - Static export is explicit through `output: "export"`.
 - No server runtime features are claimed or required.

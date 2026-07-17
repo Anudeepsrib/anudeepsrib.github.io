@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -9,13 +10,13 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { label: "Proof", href: "/#proof" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Expertise", href: "/#skills" },
-  { label: "Work", href: "/#projects" },
-  { label: "Mentoring", href: "/#mentoring" },
-  { label: "Research", href: "/#research" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Proof", href: "/#proof", id: "proof" },
+  { label: "Experience", href: "/#experience", id: "experience" },
+  { label: "Expertise", href: "/#skills", id: "skills" },
+  { label: "Work", href: "/#projects", id: "projects" },
+  { label: "Mentoring", href: "/#mentoring", id: "mentoring" },
+  { label: "Research", href: "/#research", id: "research" },
+  { label: "Contact", href: "/#contact", id: "contact" },
 ];
 
 function ThemeToggle() {
@@ -31,11 +32,11 @@ function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text-2)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
-      aria-label="Switch color theme"
-      title="Switch color theme"
     >
       <Sun className="theme-sun" size={16} aria-hidden="true" />
       <Moon className="theme-moon" size={16} aria-hidden="true" />
+      <span className="theme-label-light sr-only">Switch to dark theme</span>
+      <span className="theme-label-dark sr-only">Switch to light theme</span>
     </button>
   );
 }
@@ -43,7 +44,9 @@ function ThemeToggle() {
 export default function FloatingNav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const [mobileMenu, setMobileMenu] = useState({ pathname: "", open: false });
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const reduceMotion = useReducedMotion();
   const open = mobileMenu.pathname === pathname && mobileMenu.open;
 
@@ -53,6 +56,42 @@ export default function FloatingNav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sections = links
+      .map((link) => document.getElementById(link.id))
+      .filter((section): section is HTMLElement => section !== null);
+    const observer = new IntersectionObserver(
+      () => {
+        const marker = window.innerHeight * 0.3;
+        const current = sections.find((section) => {
+          const bounds = section.getBoundingClientRect();
+          return bounds.top <= marker && bounds.bottom >= marker;
+        });
+
+        setActiveSection(current?.id ?? "");
+      },
+      { rootMargin: "-20% 0px -65%", threshold: [0, 0.15, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setMobileMenu({ pathname, open: false });
+      requestAnimationFrame(() => menuButtonRef.current?.focus());
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open, pathname]);
 
   const closeMenu = () => setMobileMenu({ pathname, open: false });
   const toggleMenu = () =>
@@ -77,32 +116,48 @@ export default function FloatingNav() {
           <Link
             href="/"
             onClick={closeMenu}
-            className="flex min-h-11 items-center gap-2.5 rounded-full px-2 outline-none"
+            className="flex min-h-11 items-center gap-2.5 rounded-full px-2"
             aria-label="Anudeep Sri Bathina, home"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--text)] font-mono text-[10px] font-semibold text-[var(--bg)]">
-              ASB
-            </span>
+            <Image
+              src="/assets/logo.png"
+              alt=""
+              width={32}
+              height={32}
+              priority
+              className="h-8 w-8 rounded-lg border border-[var(--border-strong)] object-cover"
+            />
             <span className="hidden text-sm font-bold text-[var(--text)] sm:block">
               Anudeep Sri
             </span>
           </Link>
 
           <div className="hidden items-center gap-0.5 lg:flex">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-full px-2.5 py-2 text-[12px] font-semibold text-[var(--text-3)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)] xl:px-3"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) => {
+              const current = pathname === "/" && activeSection === link.id;
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={current ? "location" : undefined}
+                  className={cn(
+                    "rounded-full px-2.5 py-2 text-[12px] font-semibold transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)] xl:px-3",
+                    current
+                      ? "bg-[var(--accent-soft)] text-[var(--accent)]"
+                      : "text-[var(--text-3)]",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-1.5">
             <ThemeToggle />
             <button
+              ref={menuButtonRef}
               type="button"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text-2)] transition hover:border-[var(--accent)] hover:text-[var(--accent)] lg:hidden"
               onClick={toggleMenu}
@@ -117,8 +172,9 @@ export default function FloatingNav() {
 
         <AnimatePresence>
           {open && (
-            <motion.div
+            <motion.nav
               id="mobile-navigation"
+              aria-label="Mobile navigation"
               className="pointer-events-auto mx-auto mt-2 max-w-7xl overflow-hidden rounded-[1.5rem] border border-[var(--border-strong)] bg-[var(--surface-raised)] shadow-premium lg:hidden"
               initial={reduceMotion ? false : { opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -126,18 +182,28 @@ export default function FloatingNav() {
               transition={{ duration: 0.18 }}
             >
               <div className="grid grid-cols-2 gap-1 p-3">
-                {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={closeMenu}
-                    className="flex min-h-12 items-center rounded-xl px-3 text-sm font-semibold text-[var(--text-2)] transition-colors hover:bg-[var(--bg-secondary)] hover:text-[var(--text)]"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {links.map((link) => {
+                  const current = pathname === "/" && activeSection === link.id;
+
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMenu}
+                      aria-current={current ? "location" : undefined}
+                      className={cn(
+                        "flex min-h-12 items-center rounded-xl px-3 text-sm font-semibold transition-colors hover:bg-[var(--bg-secondary)] hover:text-[var(--text)]",
+                        current
+                          ? "bg-[var(--accent-soft)] text-[var(--accent)]"
+                          : "text-[var(--text-2)]",
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
               </div>
-            </motion.div>
+            </motion.nav>
           )}
         </AnimatePresence>
       </header>

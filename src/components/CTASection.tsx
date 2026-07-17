@@ -25,8 +25,8 @@ export default function CTASection() {
                 </h2>
 
                 <p className="mt-5 max-w-xl text-base leading-7 text-[var(--text-2)]">
-                  Open to Staff+ AI engineering and platform roles, plus AI
-                  consulting, speaking, mentorship, and research collaboration.
+                  Let&apos;s talk about production AI, platform architecture,
+                  mentoring, or research collaboration.
                 </p>
               </div>
 

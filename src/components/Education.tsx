@@ -39,6 +39,7 @@ export default function Education() {
                 href={edu.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${edu.institution} website (opens in a new tab)`}
                 className="group flex items-start justify-between gap-4 border-b border-[var(--border)] py-5"
               >
                 <div>
