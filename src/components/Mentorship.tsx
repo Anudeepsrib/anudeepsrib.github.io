@@ -56,7 +56,7 @@ const item = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -156,15 +156,17 @@ export default function Mentorship() {
                 href="https://adplist.org/mentors/anudeep-sri-bathina"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Book on ADPList (opens in a new tab)"
                 className="btn-primary"
               >
                 ADPList
                 <ArrowUpRight size={13} />
               </a>
               <a
-                href="https://topmate.io/anudeepsrib"
+                href="https://topmate.io/anudeepsri"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Book on Topmate (opens in a new tab)"
                 className="btn-secondary"
               >
                 Topmate

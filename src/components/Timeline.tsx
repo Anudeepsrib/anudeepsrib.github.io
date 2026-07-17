@@ -12,6 +12,7 @@ export default function Timeline() {
   return (
     <section className="relative py-16 md:py-24">
       <div className="mx-auto max-w-4xl px-6">
+        <h2 className="sr-only">Career timeline</h2>
         {/* Phase Overview */}
         <div className="mb-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
           {phases.map((phase) => (

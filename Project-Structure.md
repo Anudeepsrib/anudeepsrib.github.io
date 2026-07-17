@@ -20,8 +20,6 @@ anudeepsrib.github.io/
 │   │   │   └── gaininsights.png
 │   │   └── logo.png
 │   ├── fonts/
-│   ├── resume/
-│   │   └── Anudeep-Sri-Bathina-Resume.pdf
 │   ├── CNAME
 │   ├── favicon.svg
 │   ├── robots.txt
@@ -29,7 +27,6 @@ anudeepsrib.github.io/
 ├── src/
 │   ├── app/
 │   │   ├── blog/
-│   │   ├── case-studies/
 │   │   ├── impact/
 │   │   ├── journey/
 │   │   ├── mentorship/
@@ -49,12 +46,10 @@ anudeepsrib.github.io/
 │   └── lib/
 │       ├── animation.ts
 │       ├── content.ts
+│       ├── metadata.ts
 │       └── utils.ts
-├── systems/
-│   ├── llm-eval-harness.md
-│   └── rag-policy-intelligence.md
 ├── .env.example
-├── .eslintrc.json
+├── eslint.config.mjs
 ├── .gitignore
 ├── .nvmrc
 ├── AUDIT_REPORT.md
@@ -74,5 +69,5 @@ anudeepsrib.github.io/
 
 - `src/lib/content.ts` is server-only build-time content loading for markdown files.
 - `posts/` is currently empty because old copied template posts were removed. Add a route under `src/app/blog/[slug]/` again when authored posts are reintroduced.
-- `notes/` and `systems/` provide the current public markdown content.
+- `notes/` provides the current public markdown content.
 - The app uses `output: "export"` and does not include API routes.

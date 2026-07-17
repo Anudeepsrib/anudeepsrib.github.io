@@ -15,7 +15,7 @@ const projects = [
   {
     name: "ClinIQ",
     description:
-      "Enterprise Healthcare RAG reference implementation with scoped retrieval, clinical citations, and production-grade privacy controls.",
+      "Healthcare RAG reference implementation with department-scoped retrieval, citations, role checks, and PHI masking.",
     tags: [
       "LangGraph",
       "LangChain",
@@ -29,7 +29,7 @@ const projects = [
     metrics: "Healthcare RAG · citations · PII safety",
     openSourceCategory: "Open Source Reference Implementation",
     patternFor:
-      "Production Healthcare RAG with department-scoped retrieval & PII boundaries",
+      "Healthcare RAG architecture with scoped retrieval and conservative safety controls",
     problem:
       "Clinical and policy-heavy workflows need fast, accurate retrieval without blurring department boundaries or exposing sensitive data.",
     architecture: [
@@ -45,85 +45,89 @@ const projects = [
       "Use graph orchestration where deterministic routing matters more than a single chain",
     ],
     results:
-      "Open-sourced as a reusable reference for teams building compliant RAG in regulated domains. Full scoped retrieval + citation + Presidio pipeline ready to adapt.",
+      "Open-source demo and reference implementation for local experimentation and architecture review. It is not certified clinical or compliance software and requires legal, clinical, security, and deployment hardening before real PHI use.",
   },
   {
     name: "EvidenceIQ",
     description:
-      "Evidence-grounded RAG pattern for retrieving, ranking, and explaining source-backed findings with strong citation guarantees.",
-    tags: ["RAG", "Evaluation", "Citations", "Python", "LLM"],
+      "Local-first sensitive-media workspace with role-based access, PII-aware metadata handling, local AI tagging, semantic search, and audit trails.",
+    tags: ["FastAPI", "SQLite", "Ollama", "ChromaDB", "RBAC", "SHA-256"],
     link: "https://github.com/Anudeepsrib/EvidenceIQ",
-    metrics: "evidence retrieval · source ranking · citations",
+    metrics: "local-first · sensitive media · audit trails",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor: "Evidence-grounded RAG with source ranking & review workflows",
+    patternFor: "Privacy-aware media intake, search, and review",
     problem:
-      "LLM answers become hard to trust when source collection, ranking, and explanation are not separated and reviewable.",
+      "Teams handling sensitive images, video, and documents need searchable workflows without sending media to cloud AI by default or losing access and provenance controls.",
     architecture: [
-      "Retriever layer separates candidate evidence from final synthesis",
-      "Ranking stage promotes source quality and relevance before generation",
-      "Prompt contracts keep citations attached to each claim",
-      "Evaluation hooks support answer review and regression checks",
+      "Validated media ingestion with SHA-256 hashing and audit records",
+      "SQLite stores metadata, roles, and audit logs locally",
+      "Ollama-backed vision models and CLIP/ChromaDB support local tagging and semantic search",
+      "RBAC, PII-aware metadata scrubbing, and separate redacted copies protect originals",
     ],
     decisions: [
-      "Treat citations as required output structure, not optional decoration",
-      "Keep retrieval and generation independently testable",
-      "Design for analyst review when confidence is low",
+      "Default AI processing to local Ollama and require explicit review for external integrations",
+      "Keep originals unchanged and create redacted copies separately",
+      "Describe controls as privacy-aware and forensic-style, not compliance certification",
     ],
     results:
-      "Open-sourced reference pattern for teams that need defensible, citation-first answers. Full retrieval + ranking + citation contract implementation ready to adapt.",
+      "Open-source reference implementation for local sensitive-media review with integrity checks, role-based controls, local AI search, and report generation. It is not formal compliance or forensic-admissibility software.",
   },
   {
     name: "InferIQ",
     description:
-      "Production-grade LLM evaluation harness for checking output quality, safety, and regression before models reach users or CI/CD.",
-    tags: ["LLM Evaluation", "Quality Gates", "Python", "Observability"],
+      "Reference implementation for benchmarking and serving LLM inference across vLLM, NVIDIA NIM, and NVIDIA NeMo, with optional CUDA profiling, a FastAPI gateway, and a Streamlit dashboard.",
+    tags: [
+      "Python",
+      "FastAPI",
+      "vLLM",
+      "NVIDIA NIM",
+      "NVIDIA NeMo",
+      "Streamlit",
+    ],
     link: "https://github.com/Anudeepsrib/InferIQ",
-    metrics: "eval gates · output checks · regression detection",
+    metrics: "latency · throughput · GPU memory · cost per token",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor:
-      "LLM output quality gates & regression checks for production release",
+    patternFor: "GPU inference benchmarking, routing, and observability",
     problem:
-      "Teams need repeatable, multi-dimensional checks for answer quality, safety, and regression before model output reaches users.",
+      "Teams comparing LLM serving backends need reproducible workload sweeps and consistent latency, throughput, utilization, and cost views before choosing an operating path.",
     architecture: [
-      "Evaluation set design for representative and adversarial prompts",
-      "Scoring layer separates correctness, safety, citation quality, and latency",
-      "Regression thresholds catch model or prompt changes before release",
-      "Observability output supports triage and continuous improvement",
+      "Benchmark runner sweeps configured models, prompt lengths, and batch sizes",
+      "Backend adapters cover vLLM, external NVIDIA NIM, and NVIDIA NeMo",
+      "FastAPI exposes OpenAI-compatible endpoints with configurable routing",
+      "Optional torch.profiler traces and a Streamlit dashboard visualize results",
     ],
     decisions: [
-      "Use multiple quality dimensions instead of a single pass/fail score",
-      "Make eval failures actionable with traceable examples",
-      "Design quality gates that can run in CI or release workflows",
+      "Keep backends behind common schemas for side-by-side comparison",
+      "Make GPU profiling optional so the CPU demo can run in degraded mode",
+      "Store benchmark output as structured JSON instead of publishing unverified performance claims",
     ],
     results:
-      "Open-sourced reference implementation for production LLM quality gates. Adapt the multi-dimensional scoring + regression detection for your inference pipeline or agentic system.",
+      "Open-source reference and demo for evaluating inference backends and serving patterns. It is not a turnkey production deployment; production use needs authentication, secret management, hardening, and validated autoscaling.",
   },
   {
-    name: "Code Migration Assistant",
+    name: "ShiftIQ",
     description:
-      "Enterprise-grade, security-first code migration tool with AI-powered risk assessment, visual dependency planning, and compliance scanning.",
-    tags: ["Python", "AST", "NetworkX", "RAG", "OpenAI", "Security"],
-    link: "https://github.com/Anudeepsrib/code-migration-assistant",
-    metrics: "code migration · risk assessment · compliance",
+      "Local-first code migration assistant for static analysis, dry-run migrations, MCP tools, rollback checkpoints, and PII/PHI/PCI-oriented pattern scanning.",
+    tags: ["Python", "FastAPI", "AST", "MCP", "Dry Run", "Rollback"],
+    link: "https://github.com/Anudeepsrib/shiftIQ",
+    metrics: "static analysis · dry runs · rollback checkpoints",
     openSourceCategory: "Open Source Reference Implementation",
-    patternFor:
-      "Enterprise code migration with AI risk analysis and dependency visualization",
+    patternFor: "Reviewable, local-first code migration workflows",
     problem:
-      "Large-scale code migrations are high-risk, time-consuming, and prone to hidden dependency and security issues.",
+      "Teams need to inspect and plan migrations without executing target code or applying unreviewed changes.",
     architecture: [
-      "AST-based static analysis for deep code understanding",
-      "Graph-based dependency modeling using NetworkX",
-      "RAG-powered risk assessment and migration recommendation engine",
-      "Visual dependency explorer for planning and review",
-      "Compliance and security scanning layer",
+      "Static parsing and AST analysis find candidates without importing or executing target code",
+      "API-key-protected FastAPI endpoints and MCP tools expose analyze, run, scan, visualize, and rollback",
+      "Migrations default to dry-run; applied runs create rollback checkpoints",
+      "Sensitive-data findings are redacted and filesystem access is constrained to allowed roots",
     ],
     decisions: [
-      "Combine static analysis with LLM reasoning for higher accuracy",
-      "Prioritize visual tools so humans stay in the loop for high-risk changes",
-      "Build security and compliance checks as first-class citizens",
+      "Default every migration to dry-run and require explicit apply",
+      "Keep core analysis local and static without a cloud LLM or telemetry dependency",
+      "Present compliance-oriented checks as scanning only, not certification",
     ],
     results:
-      "Open-sourced enterprise reference for teams performing large-scale code migrations. Demonstrates practical combination of static analysis, graph modeling, and generative AI.",
+      "Open-source development tool with CLI, API, MCP, and UI paths for reviewable code migrations. Generated migrations still require human review.",
   },
   {
     name: "Annapurna-AI",
@@ -150,7 +154,7 @@ const projects = [
       "Make food and wellness explanations evidence-grounded and reviewable",
     ],
     results:
-      "Open-sourced example of production-ready agentic product architecture with LiteLLM routing and typed boundaries. Adapt the multimodal + preference engine pattern for any vertical domain.",
+      "Open-source reference implementation for exploring multimodal meal planning, preference modeling, and provider routing in a culturally specific domain.",
   },
 ];
 
@@ -181,6 +185,7 @@ function DetailBlock({
 
 function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
   const titleId = `project-${project.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+  const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const reduceMotion = useReducedMotion();
 
@@ -188,6 +193,27 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         onClose();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = Array.from(
+        dialogRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      ).filter((element) => element.offsetParent !== null);
+      const first = focusable[0];
+      const last = focusable.at(-1);
+
+      if (!first || !last) {
+        event.preventDefault();
+      } else if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
@@ -204,6 +230,7 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
 
   return (
     <motion.div
+      ref={dialogRef}
       initial={reduceMotion ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={reduceMotion ? undefined : { opacity: 0 }}
@@ -236,7 +263,7 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
               </h3>
               {project.openSourceCategory && (
                 <div className="mt-2 inline-flex items-center gap-2">
-                  <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-0.5 text-xs font-semibold uppercase tracking-wide text-emerald-400">
+                  <span className="rounded-full border border-[var(--accent-2)]/30 bg-[var(--sage-soft)] px-3 py-0.5 text-xs font-semibold uppercase tracking-wide text-[var(--accent-2)]">
                     {project.openSourceCategory}
                   </span>
                   {project.patternFor && (
@@ -330,11 +357,11 @@ function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps) {
                 variant="secondary"
                 icon={<ArrowUpRight size={15} />}
               >
-                View on GitHub - Clone &amp; adapt this pattern
+                View source on GitHub
               </CTAButton>
               <p className="mt-2 text-[10px] text-[var(--text-3)]">
-                Open source reference implementation • Production-grade patterns
-                for your stack
+                Open source project. Review its README and setup notes before
+                reuse.
               </p>
             </div>
           </div>
@@ -363,7 +390,7 @@ export default function Projects() {
           <MotionWrapper variants={fadeUp}>
             <SectionHeader
               title="Selected systems & open-source work."
-              description="Reference implementations that make the architecture, trade-offs, and operating boundaries visible—not just the demo."
+              description="Reference implementations that make the architecture, trade-offs, and operating boundaries visible, not just the demo."
             />
           </MotionWrapper>
 

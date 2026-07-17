@@ -19,7 +19,7 @@ const connect = [
   { label: "GitHub", href: resumeData.personalInfo.github },
   { label: "LinkedIn", href: resumeData.personalInfo.linkedin },
   { label: "ADPList", href: "https://adplist.org/mentors/anudeep-sri-bathina" },
-  { label: "Topmate", href: "https://topmate.io/anudeepsrib" },
+  { label: "Topmate", href: "https://topmate.io/anudeepsri" },
   { label: "Substack", href: "https://substack.com/@anudeepai" },
   { label: "Email", href: `mailto:${resumeData.personalInfo.email}` },
 ];
@@ -72,6 +72,11 @@ export default function Footer() {
                       link.href.startsWith("mailto")
                         ? undefined
                         : "noopener noreferrer"
+                    }
+                    aria-label={
+                      link.href.startsWith("mailto")
+                        ? undefined
+                        : `${link.label} (opens in a new tab)`
                     }
                     className="text-sm text-[var(--text-2)] transition-colors hover:text-[var(--text)]"
                   >

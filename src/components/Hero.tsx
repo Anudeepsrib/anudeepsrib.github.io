@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FileText, Github, Linkedin, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Container from "@/components/ui/Container";
 import CTAButton from "@/components/ui/CTAButton";
 import { fadeUp, heroContainer, scaleIn } from "@/lib/animation";
@@ -66,7 +66,7 @@ export default function Hero() {
             >
               I&apos;m {personalInfo.name}, an AI Architect with 11 years of
               experience turning GenAI, RAG, and data platforms into reliable
-              production systems—with explicit boundaries, rigorous evaluation,
+              production systems, with explicit boundaries, rigorous evaluation,
               and measurable impact.
             </motion.p>
 
@@ -76,12 +76,11 @@ export default function Hero() {
             >
               <CTAButton href="#projects">See selected work</CTAButton>
               <CTAButton
-                href="/resume/Anudeep-Sri-Bathina-Resume.pdf"
-                external
+                href={`mailto:${personalInfo.email}`}
                 variant="secondary"
-                icon={<FileText size={15} aria-hidden="true" />}
+                icon={<Mail size={15} aria-hidden="true" />}
               >
-                Resume
+                Get in touch
               </CTAButton>
               <a
                 href={personalInfo.github}
@@ -171,7 +170,7 @@ export default function Hero() {
                   </p>
                 </div>
                 <span className="w-fit rounded-full border border-[var(--accent)] px-3 py-1 font-mono text-[9px] font-semibold uppercase tracking-wide text-[var(--accent)]">
-                  Open to Staff+ roles
+                  11 years in AI &amp; data
                 </span>
               </div>
             </div>

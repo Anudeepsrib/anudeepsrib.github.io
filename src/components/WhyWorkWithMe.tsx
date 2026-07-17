@@ -19,7 +19,7 @@ export default function WhyWorkWithMe() {
             <div className="lg:sticky lg:top-28">
               <SectionHeader
                 title="From data foundations to AI architecture."
-                description="Eleven years across engineering, technical leadership, graduate research, and enterprise AI—one continuous practice of making complex systems useful."
+                description="Eleven years across engineering, technical leadership, graduate research, and enterprise AI. One continuous practice of making complex systems useful."
                 className="mb-7"
               />
               <p className="max-w-md border-l-2 border-[var(--accent)] pl-5 text-base leading-8 text-[var(--text-2)]">
@@ -82,7 +82,7 @@ export default function WhyWorkWithMe() {
                   </div>
                   <div className="sm:text-right">
                     <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--text-3)]">
-                      {role.startDate}—{role.endDate}
+                      {role.startDate} to {role.endDate}
                     </p>
                     <p className="mt-1 text-xs text-[var(--text-3)]">
                       {role.location}

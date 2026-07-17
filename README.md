@@ -6,7 +6,7 @@ This repository is intentionally a public, static portfolio. It does not ship a 
 
 ## Tech Stack
 
-- Next.js 15 App Router with static export
+- Next.js 16 App Router with static export
 - React 18 and TypeScript
 - Tailwind CSS with local fonts
 - Framer Motion with reduced-motion handling
@@ -17,16 +17,17 @@ This repository is intentionally a public, static portfolio. It does not ship a 
 ## Featured Projects
 
 - [ClinIQ](https://github.com/Anudeepsrib/ClinIQ): Healthcare RAG architecture with scoped retrieval, citation handling, and sensitive-data controls.
-- [EvidenceIQ](https://github.com/Anudeepsrib/EvidenceIQ): Evidence-grounded retrieval and source-ranking pattern for explainable LLM answers.
+- [EvidenceIQ](https://github.com/Anudeepsrib/EvidenceIQ): Local-first sensitive-media workspace with role-based access, PII-aware metadata handling, local AI tagging, semantic search, and audit trails.
 - [Annapurna-AI](https://github.com/Anudeepsrib/Annapurna-AI): Culture-aware AI meal planning architecture with model routing and typed service boundaries.
 - [Decision-Support-System](https://github.com/Anudeepsrib/Decision-Support-System): Decision intelligence workflow for ranking alternatives and explaining trade-offs.
-- [InferIQ](https://github.com/Anudeepsrib/InferIQ): LLM inference quality and evaluation gates for safer production release workflows.
+- [InferIQ](https://github.com/Anudeepsrib/InferIQ): Benchmarking and serving reference for vLLM, NVIDIA NIM, and NVIDIA NeMo with optional profiling and a local dashboard.
+- [ShiftIQ](https://github.com/Anudeepsrib/shiftIQ): Local-first code migration assistant with static analysis, dry runs, rollback checkpoints, and MCP tools.
 
 ## Local Setup
 
 Prerequisites:
 
-- Node.js 20
+- Node.js 22+
 - npm 10+
 
 ```bash
@@ -63,7 +64,7 @@ npm run depcheck
 
 ### GitHub Pages
 
-The workflow in `.github/workflows/nextjs.yml` uses Node 20, `npm ci`, lint, type-check, and `next build`, then uploads `./out` to GitHub Pages. The workflow runs on `main` and `master`; the remote default branch is currently `master`.
+The workflow in `.github/workflows/nextjs.yml` uses Node 24-compatible actions, Node 24 for the build, `npm ci`, lint, type-check, and `next build`, then uploads `./out` to GitHub Pages. The workflow runs on `main` and `master`; the remote default branch is currently `master`.
 
 ### Vercel
 
@@ -78,7 +79,6 @@ GitHub Pages can host only the static export. Server features such as AI chat, p
 - The portfolio currently uses static project copy and local markdown content.
 - There is no live GitHub stats widget or client-side GitHub token usage.
 - There is no OpenAI, LangChain, Supabase, or pgvector runtime integration in this repository.
-- Case-study content is redacted and should not include confidential employer details.
 
 ## Security
 
