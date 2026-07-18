@@ -40,7 +40,6 @@ anudeepsrib.github.io/
 │   │   ├── ui/
 │   │   └── section components
 │   ├── data/
-│   │   ├── AdditionalData.json
 │   │   ├── resumeData.json
 │   │   └── skills.ts
 │   └── lib/
@@ -48,7 +47,6 @@ anudeepsrib.github.io/
 │       ├── content.ts
 │       ├── metadata.ts
 │       └── utils.ts
-├── .env.example
 ├── eslint.config.mjs
 ├── .gitignore
 ├── .nvmrc
@@ -68,6 +66,5 @@ anudeepsrib.github.io/
 ## Runtime Notes
 
 - `src/lib/content.ts` is server-only build-time content loading for markdown files.
-- `posts/` is currently empty because old copied template posts were removed. Add a route under `src/app/blog/[slug]/` again when authored posts are reintroduced.
 - `notes/` provides the current public markdown content.
 - The app uses `output: "export"` and does not include API routes.
