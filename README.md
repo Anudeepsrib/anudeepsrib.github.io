@@ -1,85 +1,69 @@
-# Anudeep Sri Bathina Portfolio
+# Anudeep Sri Bathina — Portfolio
 
-Static Next.js portfolio for Anudeep Sri Bathina, focused on AI engineering, GenAI, RAG, agentic systems, evaluation, and full-stack AI product architecture.
+[![Deploy](https://github.com/Anudeepsrib/anudeepsrib.github.io/actions/workflows/nextjs.yml/badge.svg)](https://github.com/Anudeepsrib/anudeepsrib.github.io/actions/workflows/nextjs.yml)
+[![Live site](https://img.shields.io/badge/live-anudeepsri.com-5f6f52)](https://anudeepsri.com)
 
-This repository is intentionally a public, static portfolio. It does not ship a chatbot, OpenAI integration, Supabase pgvector database, private GitHub API token flow, or server API routes. Future server-side AI features should be deployed on a server runtime such as Vercel functions and must keep secrets out of the browser.
+The source for [anudeepsri.com](https://anudeepsri.com), a statically exported portfolio covering Anudeep's work in AI architecture, production RAG, agentic systems, evaluation, mentorship, and technical writing.
 
-## Tech Stack
+## Highlights
 
-- Next.js 16 App Router with static export
-- React 18 and TypeScript
-- Tailwind CSS with local fonts
-- Framer Motion with reduced-motion handling
-- Markdown content rendered with `react-markdown`, `remark-gfm`, `gray-matter`, and `reading-time`
-- GitHub Actions for GitHub Pages deployment
-- Vercel config for static Next.js deployment
+- Responsive portfolio with light and dark themes
+- Project, impact, experience, mentorship, and recognition pages
+- Markdown field notes generated as static routes
+- SEO metadata, structured data, sitemap, and robots configuration
+- Reduced-motion support, keyboard navigation, and a skip link
+- Automated GitHub Pages deployment
 
-## Featured Projects
+## Stack
 
-- [ClinIQ](https://github.com/Anudeepsrib/ClinIQ): Healthcare RAG architecture with scoped retrieval, citation handling, and sensitive-data controls.
-- [EvidenceIQ](https://github.com/Anudeepsrib/EvidenceIQ): Local-first sensitive-media workspace with role-based access, PII-aware metadata handling, local AI tagging, semantic search, and audit trails.
-- [Annapurna-AI](https://github.com/Anudeepsrib/Annapurna-AI): Culture-aware AI meal planning architecture with model routing and typed service boundaries.
-- [Decision-Support-System](https://github.com/Anudeepsrib/Decision-Support-System): Decision intelligence workflow for ranking alternatives and explaining trade-offs.
-- [InferIQ](https://github.com/Anudeepsrib/InferIQ): Benchmarking and serving reference for vLLM, NVIDIA NIM, and NVIDIA NeMo with optional profiling and a local dashboard.
-- [ShiftIQ](https://github.com/Anudeepsrib/shiftIQ): Local-first code migration assistant with static analysis, dry runs, rollback checkpoints, and MCP tools.
+- Next.js 16 App Router, React 18, and TypeScript
+- Tailwind CSS and local Cabinet Grotesk/Satoshi fonts
+- Framer Motion and Lucide icons
+- `react-markdown`, `remark-gfm`, and `gray-matter` for field notes
 
-## Local Setup
+The site is a static export. It has no API routes, runtime AI services, database, or required environment variables.
 
-Prerequisites:
+## Run locally
 
-- Node.js 22+
-- npm 10+
+Use Node.js 24 (Node.js 22 is the minimum supported version) and npm 10 or newer.
 
 ```bash
 git clone https://github.com/Anudeepsrib/anudeepsrib.github.io.git
 cd anudeepsrib.github.io
-npm install
+npm ci
 npm run dev
 ```
 
-The development server runs at `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Environment Variables
+## Commands
 
-No environment variables are required for the current static portfolio.
+| Command             | Purpose                                 |
+| ------------------- | --------------------------------------- |
+| `npm run dev`       | Start the development server            |
+| `npm run build`     | Create the static export in `out/`      |
+| `npm run lint`      | Run ESLint with zero warnings allowed   |
+| `npm run typecheck` | Check TypeScript without emitting files |
+| `npm run format`    | Check formatting with Prettier          |
+| `npm run depcheck`  | Find unused or missing dependencies     |
 
-Use `.env.example` as a placeholder reference only. Private keys such as `GITHUB_TOKEN`, `OPENAI_API_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` must stay server-only. Never expose personal access tokens or service-role keys through `NEXT_PUBLIC_*`.
+## Content map
 
-Safe public variables may use `NEXT_PUBLIC_*` only when the value is truly safe for every visitor to see, such as a public site URL.
-
-## Quality Commands
-
-```bash
-npm run lint
-npm run typecheck
-npm run build
-npm run format
-npm audit
-npm run depcheck
+```text
+notes/                 Markdown field notes
+public/                Fonts, images, sitemap, and domain configuration
+src/app/               Pages, layout, metadata, and global styles
+src/components/        Portfolio sections and shared UI
+src/data/              Resume and skills content
+src/lib/               Markdown, metadata, animation, and class helpers
 ```
 
-`npm run build` creates a static export in `out/` because `next.config.mjs` uses `output: "export"`.
+Edit `src/data/resumeData.json` for resume content, `src/components/Projects.tsx` for featured work, and `notes/*.md` for field notes. See [Project-Structure.md](./Project-Structure.md) for the full layout.
 
 ## Deployment
 
-### GitHub Pages
+Pushing to `main` or `master` runs linting, type-checking, and the production build before publishing `out/` to GitHub Pages. `vercel.json` also supports deployment on Vercel.
 
-The workflow in `.github/workflows/nextjs.yml` uses Node 24-compatible actions, Node 24 for the build, `npm ci`, lint, type-check, and `next build`, then uploads `./out` to GitHub Pages. The workflow runs on `main` and `master`; the remote default branch is currently `master`.
+## Security and license
 
-### Vercel
-
-`vercel.json` uses the normal `npm run vercel-build` command. No `--legacy-peer-deps` workaround is required after dependency cleanup.
-
-### Static Export Limitation
-
-GitHub Pages can host only the static export. Server features such as AI chat, private GitHub API token access, Supabase service-role operations, or OpenAI calls cannot run on GitHub Pages. Add those only through server-side routes on a server runtime, and keep a static fallback for GitHub Pages.
-
-## Known Limitations
-
-- The portfolio currently uses static project copy and local markdown content.
-- There is no live GitHub stats widget or client-side GitHub token usage.
-- There is no OpenAI, LangChain, Supabase, or pgvector runtime integration in this repository.
-
-## Security
-
-See [SECURITY.md](./SECURITY.md) for secret handling and vulnerability reporting.
+Report vulnerabilities through the process in [SECURITY.md](./SECURITY.md). The project is available under the [MIT License](./LICENSE).
