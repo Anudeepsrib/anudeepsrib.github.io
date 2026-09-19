@@ -66,7 +66,7 @@ export default function Timeline() {
                       {exp.position}
                     </p>
                     <p className="text-xs text-[var(--text-3)]">
-                      {exp.startDate} - {exp.endDate} · {exp.location}
+                      {exp.startDate} - {exp.endDate}
                     </p>
                   </div>
                 </div>

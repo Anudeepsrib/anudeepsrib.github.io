@@ -4,11 +4,13 @@ import {
   BookOpen,
   GraduationCap,
   Mic2,
+  Quote,
   Users,
 } from "lucide-react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import resumeData from "@/data/resumeData.json";
+import { testimonials } from "@/data/studioData";
 
 const teachingAndMentoringMetrics = [
   {
@@ -205,6 +207,54 @@ export default function Authorship() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="studio-kicker text-[var(--accent)]">
+                Mentor testimonials
+              </p>
+              <h3 className="mt-2 text-3xl font-semibold">
+                What learners say after the conversation.
+              </h3>
+            </div>
+            <a
+              className="text-link"
+              href="https://adplist.org/mentors/anudeep-sri-bathina"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View ADPList profile
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          </div>
+
+          <div className="grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] md:grid-cols-2 xl:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <article
+                key={testimonial.name}
+                className="flex min-h-64 flex-col bg-[var(--surface)] p-6"
+              >
+                <Quote
+                  size={21}
+                  className="text-[var(--accent)]"
+                  aria-hidden="true"
+                />
+                <blockquote className="mt-5 flex-1 text-sm leading-7 text-[var(--text-2)]">
+                  “{testimonial.text}”
+                </blockquote>
+                <footer className="mt-6 border-t border-[var(--border)] pt-4">
+                  <p className="text-sm font-semibold text-[var(--text)]">
+                    {testimonial.name}
+                  </p>
+                  <p className="mt-1 text-xs text-[var(--text-3)]">
+                    {testimonial.role} · ADPList
+                  </p>
+                </footer>
+              </article>
+            ))}
           </div>
         </div>
       </Container>
