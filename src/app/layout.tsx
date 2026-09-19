@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/layout/Navbar";
 import resumeData from "@/data/resumeData.json";
 import { SITE_URL } from "@/lib/metadata";
 

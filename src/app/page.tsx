@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import Hero from "@/components/Hero";
-import WhyWorkWithMe from "@/components/WhyWorkWithMe";
-import KeyImpact from "@/components/KeyImpact";
-import SystemWalkthrough from "@/components/SystemWalkthrough";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import Authorship from "@/components/Authorship";
-import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
+import Hero from "@/components/home/Hero";
+import WhyWorkWithMe from "@/components/home/WhyWorkWithMe";
+import KeyImpact from "@/components/home/KeyImpact";
+import SystemWalkthrough from "@/components/home/SystemWalkthrough";
+import Skills from "@/components/home/Skills";
+import Projects from "@/components/home/Projects";
+import Authorship from "@/components/home/Authorship";
+import CTASection from "@/components/home/CTASection";
+import Footer from "@/components/layout/Footer";
 import resumeData from "@/data/resumeData.json";
 import { pageMetadata } from "@/lib/metadata";
 

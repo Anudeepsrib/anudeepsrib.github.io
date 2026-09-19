@@ -40,7 +40,7 @@ function ThemeToggle() {
   );
 }
 
-export default function FloatingNav() {
+export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
