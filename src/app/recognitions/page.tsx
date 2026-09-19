@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Speaking | Anudeep Sri Bathina",
   description:
-    "Speaking engagements, CRC Press publications, KaggleX fellowship, and industry recognition. Invited speaker at BSBI, DeepLearning.AI, and 18+ guest lectures.",
+    "18+ guest lectures and speaking engagements across universities, conferences, and global AI communities.",
   path: "/recognitions",
 });
 

@@ -132,7 +132,7 @@ export default function Recognitions() {
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            Speaking
+            Guest lectures &amp; speaking
           </motion.h1>
           <motion.p
             className="max-w-md text-[15px] text-[var(--text-2)]"
@@ -171,7 +171,7 @@ export default function Recognitions() {
       {/* University Lectures */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-4xl px-6">
-          <SectionHeading>University Lectures</SectionHeading>
+          <SectionHeading>University guest lectures</SectionHeading>
           <div className="grid gap-4 md:grid-cols-2">
             {universityLectures.map((lecture, i) => (
               <ScrollReveal key={i} delay={i * 0.03}>
@@ -300,7 +300,9 @@ export default function Recognitions() {
             development in tech.
           </p>
           <a
-            href="mailto:anudeepSri108@gmail.com?subject=Speaking%20Invitation"
+            href="https://www.linkedin.com/in/anudeepsri/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-lg border border-[var(--accent-1)]/30 bg-[var(--accent-1)]/10 px-6 py-3 text-sm font-medium text-[var(--accent-1)] transition-colors hover:bg-[var(--accent-1)]/20"
           >
             Get in Touch <ArrowUpRight size={16} />

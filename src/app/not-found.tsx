@@ -20,7 +20,7 @@ export default function NotFound() {
             ease: [0.16, 1, 0.3, 1],
           }}
         >
-          <h1 className="mb-2 font-display text-[100px] font-black leading-none tracking-tighter text-[var(--text)] md:text-[160px]">
+          <h1 className="mb-2 font-display text-[100px] font-semibold leading-none tracking-tighter text-[var(--text)] md:text-[160px]">
             404
           </h1>
 

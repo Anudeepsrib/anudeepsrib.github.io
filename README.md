@@ -1,4 +1,4 @@
-# Anudeep Sri Bathina — Portfolio
+# Anudeep Sri Bathina: Portfolio
 
 [![Deploy](https://github.com/Anudeepsrib/anudeepsrib.github.io/actions/workflows/nextjs.yml/badge.svg)](https://github.com/Anudeepsrib/anudeepsrib.github.io/actions/workflows/nextjs.yml)
 [![Live site](https://img.shields.io/badge/live-anudeepsri.com-5f6f52)](https://anudeepsri.com)

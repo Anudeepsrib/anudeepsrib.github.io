@@ -27,7 +27,7 @@ Only use `NEXT_PUBLIC_*` for values that are safe to publish, such as:
 
 ## Reporting a Vulnerability
 
-Please report security issues privately by email to `anudeepSri108@gmail.com` with:
+Please report security issues privately with:
 
 - affected file or URL
 - reproduction steps

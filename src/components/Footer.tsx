@@ -8,11 +8,10 @@ import { fadeUp } from "@/lib/animation";
 import resumeData from "@/data/resumeData.json";
 
 const nav = [
+  { label: "Selected work", href: "/#work" },
+  { label: "Approach", href: "/#approach" },
   { label: "Experience", href: "/#experience" },
-  { label: "Selected work", href: "/#projects" },
-  { label: "Mentorship", href: "/#mentoring" },
-  { label: "Recognitions", href: "/recognitions" },
-  { label: "Blog", href: "/blog" },
+  { label: "Research", href: "/#research" },
 ];
 
 const connect = [
@@ -21,7 +20,6 @@ const connect = [
   { label: "ADPList", href: "https://adplist.org/mentors/anudeep-sri-bathina" },
   { label: "Topmate", href: "https://topmate.io/anudeepsri" },
   { label: "Substack", href: "https://substack.com/@anudeepai" },
-  { label: "Email", href: `mailto:${resumeData.personalInfo.email}` },
 ];
 
 export default function Footer() {
@@ -35,7 +33,7 @@ export default function Footer() {
                 {resumeData.personalInfo.name}
               </p>
               <p className="mt-2 max-w-xs text-sm leading-6 text-[var(--text-3)]">
-                AI Architect. Building production systems that hold up.
+                AI Architect building systems that hold up.
               </p>
             </div>
 
@@ -89,7 +87,9 @@ export default function Footer() {
         </MotionWrapper>
 
         <div className="mt-10 flex items-center justify-between border-t border-[var(--border)] pt-6">
-          <p className="text-xs text-[var(--text-3)]">&copy; 2026</p>
+          <p className="text-xs text-[var(--text-3)]">
+            &copy; {new Date().getFullYear()}
+          </p>
           <p className="text-xs text-[var(--text-3)]">
             Next.js &middot; TypeScript
           </p>

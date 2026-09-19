@@ -10,9 +10,9 @@ import { fadeUp, scaleIn, stagger } from "@/lib/animation";
 
 const stats = [
   { value: 1000, suffix: "+", label: "Learners reached" },
-  { value: 20, suffix: "+", label: "Countries represented" },
-  { value: 500, suffix: "+", label: "Mentoring hours" },
-  { value: 70, suffix: "+", label: "Topmate sessions" },
+  { value: 200, suffix: "+", label: "AI session attendees" },
+  { value: 500, suffix: "+", label: "AI teaching hours" },
+  { value: 70, suffix: "+", label: "Career mentorship sessions" },
 ];
 
 const testimonials = [
@@ -76,7 +76,7 @@ export default function Impact() {
         <MotionWrapper variants={fadeUp}>
           <SectionHeader
             title="Influence scales through people."
-            description="Mentoring, teaching, and making complex AI work easier to understand for practitioners across 20+ countries."
+            description="Full AI teaching sessions and focused career mentorship that make complex work easier to understand and act on."
           />
         </MotionWrapper>
 
