@@ -78,7 +78,7 @@ export default async function NotePage({ params }: PageProps) {
                 FIELD NOTE
               </div>
 
-              <h1 className="mb-6 font-heading text-4xl font-black tracking-[-0.04em] text-[var(--text)] md:text-6xl">
+              <h1 className="mb-6 font-heading text-4xl font-semibold tracking-[-0.04em] text-[var(--text)] md:text-6xl">
                 {note.title}
               </h1>
 

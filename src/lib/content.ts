@@ -59,14 +59,14 @@ function titleFromContent(content: string, slug: string): string {
 }
 
 export function getAllNotes(): Note[] {
-  return markdownFiles(path.join(ROOT_DIR, "notes"))
+  return markdownFiles(path.join(ROOT_DIR, "content", "notes"))
     .map((fileName) => getNote(fileName.replace(/\.md$/, "")))
     .filter((note): note is Note => note !== null)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getNote(slug: string): Note | null {
-  const parsed = readMarkdown("notes", slug);
+  const parsed = readMarkdown(path.join("content", "notes"), slug);
 
   if (!parsed) {
     return null;

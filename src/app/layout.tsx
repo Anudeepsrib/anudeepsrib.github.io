@@ -1,23 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import resumeData from "@/data/resumeData.json";
 import { SITE_URL } from "@/lib/metadata";
 
-const jetbrainsMono = JetBrains_Mono({
-  weight: ["400", "500", "600"],
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Anudeep Sri Bathina | AI Architect",
   description:
-    "AI Architect with 11+ years building production-grade AI systems, LLM/RAG solutions, and enterprise-scale platforms at AT&T, Capgemini, Cognizant, and UMass Dartmouth.",
+    "AI Architect leading agentic AI platforms, multimodal RAG, governed data systems, and production engineering teams.",
   keywords: [
     "AI Architect",
     "Generative AI",
@@ -25,6 +17,9 @@ export const metadata: Metadata = {
     "RAG Systems",
     "Machine Learning",
     "Agentic AI",
+    "AI Platforms",
+    "Multimodal AI",
+    "Data Engineering",
     "MLOps",
     "Computer Vision",
     "Python",
@@ -39,8 +34,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3efe6" },
-    { media: "(prefers-color-scheme: dark)", color: "#11140f" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#080b12" },
   ],
 };
 
@@ -58,7 +53,6 @@ export default function RootLayout({
     description: resumeData.personalInfo.summary,
     url: SITE_URL,
     image: `${SITE_URL}/assets/logo.png`,
-    email: resumeData.personalInfo.email,
     sameAs: [
       resumeData.personalInfo.github,
       resumeData.personalInfo.linkedin,
@@ -85,6 +79,9 @@ export default function RootLayout({
       "Large Language Models",
       "RAG Systems",
       "Agentic AI",
+      "AI Platforms",
+      "Multimodal RAG",
+      "Data Engineering",
       "Computer Vision",
       "MLOps",
       "Python",
@@ -93,12 +90,7 @@ export default function RootLayout({
   };
 
   return (
-    <html
-      lang="en"
-      className={jetbrainsMono.variable}
-      data-scroll-behavior="smooth"
-      suppressHydrationWarning
-    >
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <Script id="theme" strategy="beforeInteractive">
           {themeScript}
@@ -136,8 +128,6 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <div className="grain-overlay" />
-        <div className="vignette" />
         <Navbar />
         <div
           id="main-content"

@@ -77,7 +77,7 @@ export default async function BlogPage() {
         <div className="container mx-auto px-6 py-20">
           <ScrollReveal>
             <div className="mb-16 text-center">
-              <h1 className="mb-6 font-heading text-5xl font-black tracking-[-0.04em] text-[var(--text)] md:text-7xl">
+              <h1 className="mb-6 font-heading text-5xl font-semibold tracking-[-0.04em] text-[var(--text)] md:text-7xl">
                 Writing &amp; Field Notes
               </h1>
               <p className="mx-auto max-w-3xl text-lg text-[var(--text-2)]">

@@ -1,31 +1,55 @@
-# Anudeep Sri Bathina — Portfolio
+# AI Systems Portfolio
 
 [![Deploy](https://github.com/Anudeepsrib/anudeepsrib.github.io/actions/workflows/nextjs.yml/badge.svg)](https://github.com/Anudeepsrib/anudeepsrib.github.io/actions/workflows/nextjs.yml)
 [![Live site](https://img.shields.io/badge/live-anudeepsri.com-5f6f52)](https://anudeepsri.com)
 
-The source for [anudeepsri.com](https://anudeepsri.com), a statically exported portfolio covering Anudeep's work in AI architecture, production RAG, agentic systems, evaluation, mentorship, and technical writing.
+The source for [anudeepsri.com](https://anudeepsri.com), Anudeep Sri Bathina's portfolio for production AI architecture, agentic systems, multimodal RAG, governed data platforms, technical writing, teaching, and mentorship.
 
-## Highlights
+![Desktop portfolio preview](docs/screenshots/desktop.png)
 
-- Responsive portfolio with light and dark themes
-- Project, impact, experience, mentorship, and recognition pages
-- Markdown field notes generated as static routes
-- SEO metadata, structured data, sitemap, and robots configuration
-- Reduced-motion support, keyboard navigation, and a skip link
-- Automated GitHub Pages deployment
+## What the site emphasizes
+
+- Evidence-backed career progression from data engineering to AI architecture
+- Production outcomes, platform ownership, and engineering leadership
+- Inspectable AI systems with constraints, decisions, and tradeoffs
+- Research, guest lectures, teaching, mentorship, and selected credentials
+- Accessible responsive design with light and dark themes
+- Static output with no database, API routes, or runtime secrets
 
 ## Stack
 
 - Next.js 16 App Router, React 18, and TypeScript
-- Tailwind CSS and local Cabinet Grotesk/Satoshi fonts
+- Tailwind CSS with local Cabinet Grotesk and Satoshi fonts
 - Framer Motion and Lucide icons
-- `react-markdown`, `remark-gfm`, and `gray-matter` for field notes
+- Markdown field notes with `gray-matter`, `react-markdown`, and `remark-gfm`
+- Static export for GitHub Pages or Vercel
 
-The site is a static export. It has no API routes, runtime AI services, database, or required environment variables.
+## Repository layout
+
+```text
+content/
+  notes/                 Markdown field notes
+docs/
+  screenshots/           README and review images
+public/
+  assets/                Company marks and project visuals
+  fonts/                 Locally hosted typefaces
+src/
+  app/                   Routes, metadata, and global styles
+  components/            Portfolio sections and shared UI
+  data/                  Resume, project, and capability content
+  lib/                   Content loading, metadata, and helpers
+```
+
+The primary content sources are:
+
+- `src/data/resumeData.json` for profile, experience, education, publications, talks, skills, and certifications
+- `src/data/studioData.ts` for case studies, production outcomes, additional systems, and engineering principles
+- `content/notes/*.md` for statically generated field notes
 
 ## Run locally
 
-Use Node.js 24 (Node.js 22 is the minimum supported version) and npm 10 or newer.
+Use Node.js 22 or newer and npm 10 or newer.
 
 ```bash
 git clone https://github.com/Anudeepsrib/anudeepsrib.github.io.git
@@ -36,34 +60,28 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Commands
+## Quality checks
 
 | Command             | Purpose                                 |
 | ------------------- | --------------------------------------- |
-| `npm run dev`       | Start the development server            |
-| `npm run build`     | Create the static export in `out/`      |
+| `npm run format`    | Check formatting with Prettier          |
 | `npm run lint`      | Run ESLint with zero warnings allowed   |
 | `npm run typecheck` | Check TypeScript without emitting files |
-| `npm run format`    | Check formatting with Prettier          |
+| `npm run build`     | Create the static export in `out/`      |
 | `npm run depcheck`  | Find unused or missing dependencies     |
 
-## Content map
+Run the first four checks before deployment.
 
-```text
-notes/                 Markdown field notes
-public/                Fonts, images, sitemap, and domain configuration
-src/app/               Pages, layout, metadata, and global styles
-src/components/        Portfolio sections and shared UI
-src/data/              Resume and skills content
-src/lib/               Markdown, metadata, animation, and class helpers
-```
+## Privacy boundary
 
-Edit `src/data/resumeData.json` for resume content, `src/components/Projects.tsx` for featured work, and `notes/*.md` for field notes. See [Project-Structure.md](./Project-Structure.md) for the full layout.
+The repository intentionally excludes phone numbers, email addresses, personal location data, raw resumes, and generated resume pages. Public professional links, including LinkedIn, GitHub, thesis, Topmate, and ADPList references, are intentional portfolio content.
+
+Keep source resumes and exports outside the repository. Temporary review artifacts belong in `tmp/`, which is ignored.
 
 ## Deployment
 
-Pushing to `main` or `master` runs linting, type-checking, and the production build before publishing `out/` to GitHub Pages. `vercel.json` also supports deployment on Vercel.
+The app uses `output: "export"`. Pushing to the configured deployment branch runs the repository workflow and publishes `out/` to GitHub Pages. `vercel.json` also supports Vercel hosting.
 
 ## Security and license
 
-Report vulnerabilities through the process in [SECURITY.md](./SECURITY.md). The project is available under the [MIT License](./LICENSE).
+Follow [SECURITY.md](SECURITY.md) for secret-handling guidance. The code is available under the [MIT License](LICENSE).

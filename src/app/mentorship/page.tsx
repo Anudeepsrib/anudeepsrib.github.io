@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Mentorship | Anudeep Sri Bathina",
   description:
-    "Book a mentorship session with Anudeep Sri Bathina. Get personalized guidance on AI careers, interview prep, LLM/RAG systems, and data science roadmaps. 1000+ learners across 20+ countries.",
+    "500+ hours of AI teaching, 1,000+ learners reached, and 70+ career mentorship sessions across Topmate and ADPList.",
   path: "/mentorship",
 });
 

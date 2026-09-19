@@ -10,12 +10,11 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { label: "Proof", href: "/#proof", id: "proof" },
   { label: "Experience", href: "/#experience", id: "experience" },
-  { label: "Expertise", href: "/#skills", id: "skills" },
-  { label: "Work", href: "/#projects", id: "projects" },
-  { label: "Mentoring", href: "/#mentoring", id: "mentoring" },
+  { label: "Expertise", href: "/#expertise", id: "expertise" },
   { label: "Research", href: "/#research", id: "research" },
+  { label: "Work", href: "/#work", id: "work" },
+  { label: "Approach", href: "/#approach", id: "approach" },
   { label: "Contact", href: "/#contact", id: "contact" },
 ];
 
@@ -31,7 +30,7 @@ function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text-2)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+      className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text-2)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
     >
       <Sun className="theme-sun" size={16} aria-hidden="true" />
       <Moon className="theme-moon" size={16} aria-hidden="true" />
@@ -103,20 +102,20 @@ export default function FloatingNav() {
   return (
     <>
       <ScrollProgress />
-      <header className="pointer-events-none fixed left-0 right-0 top-3 z-50 px-3 sm:top-4">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
         <nav
           aria-label="Primary navigation"
           className={cn(
-            "pointer-events-auto mx-auto flex min-h-14 max-w-7xl items-center justify-between rounded-full border px-2.5 transition duration-200 sm:px-3",
+            "pointer-events-auto mx-auto flex min-h-16 max-w-[75rem] items-center justify-between border-b px-5 transition duration-200 sm:px-6 lg:min-h-[4.5rem] lg:px-8",
             scrolled
-              ? "border-[var(--border-strong)] bg-[var(--nav)] shadow-premium backdrop-blur-xl"
-              : "border-[var(--border)] bg-[var(--nav)] backdrop-blur-md",
+              ? "border-[var(--border)] bg-[var(--nav)] backdrop-blur-xl"
+              : "border-transparent bg-transparent",
           )}
         >
           <Link
             href="/"
             onClick={closeMenu}
-            className="flex min-h-11 items-center gap-2.5 rounded-full px-2"
+            className="flex min-h-11 items-center gap-2.5"
             aria-label="Anudeep Sri Bathina, home"
           >
             <Image
@@ -125,9 +124,9 @@ export default function FloatingNav() {
               width={32}
               height={32}
               priority
-              className="h-8 w-8 rounded-lg border border-[var(--border-strong)] object-cover"
+              className="h-8 w-8 rounded-md border border-[var(--border)] object-cover"
             />
-            <span className="hidden text-sm font-bold text-[var(--text)] sm:block">
+            <span className="hidden text-sm font-semibold text-[var(--text)] sm:block">
               Anudeep Sri
             </span>
           </Link>
@@ -142,10 +141,10 @@ export default function FloatingNav() {
                   href={link.href}
                   aria-current={current ? "location" : undefined}
                   className={cn(
-                    "rounded-full px-2.5 py-2 text-[12px] font-semibold transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)] xl:px-3",
+                    "relative px-2.5 py-6 text-[12px] font-medium transition-colors after:absolute after:bottom-3 after:left-2.5 after:right-2.5 after:h-0.5 after:rounded-full after:transition-colors hover:text-[var(--text)] xl:px-3",
                     current
-                      ? "bg-[var(--accent-soft)] text-[var(--accent)]"
-                      : "text-[var(--text-3)]",
+                      ? "text-[var(--accent)] after:bg-[var(--accent)]"
+                      : "text-[var(--text-3)] after:bg-transparent",
                   )}
                 >
                   {link.label}
@@ -159,7 +158,7 @@ export default function FloatingNav() {
             <button
               ref={menuButtonRef}
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text-2)] transition hover:border-[var(--accent)] hover:text-[var(--accent)] lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text-2)] transition hover:border-[var(--accent)] hover:text-[var(--accent)] lg:hidden"
               onClick={toggleMenu}
               aria-expanded={open}
               aria-controls="mobile-navigation"
@@ -175,7 +174,7 @@ export default function FloatingNav() {
             <motion.nav
               id="mobile-navigation"
               aria-label="Mobile navigation"
-              className="pointer-events-auto mx-auto mt-2 max-w-7xl overflow-hidden rounded-[1.5rem] border border-[var(--border-strong)] bg-[var(--surface-raised)] shadow-premium lg:hidden"
+              className="pointer-events-auto mx-4 mt-2 max-w-[75rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface-raised)] shadow-premium sm:mx-6 lg:hidden"
               initial={reduceMotion ? false : { opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}

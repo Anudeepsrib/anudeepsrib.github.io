@@ -8,9 +8,10 @@ import StaggerContainer from "@/components/ui/StaggerContainer";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 const mentorshipStats = [
-  { value: 1000, suffix: "+", label: "Learners" },
-  { value: 20, suffix: "+", label: "Countries" },
-  { value: 500, suffix: "+", label: "Hours" },
+  { value: 1000, suffix: "+", label: "Learners reached" },
+  { value: 200, suffix: "+", label: "AI session attendees" },
+  { value: 500, suffix: "+", label: "AI teaching hours" },
+  { value: 70, suffix: "+", label: "Career mentorship sessions" },
 ];
 
 const programs = [
@@ -27,12 +28,13 @@ const programs = [
   {
     title: "ADPList",
     org: "Global",
-    detail: "500+ minutes mentoring. Portfolio reviews, career advice.",
+    detail: "Career guidance, portfolio reviews, and interview preparation.",
   },
   {
     title: "Topmate.io",
     org: "Online",
-    detail: "70+ sessions. Mock interviews, resume reviews.",
+    detail:
+      "Part of 70+ career mentorship sessions across Topmate and ADPList.",
   },
   {
     title: "UMass Dartmouth TA",
@@ -91,8 +93,8 @@ export default function Mentorship() {
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: reduceMotion ? 0 : 0.5, delay: 0.15 }}
           >
-            Guiding AI practitioners through hands-on mentoring, academic
-            instruction, and global community engagement.
+            500+ hours of instructor-led AI teaching alongside focused career
+            mentorship for practitioners moving into and through the field.
           </motion.p>
         </div>
       </section>
@@ -100,7 +102,7 @@ export default function Mentorship() {
       {/* Stats */}
       <section className="py-10">
         <div className="mx-auto max-w-5xl px-6">
-          <StaggerContainer className="grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--border)]">
+          <StaggerContainer className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
             {mentorshipStats.map((stat) => (
               <motion.div
                 key={stat.label}
