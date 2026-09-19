@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import StaggerContainer from "@/components/ui/StaggerContainer";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layout/Footer";
 import { getAllNotes } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import {

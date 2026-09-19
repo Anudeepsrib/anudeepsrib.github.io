@@ -11,7 +11,7 @@ import { additionalSystems, caseStudies } from "@/data/studioData";
 
 function ProjectHeader({ project }: { project: (typeof caseStudies)[number] }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(20rem,1.15fr)] lg:items-end">
+    <div className="project-header grid gap-6">
       <div>
         <p className="studio-kicker text-[var(--accent)]">{project.eyebrow}</p>
         <h3 className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">

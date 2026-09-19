@@ -32,7 +32,13 @@ public/
   fonts/                 Locally hosted typefaces
 src/
   app/                   Routes, metadata, and global styles
-  components/            Portfolio sections and shared UI
+  components/
+    home/                 Homepage sections
+    journey/              Career and education sections
+    layout/               Site navigation and footer
+    mentorship/           Mentorship page
+    recognitions/         Speaking and recognition page
+    ui/                   Shared interface primitives
   data/                  Resume, project, and capability content
   lib/                   Content loading, metadata, and helpers
 ```

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layout/Footer";
 import { getAllNotes, getNote } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import { ArrowLeft, Clock, FileText } from "lucide-react";

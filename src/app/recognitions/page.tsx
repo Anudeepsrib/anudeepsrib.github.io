@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "@/components/Footer";
-import Recognitions from "@/components/Recognitions";
+import Footer from "@/components/layout/Footer";
+import Recognitions from "@/components/recognitions/Recognitions";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({

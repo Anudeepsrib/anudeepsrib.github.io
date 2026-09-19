@@ -1,8 +1,8 @@
-import Timeline from "@/components/Timeline";
-import Education from "@/components/Education";
-import Awards from "@/components/Awards";
-import JourneyHero from "@/components/JourneyHero";
-import Footer from "@/components/Footer";
+import Timeline from "@/components/journey/Timeline";
+import Education from "@/components/journey/Education";
+import Awards from "@/components/journey/Awards";
+import JourneyHero from "@/components/journey/JourneyHero";
+import Footer from "@/components/layout/Footer";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({

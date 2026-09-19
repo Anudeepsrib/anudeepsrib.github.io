@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "@/components/Footer";
-import Mentorship from "@/components/Mentorship";
+import Footer from "@/components/layout/Footer";
+import Mentorship from "@/components/mentorship/Mentorship";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
