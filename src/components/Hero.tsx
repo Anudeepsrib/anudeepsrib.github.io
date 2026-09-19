@@ -1,4 +1,4 @@
-import { Linkedin, MapPin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import Container from "@/components/ui/Container";
 import resumeData from "@/data/resumeData.json";
 
@@ -15,11 +15,6 @@ export default function Hero() {
           <div>
             <div className="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-3)]">
               <span className="text-[var(--accent)]">{personalInfo.title}</span>
-              <span aria-hidden="true">/</span>
-              <span className="inline-flex items-center gap-1.5">
-                <MapPin size={13} aria-hidden="true" />
-                {personalInfo.location}
-              </span>
             </div>
 
             <h1 className="max-w-4xl font-display text-[clamp(3.35rem,7.2vw,6.75rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-[var(--text)]">

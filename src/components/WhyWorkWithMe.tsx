@@ -96,9 +96,6 @@ export default function WhyWorkWithMe() {
                     <p className="font-mono text-xs font-semibold text-[var(--text)]">
                       {role.startDate}–{role.endDate}
                     </p>
-                    <p className="mt-1 text-xs text-[var(--text-3)]">
-                      {role.location}
-                    </p>
                   </div>
                 </article>
               );
