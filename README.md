@@ -5,8 +5,6 @@
 
 The source for [anudeepsri.com](https://anudeepsri.com), Anudeep Sri Bathina's portfolio for production AI architecture, agentic systems, multimodal RAG, governed data platforms, technical writing, teaching, and mentorship.
 
-![Desktop portfolio preview](docs/screenshots/desktop.png)
-
 ## What the site emphasizes
 
 - Evidence-backed career progression from data engineering to AI architecture
@@ -29,8 +27,6 @@ The source for [anudeepsri.com](https://anudeepsri.com), Anudeep Sri Bathina's p
 ```text
 content/
   notes/                 Markdown field notes
-docs/
-  screenshots/           README and review images
 public/
   assets/                Company marks and project visuals
   fonts/                 Locally hosted typefaces

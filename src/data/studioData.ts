@@ -138,6 +138,34 @@ export const additionalSystems = [
   },
 ] as const;
 
+export const testimonials = [
+  {
+    name: "Michael",
+    role: "Freelance Developer",
+    text: "Anudeep is incredibly insightful, listening carefully and offering technical yet straightforward comments that are truly beneficial.",
+  },
+  {
+    name: "Shashank H.V.",
+    role: "Student, UMass Dartmouth",
+    text: "Extremely insightful and valuable discussion. Anudeep's depth of knowledge in Data and AI is evident, and his willingness to openly share his expertise is commendable.",
+  },
+  {
+    name: "Baran Khazaee",
+    role: "MSc CS, UC Davis",
+    text: "His tailored advice on skills, job applications, and interviews was practical and insightful, leaving me confident and motivated.",
+  },
+  {
+    name: "Nelisa Sebastian",
+    role: "Data Analyst, Northeastern",
+    text: "His strategic guidance and ability to simplify complex AI and career paths into clear, actionable steps were incredibly helpful.",
+  },
+  {
+    name: "Mide Sowunmi",
+    role: "UX/UI Designer, Comcast",
+    text: "An exceptional session, making complex Agentic AI concepts easy to understand. His motivating approach inspired me to take bold steps.",
+  },
+] as const;
+
 export const capabilityGroups = [
   {
     title: "AI agents & orchestration",
