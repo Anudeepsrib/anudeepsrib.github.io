@@ -8,7 +8,6 @@ import {
 } from "framer-motion";
 import type { ReactNode } from "react";
 import { useRef } from "react";
-import { cn } from "@/lib/utils";
 import { fadeUp, stagger } from "@/lib/animation";
 
 interface MotionWrapperProps {

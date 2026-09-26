@@ -3,7 +3,6 @@ import React from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import StaggerContainer from "@/components/ui/StaggerContainer";
 import { ArrowUpRight } from "lucide-react";
 
 const universityLectures = [

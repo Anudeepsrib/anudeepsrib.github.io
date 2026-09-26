@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import MotionWrapper from "@/components/ui/MotionWrapper";

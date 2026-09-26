@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Home } from "lucide-react";

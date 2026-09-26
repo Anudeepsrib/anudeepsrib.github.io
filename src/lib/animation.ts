@@ -3,17 +3,6 @@ export const defaultTransition = {
   ease: [0.16, 1, 0.3, 1] as const,
 };
 
-export const heroContainer = {
-  hidden: { opacity: 1 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.08,
-    },
-  },
-};
-
 export const stagger = {
   hidden: { opacity: 1 },
   show: {
@@ -28,9 +17,4 @@ export const stagger = {
 export const fadeUp = {
   hidden: { opacity: 1, y: 18 },
   show: { opacity: 1, y: 0, transition: defaultTransition },
-};
-
-export const scaleIn = {
-  hidden: { opacity: 1, y: 14, scale: 0.985 },
-  show: { opacity: 1, y: 0, scale: 1, transition: defaultTransition },
 };

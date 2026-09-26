@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const awards = [

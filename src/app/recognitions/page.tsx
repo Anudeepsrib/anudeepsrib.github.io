@@ -1,4 +1,3 @@
-import React from "react";
 import Footer from "@/components/layout/Footer";
 import Recognitions from "@/components/recognitions/Recognitions";
 import { pageMetadata } from "@/lib/metadata";

@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
