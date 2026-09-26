@@ -63,19 +63,9 @@ export default function Footer() {
                   <a
                     key={link.label}
                     href={link.href}
-                    target={
-                      link.href.startsWith("mailto") ? undefined : "_blank"
-                    }
-                    rel={
-                      link.href.startsWith("mailto")
-                        ? undefined
-                        : "noopener noreferrer"
-                    }
-                    aria-label={
-                      link.href.startsWith("mailto")
-                        ? undefined
-                        : `${link.label} (opens in a new tab)`
-                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${link.label} (opens in a new tab)`}
                     className="text-sm text-[var(--text-2)] transition-colors hover:text-[var(--text)]"
                   >
                     {link.label}
