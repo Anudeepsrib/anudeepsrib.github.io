@@ -5,7 +5,6 @@ import {
   GraduationCap,
   Mic2,
   Quote,
-  Users,
 } from "lucide-react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
@@ -45,37 +44,80 @@ export default function Authorship() {
   return (
     <section className="premium-section relative z-10" id="research">
       <Container>
-        <div className="mb-12 grid gap-6 lg:grid-cols-[0.7fr_1fr] lg:items-end">
+        <div className="mb-10">
           <div>
             <span className="section-number">03 / Beyond delivery</span>
-            <h2 className="section-title">
+            <h2 className="section-title max-w-4xl">
               Research, guest lectures, and mentorship.
             </h2>
           </div>
-          <p className="max-w-xl text-base leading-8 text-[var(--text-2)] lg:justify-self-end">
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--text-2)]">
             Research sharpens the evaluation practice. Teaching makes AI
             practical, while career mentorship helps people move forward.
           </p>
+          <nav className="mt-5 flex flex-wrap gap-x-6 gap-y-2" aria-label="Research and mentorship sections">
+            <a className="text-link min-h-11" href="#mentor-testimonials">Mentor testimonials <ArrowUpRight size={15} aria-hidden="true" /></a>
+            <a className="text-link min-h-11" href="#publications">Published work <ArrowUpRight size={15} aria-hidden="true" /></a>
+            <a className="text-link min-h-11" href="#guest-lectures">Guest lectures <ArrowUpRight size={15} aria-hidden="true" /></a>
+          </nav>
         </div>
 
-        <div className="mb-4 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] lg:grid-cols-4">
+        <div className="grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-4">
           {teachingAndMentoringMetrics.map((metric) => (
-            <div key={metric.label} className="bg-[var(--surface)] p-5">
+            <div key={metric.label} className="min-w-0 bg-[var(--surface)] p-6">
               <strong className="block font-display text-3xl font-semibold tracking-tight text-[var(--text)] md:text-4xl">
                 {metric.value}
               </strong>
-              <span className="mt-2 block text-sm font-semibold text-[var(--text)]">
+              <span className="mt-3 block text-base font-semibold leading-6 text-[var(--text)]">
                 {metric.label}
               </span>
-              <span className="mt-1 block text-xs leading-5 text-[var(--text-3)]">
+              <span className="mt-2 block text-sm leading-6 text-[var(--text-2)]">
                 {metric.detail}
               </span>
             </div>
           ))}
         </div>
 
+        <section className="my-12 scroll-mt-28 sm:my-16" id="mentor-testimonials" aria-labelledby="testimonials-title">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-3xl">
+              <p className="studio-kicker text-[var(--accent)]">Mentor testimonials</p>
+              <h3 id="testimonials-title" className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
+                What learners say after the conversation.
+              </h3>
+              <p className="mt-4 text-base leading-8 text-[var(--text-2)]">
+                70+ one-to-one sessions across Topmate and ADPList, focused on AI
+                careers, system design, interview preparation, and communicating
+                technical work with credibility.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-5">
+              <a className="text-link min-h-11" href="https://adplist.org/mentors/anudeep-sri-bathina" target="_blank" rel="noopener noreferrer">
+                View ADPList profile <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+              <a className="text-link min-h-11" href="https://topmate.io/anudeepsri" target="_blank" rel="noopener noreferrer">
+                Topmate <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {testimonials.map((testimonial) => (
+              <article key={testimonial.name} className="flex min-w-0 flex-col rounded-xl border border-[var(--border-strong)] bg-[var(--surface)] p-6 md:last:col-span-2 sm:p-8">
+                <Quote size={24} className="text-[var(--accent)]" aria-hidden="true" />
+                <blockquote className="mt-4 max-w-3xl flex-1 text-base leading-8 text-[var(--text)]">
+                  “{testimonial.text}”
+                </blockquote>
+                <footer className="mt-6 border-t border-[var(--border)] pt-4">
+                  <p className="text-base font-semibold text-[var(--text)]">{testimonial.name}</p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--text-2)]">{testimonial.role} · ADPList</p>
+                </footer>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <div className="editorial-gallery">
-          <div className="gallery-column gallery-column-wide">
+          <div className="gallery-column scroll-mt-28" id="publications">
             <div className="gallery-heading">
               <BookOpen size={17} aria-hidden="true" />
               <h3>Published work</h3>
@@ -99,11 +141,11 @@ export default function Authorship() {
             ))}
           </div>
 
-          <div className="gallery-column">
+          <div className="gallery-column scroll-mt-28" id="guest-lectures">
             <div className="gallery-heading">
               <Mic2 size={17} aria-hidden="true" />
               <h3>Guest lectures &amp; speaking</h3>
-              <span className="ml-auto text-right font-mono text-[11px] text-[var(--text-3)]">
+              <span className="w-full text-sm leading-6 text-[var(--text-2)]">
                 18+ engagements · 5+ universities
               </span>
             </div>
@@ -132,42 +174,10 @@ export default function Authorship() {
             </Link>
           </div>
 
-          <aside className="mentoring-note">
-            <Users size={20} aria-hidden="true" />
-            <p className="studio-kicker mt-5 text-[var(--signal-dark)]">
-              Career mentorship
-            </p>
-            <h3 className="mt-2 text-3xl font-semibold">
-              Make the path easier to see.
-            </h3>
-            <p className="mt-4 text-sm leading-7 text-[var(--text-2)]">
-              70+ one-to-one sessions across Topmate and ADPList, focused on AI
-              careers, system design, interview preparation, and communicating
-              technical work with credibility.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                className="text-link"
-                href="https://adplist.org/mentors/anudeep-sri-bathina"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ADPList <ArrowUpRight size={14} aria-hidden="true" />
-              </a>
-              <a
-                className="text-link"
-                href="https://topmate.io/anudeepsri"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Topmate <ArrowUpRight size={14} aria-hidden="true" />
-              </a>
-            </div>
-          </aside>
         </div>
 
         <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] lg:grid-cols-2">
-          <div className="bg-[var(--surface)] p-6">
+          <div className="min-w-0 bg-[var(--surface)] p-6 sm:p-8">
             <div className="flex items-center gap-2 text-[var(--accent)]">
               <GraduationCap size={18} aria-hidden="true" />
               <h3 className="text-sm font-semibold uppercase tracking-[0.08em]">
@@ -180,7 +190,7 @@ export default function Authorship() {
                   <p className="font-semibold text-[var(--text)]">
                     {item.degree}
                   </p>
-                  <p className="mt-1 text-sm text-[var(--text-2)]">
+                  <p className="mt-1 text-base leading-7 text-[var(--text-2)]">
                     {item.institution} · {item.endDate}
                   </p>
                 </div>
@@ -188,20 +198,20 @@ export default function Authorship() {
             </div>
           </div>
 
-          <div className="bg-[var(--surface)] p-6">
+          <div className="min-w-0 bg-[var(--surface)] p-6 sm:p-8">
             <div className="flex items-center gap-2 text-[var(--accent)]">
               <Award size={18} aria-hidden="true" />
               <h3 className="text-sm font-semibold uppercase tracking-[0.08em]">
                 Recognition
               </h3>
             </div>
-            <div className="mt-5 grid gap-5 sm:grid-cols-3">
+            <div className="mt-5 grid gap-6 sm:grid-cols-3">
               {recognitions.map((item) => (
                 <div key={item.value}>
                   <p className="font-semibold text-[var(--text)]">
                     {item.value}
                   </p>
-                  <p className="mt-1 text-xs leading-5 text-[var(--text-3)]">
+                  <p className="mt-2 text-sm leading-6 text-[var(--text-2)]">
                     {item.label}
                   </p>
                 </div>
@@ -210,53 +220,6 @@ export default function Authorship() {
           </div>
         </div>
 
-        <div className="mt-14">
-          <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="studio-kicker text-[var(--accent)]">
-                Mentor testimonials
-              </p>
-              <h3 className="mt-2 text-3xl font-semibold">
-                What learners say after the conversation.
-              </h3>
-            </div>
-            <a
-              className="text-link"
-              href="https://adplist.org/mentors/anudeep-sri-bathina"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View ADPList profile
-              <ArrowUpRight size={15} aria-hidden="true" />
-            </a>
-          </div>
-
-          <div className="grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] md:grid-cols-2 xl:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <article
-                key={testimonial.name}
-                className="flex min-h-64 flex-col bg-[var(--surface)] p-6"
-              >
-                <Quote
-                  size={21}
-                  className="text-[var(--accent)]"
-                  aria-hidden="true"
-                />
-                <blockquote className="mt-5 flex-1 text-sm leading-7 text-[var(--text-2)]">
-                  “{testimonial.text}”
-                </blockquote>
-                <footer className="mt-6 border-t border-[var(--border)] pt-4">
-                  <p className="text-sm font-semibold text-[var(--text)]">
-                    {testimonial.name}
-                  </p>
-                  <p className="mt-1 text-xs text-[var(--text-3)]">
-                    {testimonial.role} · ADPList
-                  </p>
-                </footer>
-              </article>
-            ))}
-          </div>
-        </div>
       </Container>
     </section>
   );

@@ -139,14 +139,14 @@ export default function WhyWorkWithMe() {
                 className="mt-8"
                 aria-label="Integration time reduced by 80 percent compared with the previous workflow"
               >
-                <div className="flex items-center justify-between gap-3 text-xs text-white/75">
+                <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-white/75">
                   <span>Before</span>
                   <span>Original integration time</span>
                 </div>
                 <div className="outcome-bar mt-2" aria-hidden="true">
                   <span />
                 </div>
-                <div className="mt-5 flex items-center justify-between gap-3 text-xs text-white/75">
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-xs text-white/75">
                   <span>After</span>
                   <span>80% less time</span>
                 </div>
