@@ -9,20 +9,38 @@ import {
 import Container from "@/components/ui/Container";
 import { additionalSystems, caseStudies } from "@/data/studioData";
 
-function ProjectHeader({ project }: { project: (typeof caseStudies)[number] }) {
+function ProjectHeader({
+  project,
+  number,
+}: {
+  project: (typeof caseStudies)[number];
+  number: string;
+}) {
   return (
     <div className="project-header grid gap-6">
       <div>
-        <p className="studio-kicker text-[var(--accent)]">{project.eyebrow}</p>
-        <h3 className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+        <p className="studio-kicker text-[var(--accent)]">
+          <span className="mr-3 text-[var(--text-3)]">{number} /</span>
+          {project.eyebrow}
+        </p>
+        <h3
+          id={`${project.id}-title`}
+          className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl"
+        >
           {project.name}
         </h3>
+        <span className="status-chip mt-4">{project.status}</span>
       </div>
       <div>
-        <span className="status-chip">{project.status}</span>
-        <p className="mt-4 text-base leading-7 text-[var(--text-2)]">
+        <p className="text-base leading-7 text-[var(--text-2)]">
           {project.problem}
         </p>
+        <div className="project-decision">
+          <p className="evidence-label">The architecture decision</p>
+          <p className="mt-2 text-base font-semibold leading-7 text-[var(--text)]">
+            {project.decision}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -48,7 +66,7 @@ function ProjectEvidence({
         </p>
       </div>
       <div>
-        <p className="evidence-label">Evidence-backed outcome</p>
+        <p className="evidence-label">What it demonstrates</p>
         <p className="mt-2 text-sm leading-6 text-[var(--text-2)]">
           {project.outcome}
         </p>
@@ -64,7 +82,7 @@ function ProjectDetails({
 }) {
   return (
     <details className="case-details">
-      <summary>Inspect constraints and decision</summary>
+      <summary>Inspect constraints and tradeoff</summary>
       <div className="grid gap-7 px-5 pb-6 pt-5 md:grid-cols-2 md:px-6">
         <div>
           <p className="evidence-label">Constraints</p>
@@ -85,11 +103,8 @@ function ProjectDetails({
           </ul>
         </div>
         <div>
-          <p className="evidence-label">Decision / consequence</p>
-          <p className="mt-3 text-sm font-semibold leading-6 text-[var(--text)]">
-            {project.decision}
-          </p>
-          <p className="mt-2 text-sm leading-6 text-[var(--text-2)]">
+          <p className="evidence-label">The tradeoff</p>
+          <p className="mt-3 text-sm leading-6 text-[var(--text-2)]">
             {project.tradeoff}
           </p>
         </div>
@@ -138,14 +153,14 @@ function ClinIQPreview() {
         ].map(([number, label]) => (
           <span
             key={number}
-            className="flex items-center gap-2 text-xs leading-5 text-white/65"
+            className="flex items-center gap-2 text-xs leading-5 text-white/80"
           >
             <span className="annotation-key">{number}</span>
             {label}
           </span>
         ))}
       </figcaption>
-      <p className="mt-3 text-xs leading-5 text-white/45">
+      <p className="mt-3 text-xs leading-5 text-white/70">
         Real ClinIQ product screenshot from the public repository; the interface
         uses synthetic demonstration data.
       </p>
@@ -237,23 +252,28 @@ export default function Projects() {
   return (
     <section className="premium-section relative z-10" id="work">
       <Container>
-        <div className="mb-14 grid gap-6 lg:grid-cols-[0.6fr_1fr] lg:items-end">
+        <div className="mb-14 grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-end">
           <div>
             <span className="section-number">04 / Selected work</span>
             <h2 className="section-title">
-              Systems you can inspect, not just claims you can read.
+              Built with boundaries.
+              <br />
+              Backed by evidence.
             </h2>
           </div>
           <p className="max-w-2xl text-lg leading-8 text-[var(--text-2)] lg:justify-self-end">
-            Three complementary examples show how I frame boundaries, make
-            consequential decisions, and leave evidence behind for the next
-            reviewer.
+            Three systems, three different challenges. Explore the problem, the
+            architectural choice, and the evidence behind each one.
           </p>
         </div>
 
-        <article className="case-study case-study-featured" id="case-cliniq">
-          <ProjectHeader project={cliniq} />
-          <div className="mt-8 rounded-xl bg-[var(--graphite)] p-3 sm:p-5 lg:p-7">
+        <article
+          className="case-study case-study-featured"
+          id="case-cliniq"
+          aria-labelledby="cliniq-title"
+        >
+          <ProjectHeader project={cliniq} number="01" />
+          <div className="mt-8 rounded-lg bg-[var(--graphite)] p-3 sm:p-5 lg:p-7">
             <ClinIQPreview />
           </div>
           <ProjectEvidence project={cliniq} />
@@ -270,42 +290,51 @@ export default function Projects() {
           </div>
         </article>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <article className="case-study" id="case-shiftiq">
-            <ProjectHeader project={shiftiq} />
+        <article
+          className="case-study"
+          id="case-shiftiq"
+          aria-labelledby="shiftiq-title"
+        >
+          <div className="project-composition">
+            <ProjectHeader project={shiftiq} number="02" />
             <ShiftIQPreview />
-            <ProjectEvidence project={shiftiq} />
-            <div className="mt-7 grid gap-4">
-              <ProjectDetails project={shiftiq} />
-              <a
-                className="text-link"
-                href={shiftiq.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Review repository <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
-            </div>
-          </article>
+          </div>
+          <ProjectEvidence project={shiftiq} />
+          <div className="mt-7 flex flex-wrap items-center justify-between gap-4">
+            <ProjectDetails project={shiftiq} />
+            <a
+              className="text-link"
+              href={shiftiq.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Review repository <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          </div>
+        </article>
 
-          <article className="case-study" id="case-groundfish">
-            <ProjectHeader project={groundfish} />
+        <article
+          className="case-study"
+          id="case-groundfish"
+          aria-labelledby="groundfish-title"
+        >
+          <div className="project-composition project-composition-research">
+            <ProjectHeader project={groundfish} number="03" />
             <ResearchPreview />
-            <ProjectEvidence project={groundfish} />
-            <div className="mt-7 grid gap-4">
-              <ProjectDetails project={groundfish} />
-              <a
-                className="text-link"
-                href={groundfish.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Read the thesis <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
-            </div>
-          </article>
-        </div>
-
+          </div>
+          <ProjectEvidence project={groundfish} />
+          <div className="mt-7 flex flex-wrap items-center justify-between gap-4">
+            <ProjectDetails project={groundfish} />
+            <a
+              className="text-link"
+              href={groundfish.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the thesis <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          </div>
+        </article>
         <div className="mt-14">
           <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
             <div>

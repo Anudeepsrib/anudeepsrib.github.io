@@ -6,14 +6,21 @@ export default function CTASection() {
   return (
     <section className="relative z-10 pb-8 pt-10" id="contact">
       <Container>
-        <div className="contact-panel">
+        <div className="contact-panel" aria-labelledby="contact-title">
           <div>
             <span className="section-number text-[var(--signal)]">
-              06 / Contact
+              06 / Let&apos;s collaborate
             </span>
-            <h2 className="max-w-4xl text-4xl font-semibold tracking-[-0.045em] !text-white sm:text-6xl">
+            <h2
+              id="contact-title"
+              className="max-w-4xl text-4xl font-semibold tracking-[-0.045em] !text-white sm:text-6xl"
+            >
               Bring me the AI problem that has to hold up in production.
             </h2>
+            <p className="mt-5 max-w-xl text-base leading-7 !text-white/75">
+              Architecture, agentic systems, or the path from a promising
+              prototype to a dependable platform. Let&apos;s talk.
+            </p>
           </div>
           <div className="flex flex-wrap gap-3 lg:justify-end">
             <a

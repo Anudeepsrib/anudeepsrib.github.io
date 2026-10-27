@@ -33,6 +33,8 @@ const roleContext: Record<string, { scope: string; ownership: string }> = {
 };
 
 export default function WhyWorkWithMe() {
+  const [reach, integration, resolution, latency] = productionProof;
+
   return (
     <section className="premium-section relative z-10" id="experience">
       <Container>
@@ -103,13 +105,17 @@ export default function WhyWorkWithMe() {
           </div>
         </div>
 
-        <div className="mt-14 border-y border-[var(--border)]">
+        <div
+          className="mt-14 scroll-mt-28"
+          id="production-outcomes"
+          aria-labelledby="outcomes-title"
+        >
           <div className="flex flex-wrap items-end justify-between gap-3 border-b border-[var(--border)] py-5">
             <div>
               <p className="studio-kicker text-[var(--accent)]">
                 Selected production outcomes
               </p>
-              <h3 className="mt-2 text-2xl font-semibold">
+              <h3 id="outcomes-title" className="mt-2 text-2xl font-semibold">
                 Proof from systems operating at scale.
               </h3>
             </div>
@@ -117,20 +123,54 @@ export default function WhyWorkWithMe() {
               AT&amp;T · Lead AI Engineer
             </span>
           </div>
-          <div className="grid gap-px bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-4">
-            {productionProof.map((item) => (
-              <article key={item.label} className="bg-[var(--bg)] py-6 pr-5">
-                <strong className="block font-display text-3xl font-semibold tracking-tight text-[var(--text)]">
-                  {item.value}
-                </strong>
-                <span className="mt-2 block text-sm font-semibold text-[var(--text)]">
-                  {item.label}
-                </span>
-                <span className="mt-1 block text-xs leading-5 text-[var(--text-3)]">
-                  {item.detail}
-                </span>
-              </article>
-            ))}
+          <div className="outcomes-grid">
+            <article className="outcome-feature">
+              <p className="studio-kicker !text-[var(--signal)]">
+                Integration time
+              </p>
+              <strong className="outcome-value">{integration.value}</strong>
+              <h4 className="text-xl font-semibold !text-white">
+                {integration.label}
+              </h4>
+              <p className="mt-2 text-sm leading-6 !text-white/75">
+                {integration.detail}
+              </p>
+              <figure
+                className="mt-8"
+                aria-label="Integration time reduced by 80 percent compared with the previous workflow"
+              >
+                <div className="flex items-center justify-between gap-3 text-xs text-white/75">
+                  <span>Before</span>
+                  <span>Original integration time</span>
+                </div>
+                <div className="outcome-bar mt-2" aria-hidden="true">
+                  <span />
+                </div>
+                <div className="mt-5 flex items-center justify-between gap-3 text-xs text-white/75">
+                  <span>After</span>
+                  <span>80% less time</span>
+                </div>
+                <div className="outcome-bar is-after mt-2" aria-hidden="true">
+                  <span />
+                </div>
+                <figcaption className="mt-4 text-xs leading-5 text-white/60">
+                  Relative time comparison. Before is the full baseline.
+                </figcaption>
+              </figure>
+            </article>
+            <div className="outcome-summary">
+              {[reach, resolution, latency].map((item) => (
+                <article key={item.label} className="outcome-stat">
+                  <strong>{item.value}</strong>
+                  <div>
+                    <h4 className="text-base font-semibold">{item.label}</h4>
+                    <p className="mt-1 text-sm leading-6 text-[var(--text-3)]">
+                      {item.detail}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </Container>
