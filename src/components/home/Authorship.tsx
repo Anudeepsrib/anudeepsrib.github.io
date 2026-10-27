@@ -55,10 +55,19 @@ export default function Authorship() {
             Research sharpens the evaluation practice. Teaching makes AI
             practical, while career mentorship helps people move forward.
           </p>
-          <nav className="mt-5 flex flex-wrap gap-x-6 gap-y-2" aria-label="Research and mentorship sections">
-            <a className="text-link min-h-11" href="#mentor-testimonials">Mentor testimonials <ArrowUpRight size={15} aria-hidden="true" /></a>
-            <a className="text-link min-h-11" href="#publications">Published work <ArrowUpRight size={15} aria-hidden="true" /></a>
-            <a className="text-link min-h-11" href="#guest-lectures">Guest lectures <ArrowUpRight size={15} aria-hidden="true" /></a>
+          <nav
+            className="mt-5 flex flex-wrap gap-x-6 gap-y-2"
+            aria-label="Research and mentorship sections"
+          >
+            <a className="text-link min-h-11" href="#mentor-testimonials">
+              Mentor testimonials <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+            <a className="text-link min-h-11" href="#publications">
+              Published work <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+            <a className="text-link min-h-11" href="#guest-lectures">
+              Guest lectures <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
           </nav>
         </div>
 
@@ -78,38 +87,69 @@ export default function Authorship() {
           ))}
         </div>
 
-        <section className="my-12 scroll-mt-28 sm:my-16" id="mentor-testimonials" aria-labelledby="testimonials-title">
+        <section
+          className="my-12 scroll-mt-28 sm:my-16"
+          id="mentor-testimonials"
+          aria-labelledby="testimonials-title"
+        >
           <div className="mb-6 flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-3xl">
-              <p className="studio-kicker text-[var(--accent)]">Mentor testimonials</p>
-              <h3 id="testimonials-title" className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
+              <p className="studio-kicker text-[var(--accent)]">
+                Mentor testimonials
+              </p>
+              <h3
+                id="testimonials-title"
+                className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl"
+              >
                 What learners say after the conversation.
               </h3>
               <p className="mt-4 text-base leading-8 text-[var(--text-2)]">
-                70+ one-to-one sessions across Topmate and ADPList, focused on AI
-                careers, system design, interview preparation, and communicating
-                technical work with credibility.
+                70+ one-to-one sessions across Topmate and ADPList, focused on
+                AI careers, system design, interview preparation, and
+                communicating technical work with credibility.
               </p>
             </div>
             <div className="flex flex-wrap gap-5">
-              <a className="text-link min-h-11" href="https://adplist.org/mentors/anudeep-sri-bathina" target="_blank" rel="noopener noreferrer">
-                View ADPList profile <ArrowUpRight size={15} aria-hidden="true" />
+              <a
+                className="text-link min-h-11"
+                href="https://adplist.org/mentors/anudeep-sri-bathina"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View ADPList profile{" "}
+                <ArrowUpRight size={15} aria-hidden="true" />
               </a>
-              <a className="text-link min-h-11" href="https://topmate.io/anudeepsri" target="_blank" rel="noopener noreferrer">
+              <a
+                className="text-link min-h-11"
+                href="https://topmate.io/anudeepsri"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Topmate <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             </div>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {testimonials.map((testimonial) => (
-              <article key={testimonial.name} className="flex min-w-0 flex-col rounded-xl border border-[var(--border-strong)] bg-[var(--surface)] p-6 md:last:col-span-2 sm:p-8">
-                <Quote size={24} className="text-[var(--accent)]" aria-hidden="true" />
+              <article
+                key={testimonial.name}
+                className="flex min-w-0 flex-col rounded-xl border border-[var(--border-strong)] bg-[var(--surface)] p-6 md:last:col-span-2 sm:p-8"
+              >
+                <Quote
+                  size={24}
+                  className="text-[var(--accent)]"
+                  aria-hidden="true"
+                />
                 <blockquote className="mt-4 max-w-3xl flex-1 text-base leading-8 text-[var(--text)]">
                   “{testimonial.text}”
                 </blockquote>
                 <footer className="mt-6 border-t border-[var(--border)] pt-4">
-                  <p className="text-base font-semibold text-[var(--text)]">{testimonial.name}</p>
-                  <p className="mt-1 text-sm leading-6 text-[var(--text-2)]">{testimonial.role} · ADPList</p>
+                  <p className="text-base font-semibold text-[var(--text)]">
+                    {testimonial.name}
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--text-2)]">
+                    {testimonial.role} · ADPList
+                  </p>
                 </footer>
               </article>
             ))}
@@ -173,7 +213,6 @@ export default function Authorship() {
               <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
           </div>
-
         </div>
 
         <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] lg:grid-cols-2">
@@ -219,7 +258,6 @@ export default function Authorship() {
             </div>
           </div>
         </div>
-
       </Container>
     </section>
   );
