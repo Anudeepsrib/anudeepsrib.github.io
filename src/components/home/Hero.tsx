@@ -1,14 +1,10 @@
-"use client";
-
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Linkedin } from "lucide-react";
 import Container from "@/components/ui/Container";
 import resumeData from "@/data/resumeData.json";
 
 export default function Hero() {
   const { personalInfo } = resumeData;
-  const reduceMotion = useReducedMotion();
 
   return (
     <section
@@ -22,11 +18,7 @@ export default function Hero() {
         </div>
 
         <div className="hero-grid">
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 1, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className="motion-safe:animate-fade-up">
             <h1 className="hero-title">
               AI systems that
               <br />
@@ -54,7 +46,7 @@ export default function Hero() {
                 <Linkedin size={16} aria-hidden="true" /> Contact Anudeep
               </a>
             </div>
-          </motion.div>
+          </div>
 
           <div className="hero-proof">
             {[
@@ -77,16 +69,9 @@ export default function Hero() {
             </a>
           </div>
 
-          <motion.aside
-            className="hero-index"
+          <aside
+            className="hero-index motion-safe:animate-fade-up"
             aria-labelledby="hero-index-title"
-            initial={reduceMotion ? false : { opacity: 1, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.1,
-              ease: [0.16, 1, 0.3, 1],
-            }}
           >
             <div className="flex items-start justify-between gap-5">
               <p className="studio-kicker !text-[var(--signal)]">
@@ -141,7 +126,7 @@ export default function Hero() {
                 </a>
               ))}
             </nav>
-          </motion.aside>
+          </aside>
         </div>
       </Container>
     </section>

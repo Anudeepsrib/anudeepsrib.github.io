@@ -1,5 +1,6 @@
 import {
   ArrowUpRight,
+  ArrowDownRight,
   Award,
   BookOpen,
   GraduationCap,
@@ -45,12 +46,10 @@ export default function Authorship() {
     <section className="premium-section relative z-10" id="research">
       <Container>
         <div className="mb-10">
-          <div>
-            <span className="section-number">03 / Beyond delivery</span>
-            <h2 className="section-title max-w-4xl">
-              Research, guest lectures, and mentorship.
-            </h2>
-          </div>
+          <span className="section-number">03 / Beyond delivery</span>
+          <h2 className="section-title max-w-4xl text-balance">
+            Research, guest lectures, and mentorship.
+          </h2>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--text-2)]">
             Research sharpens the evaluation practice. Teaching makes AI
             practical, while career mentorship helps people move forward.
@@ -60,21 +59,25 @@ export default function Authorship() {
             aria-label="Research and mentorship sections"
           >
             <a className="text-link min-h-11" href="#mentor-testimonials">
-              Mentor testimonials <ArrowUpRight size={15} aria-hidden="true" />
+              Mentor testimonials{" "}
+              <ArrowDownRight size={15} aria-hidden="true" />
             </a>
             <a className="text-link min-h-11" href="#publications">
-              Published work <ArrowUpRight size={15} aria-hidden="true" />
+              Published work <ArrowDownRight size={15} aria-hidden="true" />
             </a>
             <a className="text-link min-h-11" href="#guest-lectures">
-              Guest lectures <ArrowUpRight size={15} aria-hidden="true" />
+              Guest lectures <ArrowDownRight size={15} aria-hidden="true" />
             </a>
           </nav>
         </div>
 
-        <div className="grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] lg:grid-cols-4">
           {teachingAndMentoringMetrics.map((metric) => (
-            <div key={metric.label} className="min-w-0 bg-[var(--surface)] p-6">
-              <strong className="block font-display text-3xl font-semibold tracking-tight text-[var(--text)] md:text-4xl">
+            <div
+              key={metric.label}
+              className="min-w-0 bg-[var(--surface)] p-4 sm:p-6"
+            >
+              <strong className="block font-display text-2xl font-semibold tracking-tight text-[var(--text)] sm:text-3xl lg:text-4xl">
                 {metric.value}
               </strong>
               <span className="mt-3 block text-base font-semibold leading-6 text-[var(--text)]">
@@ -92,8 +95,8 @@ export default function Authorship() {
           id="mentor-testimonials"
           aria-labelledby="testimonials-title"
         >
-          <div className="mb-6 flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-3xl">
+          <div className="mb-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div className="min-w-0 max-w-3xl">
               <p className="studio-kicker text-[var(--accent)]">
                 Mentor testimonials
               </p>
@@ -109,7 +112,7 @@ export default function Authorship() {
                 communicating technical work with credibility.
               </p>
             </div>
-            <div className="flex flex-wrap gap-5">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 lg:flex-col lg:items-start">
               <a
                 className="text-link min-h-11"
                 href="https://adplist.org/mentors/anudeep-sri-bathina"
@@ -133,14 +136,14 @@ export default function Authorship() {
             {testimonials.map((testimonial) => (
               <article
                 key={testimonial.name}
-                className="flex min-w-0 flex-col rounded-xl border border-[var(--border-strong)] bg-[var(--surface)] p-6 md:last:col-span-2 sm:p-8"
+                className="flex min-w-0 flex-col rounded-xl border border-[var(--border-strong)] bg-[var(--surface)] p-5 md:last:col-span-2 sm:p-8"
               >
                 <Quote
                   size={24}
                   className="text-[var(--accent)]"
                   aria-hidden="true"
                 />
-                <blockquote className="mt-4 max-w-3xl flex-1 text-base leading-8 text-[var(--text)]">
+                <blockquote className="mt-4 max-w-3xl flex-1 text-base leading-7 text-[var(--text)] sm:leading-8">
                   “{testimonial.text}”
                 </blockquote>
                 <footer className="mt-6 border-t border-[var(--border)] pt-4">
